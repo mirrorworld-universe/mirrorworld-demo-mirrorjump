@@ -8,3 +8,4 @@ public abstract class OnceSystem : BaseSystem
 
     public abstract void RunSystem(List<Entity> entities);
 }
+ 

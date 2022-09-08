@@ -23,6 +23,7 @@ public class MainUI : MonoBehaviour
         if(btnName == "BtnEnterGame")
         {
             GameWorld.Instance.GetGameFlow().gameFlowEnum = GameFlowEnum.IDLE;
+
             SceneManager.LoadScene("InGame");
         }
     }

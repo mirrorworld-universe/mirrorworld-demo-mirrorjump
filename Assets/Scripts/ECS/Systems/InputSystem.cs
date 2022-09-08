@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class InputSystem : UpdateSystem
 {
-    private float baseSpeed = 2;
-    private float maxSpeed = 5;
-    private float minSpeed = -5;
-    private float offset = 0.2f;
+    private readonly float baseSpeed = 2;
+    private readonly float maxSpeed = 5;
+    private readonly float minSpeed = -5;
+    private readonly float offset = 0.2f;
+
     public override void OnSystemUpdate(List<Entity> entities)
     {
         InputComponent inputComponent = GameWorld.Instance.GetInputComponent();

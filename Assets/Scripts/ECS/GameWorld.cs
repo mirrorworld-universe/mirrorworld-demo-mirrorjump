@@ -23,7 +23,7 @@ public class GameWorld : Singleton<GameWorld>
         InitSystems();
     }
 
-    public void OnFixUpdate()
+    public void OnUpdate()
     {
         foreach(BaseSystem sys in systems)
         {
@@ -56,7 +56,7 @@ public class GameWorld : Singleton<GameWorld>
     public Entity AddNewEntity()
     {
         Entity entity = new Entity();
-        entity.ID = ++entityId;
+        entity.ID = ++ entityId;
         AddEntity(entity);
         return entity;
     }
@@ -84,6 +84,7 @@ public class GameWorld : Singleton<GameWorld>
         systems.Add(new GenerateRoleSys());
         systems.Add(new InputSystem());
         systems.Add(new RoleMoveSystem());
+        systems.Add(new CameraSystem());
     }
 
     private GameFlowComponent gameFlowComponent;

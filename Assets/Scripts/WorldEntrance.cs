@@ -17,7 +17,7 @@ public class WorldEntrance : MonoBehaviour
 
     void Update()
     {
-        GameWorld.Instance.OnFixUpdate();
+        GameWorld.Instance.OnUpdate();
     }
 
     private void FixedUpdate()

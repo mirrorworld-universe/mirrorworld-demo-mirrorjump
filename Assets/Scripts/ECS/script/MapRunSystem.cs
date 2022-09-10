@@ -24,8 +24,7 @@ public class MapRunSystem : MonoBehaviour
     private int TagIndex = 0;
 
     private float UnitDistance = 19.12f;
-
-    // 1 83 85 107
+    
     public void MovingMap()
     {   
         SetTagByIndex();
@@ -45,8 +44,7 @@ public class MapRunSystem : MonoBehaviour
         TagIndex++;
 
     }
-
-
+    
     private void SetTagByIndex()
     {
         if (TagIndex == 3)

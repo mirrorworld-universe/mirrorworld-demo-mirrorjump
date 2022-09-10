@@ -38,6 +38,11 @@ public class CameraTracking : MonoBehaviour
       return delta - OddDistance;
    }
 
+   private void ErrorEliminate()
+   {
+      
+   }
+
 
    private void LateUpdate () 
    {

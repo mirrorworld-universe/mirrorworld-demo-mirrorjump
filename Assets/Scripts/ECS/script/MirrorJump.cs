@@ -10,32 +10,48 @@ public class MirrorJump : MonoBehaviour
 
     public float OffsetOfBoundary = 0.8f;
     
-    private float HorizontalVelocity = 0;
+    
 
-    private Rigidbody2D rigidbody2D = null;
+    public float Vy = 0;
+    
+    
+    private float HorizontalVelocity =0f;
+    
+    private float SpeedValue = 30f;
+
+    Rigidbody2D rigidbody2D = null;
+
+    private Vector3 MirrorLocalScale;
+    
+  
+    
+ 
+
+    private void Start()
+    {
+        rigidbody2D = transform.gameObject.GetComponent<Rigidbody2D>();
+        MirrorLocalScale = transform.localScale;
+    }
 
 
-   
     private void Update () 
     {    
+        GyroscopeControl();
         // wille be delete before export to Android
-         KeyboardControl();
-         GyroscopeControl();
-         
+        // KeyboardControl();
+
     }
     
     private  void FixedUpdate()
     {
-        if (rigidbody2D == null)
-        {
-            rigidbody2D = transform.gameObject.GetComponent<Rigidbody2D>();
-        }
+      
         
         Vector2 Velocity = rigidbody2D.velocity;
         Velocity.x = HorizontalVelocity;
         rigidbody2D.velocity = Velocity;
-
         MirrorJumpState(Velocity.y);
+        
+       
         
     }
     
@@ -43,6 +59,7 @@ public class MirrorJump : MonoBehaviour
     // keyboard control     in debug mode use this method
     private void KeyboardControl()
     {
+        
         if (Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.D))
         {
             this.HorizontalVelocity = -0.5f;
@@ -64,17 +81,17 @@ public class MirrorJump : MonoBehaviour
     // gyroscope control   in Android platform use this method
     private void GyroscopeControl()
     {
-        this.HorizontalVelocity = this.HorizontalVelocity * Input.acceleration.x;
+        this.HorizontalVelocity = SpeedValue * Input.acceleration.x;
 
         float LocalScaleX = transform.localScale.x;
         
         if (HorizontalVelocity > 0)
         {
-            transform.localScale = new Vector3(LocalScaleX,transform.localScale.y,transform.localScale.z);
+            transform.localScale = new Vector3(MirrorLocalScale.x,MirrorLocalScale.y,MirrorLocalScale.z);
             
         }else if (HorizontalVelocity < 0)
         {
-            transform.localScale = new Vector3(-LocalScaleX, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(-MirrorLocalScale.x, MirrorLocalScale.y, MirrorLocalScale.z);
             
         }
     }
@@ -85,12 +102,12 @@ public class MirrorJump : MonoBehaviour
         if (verticalVelocity > 0)
         {
             transform.gameObject.GetComponent<SpriteRenderer>().sprite = Spr_Player[0];
-            transform.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            transform.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         else
         {   
             transform.gameObject.GetComponent<SpriteRenderer>().sprite = Spr_Player[1];
-            transform.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            transform.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             
         }
         

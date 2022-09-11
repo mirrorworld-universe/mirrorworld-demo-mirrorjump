@@ -82,20 +82,20 @@ public class CameraTracking : MonoBehaviour
               }
 
              
-              
-              if (transform.position.y >= 0.1)
-              {
-                 // tracking
-                 float distance = Math.Abs(MirrorRole.transform.position.y - FloorTrackThreshold);
-                 Vector3 TrackPosition = new Vector3(transform.position.x, transform.position.y - distance, transform.position.z);
-                 
-                 if (TrackPosition.y <= 0)
-                 {
-                    return;
-                 }
-                 transform.position =TrackPosition;
-                 
-              }
+              // cancel tracking   
+              // if (transform.position.y >= 0.1)
+              // {
+              //    // tracking
+              //    float distance = Math.Abs(MirrorRole.transform.position.y - FloorTrackThreshold);
+              //    Vector3 TrackPosition = new Vector3(transform.position.x, transform.position.y - distance, transform.position.z);
+              //    
+              //    if (TrackPosition.y <= 0)
+              //    {
+              //       return;
+              //    }
+              //    transform.position =TrackPosition;
+              //    
+              // }
            
             
          }

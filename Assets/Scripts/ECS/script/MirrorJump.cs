@@ -17,7 +17,7 @@ public class MirrorJump : MonoBehaviour
     
     private float HorizontalVelocity =0f;
     
-    private float SpeedValue = 30f;
+    private float SpeedValue = 10f;
 
     Rigidbody2D rigidbody2D = null;
 
@@ -27,7 +27,7 @@ public class MirrorJump : MonoBehaviour
 
     private float ReferencePosition = 0;
 
-    private float DeathLength = 4.49f;
+    private float DeathLength = 12f;
 
 
     public GameMenu GameMenu;
@@ -58,14 +58,15 @@ public class MirrorJump : MonoBehaviour
 
     private void Update () 
     {    
-       // GyroscopeControl();
+        GyroscopeControl();
         // wille be delete before export to Android
-        KeyboardControl();
+       // KeyboardControl();
 
         if (FallState)
         {
             if (transform.position.y < ReferencePosition)
             {
+                float y = transform.position.y;
                 if (Math.Abs(transform.position.y - ReferencePosition) >= DeathLength)
                 {
                     // Game over

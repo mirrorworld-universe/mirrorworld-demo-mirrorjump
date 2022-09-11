@@ -2,13 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CameraTracking : MonoBehaviour
 {  
    
-   // Track the threshold
-   public float TrackThreshold;
-
    public GameObject MirrorRole;
    
    public MapRunSystem MapRunSystem;
@@ -20,6 +18,17 @@ public class CameraTracking : MonoBehaviour
    
    
    private bool IsGameOver = false;
+   
+   // Track the threshold
+   private float UpperTrackThreshold = 2f;
+
+   private float FloorTrackThreshold = 5.5f;
+   
+   private bool IsStartFall = false;
+
+
+
+
 
 
    private void FixedUpdate()
@@ -48,16 +57,51 @@ public class CameraTracking : MonoBehaviour
    {
       if(!IsGameOver)
       {
-         if (MirrorRole.transform.position.y > transform.position.y + TrackThreshold)
-         {
-            Vector3 TrackPosition = new Vector3(transform.position.x, MirrorRole.transform.position.y - TrackThreshold, transform.position.z);
+         if (MirrorRole.transform.position.y -  transform.position.y> UpperTrackThreshold)
+         {   
+            
+            if (IsStartFall)
+            {
+               IsStartFall = false;
+               MirrorRole.GetComponent<MirrorJump>().FallStateNotify(IsStartFall);
+            }
+            Vector3 TrackPosition = new Vector3(transform.position.x, MirrorRole.transform.position.y - UpperTrackThreshold, transform.position.z);
             transform.position =TrackPosition;
+            return;
          }
+
+
+         if (transform.position.y - MirrorRole.transform.position.y > FloorTrackThreshold || transform.position.y == 0)
+         {
+              // notify 
+              if (!IsStartFall)
+              {
+                 IsStartFall = true;
+                 // call method and notify
+                 MirrorRole.GetComponent<MirrorJump>().FallStateNotify(IsStartFall);
+              }
+
+             
+              
+              if (transform.position.y >= 0.1)
+              {
+                 // tracking
+                 float distance = Math.Abs(MirrorRole.transform.position.y - FloorTrackThreshold);
+                 Vector3 TrackPosition = new Vector3(transform.position.x, transform.position.y - distance, transform.position.z);
+                 
+                 if (TrackPosition.y <= 0)
+                 {
+                    return;
+                 }
+                 transform.position =TrackPosition;
+                 
+              }
+           
+            
+         }
+         
+         
       }
    }
-   
-   
-   
-   
    
 }

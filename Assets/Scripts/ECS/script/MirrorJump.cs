@@ -23,6 +23,28 @@ public class MirrorJump : MonoBehaviour
 
     private Vector3 MirrorLocalScale;
     
+    private bool FallState = false;
+
+    private float ReferencePosition = 0;
+
+    private float DeathLength = 4.49f;
+
+
+    public GameMenu GameMenu;
+    
+    
+    
+    
+
+    public void FallStateNotify(bool state)
+    {
+        FallState = state;
+        if (state)
+        {
+            ReferencePosition = transform.position.y;
+        }
+    }
+    
   
     
  
@@ -36,24 +58,38 @@ public class MirrorJump : MonoBehaviour
 
     private void Update () 
     {    
-        GyroscopeControl();
+       // GyroscopeControl();
         // wille be delete before export to Android
-        // KeyboardControl();
+        KeyboardControl();
+
+        if (FallState)
+        {
+            if (transform.position.y < ReferencePosition)
+            {
+                if (Math.Abs(transform.position.y - ReferencePosition) >= DeathLength)
+                {
+                    // Game over
+                    GameMenu.GameOver();
+                }
+            }
+        }
 
     }
     
+    
+    
+    
     private  void FixedUpdate()
     {
-      
-        
         Vector2 Velocity = rigidbody2D.velocity;
         Velocity.x = HorizontalVelocity;
         rigidbody2D.velocity = Velocity;
         MirrorJumpState(Velocity.y);
         
-       
-        
     }
+    
+    
+    
     
     
     // keyboard control     in debug mode use this method
@@ -62,10 +98,10 @@ public class MirrorJump : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.D))
         {
-            this.HorizontalVelocity = -0.5f;
+            this.HorizontalVelocity = -4f;
         }else if (!Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D))
         {
-            this.HorizontalVelocity = 0.5f;
+            this.HorizontalVelocity = 4f;
         }
         
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))

@@ -19,6 +19,8 @@ public class MapRunSystem : MonoBehaviour
     
     public GameObject TopBack;
     
+    
+    
     private BackPanelTag backPanelTag = BackPanelTag.Bottom;
     
     private int TagIndex = 0;
@@ -95,6 +97,24 @@ public class MapRunSystem : MonoBehaviour
         gameObject.transform.position = Position;
         
     }
+
+
+    public void ResetMapPosition()
+    {
+        backPanelTag = BackPanelTag.Bottom;
+        TagIndex = 0;
+
+        Vector3 postion = ButtomBack.transform.position;
+
+        ButtomBack.transform.position = new Vector3(postion.x, 0, postion.z);
+        MiddleBack.transform.position = new Vector3(postion.x, UnitDistance, postion.z);
+        TopBack.transform.position = new Vector3(postion.x, 2 * UnitDistance, postion.z);
+        
+
+
+    }
+    
+    
     
    
         

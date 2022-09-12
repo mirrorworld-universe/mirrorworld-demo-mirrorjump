@@ -26,35 +26,42 @@ public class StairsFactory : MonoBehaviour
     
     public GameObject  MovingStairs;
 
-    private float DifficultyInterval = 600f;
+    public GameController GameController;
+
+    private float DifficultyInterval = 100f;
     
 
-    public void GenerateStairs(Vector2 position)
-    {
+    public void GenerateStairs(Vector2 position,bool IsFirstStairs)
+    {   
         Vector3 pos = new Vector3(position.x, position.y, 107.4f);
         
         StairsType stairsType = StairsType.General;
+        
+        if (!IsFirstStairs)
+        {
+            if (MirrorObject.transform.position.y < DifficultyInterval)
+            {
+                stairsType = DifficultyLevelOne();
+            
+            }else if (MirrorObject.transform.position.y < 2 * DifficultyInterval)
+            {
+                stairsType = DifficultyLevelTwo();
+            
+            }else if (MirrorObject.transform.position.y < 3 * DifficultyInterval)
+            {
+                stairsType = DifficultyLevelThree();
+            
+            }else if (MirrorObject.transform.position.y < 4 * DifficultyInterval)
+            {
+                stairsType = DifficultyLevelFour();
+            
+            }else if (MirrorObject.transform.position.y < 5 * DifficultyInterval)
+            {
+                stairsType = DifficultyLevelFive();
+            }
 
-        if (MirrorObject.transform.position.y < DifficultyInterval)
-        {
-           stairsType = DifficultyLevelOne();
-            
-        }else if (MirrorObject.transform.position.y < 2 * DifficultyInterval)
-        {
-            stairsType = DifficultyLevelTwo();
-            
-        }else if (MirrorObject.transform.position.y < 3 * DifficultyInterval)
-        {
-            stairsType = DifficultyLevelThree();
-            
-        }else if (MirrorObject.transform.position.y < 4 * DifficultyInterval)
-        {
-            stairsType = DifficultyLevelFour();
-            
-        }else if (MirrorObject.transform.position.y < 5 * DifficultyInterval)
-        {
-            stairsType = DifficultyLevelFive();
         }
+        
         
         InstantiationStairs(stairsType,pos);
         
@@ -68,20 +75,37 @@ public class StairsFactory : MonoBehaviour
         {    
             var tran = (UnityEngine.Object.Instantiate(GeneralStairs.gameObject)).GetComponent<Transform>();
             tran.position = pos;
-            
+            tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
+            tran.transform.SetParent(StairsParent.transform);
+
         }else if (stairsType == StairsType.Disposable)
         {
-            Instantiate(DisposableStairs, pos, Quaternion.identity);
+            var tran = (UnityEngine.Object.Instantiate(DisposableStairs.gameObject)).GetComponent<Transform>();
+            tran.position = pos;
+            tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
+            tran.transform.SetParent(StairsParent.transform);
             
         }else if (stairsType == StairsType.Disappear)
         {
-            Instantiate(DisappearStairs, pos, Quaternion.identity);
+            var tran = (UnityEngine.Object.Instantiate(DisappearStairs.gameObject)).GetComponent<Transform>();
+            tran.position = pos;
+            tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
+            tran.transform.SetParent(StairsParent.transform);
+
         }else if (stairsType == StairsType.Breakage)
         {
-            Instantiate(BreakageStairs, pos, Quaternion.identity);
+            var tran = (UnityEngine.Object.Instantiate(BreakageStairs.gameObject)).GetComponent<Transform>();
+            tran.position = pos;
+            tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
+            tran.transform.SetParent(StairsParent.transform);
+            
         }else if (stairsType == StairsType.Moving)
         {
-            Instantiate(MovingStairs, pos, Quaternion.identity);
+            var tran = (UnityEngine.Object.Instantiate(MovingStairs.gameObject)).GetComponent<Transform>();
+            tran.position = pos;
+            tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
+            tran.transform.SetParent(StairsParent.transform);
+            
         }
         
     }
@@ -89,7 +113,6 @@ public class StairsFactory : MonoBehaviour
     private StairsType DifficultyLevelOne()
     {    
         //100% General
-        
         return StairsType.General;
     }
     
@@ -162,6 +185,16 @@ public class StairsFactory : MonoBehaviour
         }
 
         return StairsType.Moving;
+    }
+
+
+    public void DestroyAllStairs()
+    {
+        for (int i = 0; i < StairsParent.transform.childCount; i++)
+        {
+           Destroy( StairsParent.transform.GetChild(i).gameObject);
+        }
+       
     }
     
     

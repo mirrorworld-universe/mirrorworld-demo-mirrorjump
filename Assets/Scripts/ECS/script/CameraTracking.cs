@@ -10,6 +10,8 @@ public class CameraTracking : MonoBehaviour
    public GameObject MirrorRole;
    
    public MapRunSystem MapRunSystem;
+
+   public GameObject GameController;
    
    private float LastReferencePosition = 0;
     
@@ -33,12 +35,15 @@ public class CameraTracking : MonoBehaviour
 
    private void FixedUpdate()
    {
-      // driver map move 
-      if (transform.position.y - LastReferencePosition >= OddDistance)
+      if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
+      {
+         // driver map move 
+         if (transform.position.y - LastReferencePosition >= OddDistance)
          {
             LastReferencePosition = transform.position.y-ErrorReduction(transform.position.y - LastReferencePosition);
             MapRunSystem.MovingMap();
          }
+      }
       
 }
 
@@ -103,5 +108,14 @@ public class CameraTracking : MonoBehaviour
          
       }
    }
+
+   public void ResetCameraPosition()
+   {
+      Vector3 pos = transform.position;
+      transform.position = new Vector3(pos.x, 0, pos.z);
+
+   }
+   
+   
    
 }

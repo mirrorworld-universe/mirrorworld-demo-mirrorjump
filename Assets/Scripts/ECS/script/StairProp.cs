@@ -10,6 +10,13 @@ public class StairProp : MonoBehaviour
     private float HeightOffset = 0.19f;
 
     private float RecoveryLine = 0;
+    
+    private GameController GameController;
+
+    public void SetGameController(GameController gameController)
+    {
+        GameController = gameController;
+    }
    
 	 private void OnCollisionEnter2D(Collision2D Other)
      {
@@ -27,12 +34,17 @@ public class StairProp : MonoBehaviour
      // stairs collection 
      private void FixedUpdate()
      {
-         RecoveryLine =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
 
-         if (RecoveryLine - transform.position.y >= HeightOffset)
+         if (GameController.GetGameState() == GameState.Gaming)
          {
-             DestroyStairs();
+             RecoveryLine =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
+
+             if (RecoveryLine - transform.position.y >= HeightOffset)
+             {
+                 DestroyStairs();
+             }
          }
+       
          
      }
 

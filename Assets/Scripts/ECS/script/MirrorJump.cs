@@ -10,14 +10,16 @@ public class MirrorJump : MonoBehaviour
 
     public float OffsetOfBoundary = 0.8f;
     
+    public GameObject GameController;
+    
     
 
-    public float Vy = 0;
+ 
     
     
     private float HorizontalVelocity =0f;
     
-    private float SpeedValue = 10f;
+    private float SpeedValue = 15f;
 
     Rigidbody2D rigidbody2D = null;
 
@@ -57,31 +59,40 @@ public class MirrorJump : MonoBehaviour
 
 
     private void Update () 
-    {    
-        GyroscopeControl();
-        // wille be delete before export to Android
-       // KeyboardControl();
-       if (FallState)
+    {
+        
+        if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
-            if (transform.position.y < ReferencePosition)
+            //GyroscopeControl();
+            // wille be delete before export to Android
+            KeyboardControl();
+            if (FallState)
             {
-                float y = transform.position.y;
-                if (Math.Abs(transform.position.y - ReferencePosition) >= DeathLength)
+                if (transform.position.y < ReferencePosition)
                 {
-                    // Game over
-                    GameMenu.GameOver();
+                    float y = transform.position.y;
+                    if (Math.Abs(transform.position.y - ReferencePosition) >= DeathLength)
+                    {
+                        // Game over
+                        GameMenu.GameOver();
+                    }
                 }
             }
+            
         }
+      
 
     }
     private  void FixedUpdate()
     {
-        Vector2 Velocity = rigidbody2D.velocity;
-        Velocity.x = HorizontalVelocity;
-        Velocity.y = Vy;
-        rigidbody2D.velocity = Velocity;
-        MirrorJumpState(Velocity.y);
+
+        if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
+        {
+            Vector2 Velocity = rigidbody2D.velocity;
+            Velocity.x = HorizontalVelocity;
+            rigidbody2D.velocity = Velocity;
+            MirrorJumpState(Velocity.y);
+        }
         
     }
     
@@ -91,10 +102,10 @@ public class MirrorJump : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.D))
         {
-            this.HorizontalVelocity = -4f;
+            this.HorizontalVelocity = -8f;
         }else if (!Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D))
         {
-            this.HorizontalVelocity = 4f;
+            this.HorizontalVelocity = 8f;
         }
         
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))

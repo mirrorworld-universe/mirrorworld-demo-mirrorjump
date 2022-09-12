@@ -79,6 +79,7 @@ public class MirrorJump : MonoBehaviour
     {
         Vector2 Velocity = rigidbody2D.velocity;
         Velocity.x = HorizontalVelocity;
+        Velocity.y = Vy;
         rigidbody2D.velocity = Velocity;
         MirrorJumpState(Velocity.y);
         

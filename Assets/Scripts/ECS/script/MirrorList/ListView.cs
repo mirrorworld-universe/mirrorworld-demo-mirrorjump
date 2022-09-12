@@ -2,6 +2,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
+public enum PageTurningState
+{
+    OnlyLeft,
+    OnlyRight,
+    Both,
+    None
+}
 public class ListView : ScrollRect
 {
       
@@ -10,53 +18,95 @@ public class ListView : ScrollRect
         
         public ListViewDataProvider _dataProvider;
         
-        public Vector2 Padding;
-        public Vector2 Margin;
-        public int Segment = 1;
-        public RectTransform CellPrefab;
+        public float TopRelativeDistance => _dataProvider.TopRelativeDistance;
+        
+        public float LeftRelativeDistance => _dataProvider.LeftRelativeDistance;
+
+        public float PageSpace   => _dataProvider.PageSpace;
+        
+    
+        public RectTransform CellPrefab =>_dataProvider.CellPrefab;
         
         public void SetDataProvider(ListViewDataProvider dataProvider)
         {
+            if (null == ListViewManager)
+            {
+                ListViewManager = new ListViewManager();
+                ListViewManager.SetListView(this);
+            }
+            
             _dataProvider = dataProvider;
         }
         
         public void OnDataSourceChange()
-        {
-            ReloadData();
-        }
-        
-    
-        
-        private void ReloadData()
-        {
-            if (_dataProvider == null)
-            {
-                if (Application.isPlaying)
-                {
-                    Debug.LogWarning("ListView:DataProvider is null !");
-                }
-
-                return;
-            }
-
-            StopMovement();
-            vertical = false;
-            horizontal = true;
-            if (ListViewManager == null)
+        {   
+            if (null == ListViewManager)
             {
                 ListViewManager = new ListViewManager();
+                ListViewManager.SetListView(this);
+            }
+            ListViewManager.OnStartMeasure();
+        }
+
+
+        public PageTurningState GetPageTurningState(bool IsFirstIn)
+        
+        {
+
+            if (IsFirstIn)
+            {
+                if (_dataProvider.GetCellCount() <= 6)
+                {
+                    return PageTurningState.None;
+                }
+              
+                return PageTurningState.OnlyRight;
+            }
+            
+            if (ListViewManager.GetLastPage() == 1)
+            {
+                return PageTurningState.None;
+            }
+            
+            if (ListViewManager.GetCurrentPage() == 1)
+            {
+                return PageTurningState.OnlyRight;
             }
 
+            if (ListViewManager.GetCurrentPage() == ListViewManager.GetLastPage())
+            {
+                return PageTurningState.OnlyLeft;
+            }
 
-            ListViewManager.OnMeasure(this);
-            onValueChanged.RemoveListener(_OnValueChanged);
-            ListViewManager.DoStart();
-            onValueChanged.AddListener(_OnValueChanged);
+            return PageTurningState.Both;
+
+
         }
 
-        private void _OnValueChanged(Vector2 normalizedPos)
+
+        public void ToLeftPage()
         {
-            ListViewManager.OnValueChanged();
+            if (GetPageTurningState(false) == PageTurningState.Both || GetPageTurningState(false) == PageTurningState.OnlyLeft)
+            {
+                ListViewManager.ToLeftPage();
+            }
+            
+            
         }
+
+
+        public void ToRightPage()
+        {
+            if (GetPageTurningState(false) == PageTurningState.Both || GetPageTurningState(false) == PageTurningState.OnlyRight)
+            {
+                ListViewManager.ToRightPage();
+            }
+        }
+        
+        
+        
+        
+
+      
 
 }

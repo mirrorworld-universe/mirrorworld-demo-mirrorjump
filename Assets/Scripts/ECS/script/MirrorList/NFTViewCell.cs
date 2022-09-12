@@ -1,13 +1,16 @@
 
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NFTViewCell : MonoBehaviour
 {
-    public TextMeshProUGUI content;
     
-    public void OnDataBind(NFTCellData nftCellData)
+    public Image Image;
+    
+    public void OnDataBind(NFTCellData nftCellData,Sprite sprite)
     {
-        content.text = nftCellData.ID;
+        Image.sprite = sprite;
+        
     }
 }

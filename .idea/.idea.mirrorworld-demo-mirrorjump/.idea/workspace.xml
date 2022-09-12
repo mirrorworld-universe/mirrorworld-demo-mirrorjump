@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/ListView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/ListView.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/ListViewManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/ListViewManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewDataProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewDataProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTCellData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTCellData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTViewCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTViewCell.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +17,12 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/47/3deee62b/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/ac/4d052d28/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/e1/053c0008/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/fb/c9b33a16/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3d3c2ee7bd9049e49660c19ac0086eca128c00/cb/99c325fd/Button.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b7/c23faf75/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6eb22e19d14e41f28b6e3398a17360587400/2a/e13a81e4/Input.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/ScrollRect.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -86,7 +90,9 @@
       <workItem from="1662794858842" duration="3972000" />
       <workItem from="1662817866171" duration="1473000" />
       <workItem from="1662857908354" duration="11267000" />
-      <workItem from="1662884506225" duration="2210000" />
+      <workItem from="1662884506225" duration="5394000" />
+      <workItem from="1662899920772" duration="12955000" />
+      <workItem from="1662952152526" duration="6662000" />
     </task>
     <servers />
   </component>
@@ -114,6 +120,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs</url>
+          <line>87</line>
+          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\MirrorList\ListViewManager.cs" initialLine="87" containingFunctionPresentation="method 'OnMeasureSinglePage'">
+            <startOffsets>
+              <option value="2726" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2803" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

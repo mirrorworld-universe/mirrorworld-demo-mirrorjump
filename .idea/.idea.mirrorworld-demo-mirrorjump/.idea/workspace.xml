@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewDataProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewDataProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTCellData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTCellData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTViewCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTViewCell.cs" afterDir="false" />
-    </list>
+    <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,7 +85,7 @@
       <workItem from="1662857908354" duration="11267000" />
       <workItem from="1662884506225" duration="5394000" />
       <workItem from="1662899920772" duration="12955000" />
-      <workItem from="1662952152526" duration="6662000" />
+      <workItem from="1662952152526" duration="7016000" />
     </task>
     <servers />
   </component>
@@ -123,16 +116,16 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs</url>
-          <line>87</line>
-          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\MirrorList\ListViewManager.cs" initialLine="87" containingFunctionPresentation="method 'OnMeasureSinglePage'">
+          <line>85</line>
+          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\MirrorList\ListViewManager.cs" initialLine="85" containingFunctionPresentation="method 'OnMeasureSinglePage'">
             <startOffsets>
-              <option value="2726" />
+              <option value="2583" />
             </startOffsets>
             <endOffsets>
-              <option value="2803" />
+              <option value="2654" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -61,8 +61,7 @@ public class MirrorJump : MonoBehaviour
         GyroscopeControl();
         // wille be delete before export to Android
        // KeyboardControl();
-
-        if (FallState)
+       if (FallState)
         {
             if (transform.position.y < ReferencePosition)
             {
@@ -76,10 +75,6 @@ public class MirrorJump : MonoBehaviour
         }
 
     }
-    
-    
-    
-    
     private  void FixedUpdate()
     {
         Vector2 Velocity = rigidbody2D.velocity;
@@ -88,10 +83,6 @@ public class MirrorJump : MonoBehaviour
         MirrorJumpState(Velocity.y);
         
     }
-    
-    
-    
-    
     
     // keyboard control     in debug mode use this method
     private void KeyboardControl()
@@ -113,7 +104,6 @@ public class MirrorJump : MonoBehaviour
         
 
     } 
-    
     
     // gyroscope control   in Android platform use this method
     private void GyroscopeControl()

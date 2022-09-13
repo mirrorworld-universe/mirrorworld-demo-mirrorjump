@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 108831930}
   - component: {fileID: 108831932}
   - component: {fileID: 108831931}
+  - component: {fileID: 108831933}
   m_Layer: 5
   m_Name: Pause
   m_TagString: Untagged
@@ -199,6 +200,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108831929}
   m_CullTransparentMesh: 1
+--- !u!114 &108831933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108831929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 108831931}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 803901527}
+        m_TargetAssemblyTypeName: GameMenu, Assembly-CSharp
+        m_MethodName: GamePause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &247834402
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +287,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraObject: {fileID: 519420028}
   StairsFactory: {fileID: 1336595707}
+  MirrorObject: {fileID: 5925371422525462709}
+  MapRunSystem: {fileID: 1113051819}
+  CameraTracking: {fileID: 519420033}
+  GameMenu: {fileID: 803901527}
 --- !u!4 &247834404
 Transform:
   m_ObjectHideFlags: 0
@@ -699,6 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MirrorRole: {fileID: 5925371422525462709}
   MapRunSystem: {fileID: 1113051819}
+  GameController: {fileID: 247834402}
 --- !u!1 &688601119
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +1015,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverWindow: {fileID: 428433028}
   GamePauseWindow: {fileID: 1144581336}
+  GameController: {fileID: 247834403}
+  HighScore: {fileID: 395765671}
 --- !u!1 &827596243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,7 +1573,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1068677750}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 803901527}
+        m_TargetAssemblyTypeName: GameMenu, Assembly-CSharp
+        m_MethodName: GameResume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1068677750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1630,7 +1706,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1095835773}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 803901527}
+        m_TargetAssemblyTypeName: GameMenu, Assembly-CSharp
+        m_MethodName: StartNewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1095835773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1826,8 +1914,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1438748668}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1850,6 +1937,7 @@ MonoBehaviour:
   DisappearStairs: {fileID: 6682581414873126553, guid: 16d10847927d87f49ad3bba9568af9fd, type: 3}
   BreakageStairs: {fileID: 8716145998135311012, guid: f6301e7a94d5fb94eb71d137428a909d, type: 3}
   MovingStairs: {fileID: 3529994012853133889, guid: b233727a71678a443b0435cac777e112, type: 3}
+  GameController: {fileID: 247834403}
 --- !u!1 &1390569755
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,11 +2143,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438306586}
   m_CullTransparentMesh: 1
---- !u!4 &1438748668 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1273904467361154679, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-  m_PrefabInstance: {fileID: 1273904468103645579}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1441342516
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,7 +2348,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1574315008}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 803901527}
+        m_TargetAssemblyTypeName: GameMenu, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1576967217
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,10 +3028,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 2032995014}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 803901527}
+        m_TargetAssemblyTypeName: GameMenu, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2117460470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3040,63 +3147,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &1273904468103645579
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1336595706}
-    m_Modifications:
-    - target: {fileID: 1273904467361154675, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-      propertyPath: m_Name
-      value: NormalStair
-      objectReference: {fileID: 0}
-    - target: {fileID: 1273904467361154679, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1273904467361154679, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 1273904467361154679, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -6.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 1273904467361154679, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 107.399994
-      objectReference: {fileID: 0}
-    - target: {fileID: 1273904467361154679, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1273904467361154679, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1273904467361154679, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1273904467361154679, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1273904467361154679, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1273904467361154679, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1273904467361154679, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 35214124caec70b4d9ada78102d7b06a, type: 3}
 --- !u!1001 &5925371422525462708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3207,5 +3257,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 714b22885ce42ba4f80b1d44af406e00, type: 3}
   - {fileID: 21300000, guid: 95d2f16219530e649bd8d75e2a3bd772, type: 3}
   OffsetOfBoundary: 0.8
-  Vy: 10
+  GameController: {fileID: 247834402}
   GameMenu: {fileID: 803901527}

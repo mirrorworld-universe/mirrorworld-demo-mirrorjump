@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
@@ -13,14 +14,28 @@ public class UIManager : MonoBehaviour
 
    public CanvasGroup RightPageTurningCanvas;
 
-   public Button LeftPageTurning;
+   public GameObject NFTPackage;
 
-   public Button RightPageTurning;
+   public GameObject Package;
+
+   public ListViewDataProvider ListViewDataProvider;
+   
+   
 
    
    private void Start()
-   {
-      PageTurningStateUpdate(true);
+   
+   
+   {    ListViewDataProvider.NFTListView.SetDataProvider(ListViewDataProvider);
+       for (int i = 0; i < 25; i++)
+       {
+           NFTCellData nftDataCell = new NFTCellData();
+           nftDataCell.ID = i + "content";
+           ListViewDataProvider.DataSource.Add(nftDataCell);
+       }
+            
+       ListViewDataProvider.NFTListView.OnDataSourceChange();
+       PageTurningStateUpdate(true);
    }
 
 
@@ -33,6 +48,27 @@ public class UIManager : MonoBehaviour
    public void OnTurningRight()
    {   ListView.ToRightPage();
        PageTurningStateUpdate(false);
+   }
+
+
+   public void OpenNFTPackage()
+   {
+       NFTPackage.SetActive(true);
+   }
+   
+   public void OpenPackage()
+   {
+       Package.SetActive(true);
+   }
+
+   public void CloseNFTPackage()
+   {
+       NFTPackage.SetActive(false);
+   }
+   
+   public void ClosePackage()
+   {
+       Package.SetActive(false);
    }
 
 
@@ -74,6 +110,11 @@ public class UIManager : MonoBehaviour
        }
       
        
+   }
+
+   public void PlayGame()
+   {
+       SceneManager.LoadScene("Game");
    }
    
    

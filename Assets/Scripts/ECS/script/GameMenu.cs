@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
@@ -45,9 +46,9 @@ public class GameMenu : MonoBehaviour
     public void StartNewGame()
     
     {
-       
         GameOverWindow.SetActive(false);
         GameController.StartNewGame();
+        GameOverWindow.SetActive(false);
     }
 
     public void SetHighScore(string score)
@@ -57,7 +58,7 @@ public class GameMenu : MonoBehaviour
 
     public void ExitGame()
     {
-        
+        SceneManager.LoadScene("Menu");
     }
    
 }

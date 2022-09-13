@@ -16,7 +16,7 @@ public class ListViewDataProvider : MonoBehaviour
 
         public float PageSpace = 420 ;
         
-        private List<NFTCellData> DataSource = new List<NFTCellData>();
+        public List<NFTCellData> DataSource = new List<NFTCellData>();
         
         public Sprite[] Spr_Player = new Sprite[25];
 
@@ -71,19 +71,7 @@ public class ListViewDataProvider : MonoBehaviour
         }
         
       
-        private void Awake()
-        {   
-            // Test Data
-            NFTListView.SetDataProvider(this);
-            for (int i = 0; i < 25; i++)
-            {
-                NFTCellData nftDataCell = new NFTCellData();
-                nftDataCell.ID = i + "content";
-                DataSource.Add(nftDataCell);
-            }
-            
-            NFTListView.OnDataSourceChange();
-        }
+       
         
         public void SetCellData(GameObject gameObject, int index)
         {

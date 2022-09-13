@@ -113,6 +113,7 @@ public class CameraTracking : MonoBehaviour
    {
       Vector3 pos = transform.position;
       transform.position = new Vector3(pos.x, 0, pos.z);
+      LastReferencePosition = 0;
 
    }
    

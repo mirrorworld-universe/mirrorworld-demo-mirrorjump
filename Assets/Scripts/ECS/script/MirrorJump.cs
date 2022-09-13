@@ -31,6 +31,7 @@ public class MirrorJump : MonoBehaviour
 
     private float DeathLength = 12f;
 
+    private float TowardThreshold = 1.5f;
 
     public GameMenu GameMenu;
     
@@ -63,7 +64,7 @@ public class MirrorJump : MonoBehaviour
         
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
-            //GyroscopeControl();
+           //GyroscopeControl();
             // wille be delete before export to Android
             KeyboardControl();
             if (FallState)
@@ -75,6 +76,7 @@ public class MirrorJump : MonoBehaviour
                     {
                         // Game over
                         GameMenu.GameOver();
+                        FallState = false;
                     }
                 }
             }
@@ -124,17 +126,18 @@ public class MirrorJump : MonoBehaviour
 
         float LocalScaleX = transform.localScale.x;
         
-        if (HorizontalVelocity > 0)
+        if (HorizontalVelocity > TowardThreshold)
         {
             transform.localScale = new Vector3(MirrorLocalScale.x,MirrorLocalScale.y,MirrorLocalScale.z);
             
-        }else if (HorizontalVelocity < 0)
+        }else if (HorizontalVelocity < -TowardThreshold)
         {
             transform.localScale = new Vector3(-MirrorLocalScale.x, MirrorLocalScale.y, MirrorLocalScale.z);
             
         }
     }
-    
+
+
     
     private void MirrorJumpState(float verticalVelocity)
     {

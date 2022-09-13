@@ -21,11 +21,8 @@ public class GameMenu : MonoBehaviour
 
     public void GameOver()
     {
-        if (!GameOverWindow.activeSelf)
-        {
             GameOverWindow.SetActive(true);
-        }
-        GameController.OnGameOver();
+            GameController.OnGameOver();
     }
 
     public void GamePause()
@@ -44,7 +41,6 @@ public class GameMenu : MonoBehaviour
     }
 
     public void StartNewGame()
-    
     {
         GameController.StartNewGame();
     }

@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
     {
         if (GetGameState() == GameState.Gaming)
         {   
-            GameMenu.CloseGameOverWindow();
+           
             if (TheTopStairsHeight - CameraObject.transform.position.y <= GenerateThreshold)
             {
                 StairsFactory.GenerateStairs(GenerateStairsCoordinate(),false);
@@ -134,12 +134,14 @@ public class GameController : MonoBehaviour
 
         MaxHeight = 0;
         
-        TheTopStairsHeight = -3f;
+        TheTopStairsHeight = -6.88f;
         for (int i = 0; i < 10; i++)
         {
             StairsFactory.GenerateStairs(GenerateStairsCoordinate(),false);
         }
+        
         GameMenu.CloseGameOverWindow();
+        
         GameState = GameState.Gaming;
 
     }

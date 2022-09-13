@@ -109,9 +109,12 @@ public class MapRunSystem : MonoBehaviour
         ButtomBack.transform.position = new Vector3(postion.x, 0, postion.z);
         MiddleBack.transform.position = new Vector3(postion.x, UnitDistance, postion.z);
         TopBack.transform.position = new Vector3(postion.x, 2 * UnitDistance, postion.z);
-        
-
-
+        MiddleBack.transform.eulerAngles =
+            new Vector3(MiddleBack.transform.eulerAngles.x, MiddleBack.transform.eulerAngles.y, 180);
+        ButtomBack.transform.eulerAngles =
+            new Vector3(ButtomBack.transform.eulerAngles.x, ButtomBack.transform.eulerAngles.y, 0);
+        TopBack.transform.eulerAngles =
+            new Vector3(TopBack.transform.eulerAngles.x,TopBack.transform.eulerAngles.y, 0);
     }
     
     

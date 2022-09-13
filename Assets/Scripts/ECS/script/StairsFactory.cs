@@ -63,7 +63,8 @@ public class StairsFactory : MonoBehaviour
         }
         
         
-        InstantiationStairs(stairsType,pos);
+      //  InstantiationStairs(stairsType,pos);
+      InstantiationStairs(StairsType.Disappear,pos);
         
      
     }
@@ -82,14 +83,14 @@ public class StairsFactory : MonoBehaviour
         {
             var tran = (UnityEngine.Object.Instantiate(DisposableStairs.gameObject)).GetComponent<Transform>();
             tran.position = pos;
-            tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
+            tran.gameObject.GetComponent<DisposableStairs>().SetGameController(GameController);
             tran.transform.SetParent(StairsParent.transform);
             
         }else if (stairsType == StairsType.Disappear)
         {
             var tran = (UnityEngine.Object.Instantiate(DisappearStairs.gameObject)).GetComponent<Transform>();
             tran.position = pos;
-            tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
+            tran.gameObject.GetComponent<DisappearStairs>().SetGameController(GameController);
             tran.transform.SetParent(StairsParent.transform);
 
         }else if (stairsType == StairsType.Breakage)

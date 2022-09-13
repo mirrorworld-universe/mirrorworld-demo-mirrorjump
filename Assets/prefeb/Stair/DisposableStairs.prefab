@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4610303627345787422}
   - component: {fileID: 4610303627345787423}
   - component: {fileID: 4610303627345787420}
-  - component: {fileID: -2673552447886284946}
+  - component: {fileID: 642802957477499637}
   m_Layer: 0
   m_Name: DisposableStairs
   m_TagString: Untagged
@@ -103,8 +103,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.5, y: 0}
-  - {x: 0.5, y: 0}
+  - {x: -1.2695105, y: 0.5955261}
+  - {x: 1.1621369, y: 0.6}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -128,7 +128,7 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &-2673552447886284946
+--- !u!114 &642802957477499637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,7 +137,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4610303627345787421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2907f7d1b9a796648a43be848f4e9492, type: 3}
+  m_Script: {fileID: 11500000, guid: bce66aa4411a327408675b99d9f6e5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   VerticalVelocity: 15
+  SpriteRenderer: {fileID: 4610303627345787422}

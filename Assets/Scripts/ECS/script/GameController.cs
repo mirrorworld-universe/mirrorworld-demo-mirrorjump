@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
 
     private Vector2 SpeedZero = new Vector2(0, 0);
 
-    private Vector2 FirstStairsPosition = new Vector2(0, -6.88f); 
+    private Vector2 FirstStairsPosition = new Vector2(0, -3f); 
 
     private float MaxHeight = 0;
 
@@ -46,7 +46,8 @@ public class GameController : MonoBehaviour
     private void FixedUpdate()
     {
         if (GetGameState() == GameState.Gaming)
-        {
+        {   
+            GameMenu.CloseGameOverWindow();
             if (TheTopStairsHeight - CameraObject.transform.position.y <= GenerateThreshold)
             {
                 StairsFactory.GenerateStairs(GenerateStairsCoordinate(),false);
@@ -133,12 +134,12 @@ public class GameController : MonoBehaviour
 
         MaxHeight = 0;
         
-        TheTopStairsHeight = -6.88f;
-        for (int i = 0; i < 20; i++)
+        TheTopStairsHeight = -3f;
+        for (int i = 0; i < 10; i++)
         {
             StairsFactory.GenerateStairs(GenerateStairsCoordinate(),false);
         }
-
+        GameMenu.CloseGameOverWindow();
         GameState = GameState.Gaming;
 
     }

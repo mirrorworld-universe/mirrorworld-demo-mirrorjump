@@ -46,8 +46,11 @@ public class GameMenu : MonoBehaviour
     public void StartNewGame()
     
     {
-        GameOverWindow.SetActive(false);
         GameController.StartNewGame();
+    }
+
+    public void CloseGameOverWindow()
+    {
         GameOverWindow.SetActive(false);
     }
 

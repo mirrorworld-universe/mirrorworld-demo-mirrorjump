@@ -104,7 +104,9 @@ public class GameController : MonoBehaviour
 
     public void OnGamePause()
     {   
+       
         Speed= MirrorObject.transform.gameObject.GetComponent<Rigidbody2D>().velocity;
+        MirrorObject.transform.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
         GameState = GameState.GamePause;
         MirrorObject.transform.gameObject.GetComponent<Rigidbody2D>().velocity = SpeedZero ;
     }
@@ -113,6 +115,7 @@ public class GameController : MonoBehaviour
     {   
         GameState = GameState.Gaming;
         MirrorObject.transform.gameObject.GetComponent<Rigidbody2D>().velocity =  Speed;
+        MirrorObject.transform.gameObject.GetComponent<Rigidbody2D>().gravityScale = 2.5f;
     }
 
 

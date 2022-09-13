@@ -28,10 +28,9 @@ public class GameMenu : MonoBehaviour
     public void GamePause()
     {
         GameController.OnGamePause();
-        if (!GamePauseWindow.activeSelf)
-        {
-            GamePauseWindow.SetActive(true);
-        }
+      
+        GamePauseWindow.SetActive(true);
+        
     }
 
     public void GameResume()

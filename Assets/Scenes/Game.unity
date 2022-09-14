@@ -1936,7 +1936,8 @@ MonoBehaviour:
   DisposableStairs: {fileID: 4610303627345787421, guid: ad36c62266cd86243a3694d8cee99ece, type: 3}
   DisappearStairs: {fileID: 8716145998135311012, guid: f6301e7a94d5fb94eb71d137428a909d, type: 3}
   BreakageStairs: {fileID: 8716145998135311012, guid: f6301e7a94d5fb94eb71d137428a909d, type: 3}
-  MovingStairs: {fileID: 3529994012853133889, guid: b233727a71678a443b0435cac777e112, type: 3}
+  MovingStairs: {fileID: 6682581414873126553, guid: 16d10847927d87f49ad3bba9568af9fd, type: 3}
+  MovingStairsOther: {fileID: 6682581414873126553, guid: 0ac8814504bd5f04898a9e407b867f13, type: 3}
   GameController: {fileID: 247834403}
 --- !u!1 &1390569755
 GameObject:

@@ -104,11 +104,12 @@ public class ListViewManager
 
             if (index % 2 == 0)
             {
-                pos.x = LeftReferenceAxis + LeftRelativeDistance;
+                pos.x = LeftReferenceAxis;
             }
             else
             {
-                pos.x = LeftReferenceAxis;
+             
+                pos.x = LeftReferenceAxis + LeftRelativeDistance;
             }
 
             float posY = (index / 2) * TopRelativeDistance;

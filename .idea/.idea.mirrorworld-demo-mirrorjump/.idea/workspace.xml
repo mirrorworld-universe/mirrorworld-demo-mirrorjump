@@ -3,15 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/StairProp.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/StairProp.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/MovingStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/MovingStairs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/StairsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/StairsFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/BreakageStairs.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/BreakageStairs.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/DisappearStairs.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/DisappearStairs.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/DisappearStairs.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/DisappearStairs.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/DisposableStairs.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/DisposableStairs.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/Moving.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/Moving.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/DisarStairs.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/DisarStairs.prefab.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +104,7 @@
       <workItem from="1662990549153" duration="10206000" />
       <workItem from="1663028383037" duration="6292000" />
       <workItem from="1663037551687" duration="19966000" />
+      <workItem from="1663073558948" duration="9354000" />
     </task>
     <servers />
   </component>
@@ -159,6 +156,32 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/MovingStairs.cs</url>
+          <line>253</line>
+          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\Stairs\MovingStairs.cs" initialLine="251" containingFunctionPresentation="method 'MovingByVelocity'">
+            <startOffsets>
+              <option value="5877" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5927" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/MovingStairs.cs</url>
+          <line>116</line>
+          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\Stairs\MovingStairs.cs" initialLine="116" containingFunctionPresentation="method 'SpeedState'">
+            <startOffsets>
+              <option value="2558" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2608" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

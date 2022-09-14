@@ -26,6 +26,8 @@ public class StairsFactory : MonoBehaviour
     
     public GameObject  MovingStairs;
 
+    public GameObject MovingStairsOther;
+
     public GameController GameController;
 
     private float DifficultyInterval = 100f;
@@ -64,7 +66,7 @@ public class StairsFactory : MonoBehaviour
         
         
       //  InstantiationStairs(stairsType,pos);
-      InstantiationStairs(StairsType.Disappear,pos);
+      InstantiationStairs(StairsType.Moving,pos);
         
      
     }
@@ -101,15 +103,44 @@ public class StairsFactory : MonoBehaviour
             tran.transform.SetParent(StairsParent.transform);
             
         }else if (stairsType == StairsType.Moving)
-        {
-            var tran = (UnityEngine.Object.Instantiate(MovingStairs.gameObject)).GetComponent<Transform>();
-            tran.position = pos;
-            tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
-            tran.transform.SetParent(StairsParent.transform);
+        {   
+            //todo 等待进一步完善此处和难度 随机性关联的逻辑
+            int type =   Random.Range(1, 10);
+            MovingDirection movingDirection = MovingDirection.Horizontal;
+
+            if (type <=5)
+            {   
+                int direct =   Random.Range(1, 10);
+                if (direct <= 5)
+                {
+                    movingDirection = MovingDirection.Vertical;
+                }
+                var tran = (UnityEngine.Object.Instantiate(MovingStairs.gameObject)).GetComponent<Transform>();
+                tran.position = pos;
+                tran.gameObject.GetComponent<MovingStairs>().SetGameController(GameController);
+                tran.gameObject.GetComponent<MovingStairs>().SetMovingParams(movingDirection,0.005f,3,1);
+                tran.transform.SetParent(StairsParent.transform);
+            }
+            else
+            {   
+                int direct =   Random.Range(1, 10);
+                if (direct <= 5)
+                {
+                    movingDirection = MovingDirection.Vertical;
+                }
+                var tran = (UnityEngine.Object.Instantiate(MovingStairsOther.gameObject)).GetComponent<Transform>();
+                tran.position = pos;
+                tran.gameObject.GetComponent<MovingStairs>().SetGameController(GameController);
+                tran.gameObject.GetComponent<MovingStairs>().SetMovingParams(movingDirection,0.005f,3,1);
+                tran.transform.SetParent(StairsParent.transform);
+            }
+           
             
         }
         
     }
+
+   
 
     private StairsType DifficultyLevelOne()
     {    

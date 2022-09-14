@@ -2,36 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/MovingStairsOther.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/MovingStairsOther.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗1.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗2.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗3.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗4.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗5.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳1.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳2.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳3.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳4.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳5.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/MovingStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/MovingStairs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/StairsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/StairsFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/DisarStairs.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/MovingStairs.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/DisarStairs.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/MovingStairs.prefab.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +100,7 @@
       <workItem from="1663028383037" duration="6292000" />
       <workItem from="1663037551687" duration="19966000" />
       <workItem from="1663073558948" duration="9354000" />
-      <workItem from="1663135704344" duration="884000" />
+      <workItem from="1663135704344" duration="2135000" />
     </task>
     <servers />
   </component>

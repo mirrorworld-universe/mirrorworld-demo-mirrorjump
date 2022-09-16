@@ -1,14 +1,15 @@
 
-using System;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
-{
-   
+{   
     
-   public void PlayGame()
+    
+
+    public void PlayGame()
    {
        SceneManager.LoadScene("Game");
    }

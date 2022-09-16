@@ -20,6 +20,10 @@ public class ListViewDataProvider : MonoBehaviour
         
         public Sprite[] Spr_Player = new Sprite[25];
 
+        public bool IsNFTPackage;
+        
+        public MirrorDetailsManager mirrorDetailsManager;
+
       
         
         

@@ -27,6 +27,14 @@ public class Packageanager : MonoBehaviour
    {
        Package.SetActive(true);
        ListViewDataProvider.NFTListView.SetDataProvider(ListViewDataProvider);
+       for (int i = 0; i < 1; i++)
+       {
+           NFTCellData nftDataCell = new NFTCellData();
+           nftDataCell.ID = i + "content";
+           ListViewDataProvider.DataSource.Add(nftDataCell);
+       }
+                
+       ListViewDataProvider.NFTListView.OnDataSourceChange();
      
        
        //ListViewDataProvider.DataSource.Add(nftDataCell);  refresh

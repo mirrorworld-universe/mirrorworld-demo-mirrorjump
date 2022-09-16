@@ -1,7 +1,6 @@
-
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 
 public class ListViewManager 
@@ -27,6 +26,15 @@ public class ListViewManager
         public float LeftRelativeDistance => _listView.LeftRelativeDistance;
 
         public float PageSpace => _listView.PageSpace;
+        
+        private bool IsNFTPackage => _listView.IsNFTPackage;
+
+        private MirrorDetailsManager mirrorDetailsManager => _listView.mirrorDetailsManager;
+        
+        
+        
+        
+        private List<Transform> AllTransforms = new List<Transform>();
 
 
         public void SetListView(ListView listView)
@@ -86,16 +94,70 @@ public class ListViewManager
                 item.anchoredPosition = GetAnchorPosition(i,(PageNumber -1)*PageSpace);
                 CurrentItems.Enqueue(item.gameObject);
                 _dataProvider.SetCellData(item.gameObject, OriginIndexMapping(PageNumber,i));
+                
+                item.gameObject.GetComponent<Button>().onClick.AddListener(delegate
+                {
+                    OnButtonClick();
+                    
+                });
+                item.gameObject.GetComponent<Button>().name = "item" + i;
+            
+                AllTransforms.Add(item);
+                
             }
             
             ScrollContent((PageNumber -1)*PageSpace);
         }
 
 
-        private void SetItemClickListener()
+        private void OnButtonClick()
+        {   
+            
+            var button = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+
+            for (int i = 0; i < AllTransforms.Count; i++)
+            {
+                if (AllTransforms[i].GetComponent<Button>().name == button.name)
+                {
+                    if (button.name == "item0")
+                    {
+                        MirrorDetails(false);
+                    }
+                    MirrorDetails(true);
+                    break;
+                }
+            }
+        }
+
+        private void MirrorDetails(bool IsCanMint)
         {
+            if (IsNFTPackage)
+            {
+                // call NFT Details
+                mirrorDetailsManager.NFTPackageDetails();
+            }
+            else
+            {
+                if (IsCanMint)
+                {
+                    mirrorDetailsManager.PopPackageDetails();
+                }
+                else
+                {
+                    mirrorDetailsManager.PopDefaultPackageDetails();
+                }
+                
+                
+            }
+            
+            
             
         }
+        
+        
+        
+        
+        
 
         private Vector2 GetAnchorPosition(int index,float LeftReferenceAxis)
         {

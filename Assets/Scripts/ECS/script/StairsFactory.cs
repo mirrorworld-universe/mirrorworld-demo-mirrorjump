@@ -65,8 +65,8 @@ public class StairsFactory : MonoBehaviour
         }
         
         
-      //  InstantiationStairs(stairsType,pos);
-      InstantiationStairs(StairsType.Moving,pos);
+       InstantiationStairs(stairsType,pos);
+      //InstantiationStairs(StairsType.Moving,pos);
         
      
     }

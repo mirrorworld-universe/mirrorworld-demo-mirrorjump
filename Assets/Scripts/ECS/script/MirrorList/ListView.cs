@@ -27,6 +27,10 @@ public class ListView : ScrollRect
     
         public RectTransform CellPrefab =>_dataProvider.CellPrefab;
         
+        public bool IsNFTPackage => _dataProvider.IsNFTPackage;
+        
+        public MirrorDetailsManager mirrorDetailsManager => _dataProvider.mirrorDetailsManager;
+        
         public void SetDataProvider(ListViewDataProvider dataProvider)
         {
             if (null == ListViewManager)

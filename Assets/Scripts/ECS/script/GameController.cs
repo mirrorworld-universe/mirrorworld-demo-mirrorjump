@@ -38,6 +38,12 @@ public class GameController : MonoBehaviour
 
     private GameState GameState = GameState.GameOver;
     
+    
+    // role change
+    public RolePersistence RolePersistence;
+    
+    
+    
     private void Start()
     {
         OnGameStart();
@@ -127,6 +133,20 @@ public class GameController : MonoBehaviour
 
     public void OnGameStart()
     {   
+        
+        // role change
+        if (null != RolePersistence.GetCurrentJumpPlayer())
+        {
+            MirrorObject.GetComponent<MirrorJump>().Spr_Player[0] = RolePersistence.GetCurrentJumpPlayer();
+        }
+        
+        if (null != RolePersistence.GetCurrentPlayer())
+        {
+            MirrorObject.GetComponent<MirrorJump>().Spr_Player[1] = RolePersistence.GetCurrentPlayer();
+        }
+       
+        
+        
         StairsFactory.GenerateStairs(FirstStairsPosition,true);
         
         SetTransformPosition(MirrorObject.transform,new Vector3(FirstStairsPosition.x,FirstStairsPosition.y+1,107.4f));

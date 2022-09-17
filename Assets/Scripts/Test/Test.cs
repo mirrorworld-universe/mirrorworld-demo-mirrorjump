@@ -24,6 +24,11 @@ public static class LoadHelper
         getRequest.certificateHandler = new WebRequestCertificate();
         
         await getRequest.SendWebRequest();
+
+        if (getRequest.isNetworkError || getRequest.isHttpError)
+        {
+            return null;
+        }
         
         byte[] imgData = getRequest.downloadHandler.data;
         Texture2D tex = new Texture2D(2, 2);

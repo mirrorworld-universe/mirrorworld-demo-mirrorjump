@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTViewCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTViewCell.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/Test.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +116,7 @@
       <workItem from="1663321878334" duration="523000" />
       <workItem from="1663322864411" duration="2636000" />
       <workItem from="1663326051255" duration="1327000" />
-      <workItem from="1663375262915" duration="17916000" />
+      <workItem from="1663375262915" duration="18306000" />
     </task>
     <servers />
   </component>

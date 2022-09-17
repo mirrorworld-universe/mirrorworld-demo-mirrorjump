@@ -7,10 +7,16 @@ using UnityEngine.Networking;
 
 public static class LoadHelper
 {
+
+
+    private static Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
+    
     
 
     public static async Task<Sprite> LoadSprite(string url)
-    {
+    {   
+        
+        
         var task = LoadAsyncSprite(url);
         Task<Sprite> t = await Task.WhenAny(task);
         return t.Result;
@@ -18,6 +24,14 @@ public static class LoadHelper
     private static async Task<Sprite> LoadAsyncSprite(string url)
     {
         
+        
+        if (_sprites.ContainsKey(url))
+        {
+            if (null != _sprites[url])
+            {
+                return _sprites[url];
+            }
+        }
     
         UnityWebRequest getRequest = UnityWebRequest.Get(url);
         getRequest.timeout = 5000;
@@ -36,6 +50,15 @@ public static class LoadHelper
         tex.name = "";
         Vector2 pivot = new Vector2(0.5f, 0.5f);
         Sprite sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), pivot, 100.0f);
+
+        if (_sprites.ContainsKey(url))
+        {
+            _sprites[url] = sprite;
+        }
+        else
+        {
+            _sprites.Add(url,sprite);
+        }
         
         return sprite;
     }

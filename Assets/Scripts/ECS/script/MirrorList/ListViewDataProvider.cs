@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -37,7 +38,7 @@ public class ListViewDataProvider : MonoBehaviour
             }
             
             DataSource.AddRange(Mirrors);
-            
+      
             // notify data update
             NFTListView.OnDataSourceChange();
         }
@@ -88,9 +89,14 @@ public class ListViewDataProvider : MonoBehaviour
         {
             return DataSource.Count;
         }
-        
-        
-//         
+
+
+        public void DestroyItem(GameObject item)
+        {
+            Destroy(item);
+        }
+
+        //         
 //         // add Event  
 //         // 1. tab focus on  2.data refresh
 //         item.gameObject.GetComponent<Button>().onClick.AddListener(delegate

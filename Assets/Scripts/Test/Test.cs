@@ -20,7 +20,7 @@ public static class LoadHelper
         
     
         UnityWebRequest getRequest = UnityWebRequest.Get(url);
-        getRequest.timeout = 1000;
+        getRequest.timeout = 5000;
         getRequest.certificateHandler = new WebRequestCertificate();
         
         await getRequest.SendWebRequest();

@@ -40,6 +40,7 @@ public class ListViewManager
         public void SetListView(ListView listView)
         {
             _listView = listView;
+         
         }
         
         
@@ -242,29 +243,29 @@ public class ListViewManager
 
         private void InitItemPool()
         {
-            int MaxSize = GetMaxCacheSize();
+          //  int MaxSize = GetMaxCacheSize();
             
-            for (int i = 0; i < MaxSize; i++)
-            {
-                var tran = (UnityEngine.Object.Instantiate(_cellPrefab.gameObject)).GetComponent<RectTransform>();
-                tran.gameObject.SetActive(true);
-                tran.SetParent(_content, false);
-                tran.gameObject.SetActive(false);
-                _itemPool.Push(tran.gameObject);
-            }
+            // for (int i = 0; i < MaxSize; i++)
+            // {
+            //     var tran = (UnityEngine.Object.Instantiate(_cellPrefab.gameObject)).GetComponent<RectTransform>();
+            //     tran.gameObject.SetActive(true);
+            //     tran.SetParent(_content, false);
+            //     tran.gameObject.SetActive(false);
+            //     _itemPool.Push(tran.gameObject);
+            // }
             
         }
         
         RectTransform GetCellFromPool() {
             
-            if (_itemPool.Count > 0) {
-                var item = _itemPool.Pop();
-                if (item != null) {
-                    item.gameObject.SetActive(true);
-                    item.gameObject.GetComponent<NFTViewCell>().Image.sprite = null;
-                    return item.transform as RectTransform;
-                }
-            }
+            // if (_itemPool.Count > 0) {
+            //     var item = _itemPool.Pop();
+            //     if (item != null) {
+            //         item.gameObject.SetActive(true);
+            //         item.gameObject.GetComponent<NFTViewCell>().Image.sprite = null;
+            //         return item.transform as RectTransform;
+            //     }
+            // }
             
             var tran = (UnityEngine.Object.Instantiate(_cellPrefab.gameObject)).GetComponent<RectTransform>();
             tran.gameObject.SetActive(true);
@@ -313,7 +314,8 @@ public class ListViewManager
                 var item = CurrentItems.Dequeue();
                 item.gameObject.GetComponent<NFTViewCell>().Image.sprite = null;
                 item.SetActive(false);
-                _itemPool.Push(item);
+                _dataProvider.DestroyItem(item);
+               // _itemPool.Push(item);
             }
             
             

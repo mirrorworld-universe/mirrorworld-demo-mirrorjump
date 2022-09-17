@@ -3,16 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ImageLoader.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ImageLoader.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/ImageLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/ImageLoader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewDataProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewDataProvider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTCellData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTCellData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTPackageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTPackageManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTViewCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/NFTViewCell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/Packageanager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/Packageanager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/ImageTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/ImageTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/Test.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +120,7 @@
       <workItem from="1663321878334" duration="523000" />
       <workItem from="1663322864411" duration="2636000" />
       <workItem from="1663326051255" duration="1327000" />
-      <workItem from="1663375262915" duration="11241000" />
+      <workItem from="1663375262915" duration="16074000" />
     </task>
     <servers />
   </component>

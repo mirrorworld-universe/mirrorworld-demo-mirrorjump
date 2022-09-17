@@ -15,28 +15,24 @@ public class NFTViewCell : MonoBehaviour
     public void OnDataBind(NFTCellData nftCellData,Sprite sprite)
     {
         NftCellData = nftCellData;
-        Image.sprite = sprite;
-        defaultSprite = sprite;
+        Image.sprite = null;
+        defaultSprite = null;
         SetImage(NftCellData.DataParsingEntity.image);
         
     }
     
     private async void SetImage(string url)
     {  
-        if(null != Image)
+        Sprite sprite = await LoadHelper.LoadSprite(url);
+        if (null != sprite)
         {
-           Sprite sprite = await LoadHelper.LoadSprite(url);
-           
-           if (null != sprite && transform.gameObject.activeSelf)
-           {
-               Image.sprite = sprite;
-           }
-           else
-           {
-               Image.sprite = defaultSprite;
-           }
+            if (null != Image && Image.gameObject.activeSelf)
+            {
+                Image.sprite = sprite;
+            }
+              
         }
-       
+        
     }
     
 }

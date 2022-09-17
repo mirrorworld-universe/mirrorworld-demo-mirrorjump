@@ -2,123 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/NFTDetailsManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorDetailsManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorDetailsManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/NFTDetailsManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewDataProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewDataProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/RoleChange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/RoleChange.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/RolePersistence.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/RolePersistence.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/TestSDK.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/TestSDK.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸3.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸4.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸5.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸跳1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸跳1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸跳2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸跳2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸跳3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸跳3.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸跳4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸跳4.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸跳5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/僵尸/僵尸跳5.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆3.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆4.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆5.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆跳1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆跳1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆跳2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆跳2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆跳3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆跳3.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆跳4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆跳4.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆跳5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/女仆/女仆跳5.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/宇航员/宇航员4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/宇航员/宇航员4.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/宇航员/宇航员跳4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/宇航员/宇航员跳4.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士3.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士4.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士5.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士跳1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士跳1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士跳2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士跳2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士跳3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士跳3.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士跳4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士跳4.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士跳5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/武士/武士跳5.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗3.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗4.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗5.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗跳1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗跳1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗跳2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗跳2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗跳3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗跳3.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗跳4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗跳4.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗跳5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/五个角色/五个角色/海盗/海盗跳5.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗3.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗4.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗5.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳3.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳4.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/sprites/MirrorJump/海盗/海盗跳5.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +121,7 @@
       <workItem from="1663326051255" duration="1327000" />
       <workItem from="1663375262915" duration="18919000" />
       <workItem from="1663403772035" duration="5458000" />
-      <workItem from="1663419467187" duration="8659000" />
+      <workItem from="1663419467187" duration="10012000" />
     </task>
     <servers />
   </component>
@@ -339,6 +225,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/GameController.cs</url>
+          <line>136</line>
+          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\GameController.cs" initialLine="136" containingFunctionPresentation="method 'OnGameStart'">
+            <startOffsets>
+              <option value="3108" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3207" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

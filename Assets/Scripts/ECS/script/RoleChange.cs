@@ -17,12 +17,12 @@ public class RoleChange : MonoBehaviour
 
         if (null == PlayerPrefs.GetString("CurrentRole") || null == PlayerPrefs.GetString("CurrentRarity"))
         {
-            transform.gameObject.GetComponent<Image>().sprite = RolePersistence.GetDefaultRole();
+            transform.gameObject.GetComponent<Image>().sprite = RolePersistence.GetDefaultRoleJump();
         }
         else
         {
             transform.gameObject.GetComponent<Image>().sprite =
-                RolePersistence.GetRoleImage(PlayerPrefs.GetString("CurrentRole"),
+                RolePersistence.GetRoleImageJump(PlayerPrefs.GetString("CurrentRole"),
                     PlayerPrefs.GetString("CurrentRarity"));
         }
         

@@ -30,7 +30,7 @@ public class Packageanager : MonoBehaviour
        for (int i = 0; i < 1; i++)
        {
            NFTCellData nftDataCell = new NFTCellData();
-           nftDataCell.ID = i + "content";
+           nftDataCell.DataParsingEntity.ID = i + "content";
            ListViewDataProvider.DataSource.Add(nftDataCell);
        }
                 

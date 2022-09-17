@@ -18,11 +18,12 @@ public class ListViewDataProvider : MonoBehaviour
         
         public List<NFTCellData> DataSource = new List<NFTCellData>();
         
-        public Sprite[] Spr_Player = new Sprite[25];
 
         public bool IsNFTPackage;
         
         public MirrorDetailsManager mirrorDetailsManager;
+
+        public Sprite DefaultSprite;
 
       
         
@@ -62,7 +63,7 @@ public class ListViewDataProvider : MonoBehaviour
             {
                 foreach (var mirror in DataSource)
                 {
-                    if (mirror.ID == ID)
+                    if (mirror.DataParsingEntity.ID == ID)
                     {
                         DataSource.Remove(mirror);
                     }
@@ -80,7 +81,7 @@ public class ListViewDataProvider : MonoBehaviour
         public void SetCellData(GameObject gameObject, int index)
         {
             var NFTViewCell = gameObject.GetComponent<NFTViewCell>();
-            NFTViewCell.OnDataBind(DataSource[index],Spr_Player[index]);
+            NFTViewCell.OnDataBind(DataSource[index],DefaultSprite);
         }
 
         public int  GetCellCount()

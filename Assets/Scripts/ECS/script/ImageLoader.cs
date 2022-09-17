@@ -22,8 +22,15 @@ public class ImageLoader : MonoBehaviour
         //     nftViewCell.Image.sprite = AllSprites[url];
         // }
 
-        StartCoroutine(ImageLoaderFromUrlTest(image));
+       // StartCoroutine(ImageLoaderFromUrlTest(image));
         
+       SetIMage(image);
+    }
+    
+    private async void SetIMage(Image image)
+    {
+        Sprite sprite = await LoadHelper.LoadSprite("https://metadata-assets.mirrorworld.fun/mirror_jump/images/Common_Astronaut.png");
+        image.sprite = sprite;
 
     }
     
@@ -79,14 +86,19 @@ public class ImageLoader : MonoBehaviour
         DownloadHandlerTexture texDl = new DownloadHandlerTexture(true);
         wr.downloadHandler = texDl;
         yield return wr.SendWebRequest();
+        
         if (wr.result == UnityWebRequest.Result.Success) {
             Texture2D t = texDl.texture;
             Sprite s = Sprite.Create(t, new Rect(0, 0, t.width, t.height),
                 Vector2.zero, 1f);
             image.sprite = s;
         }
+        
+        
       
     }
+
+    
 
     
   

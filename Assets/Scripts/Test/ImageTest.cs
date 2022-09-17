@@ -14,7 +14,13 @@ public class ImageTest : MonoBehaviour
     
             ImageLoader.LoadImage(transform.gameObject.GetComponent<Image>());
      
-       
+          
+    }
+    
+    private async void SetIMage()
+    {
+        Sprite sprite = await LoadHelper.LoadSprite("");
+      
     }
     
     

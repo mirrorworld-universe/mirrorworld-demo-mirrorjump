@@ -28,13 +28,10 @@ public class NFTPackageManager : MonoBehaviour
            Package.SetActive(true);
            // 刷新逻辑
            ListViewDataProvider.NFTListView.SetDataProvider(ListViewDataProvider);
-           for (int i = 0; i < 1; i++)
-           {
-               NFTCellData nftDataCell = new NFTCellData();
-               nftDataCell.ID = i + "content";
-               ListViewDataProvider.DataSource.Add(nftDataCell);
-           }
-                
+           
+           ListViewDataProvider.DataSource.Clear();
+           ListViewDataProvider.DataSource.AddRange(TestSDK.FetchNfts());
+           
            ListViewDataProvider.NFTListView.OnDataSourceChange();
            PageTurningStateUpdate(true);
        }

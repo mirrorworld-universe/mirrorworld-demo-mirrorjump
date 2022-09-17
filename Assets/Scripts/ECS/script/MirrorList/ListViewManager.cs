@@ -261,6 +261,7 @@ public class ListViewManager
                 var item = _itemPool.Pop();
                 if (item != null) {
                     item.gameObject.SetActive(true);
+                    item.gameObject.GetComponent<NFTViewCell>().Image.sprite = null;
                     return item.transform as RectTransform;
                 }
             }
@@ -310,6 +311,7 @@ public class ListViewManager
             for (int i = 0; i < number; i++)
             {
                 var item = CurrentItems.Dequeue();
+                item.gameObject.GetComponent<NFTViewCell>().Image.sprite = null;
                 item.SetActive(false);
                 _itemPool.Push(item);
             }

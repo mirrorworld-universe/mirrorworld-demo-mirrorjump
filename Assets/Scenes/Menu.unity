@@ -1047,34 +1047,9 @@ MonoBehaviour:
   TopRelativeDistance: 200
   LeftRelativeDistance: 200
   PageSpace: 420
-  Spr_Player:
-  - {fileID: 21300000, guid: 309a22d0c8072824aad07c903f3aa01e, type: 3}
-  - {fileID: 21300000, guid: 00b296a6a1eaab546aa412d29c2671d6, type: 3}
-  - {fileID: 21300000, guid: 309a22d0c8072824aad07c903f3aa01e, type: 3}
-  - {fileID: 21300000, guid: 158123bc58b52e046bede42826e19060, type: 3}
-  - {fileID: 21300000, guid: 4013e182e1b5f0b4abfbd3f4a1769536, type: 3}
-  - {fileID: 21300000, guid: 309a22d0c8072824aad07c903f3aa01e, type: 3}
-  - {fileID: 21300000, guid: 00b296a6a1eaab546aa412d29c2671d6, type: 3}
-  - {fileID: 21300000, guid: 4013e182e1b5f0b4abfbd3f4a1769536, type: 3}
-  - {fileID: 21300000, guid: 4013e182e1b5f0b4abfbd3f4a1769536, type: 3}
-  - {fileID: 21300000, guid: 00b296a6a1eaab546aa412d29c2671d6, type: 3}
-  - {fileID: 21300000, guid: 4013e182e1b5f0b4abfbd3f4a1769536, type: 3}
-  - {fileID: 21300000, guid: 158123bc58b52e046bede42826e19060, type: 3}
-  - {fileID: 21300000, guid: 39150ae25d75ac44e8009c4c74116ab6, type: 3}
-  - {fileID: 21300000, guid: 4013e182e1b5f0b4abfbd3f4a1769536, type: 3}
-  - {fileID: 21300000, guid: 309a22d0c8072824aad07c903f3aa01e, type: 3}
-  - {fileID: 21300000, guid: 158123bc58b52e046bede42826e19060, type: 3}
-  - {fileID: 21300000, guid: 00b296a6a1eaab546aa412d29c2671d6, type: 3}
-  - {fileID: 21300000, guid: 39150ae25d75ac44e8009c4c74116ab6, type: 3}
-  - {fileID: 21300000, guid: 158123bc58b52e046bede42826e19060, type: 3}
-  - {fileID: 21300000, guid: 4013e182e1b5f0b4abfbd3f4a1769536, type: 3}
-  - {fileID: 21300000, guid: 158123bc58b52e046bede42826e19060, type: 3}
-  - {fileID: 21300000, guid: 309a22d0c8072824aad07c903f3aa01e, type: 3}
-  - {fileID: 21300000, guid: 00b296a6a1eaab546aa412d29c2671d6, type: 3}
-  - {fileID: 21300000, guid: 158123bc58b52e046bede42826e19060, type: 3}
-  - {fileID: 21300000, guid: 39150ae25d75ac44e8009c4c74116ab6, type: 3}
   IsNFTPackage: 1
   mirrorDetailsManager: {fileID: 2117460476}
+  DefaultSprite: {fileID: 21300000, guid: d53d97827da1e0a42b85fc0a1db1c20c, type: 3}
 --- !u!114 &394519917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4184,34 +4159,9 @@ MonoBehaviour:
   TopRelativeDistance: 200
   LeftRelativeDistance: 200
   PageSpace: 420
-  Spr_Player:
-  - {fileID: 21300000, guid: 309a22d0c8072824aad07c903f3aa01e, type: 3}
-  - {fileID: 21300000, guid: 00b296a6a1eaab546aa412d29c2671d6, type: 3}
-  - {fileID: 21300000, guid: 309a22d0c8072824aad07c903f3aa01e, type: 3}
-  - {fileID: 21300000, guid: 158123bc58b52e046bede42826e19060, type: 3}
-  - {fileID: 21300000, guid: 4013e182e1b5f0b4abfbd3f4a1769536, type: 3}
-  - {fileID: 21300000, guid: 309a22d0c8072824aad07c903f3aa01e, type: 3}
-  - {fileID: 21300000, guid: 00b296a6a1eaab546aa412d29c2671d6, type: 3}
-  - {fileID: 21300000, guid: 4013e182e1b5f0b4abfbd3f4a1769536, type: 3}
-  - {fileID: 21300000, guid: 4013e182e1b5f0b4abfbd3f4a1769536, type: 3}
-  - {fileID: 21300000, guid: 00b296a6a1eaab546aa412d29c2671d6, type: 3}
-  - {fileID: 21300000, guid: 4013e182e1b5f0b4abfbd3f4a1769536, type: 3}
-  - {fileID: 21300000, guid: 158123bc58b52e046bede42826e19060, type: 3}
-  - {fileID: 21300000, guid: 39150ae25d75ac44e8009c4c74116ab6, type: 3}
-  - {fileID: 21300000, guid: 4013e182e1b5f0b4abfbd3f4a1769536, type: 3}
-  - {fileID: 21300000, guid: 309a22d0c8072824aad07c903f3aa01e, type: 3}
-  - {fileID: 21300000, guid: 158123bc58b52e046bede42826e19060, type: 3}
-  - {fileID: 21300000, guid: 00b296a6a1eaab546aa412d29c2671d6, type: 3}
-  - {fileID: 21300000, guid: 39150ae25d75ac44e8009c4c74116ab6, type: 3}
-  - {fileID: 21300000, guid: 158123bc58b52e046bede42826e19060, type: 3}
-  - {fileID: 21300000, guid: 4013e182e1b5f0b4abfbd3f4a1769536, type: 3}
-  - {fileID: 21300000, guid: 158123bc58b52e046bede42826e19060, type: 3}
-  - {fileID: 21300000, guid: 309a22d0c8072824aad07c903f3aa01e, type: 3}
-  - {fileID: 21300000, guid: 00b296a6a1eaab546aa412d29c2671d6, type: 3}
-  - {fileID: 21300000, guid: 158123bc58b52e046bede42826e19060, type: 3}
-  - {fileID: 21300000, guid: 39150ae25d75ac44e8009c4c74116ab6, type: 3}
   IsNFTPackage: 0
   mirrorDetailsManager: {fileID: 2117460476}
+  DefaultSprite: {fileID: 21300000, guid: d53d97827da1e0a42b85fc0a1db1c20c, type: 3}
 --- !u!114 &1022025453
 MonoBehaviour:
   m_ObjectHideFlags: 0

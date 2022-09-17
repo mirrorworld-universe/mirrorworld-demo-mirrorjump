@@ -22,7 +22,7 @@ public class ListViewDataProvider : MonoBehaviour
 
         public bool IsNFTPackage;
         
-        public MirrorDetailsManager mirrorDetailsManager;
+        [FormerlySerializedAs("mirrorDetailsManager")] public NFTDetailsManager nftDetailsManager;
 
         public Sprite DefaultSprite;
 

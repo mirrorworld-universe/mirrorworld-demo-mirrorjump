@@ -29,7 +29,7 @@ public class ListViewManager
         
         private bool IsNFTPackage => _listView.IsNFTPackage;
 
-        private MirrorDetailsManager mirrorDetailsManager => _listView.mirrorDetailsManager;
+        private NFTDetailsManager NftDetailsManager => _listView.NftDetailsManager;
         
         
         
@@ -86,7 +86,8 @@ public class ListViewManager
         
         
         private void OnMeasureSinglePage(int PageNumber)
-        {
+        {    
+            AllTransforms.Clear();
             int ItemNumber = GetCurrentPageNumber(PageNumber);
 
             for (int i = 0; i < ItemNumber; i++)
@@ -96,14 +97,15 @@ public class ListViewManager
                 CurrentItems.Enqueue(item.gameObject);
                 _dataProvider.SetCellData(item.gameObject, OriginIndexMapping(PageNumber,i));
                 
+                
+                item.gameObject.GetComponent<Button>().name = "item" + i;
+                AllTransforms.Add(item);
                 item.gameObject.GetComponent<Button>().onClick.AddListener(delegate
                 {
                     OnButtonClick();
                     
                 });
-                item.gameObject.GetComponent<Button>().name = "item" + i;
-            
-                AllTransforms.Add(item);
+               
                 
             }
             
@@ -120,32 +122,40 @@ public class ListViewManager
             {
                 if (AllTransforms[i].GetComponent<Button>().name == button.name)
                 {
+
+                    int index = OriginIndexMapping(CurrentPage, i);
+                    NFTCellData nftCellData = _dataProvider.DataSource[index];
+                    
                     if (button.name == "item0")
                     {
-                        MirrorDetails(false);
+                        MirrorDetails(false,nftCellData);
                     }
-                    MirrorDetails(true);
+                    else
+                    {
+                        MirrorDetails(true,nftCellData);
+                    }
+                   
                     break;
                 }
             }
         }
 
-        private void MirrorDetails(bool IsCanMint)
+        private void MirrorDetails(bool IsCanMint,NFTCellData nftCellData)
         {
             if (IsNFTPackage)
             {
                 // call NFT Details
-                mirrorDetailsManager.NFTPackageDetails();
+                NftDetailsManager.OpenNFTPackageDetails(nftCellData);
             }
             else
             {
                 if (IsCanMint)
                 {
-                    mirrorDetailsManager.PopPackageDetails();
+                    //mirrorDetailsManager.PopPackageDetails();
                 }
                 else
                 {
-                    mirrorDetailsManager.PopDefaultPackageDetails();
+                   // mirrorDetailsManager.PopDefaultPackageDetails();
                 }
                 
                 

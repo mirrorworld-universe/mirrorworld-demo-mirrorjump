@@ -134,17 +134,21 @@ public class GameController : MonoBehaviour
     public void OnGameStart()
     {   
         
-        // role change
-        if (null != RolePersistence.GetCurrentJumpPlayer())
+        if (null == PlayerPrefs.GetString("CurrentRole") || null == PlayerPrefs.GetString("CurrentRarity"))
         {
-            MirrorObject.GetComponent<MirrorJump>().Spr_Player[0] = RolePersistence.GetCurrentJumpPlayer();
+            MirrorObject.GetComponent<MirrorJump>().Spr_Player[1] = RolePersistence.GetDefaultRole();
+            MirrorObject.GetComponent<MirrorJump>().Spr_Player[0] = RolePersistence.GetDefaultRoleJump();
         }
-        
-        if (null != RolePersistence.GetCurrentPlayer())
+        else
         {
-            MirrorObject.GetComponent<MirrorJump>().Spr_Player[1] = RolePersistence.GetCurrentPlayer();
+            MirrorObject.GetComponent<MirrorJump>().Spr_Player[1] =
+                RolePersistence.GetRoleImage(PlayerPrefs.GetString("CurrentRole"),
+                    PlayerPrefs.GetString("CurrentRarity"));
+            
+            MirrorObject.GetComponent<MirrorJump>().Spr_Player[0] =
+                RolePersistence.GetRoleImageJump(PlayerPrefs.GetString("CurrentRole"),
+                    PlayerPrefs.GetString("CurrentRarity"));
         }
-       
         
         
         StairsFactory.GenerateStairs(FirstStairsPosition,true);

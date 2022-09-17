@@ -1048,7 +1048,7 @@ MonoBehaviour:
   LeftRelativeDistance: 200
   PageSpace: 420
   IsNFTPackage: 1
-  mirrorDetailsManager: {fileID: 2117460476}
+  mirrorDetailsManager: {fileID: 2125397029}
   DefaultSprite: {fileID: 21300000, guid: d53d97827da1e0a42b85fc0a1db1c20c, type: 3}
 --- !u!114 &394519917
 MonoBehaviour:
@@ -2105,7 +2105,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2117460476}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MirrorDetailsManager, Assembly-CSharp
         m_MethodName: SetToBattle
         m_Mode: 1
@@ -3451,7 +3451,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2117460476}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MirrorDetailsManager, Assembly-CSharp
         m_MethodName: SetToBattle
         m_Mode: 1
@@ -3693,7 +3693,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2117460476}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MirrorDetailsManager, Assembly-CSharp
         m_MethodName: ClosePackageDetails
         m_Mode: 1
@@ -4075,7 +4075,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2117460476}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MirrorDetailsManager, Assembly-CSharp
         m_MethodName: SetToBattle
         m_Mode: 1
@@ -4160,7 +4160,7 @@ MonoBehaviour:
   LeftRelativeDistance: 200
   PageSpace: 420
   IsNFTPackage: 0
-  mirrorDetailsManager: {fileID: 2117460476}
+  mirrorDetailsManager: {fileID: 0}
   DefaultSprite: {fileID: 21300000, guid: d53d97827da1e0a42b85fc0a1db1c20c, type: 3}
 --- !u!114 &1022025453
 MonoBehaviour:
@@ -4320,7 +4320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e445525e73b88478cbd7bd5aa8f33b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RolePersistence: {fileID: 2117460477}
+  RolePersistence: {fileID: 1688501812}
 --- !u!1 &1080151247
 GameObject:
   m_ObjectHideFlags: 0
@@ -6159,6 +6159,119 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650181596}
   m_CullTransparentMesh: 1
+--- !u!1 &1688501810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1688501811}
+  - component: {fileID: 1688501812}
+  m_Layer: 5
+  m_Name: RolePersistence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1688501811
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688501810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2117460474}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1688501812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688501810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67898207c25826244a6d76cfd825c906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Common:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Rare:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Elite:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Legendary:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  CommonMythical:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  CommonJump:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  RareJump:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  EliteJump:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  LegendaryJump:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  CommonMythicalJump:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ReplacedSprite: {fileID: 21300000, guid: 898cf7a30b2d59f43923053a1abbea55, type: 3}
+  ReplacedSpriteJump: {fileID: 21300000, guid: 4004b0defeb604a46864bc58373ba77c, type: 3}
+  OtherReplacedSprite: {fileID: 21300000, guid: 2c9355b862190e04fac6c0efdb3b4b2f, type: 3}
+  OtherReplacedSpriteJump: {fileID: 21300000, guid: 99e49c217e42ea14b870619cc3fc7c26, type: 3}
 --- !u!1 &1713756493
 GameObject:
   m_ObjectHideFlags: 0
@@ -7067,9 +7180,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2117460476}
+      - m_Target: {fileID: 2125397029}
         m_TargetAssemblyTypeName: MirrorDetailsManager, Assembly-CSharp
-        m_MethodName: CloseNFTPackageDetails
+        m_MethodName: ExitNFTPackage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7389,9 +7502,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2117460475}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: CloseNFTPackage
+      - m_Target: {fileID: 2125397029}
+        m_TargetAssemblyTypeName: MirrorDetailsManager, Assembly-CSharp
+        m_MethodName: BackToNFToPackage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7792,8 +7905,6 @@ GameObject:
   - component: {fileID: 2117460472}
   - component: {fileID: 2117460471}
   - component: {fileID: 2117460475}
-  - component: {fileID: 2117460476}
-  - component: {fileID: 2117460477}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7880,6 +7991,8 @@ RectTransform:
   - {fileID: 1536097698}
   - {fileID: 286712740}
   - {fileID: 406545395}
+  - {fileID: 2125397028}
+  - {fileID: 1688501811}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7900,103 +8013,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc04748b81c34543a14c2813e8a870f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2117460476
+--- !u!1 &2125397027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2125397028}
+  - component: {fileID: 2125397029}
+  m_Layer: 5
+  m_Name: MirrorDetailsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2125397028
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125397027}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2117460474}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2125397029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117460470}
+  m_GameObject: {fileID: 2125397027}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b3702356e72c434480bc3f8ece97fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PackageDetails: {fileID: 1536097697}
+  nftHeader: {fileID: 1650181598}
+  nftID: {fileID: 721194625}
+  nftContent: {fileID: 1492350858}
+  nftRarity: {fileID: 2021737797}
   NFTDetails: {fileID: 286712739}
-  TopSetToBattle: {fileID: 566287254}
-  BottomSetToBattle: {fileID: 996274800}
-  Rarity: {fileID: 1825864700}
-  RarityContent: {fileID: 546764883}
-  MintToNFT: {fileID: 1967597876}
-  RoleImage: {fileID: 1055436249}
-  RolePersistence: {fileID: 2117460477}
---- !u!114 &2117460477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117460470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67898207c25826244a6d76cfd825c906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Common:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Rare:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Elite:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Legendary:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CommonMythical:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CommonJump:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  RareJump:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  EliteJump:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  LegendaryJump:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CommonMythicalJump:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  ReplacedSprite: {fileID: 21300000, guid: 898cf7a30b2d59f43923053a1abbea55, type: 3}
-  ReplacedSpriteJump: {fileID: 21300000, guid: 4004b0defeb604a46864bc58373ba77c, type: 3}
-  OtherReplacedSprite: {fileID: 21300000, guid: 95d2f16219530e649bd8d75e2a3bd772, type: 3}
-  OtherReplacedSpriteJump: {fileID: 21300000, guid: 714b22885ce42ba4f80b1d44af406e00, type: 3}
+  NFTPackageManager: {fileID: 2133473740}
 --- !u!1 &2133473738
 GameObject:
   m_ObjectHideFlags: 0

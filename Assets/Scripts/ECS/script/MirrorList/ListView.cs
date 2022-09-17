@@ -29,7 +29,7 @@ public class ListView : ScrollRect
         
         public bool IsNFTPackage => _dataProvider.IsNFTPackage;
         
-        public MirrorDetailsManager mirrorDetailsManager => _dataProvider.mirrorDetailsManager;
+        public NFTDetailsManager NftDetailsManager => _dataProvider.nftDetailsManager;
         
         public void SetDataProvider(ListViewDataProvider dataProvider)
         {

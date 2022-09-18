@@ -29,6 +29,8 @@ public class PackageDetailsManager : MonoBehaviour
     public GameObject PackageDetails;
 
     public PackageManager PackageManager;
+    
+    public CallSDK CallSDK;
   
     public void OpenPackageDetails(NFTCellData nftCellData,bool IsCanMint)
     {  
@@ -144,7 +146,8 @@ public class PackageDetailsManager : MonoBehaviour
 
     public void MintNFT()
     {
-        
+        CallSDK.MintNFT(CurrentMirror);
+        ExitPackage();
     }
     
     

@@ -12,6 +12,8 @@ public class PackageManager : MonoBehaviour
    public GameObject Package;
 
    public ListViewDataProvider ListViewDataProvider;
+
+  
    
    public void OnTurningLeft()
    { 
@@ -26,18 +28,25 @@ public class PackageManager : MonoBehaviour
    
    public void OpenPackage()
    {    
-       Package.SetActive(true);
+      
        // 刷新逻辑
        ListViewDataProvider.NFTListView.SetDataProvider(ListViewDataProvider);
            
        ListViewDataProvider.DataSource.Clear();
        
        ListViewDataProvider.DataSource.Add(GenerateDefaultCellData());
-       
-       ListViewDataProvider.DataSource.Add(GenerateRandomCellData());
+
+
+       if ("false" == PlayerPrefs.GetString("HasMintRandom", "false"))
+       {
+           ListViewDataProvider.DataSource.Add(GenerateRandomCellData());
+       }
+      
        
        ListViewDataProvider.NFTListView.OnDataSourceChange();
        PageTurningStateUpdate(true);
+       
+       Package.SetActive(true);
        
    }
 
@@ -163,6 +172,8 @@ public class PackageManager : MonoBehaviour
    public void ClosePackage()
    {
        Package.SetActive(false);
+       
+       ListView.RecycleAllItems();
    }
    
    public void PageTurningStateUpdate(bool IsFirst)

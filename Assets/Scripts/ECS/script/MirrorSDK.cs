@@ -5,6 +5,8 @@
     public static class MirrorSDK
     {   
         
+        
+        //   // todo Just Simulate the SDK call operation
         public static List<NFTCellData> FetchNfts()
         {
             List<NFTCellData> datas = new List<NFTCellData>();
@@ -82,6 +84,23 @@
 
             return datas;
 
+        }
+        
+        
+        public static bool MintNFT(NFTCellData nftCellData)
+        {
+            return true;
+        }
+
+        public static bool ListNFT(NFTCellData nftCellData)
+        {
+            return true;
+        }
+
+
+        public static bool TransferNFT(NFTCellData nftCellData)
+        {
+            return true;
         }
         
         

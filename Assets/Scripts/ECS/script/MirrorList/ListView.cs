@@ -108,6 +108,12 @@ public class ListView : ScrollRect
                 ListViewManager.ToRightPage();
             }
         }
+
+
+        public void RecycleAllItems()
+        {
+            ListViewManager.RecycleAllItems();
+        }
         
         
         

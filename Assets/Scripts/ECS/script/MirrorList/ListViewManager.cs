@@ -306,6 +306,17 @@ public class ListViewManager
             
         }
 
+        public void RecycleAllItems()
+        {
+            for (int i = 0; i < CurrentItems.Count; i++)
+            {
+                var item = CurrentItems.Dequeue();
+                item.gameObject.GetComponent<NFTViewCell>().Image.sprite = null;
+                item.SetActive(false);
+                _dataProvider.DestroyItem(item);
+            }
+        }
+
         private void RecycleItem(int PagePosition)
         {
             int number = GetCurrentPageNumber(PagePosition);

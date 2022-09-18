@@ -20,6 +20,8 @@ public class NFTDetailsManager : MonoBehaviour
     public GameObject NFTDetails;
 
     public NFTPackageManager NFTPackageManager;
+    
+    public CallSDK CallSDK;
   
     public void OpenNFTPackageDetails(NFTCellData nftCellData)
     {   
@@ -93,6 +95,19 @@ public class NFTDetailsManager : MonoBehaviour
             }
             
         }
+    }
+
+    public void ListNFT()
+    {
+        CallSDK.ListNFT(CurrentMirror);
+        ExitNFTPackage();
+    }
+    
+    
+    public void TransferNFT()
+    {
+        CallSDK.TransferNFT(CurrentMirror);
+        ExitNFTPackage();
     }
     
     

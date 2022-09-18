@@ -11,6 +11,8 @@ public class NFTPackageManager : MonoBehaviour
        public GameObject Package;
     
        public ListViewDataProvider ListViewDataProvider;
+
+       public CallSDK CallSDK;
        
        public void OnTurningLeft()
        { 
@@ -25,15 +27,16 @@ public class NFTPackageManager : MonoBehaviour
        
        public void OpenPackage()
        {
-           Package.SetActive(true);
+          
            // 刷新逻辑
            ListViewDataProvider.NFTListView.SetDataProvider(ListViewDataProvider);
            
            ListViewDataProvider.DataSource.Clear();
-           ListViewDataProvider.DataSource.AddRange(MirrorSDK.FetchNfts());
+           ListViewDataProvider.DataSource.AddRange(CallSDK.FetchNFTS());
            
            ListViewDataProvider.NFTListView.OnDataSourceChange();
            PageTurningStateUpdate(true);
+           Package.SetActive(true);
        }
     
       

@@ -34,7 +34,8 @@ public class PackageDetailsManager : MonoBehaviour
   
     public void OpenPackageDetails(NFTCellData nftCellData,bool IsCanMint)
     {  
-        PackageManager.ClosePackage();
+        PackageManager.Package.SetActive(false);
+        
         PackageDetails.SetActive(true);
         DataParser(nftCellData); 
         
@@ -79,9 +80,10 @@ public class PackageDetailsManager : MonoBehaviour
     
 
     public void BackToPackage()
-    {
-        PackageManager.Package.SetActive(true);
+    { 
         PackageDetails.SetActive(false);
+        PackageManager.Package.SetActive(true);
+      
     }
 
     public void ExitPackage()

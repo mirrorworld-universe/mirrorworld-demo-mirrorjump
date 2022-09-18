@@ -64,9 +64,9 @@ public class MirrorJump : MonoBehaviour
         
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
-           GyroscopeControl();
+           //GyroscopeControl();
             // wille be delete before export to Android
-           // KeyboardControl();
+           KeyboardControl();
             if (FallState)
             {
                 if (transform.position.y < ReferencePosition)

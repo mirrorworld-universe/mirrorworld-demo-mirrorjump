@@ -175,6 +175,12 @@ public class PackageManager : MonoBehaviour
        
        ListView.RecycleAllItems();
    }
+
+
+   public void RecycleItems()
+   {
+       ListView.RecycleAllItems();
+   }
    
    public void PageTurningStateUpdate(bool IsFirst)
    {

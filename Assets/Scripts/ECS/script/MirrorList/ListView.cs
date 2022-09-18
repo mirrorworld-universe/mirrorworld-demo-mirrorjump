@@ -31,6 +31,8 @@ public class ListView : ScrollRect
         
         public NFTDetailsManager NftDetailsManager => _dataProvider.nftDetailsManager;
         
+        public  PackageDetailsManager PackageDetailsManager => _dataProvider.PackageDetailsManager;
+        
         public void SetDataProvider(ListViewDataProvider dataProvider)
         {
             if (null == ListViewManager)

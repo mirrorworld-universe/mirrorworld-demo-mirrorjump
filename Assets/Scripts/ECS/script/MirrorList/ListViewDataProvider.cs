@@ -1,8 +1,8 @@
 
-using System;
+
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 public class ListViewDataProvider : MonoBehaviour
 {
@@ -22,7 +22,9 @@ public class ListViewDataProvider : MonoBehaviour
 
         public bool IsNFTPackage;
         
-        [FormerlySerializedAs("mirrorDetailsManager")] public NFTDetailsManager nftDetailsManager;
+        public NFTDetailsManager nftDetailsManager;
+        
+        public PackageDetailsManager PackageDetailsManager;
 
         public Sprite DefaultSprite;
 
@@ -96,36 +98,7 @@ public class ListViewDataProvider : MonoBehaviour
             Destroy(item);
         }
 
-        //         
-//         // add Event  
-//         // 1. tab focus on  2.data refresh
-//         item.gameObject.GetComponent<Button>().onClick.AddListener(delegate
-//         {
-//             OnButtonClicked();
-//         });
-// item.gameObject.GetComponent<Button>().name = "tab" + i;
-//             
-// AllTransforms.Add(item);
-//             
-// }
-//         
-// }
-//
-//
-// private void OnButtonClicked()
-// {
-//     var button = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-//
-//     for (int i = 0; i < AllTransforms.Count; i++)
-//     {
-//         if (AllTransforms[i].GetComponent<Button>().name == button.name)
-//         {
-//             TabFocusOn(i);
-//             DataRefreshNotify(i);
-//             CurrentTabChange(i);
-//             break;
-//         }
-//     }
+
         
       
         

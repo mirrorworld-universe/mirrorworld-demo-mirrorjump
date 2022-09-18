@@ -3,8 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/DoodleJump.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/DoodleJump.ttf.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/RoleChange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/RoleChange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewDataProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewDataProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/Packageanager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/PackageManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/Packageanager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/PackageManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/res/字体.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Freckle_Face.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Freckle_Face/FreckleFace-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Freckle_Face/FreckleFace-Regular.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Freckle_Face/OFL.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Freckle_Face/OFL.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Slackey.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Slackey/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Slackey/LICENSE.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Slackey/Slackey-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Slackey/Slackey-Regular.ttf.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +69,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.14629948&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.07056799&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
@@ -121,7 +138,8 @@
       <workItem from="1663326051255" duration="1327000" />
       <workItem from="1663375262915" duration="18919000" />
       <workItem from="1663403772035" duration="5458000" />
-      <workItem from="1663419467187" duration="10012000" />
+      <workItem from="1663419467187" duration="10500000" />
+      <workItem from="1663460135912" duration="2417000" />
     </task>
     <servers />
   </component>
@@ -215,13 +233,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs</url>
-          <line>125</line>
+          <line>127</line>
           <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\MirrorList\ListViewManager.cs" initialLine="125" containingFunctionPresentation="method 'OnButtonClick'">
             <startOffsets>
-              <option value="3943" />
+              <option value="4048" />
             </startOffsets>
             <endOffsets>
-              <option value="3990" />
+              <option value="4095" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="20" />

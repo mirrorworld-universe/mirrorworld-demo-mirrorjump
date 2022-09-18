@@ -31,6 +31,8 @@ public class ListViewManager
 
         private NFTDetailsManager NftDetailsManager => _listView.NftDetailsManager;
         
+        private PackageDetailsManager PackageDetailsManager => _listView.PackageDetailsManager;
+        
         
         
         
@@ -149,19 +151,8 @@ public class ListViewManager
             }
             else
             {
-                if (IsCanMint)
-                {
-                    //mirrorDetailsManager.PopPackageDetails();
-                }
-                else
-                {
-                   // mirrorDetailsManager.PopDefaultPackageDetails();
-                }
-                
-                
+                PackageDetailsManager.OpenPackageDetails(nftCellData,IsCanMint);
             }
-            
-            
             
         }
         

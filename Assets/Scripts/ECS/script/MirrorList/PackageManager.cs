@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Packageanager : MonoBehaviour
+public class PackageManager : MonoBehaviour
 {
     public ListView ListView;
    

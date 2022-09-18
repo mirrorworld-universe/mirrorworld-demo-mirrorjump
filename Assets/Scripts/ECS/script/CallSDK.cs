@@ -6,6 +6,8 @@ using UnityEngine;
 public class CallSDK : MonoBehaviour
 {
 
+    public MessageAdvice MessageAdvice;
+
 
     public RoleChange RoleChange;
     private void Start()
@@ -40,11 +42,13 @@ public class CallSDK : MonoBehaviour
                 }
             }
             RoleChange.OnRoleChange(name,rarity);
+            MessageAdvice.OnSuccess("Congratulation!\n" +
+            "Mint Successful!");
             
         }
         else
         {
-            
+            MessageAdvice.OnFailure();
         }
     }
 
@@ -52,11 +56,12 @@ public class CallSDK : MonoBehaviour
     {
         if (MirrorSDK.ListNFT(nftCellData))
         {
-            
+            MessageAdvice.OnSuccess("Congratulation!\n" +
+                                    "List Successful!");
         }
         else
         {
-            
+            MessageAdvice.OnFailure();
         }
     }
 
@@ -65,11 +70,12 @@ public class CallSDK : MonoBehaviour
     {
         if (MirrorSDK.TransferNFT(nftCellData))
         {
-            
+            MessageAdvice.OnSuccess("Congratulation!\n" +
+                                    "Transfer Successful!");
         }
         else
         {
-            
+            MessageAdvice.OnFailure();
         }
     }
     

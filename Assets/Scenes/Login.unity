@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 228190465}
   - component: {fileID: 228190466}
   m_Layer: 5
-  m_Name: Guidence
+  m_Name: ReceiveTokenGuidence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

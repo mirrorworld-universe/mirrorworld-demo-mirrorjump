@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Guidance : MonoBehaviour
+public class TokenGuidance : MonoBehaviour
 {
 
 

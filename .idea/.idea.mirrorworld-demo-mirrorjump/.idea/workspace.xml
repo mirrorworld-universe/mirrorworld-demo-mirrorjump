@@ -3,25 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/DoodleJump.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/DoodleJump.ttf.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewDataProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewDataProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/Packageanager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/PackageManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/Packageanager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/PackageManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/字体.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Freckle_Face.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Freckle_Face/FreckleFace-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Freckle_Face/FreckleFace-Regular.ttf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Freckle_Face/OFL.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Freckle_Face/OFL.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Slackey.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Slackey/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Slackey/LICENSE.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Slackey/Slackey-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/res/字体/Slackey/Slackey-Regular.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/PackageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/PackageManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/NFTDetailsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/NFTDetailsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/PackageDetailsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/PackageDetailsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/RoleChange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/RoleChange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +20,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/2a/ed2fcc9f/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/2c/d80bf8e7/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/47/3deee62b/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/9a/773d2de0/PlayerPrefs.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/ac/4d052d28/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/b4/7a72308e/AsyncOperation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/c4/99585c81/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/e1/053c0008/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/e9/6d709508/Random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/f7/8a89b7c3/Rect.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/066b41adfd1c4a3b90759d491f1499e8157a00/fb/c9b33a16/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/346ac9fea009459c82f8edd64906ff6a3a00/50/b75638ed/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
@@ -139,7 +128,7 @@
       <workItem from="1663375262915" duration="18919000" />
       <workItem from="1663403772035" duration="5458000" />
       <workItem from="1663419467187" duration="10500000" />
-      <workItem from="1663460135912" duration="2417000" />
+      <workItem from="1663460135912" duration="11528000" />
     </task>
     <servers />
   </component>
@@ -256,6 +245,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/PackageManager.cs</url>
+          <line>70</line>
+          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\MirrorList\PackageManager.cs" initialLine="70" containingFunctionPresentation="method 'GenerateRandomCellData'">
+            <startOffsets>
+              <option value="2413" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2414" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

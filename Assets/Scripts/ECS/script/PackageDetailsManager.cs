@@ -56,7 +56,7 @@ public class PackageDetailsManager : MonoBehaviour
         
         SetToBattleTop.SetActive(false);
 
-        DetailsRoot.transform.position =
+        DetailsRoot.transform.localPosition =
             new Vector3(DetailsRoot.transform.position.x, 30, DetailsRoot.transform.position.z);
     }
 
@@ -67,8 +67,9 @@ public class PackageDetailsManager : MonoBehaviour
         Line.SetActive(false);
         SetToBattleBottom.SetActive(false);
         MintToNFT.SetActive(false);
+        SetToBattleTop.SetActive(true);
 
-        DetailsRoot.transform.position =
+        DetailsRoot.transform.localPosition =
             new Vector3(DetailsRoot.transform.position.x, 0, DetailsRoot.transform.position.z);
 
     }
@@ -126,18 +127,18 @@ public class PackageDetailsManager : MonoBehaviour
 
     public void SetToBattle()
     {
-        // foreach (var item in CurrentMirror.DataParsingEntity.attribute)
-        // {
-        //     if (item.trait_type == "Type")
-        //     {
-        //         PlayerPrefs.SetString("CurrentRole",item.value);
-        //         
-        //     }else if (item.trait_type == "Rarity")
-        //     {
-        //         PlayerPrefs.SetString("CurrentRarity",item.value);
-        //     }
-        //     
-        // }
+        foreach (var item in CurrentMirror.DataParsingEntity.attribute)
+        {
+            if (item.trait_type == "Type")
+            {
+                PlayerPrefs.SetString("CurrentRole",item.value);
+                
+            }else if (item.trait_type == "Rarity")
+            {
+                PlayerPrefs.SetString("CurrentRarity",item.value);
+            }
+            
+        }
     }
 
 

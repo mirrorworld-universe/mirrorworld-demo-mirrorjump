@@ -65,7 +65,7 @@ public class NFTDetailsManager : MonoBehaviour
     private async void SetImage(string url,Image header)
     {  
         
-        Sprite sprite = await LoadHelper.LoadSprite(url);
+        Sprite sprite = await ImageLoader.LoadSprite(url);
         if (null != sprite)
         {
             if (null != header && transform.gameObject.activeSelf)

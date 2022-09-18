@@ -24,7 +24,7 @@ public class NFTViewCell : MonoBehaviour
     private async void SetImage(string url)
     {  
         
-        Sprite sprite = await LoadHelper.LoadSprite(url);
+        Sprite sprite = await ImageLoader.LoadSprite(url);
         if (null != sprite)
         {
             if (null != Image && transform.gameObject.activeSelf)

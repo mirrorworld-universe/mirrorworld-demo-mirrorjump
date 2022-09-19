@@ -14,6 +14,11 @@ public class UIManager : MonoBehaviour
        SceneManager.LoadScene("Game");
    }
 
+    public void Login()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
 
 
     public void ClearAllPersistingData()

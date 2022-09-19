@@ -26,8 +26,7 @@ public class CallSDK : MonoBehaviour
     public void MintNFT(NFTCellData nftCellData)
     {
         if (MirrorSDK.MintNFT(nftCellData))
-        {
-            PlayerPrefs.SetString("HasMintRandom", "true");
+        {  
             string name = null;
             string rarity = null;
             foreach (var item in nftCellData.DataParsingEntity.attribute)
@@ -42,9 +41,9 @@ public class CallSDK : MonoBehaviour
                 }
             }
             RoleChange.OnRoleChange(name,rarity);
-            MessageAdvice.OnSuccess("Congratulation!\n" +
-            "Mint Successful!");
             
+            MessageAdvice.OpenConfirm();
+
         }
         else
         {

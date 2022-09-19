@@ -17,6 +17,9 @@ public class TokenGuidance : MonoBehaviour
   public GameObject FinishGuidence;
 
   public GameObject Back;
+
+
+  public Guidence Guidence;
   
   
   private void Start()
@@ -65,6 +68,12 @@ public class TokenGuidance : MonoBehaviour
      FinishGuidence.SetActive(false);
      Back.SetActive(false);
      PlayerPrefs.SetString("HasReceiveToken", "true");
+     
+     if ("false" == PlayerPrefs.GetString("HasGuidence", "false"))
+     {
+       Guidence.OnFirstStep();
+     }
+
 
   }
 

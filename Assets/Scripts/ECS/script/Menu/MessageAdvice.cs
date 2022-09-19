@@ -15,8 +15,36 @@ public class MessageAdvice : MonoBehaviour
    public Image Icon;
 
    public GameObject DialogRoot;
+   
+   public GameObject Confirm;
 
 
+
+
+
+   public void OpenConfirm()
+   {
+      Confirm.SetActive(true);
+   }
+
+
+   public void CloseConfirm()
+   {
+      Confirm.SetActive(false);
+   }
+   public void ConfirmMint()
+   {  
+      
+      
+      PlayerPrefs.SetString("HasMintRandom", "true");
+      CloseConfirm();
+      OnSuccess("Congratulation!\n" +
+                "Mint Successful!");
+      
+   }
+   
+   
+   
 
    public void OnSuccess(string message)
    {

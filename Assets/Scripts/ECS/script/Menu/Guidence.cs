@@ -15,18 +15,7 @@ public class Guidence : MonoBehaviour
    
     
     
-    private void Start()
-    {
-      //if  need guidance
-  
-      if ("false" == PlayerPrefs.GetString("HasGuidence", "false"))
-      {
-         OnFirstStep();
-      }
-      
-      
-    }
-  
+   
   
     public void OnFirstStep()
     {

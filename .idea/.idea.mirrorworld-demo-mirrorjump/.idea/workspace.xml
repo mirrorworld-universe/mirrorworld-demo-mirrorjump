@@ -3,29 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Login.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/CallSDK.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/CallSDK.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/GameEntrance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/GameEntrance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/DisappearStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/DisappearStairs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/DisappearStairs.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/DisappearStairs.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/DisposableStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/DisposableStairs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/DisposableStairs.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/DisposableStairs.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/MovingStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/MovingStairs.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/StairProp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/StairProp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Stairs/StairProp.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/StairProp.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Mirrors/MirrorRole.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Mirrors/MirrorRole.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/DisappearStairs.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/DisappearStairs.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/DisposableStairs.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/DisposableStairs.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/Moving.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/Moving.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/MovingStairs.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/MovingStairs.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/MovingStairsOther.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/MovingStairsOther.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/NormalStair 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/NormalStair 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Login/TokenGuidance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Login/TokenGuidance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Menu/Guidence.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Menu/Guidence.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Menu/MessageAdvice.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Menu/MessageAdvice.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Menu/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Menu/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +136,7 @@
       <workItem from="1663504979061" duration="9481000" />
       <workItem from="1663519629396" duration="429000" />
       <workItem from="1663546302595" duration="3236000" />
-      <workItem from="1663561493351" duration="2868000" />
+      <workItem from="1663561493351" duration="5727000" />
     </task>
     <servers />
   </component>

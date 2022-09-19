@@ -682,6 +682,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -762,6 +763,14 @@ MonoBehaviour:
   MirrorRole: {fileID: 5925371422525462709}
   MapRunSystem: {fileID: 1113051819}
   GameController: {fileID: 247834402}
+--- !u!81 &519420034
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
 --- !u!1 &688601119
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 24.7, y: 0}
+  m_AnchoredPosition: {x: 24.699997, y: 0}
   m_SizeDelta: {x: 200, y: 45}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &688601121
@@ -3456,15 +3465,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5925371423033197932, guid: 9366142dee3ff804493ec3ad7cd581ca, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.36
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 5925371423033197932, guid: 9366142dee3ff804493ec3ad7cd581ca, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.36
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 5925371423033197932, guid: 9366142dee3ff804493ec3ad7cd581ca, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.36
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 5925371423033197932, guid: 9366142dee3ff804493ec3ad7cd581ca, type: 3}
       propertyPath: m_LocalPosition.x

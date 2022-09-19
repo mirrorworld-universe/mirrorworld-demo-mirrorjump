@@ -147,9 +147,13 @@ public class MirrorJump : MonoBehaviour
             transform.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         else
-        {   
-            transform.gameObject.GetComponent<SpriteRenderer>().sprite = Spr_Player[1];
+        {  
             transform.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            if (verticalVelocity < -6)
+            {
+                transform.gameObject.GetComponent<SpriteRenderer>().sprite = Spr_Player[1];
+               
+            }
             
         }
         

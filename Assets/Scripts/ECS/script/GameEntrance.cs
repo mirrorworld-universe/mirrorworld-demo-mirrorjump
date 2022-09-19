@@ -33,10 +33,11 @@ public class GameEntrance : MonoBehaviour
 
     IEnumerator ASynHidePanel()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         videoPlayer.targetTexture.Release();
          videoPlayer.gameObject.SetActive(false);
          SceneManager.LoadScene("Login");
+         
          
     }
     

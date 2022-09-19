@@ -87,12 +87,12 @@ public class GameController : MonoBehaviour
     private float RandomX()
     {
         Vector3 ScreenZero = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
-        return Random.Range(ScreenZero.x + 1.8f, -ScreenZero.x - 1.8f);
+        return Random.Range(ScreenZero.x + 1f, -ScreenZero.x - 1f);
     }
     
     private float RandomSpaceY()
     {
-        return  Random.Range(2f, 4f);
+        return  Random.Range(1f,1.3f);
     }
     
     public void StartNewGame()
@@ -153,7 +153,7 @@ public class GameController : MonoBehaviour
         
         StairsFactory.GenerateStairs(FirstStairsPosition,true);
         
-        SetTransformPosition(MirrorObject.transform,new Vector3(FirstStairsPosition.x,FirstStairsPosition.y+1,107.4f));
+        SetTransformPosition(MirrorObject.transform,new Vector3(FirstStairsPosition.x,FirstStairsPosition.y+2f,107.4f));
         
         MapRunSystem.ResetMapPosition();
         

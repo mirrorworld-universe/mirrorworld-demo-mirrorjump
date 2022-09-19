@@ -30,7 +30,7 @@ public class StairsFactory : MonoBehaviour
 
     public GameController GameController;
 
-    private float DifficultyInterval = 100f;
+    private float DifficultyInterval = 50f;
     
 
     public void GenerateStairs(Vector2 position,bool IsFirstStairs)
@@ -57,7 +57,7 @@ public class StairsFactory : MonoBehaviour
             {
                 stairsType = DifficultyLevelFour();
             
-            }else if (MirrorObject.transform.position.y < 5 * DifficultyInterval)
+            }else
             {
                 stairsType = DifficultyLevelFive();
             }

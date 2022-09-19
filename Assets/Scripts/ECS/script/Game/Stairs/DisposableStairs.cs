@@ -29,7 +29,8 @@ public class DisposableStairs : MonoBehaviour
         Rigidbody2D Rigid = Other.collider.GetComponent<Rigidbody2D>();
 
         if (Rigid != null)
-        {
+        {   
+            GetComponent<AudioSource>().Play();
             Vector2 Force = Rigid.velocity;
             Force.y = VerticalVelocity;
             Rigid.velocity = Force;

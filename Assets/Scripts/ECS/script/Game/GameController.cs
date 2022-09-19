@@ -162,10 +162,10 @@ public class GameController : MonoBehaviour
         MaxHeight = 0;
         
         TheTopStairsHeight = -6.88f;
-        for (int i = 0; i < 10; i++)
-        {
-            StairsFactory.GenerateStairs(GenerateStairsCoordinate(),false);
-        }
+        // for (int i = 0; i < 10; i++)
+        // {
+        //     StairsFactory.GenerateStairs(GenerateStairsCoordinate(),false);
+        // }
         
         GameMenu.CloseGameOverWindow();
         

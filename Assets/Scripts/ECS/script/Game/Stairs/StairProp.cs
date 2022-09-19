@@ -21,14 +21,13 @@ public class StairProp : MonoBehaviour
 	 private void OnCollisionEnter2D(Collision2D Other)
      {
 
-         // if (Other.collider.GetComponent<Rigidbody2D>().velocity.y < 0)
-         // {
-         //     GetComponent<AudioSource>().Play();
-         // }
+        
+        
+         
          Rigidbody2D Rigid = Other.collider.GetComponent<Rigidbody2D>();
 
          if (Rigid != null)
-         {
+         {   GetComponent<AudioSource>().Play();
              Vector2 Force = Rigid.velocity;
              Force.y = VerticalVelocity;
              Rigid.velocity = Force;

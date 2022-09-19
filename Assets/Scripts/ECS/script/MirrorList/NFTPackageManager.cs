@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class NFTPackageManager : MonoBehaviour
@@ -13,6 +14,8 @@ public class NFTPackageManager : MonoBehaviour
        public ListViewDataProvider ListViewDataProvider;
 
        public CallSDK CallSDK;
+
+       public TextMeshProUGUI PageNumber;
        
        public void OnTurningLeft()
        { 
@@ -48,34 +51,42 @@ public class NFTPackageManager : MonoBehaviour
        public void PageTurningStateUpdate(bool IsFirst)
        {
            PageTurningState State = ListView.GetPageTurningState(IsFirst);
+           
+           
     
            if (State == PageTurningState.Both)
            {
                LeftPageTurningCanvas.alpha = 1;
                RightPageTurningCanvas.alpha = 1;
-               
-           
-               
+
+               PageNumber.text = ListView.GetCurrentPage().ToString();
+
+
            }else if (State == PageTurningState.None)
            {
                LeftPageTurningCanvas.alpha = 0;
                RightPageTurningCanvas.alpha = 0;
-               
-             
-               
+
+               PageNumber.text = "";
+
+
+
            }else if (State == PageTurningState.OnlyLeft)
            {
                LeftPageTurningCanvas.alpha = 1;
                RightPageTurningCanvas.alpha = 0.5f;
                
-            
+               PageNumber.text = ListView.GetCurrentPage().ToString();
                
            }else if (State == PageTurningState.OnlyRight)
            {
                LeftPageTurningCanvas.alpha = 0.5f;
                RightPageTurningCanvas.alpha = 1;
                
+               PageNumber.text = ListView.GetCurrentPage().ToString();
            }
+           
+           
            
        }
 }

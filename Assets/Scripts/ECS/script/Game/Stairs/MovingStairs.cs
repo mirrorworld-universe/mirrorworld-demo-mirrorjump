@@ -70,7 +70,8 @@ public class MovingStairs : MonoBehaviour
     {
         float TheLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x;
         
-        return TheLeft +WidthOffset;
+      //  return TheLeft +WidthOffset;
+      return -4.2f;
     }
 
 
@@ -78,7 +79,8 @@ public class MovingStairs : MonoBehaviour
     {
         float TheLeft =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x;
         
-        return -TheLeft - WidthOffset;
+        //return -TheLeft - WidthOffset;
+        return 4.2f;
     }
 
 
@@ -86,31 +88,25 @@ public class MovingStairs : MonoBehaviour
     {
         if (MovingDirection == MovingDirection.Horizontal)
         {
-            int beginingDirect = Random.Range(1, 2);
+            int beginingDirect = Random.Range(1, 3);
+            
+            transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-SlowSpeed, 0);
 
-            if (beginingDirect == 1)
-            {
-                transform.GetComponent<Rigidbody2D>().velocity = new Vector2(SlowSpeed, 0);
-            }
-            else
-            {
-                transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-SlowSpeed, 0);
-            }
+            // if (beginingDirect == 1)
+            // {
+            //     transform.GetComponent<Rigidbody2D>().velocity = new Vector2(SlowSpeed, 0);
+            // }
+            // else
+            // {
+            //     transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-SlowSpeed, 0);
+            // }
         }
         else if (MovingDirection == MovingDirection.Vertical)
-        {  
-            int beginingDirect = Random.Range(1, 2);
-
-            if (beginingDirect == 1)
-            {
-                transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -SlowSpeed);   
-            }
-            else
-            {
-                transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 2*SlowSpeed);   
-            }
-
+        {
+            transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -SlowSpeed);
         }
+        
+        
     }
     private void SpeedState()
     {
@@ -176,7 +172,17 @@ public class MovingStairs : MonoBehaviour
 
     private void Accelerate()
     {
-        transform.GetComponent<Rigidbody2D>().velocity = new Vector2(2*SlowSpeed, 0);
+        if (transform.GetComponent<Rigidbody2D>().velocity.x > 0)
+        {
+            transform.GetComponent<Rigidbody2D>().velocity = new Vector2(2*SlowSpeed, 0);
+        }
+        else
+        {
+            transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-2*SlowSpeed, 0);
+        }
+       
+        
+        
     }
     
     
@@ -186,20 +192,25 @@ public class MovingStairs : MonoBehaviour
     private void VerticalSpeedState()
     {   
        
-        if (Math.Abs(transform.position.y - BeginningPosition.y) >= VerticalMoveDistance)
-        {
-           
+      
             if (transform.GetComponent<Rigidbody2D>().velocity.y > 0)
             {
-                transform.GetComponent<Rigidbody2D>().velocity = new Vector2(2*SlowSpeed, 0);
+                if (transform.position.y - BeginningPosition.y >= VerticalMoveDistance)
+                {
+                    transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -SlowSpeed);
+                }
             }
             else
             {
-                transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-SlowSpeed, 0);
+                if (transform.position.y - BeginningPosition.y <= -VerticalMoveDistance)
+                {
+                    transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 2*SlowSpeed);
+                }
+             
             }
             
             
-        }
+        
     }
     
     
@@ -208,47 +219,65 @@ public class MovingStairs : MonoBehaviour
     
     // stairs collection 
     private void FixedUpdate()
-    {
+    {       
+        RecoveryLine =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
 
-        if (GameController.GetGameState() == GameState.Gaming)
-        {   
-            RecoveryLine =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
-
-            if (RecoveryLine - transform.position.y >= HeightOffset)
-            {
-                DestroyStairs();
-            }
-
-
-            if (MovingDirection == MovingDirection.Horizontal)
-            {
-                HorizontalVelocityCheckout();
-            }
-            else
-            {
-                VrticalVelocityCheckout();
-            }
-            
-            SpeedState();
-            MovingByVelocity();
-            
-        }else if (GameController.GetGameState() == GameState.GamePause)
+        if (RecoveryLine - transform.position.y >= HeightOffset)
         {
-            
-            if (MovingDirection == MovingDirection.Horizontal)
-            {
-               SetPauseHorizontalVelocity();
-            }
-            else
-            {
-                SetPauseVrticalVelocity();
-            }
-            transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
-            
+            DestroyStairs();
         }
+
+
+        if (MovingDirection == MovingDirection.Horizontal)
+        {
+            HorizontalVelocityCheckout();
+        }
+        else
+        {
+            VrticalVelocityCheckout();
+        }
+            
+        SpeedState();
+        MovingByVelocity();
+
+        // if (GameController.GetGameState() == GameState.Gaming)
+        // {   
+        //     RecoveryLine =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
+        //
+        //     if (RecoveryLine - transform.position.y >= HeightOffset)
+        //     {
+        //         DestroyStairs();
+        //     }
+        //
+        //
+        //     if (MovingDirection == MovingDirection.Horizontal)
+        //     {
+        //         HorizontalVelocityCheckout();
+        //     }
+        //     else
+        //     {
+        //         VrticalVelocityCheckout();
+        //     }
+        //     
+        //     SpeedState();
+        //     MovingByVelocity();
+        //     
+        // }else if (GameController.GetGameState() == GameState.GamePause)
+        // {
+        //     
+        //     if (MovingDirection == MovingDirection.Horizontal)
+        //     {
+        //        SetPauseHorizontalVelocity();
+        //     }
+        //     else
+        //     {
+        //         SetPauseVrticalVelocity();
+        //     }
+        //     transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+        //     
+        // }
     }
-
-
+    
     private void MovingByVelocity()
     {
         if (MovingDirection == MovingDirection.Horizontal)
@@ -260,18 +289,14 @@ public class MovingStairs : MonoBehaviour
             transform.GetComponent<Rigidbody2D>().MovePosition( transform.GetComponent<Rigidbody2D>().position+Vector2.up * transform.GetComponent<Rigidbody2D>().velocity.y * Time.fixedDeltaTime);
         }
     }
-
-
     private void SetPauseVrticalVelocity()
     {
         PauseVelocity =  transform.GetComponent<Rigidbody2D>().velocity.y;
     }
-    
     private void SetPauseHorizontalVelocity()
     {
         PauseVelocity =  transform.GetComponent<Rigidbody2D>().velocity.x;
     }
-
     private void HorizontalVelocityCheckout()
     {
         if (transform.GetComponent<Rigidbody2D>().velocity.x == 0)
@@ -279,8 +304,6 @@ public class MovingStairs : MonoBehaviour
             transform.GetComponent<Rigidbody2D>().velocity = new Vector2(PauseVelocity, 0);
         }   
     }
-
-
     private void VrticalVelocityCheckout()
     {
         if (transform.GetComponent<Rigidbody2D>().velocity.y == 0)
@@ -288,20 +311,17 @@ public class MovingStairs : MonoBehaviour
             transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, PauseVelocity);
         }   
     }
-    
-    
-    
     public void SetGameController(GameController gameController)
     {
         GameController = gameController;
     }
-   
     private void OnCollisionEnter2D(Collision2D Other)
     {
         Rigidbody2D Rigid = Other.collider.GetComponent<Rigidbody2D>();
 
         if (Rigid != null)
-        {
+        {   
+            GetComponent<AudioSource>().Play();
             Vector2 Force = Rigid.velocity;
             Force.y = VerticalVelocity;
             Rigid.velocity = Force;

@@ -114,6 +114,11 @@ public class ListView : ScrollRect
         {
             ListViewManager.RecycleAllItems();
         }
+
+        public int GetCurrentPage()
+        {
+            return this.ListViewManager.GetCurrentPage();
+        }
         
         
         

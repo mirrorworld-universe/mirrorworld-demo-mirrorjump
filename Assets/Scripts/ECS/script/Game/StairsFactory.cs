@@ -65,8 +65,8 @@ public class StairsFactory : MonoBehaviour
         }
         
         
-       InstantiationStairs(stairsType,pos);
-      //InstantiationStairs(StairsType.Moving,pos);
+      // InstantiationStairs(stairsType,pos);
+      InstantiationStairs(StairsType.Moving,pos);
         
      
     }
@@ -105,37 +105,20 @@ public class StairsFactory : MonoBehaviour
         }else if (stairsType == StairsType.Moving)
         {   
             //todo 等待进一步完善此处和难度 随机性关联的逻辑
-            int type =   Random.Range(1, 10);
             MovingDirection movingDirection = MovingDirection.Horizontal;
-
-            if (type <=5)
-            {   
-                int direct =   Random.Range(1, 10);
+            int direct =   Random.Range(1, 10);
                 if (direct <= 5)
                 {
                     movingDirection = MovingDirection.Vertical;
                 }
+                
+              movingDirection = MovingDirection.Horizontal;
                 var tran = (UnityEngine.Object.Instantiate(MovingStairs.gameObject)).GetComponent<Transform>();
                 tran.position = pos;
                 tran.gameObject.GetComponent<MovingStairs>().SetGameController(GameController);
-                tran.gameObject.GetComponent<MovingStairs>().SetMovingParams(movingDirection,0.005f,3,1);
+                tran.gameObject.GetComponent<MovingStairs>().SetMovingParams(movingDirection,1f,3,3);
                 tran.transform.SetParent(StairsParent.transform);
-            }
-            else
-            {   
-                int direct =   Random.Range(1, 10);
-                if (direct <= 5)
-                {
-                    movingDirection = MovingDirection.Vertical;
-                }
-                var tran = (UnityEngine.Object.Instantiate(MovingStairsOther.gameObject)).GetComponent<Transform>();
-                tran.position = pos;
-                tran.gameObject.GetComponent<MovingStairs>().SetGameController(GameController);
-                tran.gameObject.GetComponent<MovingStairs>().SetMovingParams(movingDirection,0.005f,3,1);
-                tran.transform.SetParent(StairsParent.transform);
-            }
-           
-            
+                
         }
         
     }

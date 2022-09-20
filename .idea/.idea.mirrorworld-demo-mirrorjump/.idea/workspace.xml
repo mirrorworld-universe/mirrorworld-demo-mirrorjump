@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Slackey-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Slackey-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Test.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/DisappearStairs.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/DisappearStairs.prefab" afterDir="false" />
-    </list>
+    <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,7 +130,7 @@
       <workItem from="1663581432413" duration="2413000" />
       <workItem from="1663584260365" duration="776000" />
       <workItem from="1663596287708" duration="3857000" />
-      <workItem from="1663633470517" duration="13224000" />
+      <workItem from="1663633470517" duration="14006000" />
     </task>
     <servers />
   </component>

@@ -41,35 +41,41 @@ public class StairsFactory : MonoBehaviour
         
         if (!IsFirstStairs)
         {
-            if (MirrorObject.transform.position.y < DifficultyInterval)
-            {
-                stairsType = DifficultyLevelOne();
+            // if (MirrorObject.transform.position.y < DifficultyInterval)
+            // {
+            //     stairsType = DifficultyLevelOne();
+            //
+            // }else if (MirrorObject.transform.position.y < 2 * DifficultyInterval)
+            // {
+            //     stairsType = DifficultyLevelTwo();
+            //
+            // }else if (MirrorObject.transform.position.y < 3 * DifficultyInterval)
+            // {
+            //     stairsType = DifficultyLevelThree();
+            //
+            // }else if (MirrorObject.transform.position.y < 4 * DifficultyInterval)
+            // {
+            //     stairsType = DifficultyLevelFour();
+            //
+            // }else
+            // {
+            //     stairsType = DifficultyLevelFive();
+            // }
             
-            }else if (MirrorObject.transform.position.y < 2 * DifficultyInterval)
-            {
-                stairsType = DifficultyLevelTwo();
-            
-            }else if (MirrorObject.transform.position.y < 3 * DifficultyInterval)
-            {
-                stairsType = DifficultyLevelThree();
-            
-            }else if (MirrorObject.transform.position.y < 4 * DifficultyInterval)
-            {
-                stairsType = DifficultyLevelFour();
-            
-            }else
-            {
-                stairsType = DifficultyLevelFive();
-            }
+            stairsType = DifficultyLevelFive();
 
         }
         
         
-      // InstantiationStairs(stairsType,pos);
-      InstantiationStairs(StairsType.Moving,pos);
+       InstantiationStairs(stairsType,pos);
+      //InstantiationStairs(StairsType.Breakage,pos);
         
      
     }
+    
+    
+    // add props 
+    
 
     private void InstantiationStairs(StairsType stairsType, Vector3 pos)
     {
@@ -99,7 +105,7 @@ public class StairsFactory : MonoBehaviour
         {
             var tran = (UnityEngine.Object.Instantiate(BreakageStairs.gameObject)).GetComponent<Transform>();
             tran.position = pos;
-            tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
+            tran.gameObject.GetComponent<BreakageStairs>().SetGameController(GameController);
             tran.transform.SetParent(StairsParent.transform);
             
         }else if (stairsType == StairsType.Moving)
@@ -111,8 +117,6 @@ public class StairsFactory : MonoBehaviour
                 {
                     movingDirection = MovingDirection.Vertical;
                 }
-                
-              movingDirection = MovingDirection.Horizontal;
                 var tran = (UnityEngine.Object.Instantiate(MovingStairs.gameObject)).GetComponent<Transform>();
                 tran.position = pos;
                 tran.gameObject.GetComponent<MovingStairs>().SetGameController(GameController);
@@ -184,22 +188,27 @@ public class StairsFactory : MonoBehaviour
     private StairsType DifficultyLevelFive()
     {
         // 10% General  30%  Disposable 30% Disappear 30% Moving
-        int rate = Random.Range(1, 10);
+        int rate = Random.Range(1, 11);
 
         if (rate <= 1)
         {
             return StairsType.General;
             
-        }else if (rate <= 4)
+        }else if (rate <= 3)
         {
             return StairsType.Disposable;
             
-        }else if (rate <= 7)
+        }else if (rate <= 5)
         {
             return StairsType.Disappear;
+        }else if (rate <= 8)
+        {
+            return StairsType.Moving;
         }
 
-        return StairsType.Moving;
+        return StairsType.Breakage;
+
+
     }
 
 

@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="" />
+    <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/PropsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/PropsFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/DisappearStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/DisappearStairs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/DisposableStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/DisposableStairs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/StairProp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/StairProp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Mirrors/MirrorRole.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Mirrors/MirrorRole.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +62,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.06532663&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.04475043&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
@@ -131,6 +144,9 @@
       <workItem from="1663584260365" duration="776000" />
       <workItem from="1663596287708" duration="3857000" />
       <workItem from="1663633470517" duration="14006000" />
+      <workItem from="1663678400395" duration="5244000" />
+      <workItem from="1663716971910" duration="10803000" />
+      <workItem from="1663739636759" duration="6973000" />
     </task>
     <servers />
   </component>
@@ -157,12 +173,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs</url>
-          <line>282</line>
-          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\Stairs\MovingStairs.cs" initialLine="251" containingFunctionPresentation="method 'MovingByVelocity'" />
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/ListViewManager.cs</url>
           <line>127</line>
@@ -203,19 +213,6 @@
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs</url>
-          <line>112</line>
-          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\Game\Stairs\MovingStairs.cs" initialLine="110" containingFunctionPresentation="method 'SpeedState'">
-            <startOffsets>
-              <option value="2476" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2526" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/GameController.cs</url>
           <line>136</line>
           <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\Game\GameController.cs" initialLine="136" containingFunctionPresentation="method 'OnGameStart'">
@@ -227,32 +224,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs</url>
-          <line>222</line>
-          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\Game\Stairs\MovingStairs.cs" initialLine="207" containingFunctionPresentation="method 'FixedUpdate'">
-            <startOffsets>
-              <option value="5133" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5204" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs</url>
-          <line>56</line>
-          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\Game\Stairs\MovingStairs.cs" initialLine="56" containingFunctionPresentation="method 'SetMovingParams'">
-            <startOffsets>
-              <option value="848" />
-            </startOffsets>
-            <endOffsets>
-              <option value="882" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/Test.cs</url>
@@ -281,17 +252,17 @@
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs</url>
-          <line>105</line>
-          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\Game\Stairs\MovingStairs.cs" initialLine="105" containingFunctionPresentation="method 'BeginVelocityDirect'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Props/SpringProp.cs</url>
+          <line>22</line>
+          <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\Game\Props\SpringProp.cs" initialLine="22" containingFunctionPresentation="method 'OnCollisionEnter2D'">
             <startOffsets>
-              <option value="2321" />
+              <option value="453" />
             </startOffsets>
             <endOffsets>
-              <option value="2397" />
+              <option value="516" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="35" />
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

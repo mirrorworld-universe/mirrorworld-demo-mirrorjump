@@ -32,7 +32,16 @@ public class DisposableStairs : MonoBehaviour
         {   
             GetComponent<AudioSource>().Play();
             Vector2 Force = Rigid.velocity;
-            Force.y = VerticalVelocity;
+            if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
+            {
+                Force.y = VerticalVelocity + Other.collider.GetComponent<MirrorJump>().SpringForce;
+                Other.collider.GetComponent<MirrorJump>().UseSpring();
+            }
+            else
+            {
+                Force.y = VerticalVelocity;
+            }
+
             Rigid.velocity = Force;
             
             IsStartDisappear = true;

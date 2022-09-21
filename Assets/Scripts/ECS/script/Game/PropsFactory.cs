@@ -4,15 +4,41 @@ using UnityEngine;
 
 public class PropsFactory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject SpringProp;
+    
+    public GameObject SpringBoard;
+
+    public GameObject BlackRole;
+
+
+    public Transform GenerateSpringProp(Transform StairsParent,GameController gameController,Vector3 LocalPosition)
     {
-        
+        var tran = (UnityEngine.Object.Instantiate(SpringProp.gameObject)).GetComponent<Transform>();
+        tran.SetParent(StairsParent);
+        tran.GetComponent<SpringProp>().SetGameController(gameController);
+        tran.localPosition = LocalPosition;
+        return tran;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public Transform GenerateSpringBoard(Transform StairsParent,GameController gameController,Vector3 LocalPosition)
     {
-        
+        var tran = (UnityEngine.Object.Instantiate(SpringBoard.gameObject)).GetComponent<Transform>();
+        tran.SetParent(StairsParent);
+        tran.GetComponent<SpringBoard>().SetGameController(gameController);
+        tran.localPosition = LocalPosition;
+        return tran;
     }
+    
+    public Transform GenerateBlackRole(Transform StairsParent,GameController gameController,Vector3 LocalPosition)
+    {
+        var tran = (UnityEngine.Object.Instantiate(BlackRole.gameObject)).GetComponent<Transform>();
+        tran.SetParent(StairsParent);
+        tran.GetComponent<BlackHole>().SetGameController(gameController);
+        tran.localPosition = LocalPosition;
+        return tran;
+    }
+    
+   
+
 }

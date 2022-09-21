@@ -318,12 +318,21 @@ public class MovingStairs : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D Other)
     {
         Rigidbody2D Rigid = Other.collider.GetComponent<Rigidbody2D>();
-
+        
         if (Rigid != null)
         {   
             GetComponent<AudioSource>().Play();
             Vector2 Force = Rigid.velocity;
-            Force.y = VerticalVelocity;
+            if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
+            {
+                Force.y = VerticalVelocity + Other.collider.GetComponent<MirrorJump>().SpringForce;
+                Other.collider.GetComponent<MirrorJump>().UseSpring();
+            }
+            else
+            {
+                Force.y = VerticalVelocity;
+            }
+            
             Rigid.velocity = Force;
         }
     }

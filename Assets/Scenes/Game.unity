@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &15352688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7228460579210113127, guid: 9366142dee3ff804493ec3ad7cd581ca, type: 3}
+  m_PrefabInstance: {fileID: 5925371422525462708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &108831929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,6 +2044,7 @@ MonoBehaviour:
   MovingStairs: {fileID: 6682581414873126553, guid: 16d10847927d87f49ad3bba9568af9fd, type: 3}
   MovingStairsOther: {fileID: 6682581414873126553, guid: 0ac8814504bd5f04898a9e407b867f13, type: 3}
   GameController: {fileID: 247834403}
+  PropsFactory: {fileID: 1875881141}
 --- !u!1 &1390569755
 GameObject:
   m_ObjectHideFlags: 0
@@ -2898,6 +2904,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02d924d72e41d148bcac2e7b28655c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpringProp: {fileID: 924497500953629703, guid: 419453bd9f5796d48b385e1ada23f88a, type: 3}
+  SpringBoard: {fileID: 452777802298923927, guid: 0743af6ff2f53bf44857a290e2cdaef8, type: 3}
+  BlackRole: {fileID: 8492743086293436066, guid: 7dd586cd34a8ac14a8adf8f1bf96fe65, type: 3}
 --- !u!1 &1968032257
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,6 +3394,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &2093211165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7290296787458940049, guid: 9366142dee3ff804493ec3ad7cd581ca, type: 3}
+  m_PrefabInstance: {fileID: 5925371422525462708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2117460470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3575,6 +3589,10 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7228460579210113127, guid: 9366142dee3ff804493ec3ad7cd581ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9366142dee3ff804493ec3ad7cd581ca, type: 3}
 --- !u!1 &5925371422525462709 stripped
@@ -3599,4 +3617,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 95d2f16219530e649bd8d75e2a3bd772, type: 3}
   OffsetOfBoundary: 0.8
   GameController: {fileID: 247834402}
+  Spring: {fileID: 2093211165}
+  SpringJump: {fileID: 15352688}
+  SpringUseCount: 0
+  SpringForce: 10
   GameMenu: {fileID: 803901527}

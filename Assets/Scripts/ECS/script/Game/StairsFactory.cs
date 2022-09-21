@@ -31,6 +31,11 @@ public class StairsFactory : MonoBehaviour
     public GameController GameController;
 
     private float DifficultyInterval = 50f;
+
+    public PropsFactory PropsFactory;
+
+
+    private int Test = 0;
     
 
     public void GenerateStairs(Vector2 position,bool IsFirstStairs)
@@ -67,8 +72,8 @@ public class StairsFactory : MonoBehaviour
         }
         
         
-       InstantiationStairs(stairsType,pos);
-      //InstantiationStairs(StairsType.Breakage,pos);
+      // InstantiationStairs(stairsType,pos);
+      InstantiationStairs(StairsType.Moving,pos);
         
      
     }
@@ -86,6 +91,7 @@ public class StairsFactory : MonoBehaviour
             tran.position = pos;
             tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
             tran.transform.SetParent(StairsParent.transform);
+           
 
         }else if (stairsType == StairsType.Disposable)
         {
@@ -113,19 +119,30 @@ public class StairsFactory : MonoBehaviour
             //todo 等待进一步完善此处和难度 随机性关联的逻辑
             MovingDirection movingDirection = MovingDirection.Horizontal;
             int direct =   Random.Range(1, 10);
-                if (direct <= 5)
-                {
-                    movingDirection = MovingDirection.Vertical;
-                }
-                var tran = (UnityEngine.Object.Instantiate(MovingStairs.gameObject)).GetComponent<Transform>();
-                tran.position = pos;
-                tran.gameObject.GetComponent<MovingStairs>().SetGameController(GameController);
-                tran.gameObject.GetComponent<MovingStairs>().SetMovingParams(movingDirection,1f,3,3);
-                tran.transform.SetParent(StairsParent.transform);
-                
+            if (direct <= 5)
+            {
+                movingDirection = MovingDirection.Vertical;
+            }
+            var tran = (UnityEngine.Object.Instantiate(MovingStairs.gameObject)).GetComponent<Transform>();
+            tran.position = pos;
+            tran.gameObject.GetComponent<MovingStairs>().SetGameController(GameController);
+            tran.gameObject.GetComponent<MovingStairs>().SetMovingParams(movingDirection,1f,3,3);
+            tran.transform.SetParent(StairsParent.transform);
+            
+         
+                PropsFactory.GenerateBlackRole(tran, GameController, new Vector3(0, 1.2f, 0));
+           
+      
+
+
+         
+
         }
         
     }
+
+
+  
 
    
 

@@ -1,7 +1,12 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+
+public enum RocketLevel
+{
+    Low,
+    High
+}
 
 public class MirrorJump : MonoBehaviour
 {
@@ -28,8 +33,7 @@ public class MirrorJump : MonoBehaviour
     
     public float SpringForce =10f;
     
-
-
+    
     public void SetSpringState(bool hasSpring)
     {
         HasSpring = hasSpring;
@@ -144,7 +148,6 @@ public class MirrorJump : MonoBehaviour
         IsEnterBlackHole = IsEnter;
     }
     
-
     public void EnterHole(Vector2 HolePosition)
     {
         // calculate...
@@ -173,21 +176,19 @@ public class MirrorJump : MonoBehaviour
 
 
     }
-
+    
     private float GetSinValue(Vector2 HolePos)
     {   
         float a = Math.Abs(HolePos.y - transform.position.y);
         return a / GetC(HolePos);
         
     }
-
     private float GetCosValue(Vector2 HolePos)
     {
         float b = Math.Abs(HolePos.x - transform.position.x);
         return b / GetC(HolePos);
     }
-
-
+    
     private float GetC(Vector2 HolePos)
     {  
         
@@ -207,21 +208,15 @@ public class MirrorJump : MonoBehaviour
     {
         IsOverturn = true;
     }
-    
-    
-    
-    
-    
-    
 
+    public bool GetOverTurnState()
+    {
+        return IsOverturn;
+    }
     
     
     
-    
-
- 
-    
-    
+    // Role
     private float HorizontalVelocity =0f;
     
     private float SpeedValue = 15f;
@@ -240,10 +235,6 @@ public class MirrorJump : MonoBehaviour
 
     public GameMenu GameMenu;
     
-    
-    
-    
-
     public void FallStateNotify(bool state)
     {
         FallState = state;
@@ -254,6 +245,11 @@ public class MirrorJump : MonoBehaviour
     }
     
   
+    
+    
+    
+    // Rocket
+    
     
  
 
@@ -269,9 +265,9 @@ public class MirrorJump : MonoBehaviour
         
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
-          GyroscopeControl();
+         // GyroscopeControl();
             // wille be delete before export to Android
-         //  KeyboardControl();
+            KeyboardControl();
             if (FallState)
             {
                 if (transform.position.y < ReferencePosition)

@@ -320,20 +320,23 @@ public class MovingStairs : MonoBehaviour
         Rigidbody2D Rigid = Other.collider.GetComponent<Rigidbody2D>();
         
         if (Rigid != null)
-        {   
-            GetComponent<AudioSource>().Play();
-            Vector2 Force = Rigid.velocity;
-            if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
+        {
+            if (!Other.collider.GetComponent<MirrorJump>().GetOverTurnState())
             {
-                Force.y = VerticalVelocity + Other.collider.GetComponent<MirrorJump>().SpringForce;
-                Other.collider.GetComponent<MirrorJump>().UseSpring();
-            }
-            else
-            {
-                Force.y = VerticalVelocity;
-            }
+                GetComponent<AudioSource>().Play();
+                Vector2 Force = Rigid.velocity;
+                if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
+                {
+                    Force.y = VerticalVelocity + Other.collider.GetComponent<MirrorJump>().SpringForce;
+                    Other.collider.GetComponent<MirrorJump>().UseSpring();
+                }
+                else
+                {
+                    Force.y = VerticalVelocity;
+                }
             
-            Rigid.velocity = Force;
+                Rigid.velocity = Force;
+            }
         }
     }
     private void DestroyStairs()

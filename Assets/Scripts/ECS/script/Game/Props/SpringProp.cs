@@ -21,7 +21,7 @@ public class SpringProp : MonoBehaviour
     {
          
         Rigidbody2D Rigid = Other.collider.GetComponent<Rigidbody2D>();
-
+        GetComponent<AudioSource>().Play();
         if (Rigid != null)
         {
             Other.collider.GetComponent<MirrorJump>().SetSpringState(true);
@@ -31,7 +31,7 @@ public class SpringProp : MonoBehaviour
             Force.y = 20f;
             Rigid.velocity = Force;
             
-            
+            DestroyStairs();
         }
     }
      
@@ -46,7 +46,10 @@ public class SpringProp : MonoBehaviour
 
             if (RecoveryLine - transform.position.y >= HeightOffset)
             {
-                DestroyStairs();
+                if (!GetComponent<AudioSource>().isPlaying)
+                {
+                    DestroyStairs();
+                }
             }
         }
        

@@ -137,6 +137,12 @@ public class MirrorJump : MonoBehaviour
     private float VX;
 
     private float VY;
+
+
+    public void SetEnterBlackState(bool IsEnter)
+    {
+        IsEnterBlackHole = IsEnter;
+    }
     
 
     public void EnterHole(Vector2 HolePosition)
@@ -192,6 +198,18 @@ public class MirrorJump : MonoBehaviour
         return (float) Math.Sqrt(a * a + b * b);
 
     }
+    
+    
+    // Spring board
+    private bool IsOverturn = false;
+
+    public void StartOverturn()
+    {
+        IsOverturn = true;
+    }
+    
+    
+    
     
     
     
@@ -251,9 +269,9 @@ public class MirrorJump : MonoBehaviour
         
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
-         // GyroscopeControl();
+          GyroscopeControl();
             // wille be delete before export to Android
-           KeyboardControl();
+         //  KeyboardControl();
             if (FallState)
             {
                 if (transform.position.y < ReferencePosition)
@@ -278,13 +296,36 @@ public class MirrorJump : MonoBehaviour
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
 
+           
+
+
+            if (IsOverturn)
+            {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+                    transform.eulerAngles.z + 5f);
+
+                if (transform.eulerAngles.z >= 180)
+                {
+                    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+                        0);
+                    IsOverturn = false;
+                }
+            }
+            
+            Vector2 Velocity = rigidbody2D.velocity;
+            Velocity.x = HorizontalVelocity;
+            rigidbody2D.velocity = Velocity;
+            MirrorJumpState(Velocity.y);
+            
             if (IsEnterBlackHole)
             {
+               
                 Vector2 V = rigidbody2D.velocity;
                 V.x = VX;
                 V.y = VY;
                 rigidbody2D.velocity = V;
-
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+                    transform.eulerAngles.z - 15f);
                 if (transform.localScale.x >= 0.02)
                 {
                     transform.localScale = new Vector3(transform.localScale.x - 0.005f, transform.localScale.y - 0.005f,
@@ -296,16 +337,8 @@ public class MirrorJump : MonoBehaviour
                     VY = 0;
                     GameMenu.GameOver();
                 }
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-                    transform.eulerAngles.z - 15f);
-                
                 return;
             }
-            
-            Vector2 Velocity = rigidbody2D.velocity;
-            Velocity.x = HorizontalVelocity;
-            rigidbody2D.velocity = Velocity;
-            MirrorJumpState(Velocity.y);
         }
         
     }
@@ -334,18 +367,21 @@ public class MirrorJump : MonoBehaviour
     // gyroscope control   in Android platform use this method
     private void GyroscopeControl()
     {
-        this.HorizontalVelocity = SpeedValue * Input.acceleration.x;
+        if (!IsEnterBlackHole)
+        {
+            this.HorizontalVelocity = SpeedValue * Input.acceleration.x;
 
-        float LocalScaleX = transform.localScale.x;
+            float LocalScaleX = transform.localScale.x;
         
-        if (HorizontalVelocity > TowardThreshold)
-        {
-            transform.localScale = new Vector3(MirrorLocalScale.x,MirrorLocalScale.y,MirrorLocalScale.z);
+            if (HorizontalVelocity > TowardThreshold)
+            {
+                transform.localScale = new Vector3(MirrorLocalScale.x,MirrorLocalScale.y,MirrorLocalScale.z);
             
-        }else if (HorizontalVelocity < -TowardThreshold)
-        {
-            transform.localScale = new Vector3(-MirrorLocalScale.x, MirrorLocalScale.y, MirrorLocalScale.z);
+            }else if (HorizontalVelocity < -TowardThreshold)
+            {
+                transform.localScale = new Vector3(-MirrorLocalScale.x, MirrorLocalScale.y, MirrorLocalScale.z);
             
+            }
         }
     }
 

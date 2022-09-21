@@ -12,7 +12,8 @@ public class PropsFactory : MonoBehaviour
 
 
     public Transform GenerateSpringProp(Transform StairsParent,GameController gameController,Vector3 LocalPosition)
-    {
+    {  
+        StairsParent.GetComponent<EdgeCollider2D>().enabled = false;
         var tran = (UnityEngine.Object.Instantiate(SpringProp.gameObject)).GetComponent<Transform>();
         tran.SetParent(StairsParent);
         tran.GetComponent<SpringProp>().SetGameController(gameController);
@@ -22,7 +23,9 @@ public class PropsFactory : MonoBehaviour
 
 
     public Transform GenerateSpringBoard(Transform StairsParent,GameController gameController,Vector3 LocalPosition)
-    {
+    {  
+        
+        StairsParent.GetComponent<EdgeCollider2D>().enabled = false;
         var tran = (UnityEngine.Object.Instantiate(SpringBoard.gameObject)).GetComponent<Transform>();
         tran.SetParent(StairsParent);
         tran.GetComponent<SpringBoard>().SetGameController(gameController);
@@ -32,6 +35,10 @@ public class PropsFactory : MonoBehaviour
     
     public Transform GenerateBlackRole(Transform StairsParent,GameController gameController,Vector3 LocalPosition)
     {
+
+
+        StairsParent.GetComponent<EdgeCollider2D>().enabled = false;
+        
         var tran = (UnityEngine.Object.Instantiate(BlackRole.gameObject)).GetComponent<Transform>();
         tran.SetParent(StairsParent);
         tran.GetComponent<BlackHole>().SetGameController(gameController);

@@ -28,6 +28,7 @@ public class BlackHole : MonoBehaviour
             StartAttract = true;
             
             Other.collider.GetComponent<MirrorJump>().EnterHole(new Vector2(transform.position.x,transform.position.y));
+            
 
         }
     }

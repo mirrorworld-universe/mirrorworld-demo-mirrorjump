@@ -48,6 +48,8 @@ public class SpringBoard : MonoBehaviour
             IsSpringPop = true;
             GetComponent<AudioSource>().Play();
             Vector2 Force = Rigid.velocity;
+            
+            Other.collider.GetComponent<MirrorJump>().StartOverturn();
 
             if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
             {
@@ -58,6 +60,8 @@ public class SpringBoard : MonoBehaviour
             {
                 Force.y = SpringBoardForce;
             }
+            
+            
             Rigid.velocity = Force;
             
         }
@@ -74,6 +78,7 @@ public class SpringBoard : MonoBehaviour
             if (IsSpringPop)
             {
                 SpringPop();
+                
             }
             
             
@@ -81,7 +86,13 @@ public class SpringBoard : MonoBehaviour
 
             if (RecoveryLine - transform.position.y >= HeightOffset)
             {
-                DestroyStairs();
+
+                if (!GetComponent<AudioSource>().isPlaying)
+                {
+                    DestroyStairs();
+                }
+                  
+             
             }
         }
        

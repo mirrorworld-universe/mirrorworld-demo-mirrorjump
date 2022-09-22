@@ -10,6 +10,11 @@ public class PropsFactory : MonoBehaviour
 
     public GameObject BlackRole;
 
+    public GameObject HighLevelRocket;
+
+    public GameObject LowLevelRocket;
+    
+
 
     public Transform GenerateSpringProp(Transform StairsParent,GameController gameController,Vector3 LocalPosition)
     {  
@@ -35,13 +40,27 @@ public class PropsFactory : MonoBehaviour
     
     public Transform GenerateBlackRole(Transform StairsParent,GameController gameController,Vector3 LocalPosition)
     {
-
-
-      
-        
         var tran = (UnityEngine.Object.Instantiate(BlackRole.gameObject)).GetComponent<Transform>();
         tran.SetParent(StairsParent);
         tran.GetComponent<BlackHole>().SetGameController(gameController);
+        tran.localPosition = LocalPosition;
+        return tran;
+    }
+    
+    public Transform GenerateHeightRocket(Transform StairsParent,GameController gameController,Vector3 LocalPosition)
+    {
+        var tran = (UnityEngine.Object.Instantiate(HighLevelRocket.gameObject)).GetComponent<Transform>();
+        tran.SetParent(StairsParent);
+        tran.GetComponent<HighRocket>().SetGameController(gameController);
+        tran.localPosition = LocalPosition;
+        return tran;
+    }
+    
+    public Transform GenerateLowRocket(Transform StairsParent,GameController gameController,Vector3 LocalPosition)
+    {
+        var tran = (UnityEngine.Object.Instantiate(LowLevelRocket.gameObject)).GetComponent<Transform>();
+        tran.SetParent(StairsParent);
+        tran.GetComponent<LowRocket>().SetGameController(gameController);
         tran.localPosition = LocalPosition;
         return tran;
     }

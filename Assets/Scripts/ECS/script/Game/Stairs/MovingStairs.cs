@@ -319,24 +319,34 @@ public class MovingStairs : MonoBehaviour
     {
         Rigidbody2D Rigid = Other.collider.GetComponent<Rigidbody2D>();
         
-        if (Rigid != null)
+        
+        // 避免触发相应道具后和台阶发生二次碰撞
+        if (Other.collider.GetComponent<MirrorJump>().GetOverTurnState() || 
+            Other.collider.GetComponent<MirrorJump>().GetRocketState()||   
+            Other.collider.GetComponent<MirrorJump>().GetEnterBlackState())
         {
-            if (!Other.collider.GetComponent<MirrorJump>().GetOverTurnState())
+            return;
+        }
+
+     
+        
+        
+        if (Rigid != null)
+        {   
+            GetComponent<AudioSource>().Play();
+            Vector2 Force = Rigid.velocity;
+            if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
             {
-                GetComponent<AudioSource>().Play();
-                Vector2 Force = Rigid.velocity;
-                if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
-                {
-                    Force.y = VerticalVelocity + Other.collider.GetComponent<MirrorJump>().SpringForce;
-                    Other.collider.GetComponent<MirrorJump>().UseSpring();
-                }
-                else
-                {
-                    Force.y = VerticalVelocity;
-                }
-            
-                Rigid.velocity = Force;
+                Force.y = VerticalVelocity + Other.collider.GetComponent<MirrorJump>().SpringForce;
+                Other.collider.GetComponent<MirrorJump>().UseSpring();
             }
+            else
+            {
+                Force.y = VerticalVelocity;
+            }
+            
+            Rigid.velocity = Force;
+            
         }
     }
     private void DestroyStairs()

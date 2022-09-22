@@ -23,6 +23,14 @@ public class StairProp : MonoBehaviour
      {
          
          Rigidbody2D Rigid = Other.collider.GetComponent<Rigidbody2D>();
+         
+         // 避免触发相应道具后和台阶发生二次碰撞
+         if (Other.collider.GetComponent<MirrorJump>().GetOverTurnState() || 
+             Other.collider.GetComponent<MirrorJump>().GetRocketState()||   
+             Other.collider.GetComponent<MirrorJump>().GetEnterBlackState())
+         {
+             return;
+         }
 
          if (Rigid != null)
          {   

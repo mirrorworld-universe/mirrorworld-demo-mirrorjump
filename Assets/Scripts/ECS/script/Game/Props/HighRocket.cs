@@ -10,6 +10,16 @@ public class HighRocket : MonoBehaviour
     private float RecoveryLine = 0;
     
     private GameController GameController;
+    
+    public float RocketThrust = 60;
+
+
+    public Sprite[] Sprites = new Sprite[2];
+
+    private bool IsPlayAnimation = true;
+
+    private int CurrentIndex = 0;
+    
 
     public void SetGameController(GameController gameController)
     {
@@ -20,11 +30,14 @@ public class HighRocket : MonoBehaviour
     {
          
         Rigidbody2D Rigid = Other.collider.GetComponent<Rigidbody2D>();
-        GetComponent<AudioSource>().Play();
+       // GetComponent<AudioSource>().Play();
         if (Rigid != null)
-        {
-            
-            
+        {   
+            Other.collider.GetComponent<MirrorJump>().EnableRocket(RocketLevel.Low);
+            Vector2 Force = Rigid.velocity;
+            Force.y = RocketThrust;
+            Rigid.velocity = Force;
+            IsPlayAnimation = false;
             DestroyStairs();
         }
     }
@@ -36,6 +49,18 @@ public class HighRocket : MonoBehaviour
 
         if (GameController.GetGameState() == GameState.Gaming)
         {
+
+            if (IsPlayAnimation)
+            {
+                if (CurrentIndex >= 2)
+                {
+                    CurrentIndex = 0;
+                }
+
+                transform.GetComponent<SpriteRenderer>().sprite = Sprites[CurrentIndex];
+                CurrentIndex++;
+            }
+            
             RecoveryLine =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
 
             if (RecoveryLine - transform.position.y >= HeightOffset)

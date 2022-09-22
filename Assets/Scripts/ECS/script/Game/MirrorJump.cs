@@ -147,6 +147,11 @@ public class MirrorJump : MonoBehaviour
     {
         IsEnterBlackHole = IsEnter;
     }
+
+    public bool GetEnterBlackState()
+    {
+        return IsEnterBlackHole;
+    }
     
     public void EnterHole(Vector2 HolePosition)
     {
@@ -244,15 +249,41 @@ public class MirrorJump : MonoBehaviour
         }
     }
     
-  
-    
     
     
     // Rocket
-    
-    
- 
 
+    private bool HasRocket = false;
+    public bool GetRocketState()
+    {
+        return HasRocket;
+    }
+
+
+
+    public RocketController RocketController;
+
+    public void EnableRocket(RocketLevel rocketLevel)
+    {
+        HasRocket = true;
+        float LocalScaleX = transform.localScale.x;
+
+        if (LocalScaleX < 0)
+        {   
+            transform.localScale = new Vector3(MirrorLocalScale.x,MirrorLocalScale.y,MirrorLocalScale.z);
+        }
+        RocketController.StartRocket(rocketLevel);
+        
+        transform.GetComponent<AudioSource>().Play();
+        
+    }
+
+    public  void DisabledRocket()
+    {
+        HasRocket = false;
+        RocketController.CloseRocket();
+    }
+    
     private void Start()
     {
         rigidbody2D = transform.gameObject.GetComponent<Rigidbody2D>();
@@ -265,9 +296,6 @@ public class MirrorJump : MonoBehaviour
         
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
-         // GyroscopeControl();
-            // wille be delete before export to Android
-            KeyboardControl();
             if (FallState)
             {
                 if (transform.position.y < ReferencePosition)
@@ -291,10 +319,6 @@ public class MirrorJump : MonoBehaviour
 
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
-
-           
-
-
             if (IsOverturn)
             {
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
@@ -307,7 +331,6 @@ public class MirrorJump : MonoBehaviour
                     IsOverturn = false;
                 }
             }
-            
             Vector2 Velocity = rigidbody2D.velocity;
             Velocity.x = HorizontalVelocity;
             rigidbody2D.velocity = Velocity;
@@ -335,6 +358,12 @@ public class MirrorJump : MonoBehaviour
                 }
                 return;
             }
+            // GyroscopeControl();
+            // wille be delete before export to Android
+            KeyboardControl();
+            
+            
+            
         }
         
     }
@@ -363,7 +392,7 @@ public class MirrorJump : MonoBehaviour
     // gyroscope control   in Android platform use this method
     private void GyroscopeControl()
     {
-        if (!IsEnterBlackHole)
+        if (!IsEnterBlackHole && !HasRocket)
         {
             this.HorizontalVelocity = SpeedValue * Input.acceleration.x;
 
@@ -393,7 +422,12 @@ public class MirrorJump : MonoBehaviour
             SetSpringJumpState();
         }
         else
-        {  
+        {
+            if (HasRocket)
+            {
+               DisabledRocket();
+            }
+            
             transform.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             if (verticalVelocity < -6)
             {   

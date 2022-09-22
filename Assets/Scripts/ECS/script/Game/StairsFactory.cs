@@ -94,7 +94,7 @@ public class StairsFactory : MonoBehaviour
         }
         
         //InstantiationStairs(stairsType,pos);
-      InstantiationStairs(StairsType.Moving,pos);
+      InstantiationStairs(StairsType.General,pos);
         
      
     }
@@ -305,7 +305,7 @@ public class StairsFactory : MonoBehaviour
     private void RandomProps(Transform StairsParent,GameController gameController)
     {   
         
-        PropsFactory.GenerateSpringBoard(StairsParent, GameController, new Vector3(0, 0.5f, 0));
+        PropsFactory.GenerateHeightRocket(StairsParent, GameController, new Vector3(0, 1.42f, 0));
         
         // int  rate = Random.Range(1, 11);
         //

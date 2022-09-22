@@ -274,6 +274,7 @@ public class MirrorJump : MonoBehaviour
         }
         RocketController.StartRocket(rocketLevel);
         
+        
         transform.GetComponent<AudioSource>().Play();
         
     }
@@ -293,7 +294,7 @@ public class MirrorJump : MonoBehaviour
 
     private void Update () 
     {
-        
+        KeyboardControl();
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
             if (FallState)
@@ -331,9 +332,19 @@ public class MirrorJump : MonoBehaviour
                     IsOverturn = false;
                 }
             }
+            
+            
             Vector2 Velocity = rigidbody2D.velocity;
-            Velocity.x = HorizontalVelocity;
-            rigidbody2D.velocity = Velocity;
+            if (HasRocket)
+            {
+                Velocity.x = 0;
+                rigidbody2D.velocity = Velocity;
+            }
+            else
+            {
+                Velocity.x = HorizontalVelocity;
+                rigidbody2D.velocity = Velocity;
+            }
             MirrorJumpState(Velocity.y);
             
             if (IsEnterBlackHole)
@@ -358,9 +369,8 @@ public class MirrorJump : MonoBehaviour
                 }
                 return;
             }
-            // GyroscopeControl();
-            // wille be delete before export to Android
-            KeyboardControl();
+             //GyroscopeControl();
+          
             
             
             
@@ -368,7 +378,7 @@ public class MirrorJump : MonoBehaviour
         
     }
     
-    // keyboard control     in debug mode use this method
+   
     private void KeyboardControl()
     {
         

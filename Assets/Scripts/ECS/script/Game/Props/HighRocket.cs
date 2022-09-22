@@ -33,7 +33,7 @@ public class HighRocket : MonoBehaviour
        // GetComponent<AudioSource>().Play();
         if (Rigid != null)
         {   
-            Other.collider.GetComponent<MirrorJump>().EnableRocket(RocketLevel.Low);
+            Other.collider.GetComponent<MirrorJump>().EnableRocket(RocketLevel.High);
             Vector2 Force = Rigid.velocity;
             Force.y = RocketThrust;
             Rigid.velocity = Force;

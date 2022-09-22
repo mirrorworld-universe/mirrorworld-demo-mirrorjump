@@ -94,7 +94,7 @@ public class StairsFactory : MonoBehaviour
         }
         
         //InstantiationStairs(stairsType,pos);
-      InstantiationStairs(StairsType.General,pos);
+      InstantiationStairs(StairsType.Moving,pos);
         
      
     }
@@ -305,29 +305,28 @@ public class StairsFactory : MonoBehaviour
     private void RandomProps(Transform StairsParent,GameController gameController)
     {   
         
-        PropsFactory.GenerateHeightRocket(StairsParent, GameController, new Vector3(0, 1.42f, 0));
-        
-        // int  rate = Random.Range(1, 11);
-        //
-        // if (rate <=  2)
-        // {  
-        //     PropsFactory.GenerateSpringBoard(StairsParent, GameController, new Vector3(0, 0.5f, 0));
-        //     
-        // }else if (rate <= 8)
-        // {
-        //     PropsFactory.GenerateSpringProp(StairsParent, GameController, new Vector3(0, 0.5f, 0));
-        // }
-        // else if(rate <= 10)
-        // {
-        //
-        //   
-        //         PropsFactory.GenerateBlackRole(StairsParent, GameController, new Vector3(0, 1.2f, 0));    
-        //     
-        //     
-        //  
-        //    
-        //         
-        // }
+         int  rate = Random.Range(1, 11);
+         
+        if (rate <=  2)
+        {  
+            PropsFactory.GenerateSpringBoard(StairsParent, GameController, new Vector3(0, 0.5f, 0));
+            
+        }else if (rate <= 4)
+        {
+            PropsFactory.GenerateSpringProp(StairsParent, GameController, new Vector3(0, 0.5f, 0));
+        }
+        else if(rate <= 6)
+        {
+            PropsFactory.GenerateBlackRole(StairsParent, GameController, new Vector3(0, 1.2f, 0));
+            
+        }else if (rate <= 8)
+        {
+            PropsFactory.GenerateLowRocket(StairsParent, GameController, new Vector3(0, 0.8f, 0));
+            
+        }else if (rate <= 10)
+        {
+            PropsFactory.GenerateHeightRocket(StairsParent, GameController, new Vector3(0, 1.42f, 0));
+        }
         
         
       

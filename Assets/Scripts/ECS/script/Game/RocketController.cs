@@ -31,7 +31,7 @@ public class RocketController : MonoBehaviour
         {
             HightRocketImage.SetActive(true);
             
-        }else if (rocketLevel == RocketLevel.Low)
+        }else 
         {
             LowRocketImage.SetActive(true);
         }

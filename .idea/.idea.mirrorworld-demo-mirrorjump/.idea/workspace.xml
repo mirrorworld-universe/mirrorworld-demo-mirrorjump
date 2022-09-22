@@ -6,15 +6,12 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Props/HighRocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Props/HighRocket.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Props/LowRocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Props/LowRocket.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/PropsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/PropsFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/BreakageStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/BreakageStairs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/DisappearStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/DisappearStairs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/DisposableStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/DisposableStairs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/StairProp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/StairProp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/RocketController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/RocketController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Mirrors/MirrorRole.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Mirrors/MirrorRole.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/DisposableStairs.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/DisposableStairs.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/HighLevelRocket.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/HighLevelRocket.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/LowLevelRocket.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/LowLevelRocket.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/Spring.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/Spring.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/SpringBroad.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/SpringBroad.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -150,7 +147,8 @@
       <workItem from="1663716971910" duration="10803000" />
       <workItem from="1663739636759" duration="19901000" />
       <workItem from="1663767035151" duration="1929000" />
-      <workItem from="1663802294113" duration="7490000" />
+      <workItem from="1663802294113" duration="12399000" />
+      <workItem from="1663819304446" duration="668000" />
     </task>
     <servers />
   </component>

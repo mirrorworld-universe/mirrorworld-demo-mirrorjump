@@ -1,4 +1,5 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PackageManager : MonoBehaviour
@@ -13,9 +14,10 @@ public class PackageManager : MonoBehaviour
 
    public ListViewDataProvider ListViewDataProvider;
 
-  
-   
-   public void OnTurningLeft()
+   public TextMeshProUGUI PageNumber;
+
+
+    public void OnTurningLeft()
    { 
        ListView.ToLeftPage();
       PageTurningStateUpdate(false);
@@ -186,35 +188,42 @@ public class PackageManager : MonoBehaviour
    {
        PageTurningState State = ListView.GetPageTurningState(IsFirst);
 
-       if (State == PageTurningState.Both)
-       {
-           LeftPageTurningCanvas.alpha = 1;
-           RightPageTurningCanvas.alpha = 1;
-           
-       
-           
-       }else if (State == PageTurningState.None)
-       {
-           LeftPageTurningCanvas.alpha = 0;
-           RightPageTurningCanvas.alpha = 0;
-           
-         
-           
-       }else if (State == PageTurningState.OnlyLeft)
-       {
-           LeftPageTurningCanvas.alpha = 1;
-           RightPageTurningCanvas.alpha = 0.5f;
-           
-        
-           
-       }else if (State == PageTurningState.OnlyRight)
-       {
-           LeftPageTurningCanvas.alpha = 0.5f;
-           RightPageTurningCanvas.alpha = 1;
-           
-       }
-      
-       
-   }
-   
+        if (State == PageTurningState.Both)
+        {
+            LeftPageTurningCanvas.alpha = 1;
+            RightPageTurningCanvas.alpha = 1;
+
+            PageNumber.text = ListView.GetCurrentPage().ToString();
+
+
+        }
+        else if (State == PageTurningState.None)
+        {
+            LeftPageTurningCanvas.alpha = 0;
+            RightPageTurningCanvas.alpha = 0;
+
+            PageNumber.text = "";
+
+
+
+        }
+        else if (State == PageTurningState.OnlyLeft)
+        {
+            LeftPageTurningCanvas.alpha = 1;
+            RightPageTurningCanvas.alpha = 0.5f;
+
+            PageNumber.text = ListView.GetCurrentPage().ToString();
+
+        }
+        else if (State == PageTurningState.OnlyRight)
+        {
+            LeftPageTurningCanvas.alpha = 0.5f;
+            RightPageTurningCanvas.alpha = 1;
+
+            PageNumber.text = ListView.GetCurrentPage().ToString();
+        }
+
+
+    }
+
 }

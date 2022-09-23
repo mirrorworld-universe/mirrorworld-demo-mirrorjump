@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -207,6 +207,12 @@ public class ListViewManager
                 return GetLastPageNumber();
             }
 
+            return 6;
+        }
+
+        // 一页显示多少个item
+        public int GetPageCount()
+        {
             return 6;
         }
         

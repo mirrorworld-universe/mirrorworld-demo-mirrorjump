@@ -24,6 +24,7 @@ public class PageChanger : MonoBehaviour
 
     private int totalCount;
     private int curIndex;
+
     void Start()
     {
         leftButton.onClick.AddListener(OnTurnLeft);

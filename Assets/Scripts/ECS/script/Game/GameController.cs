@@ -1,4 +1,4 @@
-
+﻿
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -62,6 +62,11 @@ public class GameController : MonoBehaviour
             GetHeightScore();
         }
         
+    }
+
+    public float GetMaxHeight()
+    {
+        return MaxHeight;
     }
 
 

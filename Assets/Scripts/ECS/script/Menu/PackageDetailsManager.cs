@@ -146,8 +146,8 @@ public class PackageDetailsManager : MonoBehaviour
             {
                 PlayerPrefs.SetString("CurrentRarity",item.value);
             }
-            
         }
+        EventDispatcher.Instance.roleChanged?.Invoke();
     }
 
 

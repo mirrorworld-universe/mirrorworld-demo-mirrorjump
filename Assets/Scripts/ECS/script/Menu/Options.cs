@@ -1,4 +1,4 @@
-
+﻿
 using UnityEngine;
 
 public class Options : MonoBehaviour
@@ -13,8 +13,8 @@ public class Options : MonoBehaviour
     public GameObject OptionMenuDetails;
 
     public GameObject Bg;
-    
-    
+
+    public GameObject returnButton;
     
 
 
@@ -23,7 +23,7 @@ public class Options : MonoBehaviour
         Bg.SetActive(true);
         OptionMenu.SetActive(true);
         OptionMenuDetails.SetActive(false);
-        
+        returnButton.SetActive(false);
     }
 
     public void ExitOptions()
@@ -31,11 +31,13 @@ public class Options : MonoBehaviour
         Bg.SetActive(false);
         OptionMenu.SetActive(false);
         OptionMenuDetails.SetActive(false);
+        returnButton.SetActive(false);
     }
 
 
     public void BackOptionMenu()
-    {  
+    {
+        returnButton.SetActive(false);
         OptionMenuDetails.SetActive(false);
         OptionMenu.SetActive(true);
     }
@@ -46,6 +48,7 @@ public class Options : MonoBehaviour
     {
         OptionMenu.SetActive(false);
         OptionMenuDetails.SetActive(true);
+        returnButton.SetActive(true);
     }
 
     public void OpenFeedback()

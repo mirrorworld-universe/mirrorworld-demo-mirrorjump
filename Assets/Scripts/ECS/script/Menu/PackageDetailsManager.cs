@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -59,8 +59,8 @@ public class PackageDetailsManager : MonoBehaviour
         
         SetToBattleTop.SetActive(false);
 
-        DetailsRoot.transform.localPosition =
-            new Vector3(DetailsRoot.transform.position.x, 30, DetailsRoot.transform.position.z);
+        //DetailsRoot.transform.localPosition =
+        //    new Vector3(DetailsRoot.transform.position.x, 30, DetailsRoot.transform.position.z);
     }
 
     private void LayoutDefault()
@@ -72,8 +72,8 @@ public class PackageDetailsManager : MonoBehaviour
         MintToNFT.SetActive(false);
         SetToBattleTop.SetActive(true);
 
-        DetailsRoot.transform.localPosition =
-            new Vector3(DetailsRoot.transform.position.x, 0, DetailsRoot.transform.position.z);
+        //DetailsRoot.transform.localPosition =
+        //    new Vector3(DetailsRoot.transform.position.x, 0, DetailsRoot.transform.position.z);
 
     }
     

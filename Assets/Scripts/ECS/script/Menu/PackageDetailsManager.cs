@@ -16,6 +16,8 @@ public class PackageDetailsManager : MonoBehaviour
 
     public GameObject SetToBattleTop;
 
+    public GameObject MintButtonLayout;
+
     public GameObject SetToBattleBottom;
 
     public GameObject MintToNFT;
@@ -31,6 +33,7 @@ public class PackageDetailsManager : MonoBehaviour
     public PackageManager PackageManager;
     
     public CallSDK CallSDK;
+
   
     public void OpenPackageDetails(NFTCellData nftCellData,bool IsCanMint)
     {  
@@ -54,6 +57,7 @@ public class PackageDetailsManager : MonoBehaviour
         Rarity.gameObject.SetActive(true);
         RarityTitle.gameObject.SetActive(true);
         Line.SetActive(true);
+        MintButtonLayout.SetActive(true);
         SetToBattleBottom.SetActive(true);
         MintToNFT.SetActive(true);
         
@@ -68,6 +72,7 @@ public class PackageDetailsManager : MonoBehaviour
         Rarity.gameObject.SetActive(false);
         RarityTitle.gameObject.SetActive(false);
         Line.SetActive(false);
+        MintButtonLayout.SetActive(false);
         SetToBattleBottom.SetActive(false);
         MintToNFT.SetActive(false);
         SetToBattleTop.SetActive(true);

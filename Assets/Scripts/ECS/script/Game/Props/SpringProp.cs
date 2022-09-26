@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpringProp : MonoBehaviour
+public class SpringProp : ItemBase
 {
   
 
@@ -24,6 +24,7 @@ public class SpringProp : MonoBehaviour
         GetComponent<AudioSource>().Play();
         if (Rigid != null)
         {
+            PickupItem();
             Other.collider.GetComponent<MirrorJump>().SetSpringState(true);
             Other.collider.GetComponent<MirrorJump>().ResetSpringUseCount();
             
@@ -37,9 +38,9 @@ public class SpringProp : MonoBehaviour
      
      
     // stairs collection 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
-
+        base.FixedUpdate();
         if (GameController.GetGameState() == GameState.Gaming)
         {
             RecoveryLine =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;

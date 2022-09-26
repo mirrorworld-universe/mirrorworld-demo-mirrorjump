@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HighRocket : MonoBehaviour
+public class HighRocket : ItemBase
 {
   
     private float HeightOffset = 0.19f;
@@ -32,7 +32,8 @@ public class HighRocket : MonoBehaviour
         Rigidbody2D Rigid = Other.collider.GetComponent<Rigidbody2D>();
        // GetComponent<AudioSource>().Play();
         if (Rigid != null)
-        {   
+        {
+            PickupItem();
             Other.collider.GetComponent<MirrorJump>().EnableRocket(RocketLevel.High);
             Vector2 Force = Rigid.velocity;
             Force.y = RocketThrust;
@@ -44,8 +45,9 @@ public class HighRocket : MonoBehaviour
      
      
     // stairs collection 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
 
         if (GameController.GetGameState() == GameState.Gaming)
         {

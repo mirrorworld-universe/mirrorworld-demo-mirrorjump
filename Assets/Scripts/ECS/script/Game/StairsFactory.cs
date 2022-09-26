@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public enum StairsType
@@ -313,7 +313,7 @@ public class StairsFactory : MonoBehaviour
             
         }else if (rate <= 4)
         {
-            PropsFactory.GenerateSpringProp(StairsParent, GameController, new Vector3(0, 0.5f, 0));
+            PropsFactory.GenerateSpringProp(StairsParent, GameController, new Vector3(0, 1f, 0));
         }
         else if(rate <= 6)
         {
@@ -325,7 +325,7 @@ public class StairsFactory : MonoBehaviour
             
         }else if (rate <= 10)
         {
-            PropsFactory.GenerateHeightRocket(StairsParent, GameController, new Vector3(0, 1.42f, 0));
+            PropsFactory.GenerateHeightRocket(StairsParent, GameController, new Vector3(0, 0.65f, 0));
         }
         
         

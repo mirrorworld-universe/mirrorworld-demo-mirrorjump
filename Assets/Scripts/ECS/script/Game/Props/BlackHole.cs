@@ -36,37 +36,35 @@ public class BlackHole : MonoBehaviour
      
     // stairs collection 
     private void FixedUpdate()
-    {   
+    {
+        if (GameController.GetGameState() == GameState.Gaming)
+        {
+            
+            if (StartAttract)
+            {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+                    transform.eulerAngles.z -21f);
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+                    transform.eulerAngles.z + 9.6f);
+            }
+           
+            
+            RecoveryLine =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
         
-        if (StartAttract)
-        {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-                transform.eulerAngles.z -21f);
+            if (RecoveryLine - transform.position.y >= HeightOffset)
+            {
+                DestroyStairs();
+            }
+            
+            
         }
-        else
-        {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-                transform.eulerAngles.z + 9.6f);
-        }
-
-
-
-        // if (GameController.GetGameState() == GameState.Gaming)
-        // {
-        //
-        //    
-        //     
-        //     
-        //     
-        //     RecoveryLine =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
-        //
-        //     if (RecoveryLine - transform.position.y >= HeightOffset)
-        //     {
-        //         DestroyStairs();
-        //     }
-        // }
-        //
+        
          
+        
+        
     }
 
     private void DestroyStairs()

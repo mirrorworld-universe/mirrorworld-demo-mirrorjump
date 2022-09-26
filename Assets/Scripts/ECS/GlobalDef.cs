@@ -10,7 +10,8 @@ public enum SoundName
     Pop,
     SpringProp,
     Jump,
-    Rocket
+    Rocket,
+    SpringBoard
 }
 
 public class GlobalDef 

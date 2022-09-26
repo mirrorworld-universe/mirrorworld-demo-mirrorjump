@@ -73,13 +73,13 @@ public class Options : MonoBehaviour
     {
         if (isSelect)
         {
-            btn.GetComponent<SpriteRenderer>().color = Color.clear;
+            btn.GetComponent<Image>().color = Color.black;
             btn.GetComponentInChildren<TextMeshProUGUI>().color = new Color(249 / 255f, 253 / 255f, 35 / 255f);
         }
         else
         {
-            btn.GetComponent<SpriteRenderer>().color = Color.black;
-            btn.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+            btn.GetComponent<Image>().color = Color.clear;
+            btn.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
         }
     }
 

@@ -33,7 +33,7 @@ public class ItemBase : MonoBehaviour
 
         curScale = transform.localScale.x;
         maxScale = curScale * 1.3f;
-        minScale = curScale * 0.8f;
+        minScale = curScale * 1.2f;
     }
 
     /// <summary>
@@ -43,7 +43,8 @@ public class ItemBase : MonoBehaviour
     {
         itemEffect.SetActive(false);
 
-        ObjectPooler.Instance.SpawnFromPool("Pickup", transform.position, Quaternion.identity);
+        var obj = ObjectPooler.Instance.SpawnFromPool("Pickup", transform.position, Quaternion.identity, 1f);
+        obj.GetComponent<Animator>().SetTrigger("Play");
     }
 
     protected virtual void FixedUpdate()

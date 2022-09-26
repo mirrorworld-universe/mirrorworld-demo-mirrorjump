@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -24,13 +24,15 @@ public class MessageAdvice : MonoBehaviour
 
    public void OpenConfirm()
    {
-      Confirm.SetActive(true);
+        SoundManager.Instance.PlaySound(SoundName.Pop);
+        Confirm.SetActive(true);
    }
 
 
    public void CloseConfirm()
    {
-      Confirm.SetActive(false);
+        SoundManager.Instance.PlaySound(SoundName.Button);
+        Confirm.SetActive(false);
    }
    public void ConfirmMint()
    {  
@@ -63,7 +65,8 @@ public class MessageAdvice : MonoBehaviour
 
    public void Exit()
    {
-      DialogRoot.SetActive(false);
+        SoundManager.Instance.PlaySound(SoundName.Button);
+        DialogRoot.SetActive(false);
    }
 
 

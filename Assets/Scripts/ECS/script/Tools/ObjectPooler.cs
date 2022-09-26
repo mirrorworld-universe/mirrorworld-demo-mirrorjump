@@ -35,7 +35,7 @@ public class ObjectPooler : MonoSingleton<ObjectPooler>
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position,Quaternion rotation)
+    public GameObject SpawnFromPool(string tag, Vector3 position,Quaternion rotation, float hideTime)
     {
         if(!poolDictionary.ContainsKey(tag))
         {
@@ -51,6 +51,14 @@ public class ObjectPooler : MonoSingleton<ObjectPooler>
 
         poolDictionary[tag].Enqueue(objectToSpawn);
 
+        StartCoroutine(HideItem(objectToSpawn, hideTime));
+
         return objectToSpawn;
+    }
+
+    IEnumerator HideItem(GameObject obj, float time)
+    {
+        yield return new WaitForSeconds(time);
+        obj.SetActive(false);
     }
 }

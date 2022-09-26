@@ -8,9 +8,17 @@ public class SoundManager : MonoSingleton<SoundManager>
     public enum SoundType { Pickup }
     private static bool IsMute = false;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        IsMute = PlayerPrefs.GetInt(GlobalDef.isMute) == 0 ? false : true;
+    }
+
     public void SetSoundState(bool isMute)
     {
         IsMute = isMute;
+        PlayerPrefs.SetInt(GlobalDef.isMute, IsMute ? 1 : 0);
     }
 
     public bool GetSoundState()

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 
@@ -273,10 +273,10 @@ public class MirrorJump : MonoBehaviour
             transform.localScale = new Vector3(MirrorLocalScale.x,MirrorLocalScale.y,MirrorLocalScale.z);
         }
         RocketController.StartRocket(rocketLevel);
-        
-        
-        transform.GetComponent<AudioSource>().Play();
-        
+
+
+        SoundManager.Instance.PlaySound(SoundName.Rocket);
+
     }
 
     public  void DisabledRocket()

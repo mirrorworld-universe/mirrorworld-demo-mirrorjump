@@ -1,4 +1,4 @@
-
+﻿
 using UnityEngine;
 
 
@@ -46,7 +46,7 @@ public class SpringBoard : MonoBehaviour
 
 
             IsSpringPop = true;
-            GetComponent<AudioSource>().Play();
+            SoundManager.Instance.PlaySound(SoundName.SpringBoard);
             Vector2 Force = Rigid.velocity;
             
             Other.collider.GetComponent<MirrorJump>().StartOverturn();

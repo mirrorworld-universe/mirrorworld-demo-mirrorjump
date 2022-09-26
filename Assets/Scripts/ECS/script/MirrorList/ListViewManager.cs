@@ -116,8 +116,8 @@ public class ListViewManager
 
 
         private void OnButtonClick()
-        {   
-            
+        {
+            SoundManager.Instance.PlaySound(SoundName.Button);
             var button = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
 
             for (int i = 0; i < AllTransforms.Count; i++)

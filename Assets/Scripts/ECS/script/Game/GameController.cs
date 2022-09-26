@@ -177,9 +177,11 @@ public class GameController : MonoBehaviour
         //     StairsFactory.GenerateStairs(GenerateStairsCoordinate(),false);
         // }
         
+        GameState = GameState.Gaming;
+        
         GameMenu.CloseGameOverWindow();
         
-        GameState = GameState.Gaming;
+      
 
     }
 

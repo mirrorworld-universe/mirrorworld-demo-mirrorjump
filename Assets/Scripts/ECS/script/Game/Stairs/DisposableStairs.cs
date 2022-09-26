@@ -1,4 +1,4 @@
-
+﻿
 using UnityEngine;
 
 public class DisposableStairs : MonoBehaviour
@@ -36,8 +36,8 @@ public class DisposableStairs : MonoBehaviour
         }
 
         if (Rigid != null)
-        {   
-            GetComponent<AudioSource>().Play();
+        {
+            SoundManager.Instance.PlaySound(SoundName.Jump);
             Vector2 Force = Rigid.velocity;
             if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
             {

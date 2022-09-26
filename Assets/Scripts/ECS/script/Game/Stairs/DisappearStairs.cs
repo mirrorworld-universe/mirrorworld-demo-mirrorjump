@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -44,7 +44,7 @@ public class DisappearStairs : MonoBehaviour
 
         if (Rigid != null)
         {   
-            GetComponent<AudioSource>().Play();
+            SoundManager.Instance.PlaySound(SoundName.Jump);
             Vector2 Force = Rigid.velocity;
             if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
             {

@@ -21,7 +21,7 @@ public class SpringProp : ItemBase
     {
          
         Rigidbody2D Rigid = Other.collider.GetComponent<Rigidbody2D>();
-        GetComponent<AudioSource>().Play();
+        SoundManager.Instance.PlaySound(SoundName.SpringProp);
         if (Rigid != null)
         {
             PickupItem();

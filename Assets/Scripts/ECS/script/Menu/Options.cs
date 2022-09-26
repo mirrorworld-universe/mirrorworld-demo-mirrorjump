@@ -14,6 +14,8 @@ public class Options : MonoBehaviour
 
     public GameObject Bg;
 
+    public GameObject exit;
+
     public GameObject returnButton;
     
 
@@ -21,6 +23,7 @@ public class Options : MonoBehaviour
     public void OpenOptions()
     {
         Bg.SetActive(true);
+        exit.SetActive(true);
         OptionMenu.SetActive(true);
         OptionMenuDetails.SetActive(false);
         returnButton.SetActive(false);
@@ -29,6 +32,7 @@ public class Options : MonoBehaviour
     public void ExitOptions()
     {
         Bg.SetActive(false);
+        exit.SetActive(false);
         OptionMenu.SetActive(false);
         OptionMenuDetails.SetActive(false);
         returnButton.SetActive(false);

@@ -7,7 +7,8 @@ public enum StairsType
     Disposable,
     Disappear,
     Breakage,
-    Moving
+    Moving,
+    BlackRole
 }
 public class StairsFactory : MonoBehaviour
 {
@@ -65,40 +66,14 @@ public class StairsFactory : MonoBehaviour
                 stairsType = Equalization();
             }
             
-            // if (MirrorObject.transform.position.y < DifficultyInterval)
-            // {
-            //     stairsType = DifficultyLevelOne();
-            //
-            // }else if (MirrorObject.transform.position.y < 2 * DifficultyInterval)
-            // {
-            //     stairsType = DifficultyLevelTwo();
-            //
-            // }else if (MirrorObject.transform.position.y < 3 * DifficultyInterval)
-            // {
-            //     stairsType = DifficultyLevelThree();
-            //
-            // }else if (MirrorObject.transform.position.y < 4 * DifficultyInterval)
-            // {
-            //     stairsType = DifficultyLevelFour();
-            //
-            // }else
-            // {
-            //     stairsType = DifficultyLevelFive();
-            // }
-            
-         
-            
-
         }
         
-        //InstantiationStairs(stairsType,pos);
-      InstantiationStairs(StairsType.General,pos);
+         InstantiationStairs(stairsType,pos);
+       // InstantiationStairs(StairsType.Breakage,pos);
         
      
     }
     
-    
-    // add props 
     
 
     private void InstantiationStairs(StairsType stairsType, Vector3 pos)
@@ -111,12 +86,7 @@ public class StairsFactory : MonoBehaviour
             tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
             tran.transform.SetParent(StairsParent.transform);
             
-            int  rate = Random.Range(1, 11);
-
-            if (rate >= 6)
-            {
-                RandomProps(tran,GameController);
-            }
+            RandomProps(tran,GameController);
 
         }else if (stairsType == StairsType.Disposable)
         {
@@ -125,12 +95,7 @@ public class StairsFactory : MonoBehaviour
             tran.gameObject.GetComponent<DisposableStairs>().SetGameController(GameController);
             tran.transform.SetParent(StairsParent.transform);
             
-            int  rate = Random.Range(1, 11);
-
-            if (rate >= 6)
-            {
-                RandomProps(tran,GameController);
-            }
+            RandomProps(tran,GameController);
             
         }else if (stairsType == StairsType.Disappear)
         {
@@ -139,12 +104,7 @@ public class StairsFactory : MonoBehaviour
             tran.gameObject.GetComponent<DisappearStairs>().SetGameController(GameController);
             tran.transform.SetParent(StairsParent.transform);
             
-            int  rate = Random.Range(1, 11);
-
-            if (rate >= 6)
-            {
-                RandomProps(tran,GameController);
-            }
+            RandomProps(tran,GameController);
 
         }else if (stairsType == StairsType.Breakage)
         {
@@ -153,12 +113,7 @@ public class StairsFactory : MonoBehaviour
             tran.gameObject.GetComponent<BreakageStairs>().SetGameController(GameController);
             tran.transform.SetParent(StairsParent.transform);
             
-            int  rate = Random.Range(1, 11);
-
-            if (rate >= 6)
-            {
-                RandomProps(tran,GameController);
-            }
+            RandomProps(tran,GameController);
             
         }else if (stairsType == StairsType.Moving)
         {   
@@ -175,15 +130,16 @@ public class StairsFactory : MonoBehaviour
             tran.gameObject.GetComponent<MovingStairs>().SetMovingParams(movingDirection,1f,3,3);
             tran.transform.SetParent(StairsParent.transform);
             
-
-
-            int  rate = Random.Range(1, 11);
-
-            if (rate >= 6)
+            RandomProps(tran,GameController);
+            
+            
+        }else if (stairsType == StairsType.BlackRole)
+        {
+            int rate = Random.Range(1, 8);
+            if (rate > 5)
             {
-                RandomProps(tran,GameController);
+                GenerateBlackRole(StairsParent.transform,GameController,pos);
             }
-
             
         }
         
@@ -253,7 +209,7 @@ public class StairsFactory : MonoBehaviour
     private StairsType Equalization()
     {
         // todo : Custom random rules
-        int rate = Random.Range(1, 11);
+        int rate = Random.Range(1, 13);
 
         if (rate <= 2)
         {
@@ -269,22 +225,23 @@ public class StairsFactory : MonoBehaviour
         }else if (rate <= 8)
         {
             return StairsType.Moving;
+        }else if (rate <= 10)
+        {
+            return StairsType.Breakage;
         }
 
-        return StairsType.Breakage;
-
-
+        return StairsType.BlackRole;
+        
     }
     
     private StairsType OnlyMoving()
   {
       return StairsType.Moving;
   }
-  
-  
+    
     private StairsType OnlyGeneral()
     {
-      return StairsType.General;
+        return StairsType.General;
     }
 
   
@@ -293,7 +250,16 @@ public class StairsFactory : MonoBehaviour
   
 
     private void RandomProps(Transform StairsParent,GameController gameController)
-    {
+    {   
+        
+        int  generateRate = Random.Range(1, 11);
+
+        if (generateRate <= 8)
+        {
+            return;
+        }
+
+        
         int  rate = Random.Range(1, 11);
          
         if (rate <=  2)
@@ -343,11 +309,10 @@ public class StairsFactory : MonoBehaviour
         PropsFactory.GenerateHeightRocket(StairsParent, GameController, new Vector3(0, 1.5f, 0));
     }
     
-    private void GenerateBlackRole(Transform StairsParent,GameController gameController)
+    private void GenerateBlackRole(Transform StairsParent,GameController gameController,Vector3 pos)
     {
-        PropsFactory.GenerateBlackRole(StairsParent, GameController, new Vector3(0, 1.2f, 0));
+        PropsFactory.GenerateBlackRole(StairsParent, GameController, pos);
     }
-    
     
     public void DestroyAllStairs()
     {

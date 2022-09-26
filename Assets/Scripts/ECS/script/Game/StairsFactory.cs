@@ -250,8 +250,14 @@ public class StairsFactory : MonoBehaviour
   
 
     private void RandomProps(Transform StairsParent,GameController gameController)
-    {   
+    {
         
+        if (MirrorObject.transform.position.y < DifficultyInterval)
+        {
+            return;
+        }
+
+
         int  generateRate = Random.Range(1, 11);
 
         if (generateRate <= 8)

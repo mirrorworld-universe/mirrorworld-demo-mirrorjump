@@ -19,3 +19,18 @@ MonoBehaviour:
   - soundName: 1
     soundClip: {fileID: 8300000, guid: 62bf2e20495db5d4bbbf68ba68eba143, type: 3}
     soundVolme: 1
+  - soundName: 2
+    soundClip: {fileID: 8300000, guid: 7eb7c0ca6c94fb741ab4f5a1e65500e3, type: 3}
+    soundVolme: 1
+  - soundName: 3
+    soundClip: {fileID: 8300000, guid: 83b2fff4558efb644aef28e9732956fa, type: 3}
+    soundVolme: 1
+  - soundName: 5
+    soundClip: {fileID: 8300000, guid: 72efd8e25c79f974aa980ca0dffd8a98, type: 3}
+    soundVolme: 1
+  - soundName: 4
+    soundClip: {fileID: 8300000, guid: 6b944e6b3f8d546408598ff3580df1ec, type: 3}
+    soundVolme: 1
+  - soundName: 6
+    soundClip: {fileID: 8300000, guid: 33224087325ca2d44adc4b9ab506d47d, type: 3}
+    soundVolme: 1

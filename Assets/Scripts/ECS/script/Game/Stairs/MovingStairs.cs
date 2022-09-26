@@ -1,4 +1,4 @@
-
+﻿
 using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -342,8 +342,8 @@ public class MovingStairs : MonoBehaviour
         
         
         if (Rigid != null)
-        {   
-            GetComponent<AudioSource>().Play();
+        {
+            SoundManager.Instance.PlaySound(SoundName.Jump);
             Vector2 Force = Rigid.velocity;
             if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
             {

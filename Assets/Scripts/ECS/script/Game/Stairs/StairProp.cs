@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -33,9 +33,9 @@ public class StairProp : MonoBehaviour
          }
 
          if (Rigid != null)
-         {   
-             GetComponent<AudioSource>().Play();
-             Vector2 Force = Rigid.velocity;
+         {
+            SoundManager.Instance.PlaySound(SoundName.Jump);
+            Vector2 Force = Rigid.velocity;
 
              if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
              {

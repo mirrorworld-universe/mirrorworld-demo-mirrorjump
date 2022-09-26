@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -27,6 +27,7 @@ public class GameMenu : MonoBehaviour
 
     public void GamePause()
     {
+        SoundManager.Instance.PlaySound(SoundName.Button);
         GameController.OnGamePause();
       
         GamePauseWindow.SetActive(true);
@@ -34,18 +35,21 @@ public class GameMenu : MonoBehaviour
     }
 
     public void GameResume()
-    {   
+    {
+        SoundManager.Instance.PlaySound(SoundName.Button);
         GamePauseWindow.SetActive(false);
         GameController.OnGameResume();
     }
 
     public void StartNewGame()
     {
+        SoundManager.Instance.PlaySound(SoundName.Button);
         GameController.StartNewGame();
     }
 
     public void CloseGameOverWindow()
     {
+        SoundManager.Instance.PlaySound(SoundName.Button);
         GameOverWindow.SetActive(false);
     }
 
@@ -56,6 +60,7 @@ public class GameMenu : MonoBehaviour
 
     public void ExitGame()
     {
+        SoundManager.Instance.PlaySound(SoundName.Button);
         SceneManager.LoadScene("Menu");
     }
    

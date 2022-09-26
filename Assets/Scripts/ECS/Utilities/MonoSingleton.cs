@@ -20,28 +20,28 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
             lock (locker)
             {
-                if (instance == null)
+                // 保证场景中只有一个 单例
+                T[] managers = Object.FindObjectsOfType(typeof(T)) as T[];
+                if (managers.Length != 0)
                 {
-                    // 保证场景中只有一个 单例
-                    T[] managers = Object.FindObjectsOfType(typeof(T)) as T[];
-                    if (managers.Length != 0)
+                    if (managers.Length == 1)
                     {
-                        if (managers.Length == 1)
+                        instance = managers[0];
+                        instance.gameObject.name = typeof(T).Name;
+                        return instance;
+                    }
+                    else
+                    {
+                        Debug.LogError("Class " + typeof(T).Name + " exists multiple times in violation of singleton pattern. Destroying all copies");
+                        foreach (T manager in managers)
                         {
-                            instance = managers[0];
-                            instance.gameObject.name = typeof(T).Name;
-                            return instance;
-                        }
-                        else
-                        {
-                            Debug.LogError("Class " + typeof(T).Name + " exists multiple times in violation of singleton pattern. Destroying all copies");
-                            foreach (T manager in managers)
-                            {
-                                Destroy(manager.gameObject);
-                            }
+                            Destroy(manager.gameObject);
                         }
                     }
+                }
 
+                if (instance == null)
+                {
 
                     var singleton = new GameObject();
                     instance = singleton.AddComponent<T>();

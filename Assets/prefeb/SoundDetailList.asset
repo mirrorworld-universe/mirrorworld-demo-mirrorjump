@@ -34,3 +34,6 @@ MonoBehaviour:
   - soundName: 6
     soundClip: {fileID: 8300000, guid: 33224087325ca2d44adc4b9ab506d47d, type: 3}
     soundVolme: 1
+  - soundName: 7
+    soundClip: {fileID: 8300000, guid: d5dbd84e4a514704b97ce76a45d29e1c, type: 3}
+    soundVolme: 1

@@ -46,7 +46,7 @@ public class SpringBoard : MonoBehaviour
 
 
             IsSpringPop = true;
-            SoundManager.Instance.PlaySound(SoundName.SpringProp);
+            SoundManager.Instance.PlaySound(SoundName.SpringBoard);
             Vector2 Force = Rigid.velocity;
             
             Other.collider.GetComponent<MirrorJump>().StartOverturn();

@@ -3,14 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/GameController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Props/HighRocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Props/HighRocket.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/RocketController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/RocketController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Props/BlackHole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Props/BlackHole.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/Stairs/MovingStairs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/DisposableStairs.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/DisposableStairs.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/HighLevelRocket.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/HighLevelRocket.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/LowLevelRocket.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/LowLevelRocket.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/Spring.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/Spring.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/prefeb/Stair/SpringBroad.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefeb/Stair/SpringBroad.prefab" afterDir="false" />
     </list>
@@ -42,10 +39,6 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/ScrollRect.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../StudyPlan/MirrorWorldGame-Bom/Assets/Scripts/GameController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../StudyPlan/MirrorWorldGame-Bom/Assets/Scripts/LoadHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../StudyPlan/MirrorWorldGame-Bom/Assets/Scripts/TestMOD.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../StudyPlan/MirrorWorldGame-Bom/Assets/Scripts/Tools.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -190,7 +183,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/MirrorList/PackageManager.cs</url>
-          <line>79</line>
+          <line>81</line>
           <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\MirrorList\PackageManager.cs" initialLine="70" containingFunctionPresentation="method 'GenerateRandomCellData'">
             <startOffsets>
               <option value="2526" />
@@ -203,13 +196,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/GameController.cs</url>
-          <line>136</line>
+          <line>141</line>
           <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\Game\GameController.cs" initialLine="136" containingFunctionPresentation="method 'OnGameStart'">
             <startOffsets>
-              <option value="3105" />
+              <option value="3176" />
             </startOffsets>
             <endOffsets>
-              <option value="3204" />
+              <option value="3275" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="26" />

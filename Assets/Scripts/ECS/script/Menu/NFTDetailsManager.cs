@@ -1,4 +1,4 @@
-
+﻿
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -95,6 +95,7 @@ public class NFTDetailsManager : MonoBehaviour
             }
             
         }
+        EventDispatcher.Instance.roleChanged?.Invoke();
     }
 
     public void ListNFT()

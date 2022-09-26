@@ -1,4 +1,4 @@
-
+﻿
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +14,13 @@ public class RoleChange : MonoBehaviour
 
     private void Start()
     {
+        LoadRoleAsset();
+
+        EventDispatcher.Instance.roleChanged += OnRoleChanged;
+    }
+
+    private void LoadRoleAsset()
+    {
 
         if (null == PlayerPrefs.GetString("CurrentRole") || null == PlayerPrefs.GetString("CurrentRarity"))
         {
@@ -25,9 +32,16 @@ public class RoleChange : MonoBehaviour
                 RolePersistence.GetRoleImageJump(PlayerPrefs.GetString("CurrentRole"),
                     PlayerPrefs.GetString("CurrentRarity"));
         }
-        
-      
-       
+    }
+
+    private void OnDestroy()
+    {
+        EventDispatcher.Instance.roleChanged -= OnRoleChanged;
+    }
+
+    private void OnRoleChanged()
+    {
+        LoadRoleAsset();
     }
 
     public void OnRoleChange(string roleName,string roleRarity)

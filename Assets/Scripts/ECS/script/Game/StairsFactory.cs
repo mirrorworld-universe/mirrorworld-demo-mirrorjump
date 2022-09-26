@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public enum StairsType
@@ -34,8 +34,7 @@ public class StairsFactory : MonoBehaviour
 
     public PropsFactory PropsFactory;
 
-
-    private int Test = 0;
+    
     
 
     public void GenerateStairs(Vector2 position,bool IsFirstStairs)
@@ -48,8 +47,7 @@ public class StairsFactory : MonoBehaviour
         {   
             
             // todo Custom random rules from height
-
-
+            
             if (MirrorObject.transform.position.y < DifficultyInterval)
             {
                 stairsType = OnlyGeneral();
@@ -94,7 +92,7 @@ public class StairsFactory : MonoBehaviour
         }
         
         //InstantiationStairs(stairsType,pos);
-      InstantiationStairs(StairsType.Moving,pos);
+      InstantiationStairs(StairsType.General,pos);
         
      
     }
@@ -278,61 +276,87 @@ public class StairsFactory : MonoBehaviour
 
     }
     
-  private StairsType OnlyMoving()
+    private StairsType OnlyMoving()
   {
       return StairsType.Moving;
   }
   
   
-  private StairsType OnlyGeneral()
-  {
+    private StairsType OnlyGeneral()
+    {
       return StairsType.General;
-  }
+    }
 
   
 
 
+  
+
+    private void RandomProps(Transform StairsParent,GameController gameController)
+    {
+        int  rate = Random.Range(1, 11);
+         
+        if (rate <=  2)
+        {  
+            GenerateSpringBoard(StairsParent, GameController);
+            
+        }else if (rate <= 4)
+        {
+           GenerateSpringProp(StairsParent, GameController);
+        }
+        else if(rate <= 6)
+        {
+        //    GenerateBlackRole(StairsParent, GameController);
+            
+        }else if (rate <= 8)
+        {
+           GenerateLowRocket(StairsParent, GameController);
+            
+        }else if (rate <= 10)
+        {
+            GenerateHeighRocket(StairsParent, GameController);
+        }
+        
+        
+        
+        
+    }
+
+    private void GenerateSpringBoard(Transform StairsParent,GameController gameController)
+    {
+        PropsFactory.GenerateSpringBoard(StairsParent, GameController, new Vector3(0, 0.79f, 0));
+        
+    }
+    
+    private void GenerateSpringProp(Transform StairsParent,GameController gameController)
+    {
+        PropsFactory.GenerateSpringProp(StairsParent, GameController, new Vector3(0, 1f, 0));
+    }
+    
+    private void GenerateLowRocket(Transform StairsParent,GameController gameController)
+    {
+        PropsFactory.GenerateLowRocket(StairsParent, GameController, new Vector3(0, 1f, 0));
+    }
+    
+    private void GenerateHeighRocket(Transform StairsParent,GameController gameController)
+    {
+        PropsFactory.GenerateHeightRocket(StairsParent, GameController, new Vector3(0, 1.5f, 0));
+    }
+    
+    private void GenerateBlackRole(Transform StairsParent,GameController gameController)
+    {
+        PropsFactory.GenerateBlackRole(StairsParent, GameController, new Vector3(0, 1.2f, 0));
+    }
+    
+    
     public void DestroyAllStairs()
     {
         for (int i = 0; i < StairsParent.transform.childCount; i++)
         {
-           Destroy( StairsParent.transform.GetChild(i).gameObject);
+            Destroy( StairsParent.transform.GetChild(i).gameObject);
         }
        
-    }
-
-
-    private void RandomProps(Transform StairsParent,GameController gameController)
-    {   
-        
-         int  rate = Random.Range(1, 11);
-         
-        if (rate <=  2)
-        {  
-            PropsFactory.GenerateSpringBoard(StairsParent, GameController, new Vector3(0, 0.5f, 0));
-            
-        }else if (rate <= 4)
-        {
-            PropsFactory.GenerateSpringProp(StairsParent, GameController, new Vector3(0, 0.5f, 0));
-        }
-        else if(rate <= 6)
-        {
-            PropsFactory.GenerateBlackRole(StairsParent, GameController, new Vector3(0, 1.2f, 0));
-            
-        }else if (rate <= 8)
-        {
-            PropsFactory.GenerateLowRocket(StairsParent, GameController, new Vector3(0, 0.8f, 0));
-            
-        }else if (rate <= 10)
-        {
-            PropsFactory.GenerateHeightRocket(StairsParent, GameController, new Vector3(0, 1.42f, 0));
-        }
-        
-        
-      
-    }
-   
-    
+    } 
 
 
 }

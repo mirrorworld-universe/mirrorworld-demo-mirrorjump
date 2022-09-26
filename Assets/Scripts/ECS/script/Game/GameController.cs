@@ -1,4 +1,4 @@
-
+﻿
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -62,6 +62,11 @@ public class GameController : MonoBehaviour
             GetHeightScore();
         }
         
+    }
+
+    public float GetMaxHeight()
+    {
+        return MaxHeight;
     }
 
 
@@ -172,9 +177,11 @@ public class GameController : MonoBehaviour
         //     StairsFactory.GenerateStairs(GenerateStairsCoordinate(),false);
         // }
         
+        GameState = GameState.Gaming;
+        
         GameMenu.CloseGameOverWindow();
         
-        GameState = GameState.Gaming;
+      
 
     }
 

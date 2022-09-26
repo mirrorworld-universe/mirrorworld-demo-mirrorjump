@@ -365,6 +365,7 @@ public class MirrorJump : MonoBehaviour
                 {
                     VX = 0;
                     VY = 0;
+                    IsEnterBlackHole = false;
                     GameMenu.GameOver();
                 }
                 return;

@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class NFTPackageManager : MonoBehaviour
@@ -16,14 +16,14 @@ public class NFTPackageManager : MonoBehaviour
        public CallSDK CallSDK;
 
        public TextMeshProUGUI PageNumber;
-       
-       public void OnTurningLeft()
-       { 
-           ListView.ToLeftPage();
-          PageTurningStateUpdate(false);
-       }
-    
-       public void OnTurningRight()
+
+    public void OnTurningLeft()
+    {
+        ListView.ToLeftPage();
+        PageTurningStateUpdate(false);
+    }
+
+    public void OnTurningRight()
        {   ListView.ToRightPage();
            PageTurningStateUpdate(false);
        }

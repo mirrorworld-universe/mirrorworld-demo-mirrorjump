@@ -12,11 +12,7 @@ public enum MovingDirection
 
 
 public class MovingStairs : MonoBehaviour
-{   
-    
-    
-    
-    
+{
     public float VerticalVelocity = 10f;
 
     private float HeightOffset = 0.19f;
@@ -24,8 +20,7 @@ public class MovingStairs : MonoBehaviour
     private float RecoveryLine = 0;
     
     private GameController GameController;
-
-
+    
     private MovingDirection MovingDirection;
 
     private float SlowSpeed;
@@ -48,9 +43,6 @@ public class MovingStairs : MonoBehaviour
     private float PauseVelocity = 0;
     
     
-    
-
-
 
     public void SetMovingParams(MovingDirection movingDirection,float slowSpeed,float verticalMoveDistance,float slowMoveDistance)
     {
@@ -219,27 +211,45 @@ public class MovingStairs : MonoBehaviour
     
     // stairs collection 
     private void FixedUpdate()
-    {       
-        RecoveryLine =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
+    {
 
-        if (RecoveryLine - transform.position.y >= HeightOffset)
+        if (GameController.GetGameState() == GameState.Gaming)
         {
-            DestroyStairs();
-        }
+            RecoveryLine =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
+
+            if (RecoveryLine - transform.position.y >= HeightOffset)
+            {
+                DestroyStairs();
+            }
 
 
-        if (MovingDirection == MovingDirection.Horizontal)
-        {
-            HorizontalVelocityCheckout();
-        }
-        else
-        {
-            VrticalVelocityCheckout();
-        }
+            if (MovingDirection == MovingDirection.Horizontal)
+            {
+                HorizontalVelocityCheckout();
+            }
+            else
+            {
+                VrticalVelocityCheckout();
+            }
             
-        SpeedState();
-        MovingByVelocity();
+            SpeedState();
+            MovingByVelocity();
 
+            
+        }else if (GameController.GetGameState() == GameState.GamePause || GameController.GetGameState() == GameState.GameOver)
+        {
+            if (MovingDirection == MovingDirection.Horizontal)
+            {
+               SetPauseHorizontalVelocity();
+            }
+            else
+            {
+                SetPauseVrticalVelocity();
+            }
+            transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+        }
+        
+      
         // if (GameController.GetGameState() == GameState.Gaming)
         // {   
         //     RecoveryLine =  Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;

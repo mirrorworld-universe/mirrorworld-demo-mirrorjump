@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public enum StairsType
@@ -296,7 +296,7 @@ public class StairsFactory : MonoBehaviour
     
     private void GenerateSpringProp(Transform StairsParent,GameController gameController)
     {
-        PropsFactory.GenerateSpringProp(StairsParent, GameController, new Vector3(0, 0.5f, 0));
+        PropsFactory.GenerateSpringProp(StairsParent, GameController, new Vector3(0, 1f, 0));
     }
     
     private void GenerateLowRocket(Transform StairsParent,GameController gameController)
@@ -321,10 +321,7 @@ public class StairsFactory : MonoBehaviour
             Destroy( StairsParent.transform.GetChild(i).gameObject);
         }
        
-    }
-
-   
-    
+    } 
 
 
 }

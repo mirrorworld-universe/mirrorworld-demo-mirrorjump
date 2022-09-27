@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/大火箭-.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/大火箭-.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/大火箭-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/大火箭-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/小火箭1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/小火箭1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/小火箭2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/小火箭2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/弹簧踏板_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/弹簧踏板_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/弹簧踏板_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/弹簧踏板_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/弹簧踏板_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/MirrorJump/Props/弹簧踏板_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,7 +199,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/GameController.cs</url>
-          <line>141</line>
+          <line>142</line>
           <properties documentPath="C:\Users\Pu\Desktop\Mirror Jump\mirrorworld-demo-mirrorjump\Assets\Scripts\ECS\script\Game\GameController.cs" initialLine="136" containingFunctionPresentation="method 'OnGameStart'">
             <startOffsets>
               <option value="3176" />

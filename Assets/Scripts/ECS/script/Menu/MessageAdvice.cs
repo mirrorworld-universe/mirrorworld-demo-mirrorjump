@@ -31,7 +31,7 @@ public class MessageAdvice : MonoBehaviour
 
    public void CloseConfirm()
    {
-        SoundManager.Instance.PlaySound(SoundName.Button);
+        SoundManager.Instance.PlaySound(SoundName.Close);
         Confirm.SetActive(false);
    }
    public void ConfirmMint()
@@ -65,7 +65,7 @@ public class MessageAdvice : MonoBehaviour
 
    public void Exit()
    {
-        SoundManager.Instance.PlaySound(SoundName.Button);
+        SoundManager.Instance.PlaySound(SoundName.Close);
         DialogRoot.SetActive(false);
    }
 

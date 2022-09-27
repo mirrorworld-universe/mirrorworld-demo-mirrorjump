@@ -50,6 +50,11 @@ public class MirrorJump : MonoBehaviour
         return HasSpring;
     }
 
+    public void SingleJump()
+    {
+        SoundManager.Instance.PlaySound(SoundName.Jump);
+    }
+
     public void UseSpring()
     {
         SpringUseCount++;
@@ -58,8 +63,8 @@ public class MirrorJump : MonoBehaviour
             SpringUseCount = 0;
             HasSpring = false;
         }
-        
-       
+
+        SoundManager.Instance.PlaySound(SoundName.SpringProp);
     }
     
     
@@ -311,6 +316,7 @@ public class MirrorJump : MonoBehaviour
                     if (Math.Abs(transform.position.y - ReferencePosition) >= DeathLength)
                     {
                         // Game over
+                        SoundManager.Instance.PlaySound(SoundName.Dead);
                         GameMenu.GameOver();
                         FallState = false;
                     }

@@ -32,6 +32,7 @@ public class NFTDetailsManager : MonoBehaviour
 
     public void BackToNFToPackage()
     {
+        SoundManager.Instance.PlaySound(SoundName.Button);
         NFTPackageManager.Package.SetActive(true);
         NFTDetails.SetActive(false);
     }

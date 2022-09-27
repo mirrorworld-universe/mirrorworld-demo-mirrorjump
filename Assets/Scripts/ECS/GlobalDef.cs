@@ -11,7 +11,14 @@ public enum SoundName
     SpringProp,
     Jump,
     Rocket,
-    SpringBoard
+    SpringBoard,
+    OpenUrl,
+    broken,
+    Close,
+    AudioSwitch,
+    Dead,
+    Victory,
+    Failed
 }
 
 public class GlobalDef 

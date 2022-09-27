@@ -79,30 +79,6 @@ public class DisposableStairs : MonoBehaviour
             isBroken = true;
         }
     }
-
-
-    private void DisappearStart()
-    {
-        broken1.color = new Vector4(broken1.color.r, broken1.color.g, broken1.color.b,
-            broken1.color.a - AlphaChangeDelta);
-
-        broken2.color = new Vector4(broken2.color.r, broken2.color.g, broken2.color.b,
-            broken2.color.a - AlphaChangeDelta);
-
-        if (SpriteRenderer.color.a <= 0.1)
-        {
-            Disappear();
-        }
-    }
-
-
-    private void Disappear()
-    {
-        GetComponent<EdgeCollider2D>().enabled = false;
-        GetComponent<PlatformEffector2D>().enabled = false;
-        SpriteRenderer.enabled = false;
-    }
-     
      
     // stairs collection 
     private void FixedUpdate()
@@ -119,7 +95,7 @@ public class DisposableStairs : MonoBehaviour
 
             if (IsStartDisappear)
             {
-                DisappearStart();
+                DestroyStairs();
             }
             
         }
@@ -128,10 +104,8 @@ public class DisposableStairs : MonoBehaviour
     }
 
     private void DestroyStairs()
-    {   
-        GetComponent<EdgeCollider2D>().enabled = false;
-        GetComponent<PlatformEffector2D>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
+    {
+        gameObject.SetActive(false);
          
         Destroy(gameObject);
     }

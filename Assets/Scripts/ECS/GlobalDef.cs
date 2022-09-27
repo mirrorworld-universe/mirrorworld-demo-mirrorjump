@@ -28,3 +28,11 @@ public class GlobalDef
 {
     public static string isMute = "isMute";
 }
+
+public struct AirDropPostData
+{
+    public string jsonrpc;
+    public string id;
+    public string method;
+    public List<string> param;
+}

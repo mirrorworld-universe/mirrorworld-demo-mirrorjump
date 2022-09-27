@@ -15,9 +15,12 @@ public class GameMenu : MonoBehaviour
     public GameController GameController;
 
     public TextMeshProUGUI HighScore;
-    
-    
-    
+
+    private void Start()
+    {
+        HighScore.text = "0";
+    }
+
 
     public void GameOver()
     {

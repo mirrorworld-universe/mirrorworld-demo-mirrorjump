@@ -166,8 +166,7 @@ public class GameController : MonoBehaviour
         MirrorObject.transform.eulerAngles = new Vector3(0,0,0);
         MirrorObject.transform.localScale = new Vector3(0.28f,0.28f,0.28f);
         MirrorObject.transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        MirrorObject.transform.GetComponent<MirrorJump>().SetEnterBlackState(false);
-        MirrorObject.transform.GetComponent<MirrorJump>().FallStateNotify(false);
+        MirrorObject.transform.GetComponent<MirrorJump>().Setup();
         SetTransformPosition(MirrorObject.transform,new Vector3(FirstStairsPosition.x,FirstStairsPosition.y+2f,107.4f));
         
         MapRunSystem.ResetMapPosition();

@@ -151,19 +151,17 @@ public class MirrorJump : MonoBehaviour
     // Black Hole
     private bool IsEnterBlackHole = false;
 
-    private float SinValue;
+    /// <summary>
+    /// 角色初始化
+    /// </summary>
+    public void Setup()
+    {
+        SetEnterBlackState(false);
+        FallStateNotify(false);
 
-    private float ConsValue;
-
-    private float BlackGravity = 2f;
-
-    //private Vector2 BlackHolePos;
-
-    private float VX;
-
-    private float VY;
-
-
+        // 禁用弹簧鞋
+        SetSpringState(false);
+    }
     public void SetEnterBlackState(bool IsEnter)
     {
         IsEnterBlackHole = IsEnter;
@@ -176,14 +174,9 @@ public class MirrorJump : MonoBehaviour
 
     public void EnterHole(Vector2 HolePosition)
     {
-        // calculate...
-
         IsEnterBlackHole = true;
 
         transform.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-
-        //BlackHolePos = HolePosition;
-
 
         StartCoroutine(ASynEnterHole(HolePosition));
     }
@@ -204,11 +197,11 @@ public class MirrorJump : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        rigidbody2D.gravityScale = gravity;
         IsEnterBlackHole = false;
         FallState = false;
         SoundManager.Instance.PlaySound(SoundName.Dead);
         GameMenu.GameOver();
-        rigidbody2D.gravityScale = gravity;
     }
 
     private float GetSinValue(Vector2 HolePos)
@@ -371,9 +364,9 @@ public class MirrorJump : MonoBehaviour
             if (IsOverturn)
             {
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-                    transform.eulerAngles.z + 5f);
+                    transform.eulerAngles.z + 10f);
 
-                if (transform.eulerAngles.z >= 180)
+                if (transform.eulerAngles.z >= 340)
                 {
                     transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
                         0);
@@ -386,16 +379,8 @@ public class MirrorJump : MonoBehaviour
                 return;
             }
             Vector2 Velocity = rigidbody2D.velocity;
-            if (HasRocket)
-            {
-                Velocity.x = 0;
-                rigidbody2D.velocity = Velocity;
-            }
-            else
-            {
-                Velocity.x = HorizontalVelocity;
-                rigidbody2D.velocity = Velocity;
-            }
+            Velocity.x = HorizontalVelocity;
+            rigidbody2D.velocity = Velocity;
             MirrorJumpState(Velocity.y);
         }
     }

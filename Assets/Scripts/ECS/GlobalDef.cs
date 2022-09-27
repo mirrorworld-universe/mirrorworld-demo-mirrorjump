@@ -13,7 +13,7 @@ public enum SoundName
     Rocket,
     SpringBoard,
     OpenUrl,
-    broken,
+    Broken,
     Close,
     AudioSwitch,
     Dead,

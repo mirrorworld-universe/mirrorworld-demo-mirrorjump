@@ -16,8 +16,18 @@ public class DisposableStairs : MonoBehaviour
     private float AlphaChangeDelta = 0.1f;
 
     private bool IsStartDisappear = false;
-    
-    
+
+    public SpriteRenderer broken1;
+    public SpriteRenderer broken2;
+
+    private bool isBroken = false;
+
+    private void Start()
+    {
+        broken1.gameObject.SetActive(false);
+        broken2.gameObject.SetActive(false);
+    }
+
     public void SetGameController(GameController gameController)
     {
         GameController = gameController;
@@ -50,24 +60,38 @@ public class DisposableStairs : MonoBehaviour
             }
 
             Rigid.velocity = Force;
-            
-            IsStartDisappear = true;
-          
+
+            SpriteRenderer.enabled = false;
+
+            broken1.gameObject.SetActive(true);
+            broken2.gameObject.SetActive(true);
+
+            if (isBroken)
+            {
+                SoundManager.Instance.PlaySound(SoundName.Broken);
+                IsStartDisappear = true;
+            }
+            else
+            {
+                SoundManager.Instance.PlaySound(SoundName.BeforeDisappear);
+            }
+
+            isBroken = true;
         }
     }
 
 
     private void DisappearStart()
     {
-        if (null != SpriteRenderer)
-        {
-            SpriteRenderer.color = new Vector4(SpriteRenderer.color.r, SpriteRenderer.color.g, SpriteRenderer.color.b,
-                SpriteRenderer.color.a - AlphaChangeDelta);
+        broken1.color = new Vector4(broken1.color.r, broken1.color.g, broken1.color.b,
+            broken1.color.a - AlphaChangeDelta);
 
-            if (SpriteRenderer.color.a <= 0.1)
-            {
-                Disappear();
-            }
+        broken2.color = new Vector4(broken2.color.r, broken2.color.g, broken2.color.b,
+            broken2.color.a - AlphaChangeDelta);
+
+        if (SpriteRenderer.color.a <= 0.1)
+        {
+            Disappear();
         }
     }
 
@@ -76,7 +100,7 @@ public class DisposableStairs : MonoBehaviour
     {
         GetComponent<EdgeCollider2D>().enabled = false;
         GetComponent<PlatformEffector2D>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
+        SpriteRenderer.enabled = false;
     }
      
      

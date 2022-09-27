@@ -362,7 +362,7 @@ public class MirrorJump : MonoBehaviour
     }
     private  void FixedUpdate()
     {
-        if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
+          if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
             if (IsOverturn)
             {
@@ -376,55 +376,54 @@ public class MirrorJump : MonoBehaviour
                     IsOverturn = false;
                 }
             }
-
+            
+            
+            Vector2 Velocity = rigidbody2D.velocity;
+            if (HasRocket)
+            {
+                Velocity.x = 0;
+                rigidbody2D.velocity = Velocity;
+            }
+            else
+            {
+                Velocity.x = HorizontalVelocity;
+                rigidbody2D.velocity = Velocity;
+            }
+            MirrorJumpState(Velocity.y);
+            
             if (IsEnterBlackHole)
             {
+               
+                Vector2 V = rigidbody2D.velocity;
+                V.x = VX;
+                V.y = VY;
+                rigidbody2D.velocity = V;
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+                    transform.eulerAngles.z - 15f);
+                
+                // 吞噬开始时强制转向
+                if (transform.localScale.x < 0)
+                {
+                    transform.localScale = new Vector3(-transform.localScale.x,transform.localScale.y,transform.localScale.z);
+                    
+                }
+                
+                if (transform.localScale.y >= 0.02)
+                {
+                    transform.localScale = new Vector3(transform.localScale.x - 0.005f, transform.localScale.y - 0.005f,
+                        transform.localScale.z - 0.005f);
+                }
+                else
+                {
+                    VX = 0;
+                    VY = 0;
+                    IsEnterBlackHole = false;
+                    GameMenu.GameOver();
+                }
                 return;
             }
             
-            Vector2 Velocity = rigidbody2D.velocity;
-            //if (HasRocket)
-            //{
-            //    //Velocity.x = 0;
-            //    rigidbody2D.velocity = Velocity;
-            //}
-            //else
-            //{
-                Velocity.x = HorizontalVelocity;
-                rigidbody2D.velocity = Velocity;
-            //}
-            MirrorJumpState(Velocity.y);
-            
-            //if (IsEnterBlackHole)
-            //{
-               
-            //    Vector2 V = rigidbody2D.velocity;
-            //    V.x = VX;
-            //    V.y = VY;
-            //    rigidbody2D.velocity = V;
-            //    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-            //        transform.eulerAngles.z - 15f);
-            //    if (transform.localScale.x >= 0.02)
-            //    {
-            //        transform.localScale = new Vector3(transform.localScale.x - 0.005f, transform.localScale.y - 0.005f,
-            //            transform.localScale.z - 0.005f);
-            //    }
-            //    else
-            //    {
-            //        VX = 0;
-            //        VY = 0;
-            //        IsEnterBlackHole = false;
-            //        GameMenu.GameOver();
-            //    }
-            //    return;
-            //}
-             //GyroscopeControl();
-          
-            
-            
-            
         }
-        
     }
     
    

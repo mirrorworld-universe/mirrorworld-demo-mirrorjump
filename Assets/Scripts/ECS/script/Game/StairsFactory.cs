@@ -136,10 +136,9 @@ public class StairsFactory : MonoBehaviour
         }else if (stairsType == StairsType.BlackRole)
         {
             int rate = Random.Range(1, 8);
-            if (rate > 5)
-            {
+         
                 GenerateBlackRole(StairsParent.transform,GameController,pos);
-            }
+          
             
         }
         

@@ -15827,6 +15827,8 @@ MonoBehaviour:
   FinishGuidence: {fileID: 939461434}
   Back: {fileID: 388242151}
   Guidence: {fileID: 14512004}
+  airDropWaitText: {fileID: 1459697394}
+  isAirDropping: 0
 --- !u!1 &1432609733
 GameObject:
   m_ObjectHideFlags: 0
@@ -17962,7 +17964,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1421735253}
         m_TargetAssemblyTypeName: TokenGuidance, Assembly-CSharp
-        m_MethodName: OnFourthStep
+        m_MethodName: OnThirdStep
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

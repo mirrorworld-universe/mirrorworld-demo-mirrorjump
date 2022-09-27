@@ -45,6 +45,19 @@ public class MirrorJump : MonoBehaviour
         SpringUseCount = 0;
     }
 
+    public void RefreshSprite()
+    {
+        var verticalVelocity = rigidbody2D.velocity.y;
+        if (verticalVelocity > 0)
+        {
+            transform.gameObject.GetComponent<SpriteRenderer>().sprite = Spr_Player[0];
+        }
+        else
+        {
+            transform.gameObject.GetComponent<SpriteRenderer>().sprite = Spr_Player[1];
+        }
+    }
+
     public bool GetSpringState()
     {
         return HasSpring;
@@ -329,7 +342,6 @@ public class MirrorJump : MonoBehaviour
     }
     private  void FixedUpdate()
     {
-
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
             if (IsOverturn)

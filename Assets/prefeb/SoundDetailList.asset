@@ -44,7 +44,7 @@ MonoBehaviour:
     soundClip: {fileID: 8300000, guid: b7de2ca66d245e64dbf1dfdd6a370d93, type: 3}
     soundVolme: 1
   - soundName: 10
-    soundClip: {fileID: 8300000, guid: 1fd680d5ba80db047803726e1b775296, type: 3}
+    soundClip: {fileID: 8300000, guid: 7ec0bf48737c1a84e9661bfbe44992c2, type: 3}
     soundVolme: 1
   - soundName: 11
     soundClip: {fileID: 8300000, guid: 1fd680d5ba80db047803726e1b775296, type: 3}
@@ -56,5 +56,11 @@ MonoBehaviour:
     soundClip: {fileID: 8300000, guid: 4b0f9060295bbb3429a95d998572610c, type: 3}
     soundVolme: 1
   - soundName: 14
-    soundClip: {fileID: 8300000, guid: 6d0a1d6d675239b48b60c464a2a29699, type: 3}
+    soundClip: {fileID: 8300000, guid: a4d7a54e06940ae468550fe21310019d, type: 3}
+    soundVolme: 1
+  - soundName: 15
+    soundClip: {fileID: 8300000, guid: fb0aeed4a60732f41bf9e62f9afa58ba, type: 3}
+    soundVolme: 1
+  - soundName: 16
+    soundClip: {fileID: 8300000, guid: 403ecfa8870f25f49b214cd34e312ce6, type: 3}
     soundVolme: 1

@@ -43,7 +43,8 @@ public class DisappearStairs : MonoBehaviour
         }
 
         if (Rigid != null)
-        {   
+        {
+            SoundManager.Instance.PlaySound(SoundName.BeforeDisappear);
             Vector2 Force = Rigid.velocity;
             if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
             {

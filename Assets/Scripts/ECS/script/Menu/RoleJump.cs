@@ -12,6 +12,7 @@ public class RoleJump : MonoBehaviour
     [SerializeField] float downInterval = 3;
     [SerializeField] float wait = 2;
     [SerializeField] float height = 10;
+    [SerializeField] Transform shadow;
 
     private Vector3 initPos;
 
@@ -19,6 +20,7 @@ public class RoleJump : MonoBehaviour
     private Sprite spriteJump;
     private Sprite spriteIdle;
     private bool isIdle = false;
+    private float initShadowScale;
     void Start()
     {
         initPos = transform.position;
@@ -65,11 +67,15 @@ public class RoleJump : MonoBehaviour
         {
             isIdle = false;
             img.sprite = spriteJump;
-            transform.DOMoveY(initPos.y+height, interval).SetEase(Ease.OutQuart);
+            transform.DOMoveY(initPos.y + height, interval).SetEase(Ease.OutQuart);
+
+            initShadowScale = shadow.localScale.x;
+            shadow.DOScale(new Vector3(initShadowScale*0.8f, initShadowScale*0.8f, initShadowScale*0.8f), interval).SetEase(Ease.OutQuart);
 
             yield return new WaitForSeconds(interval);
 
             transform.DOMoveY(initPos.y, downInterval).SetEase(Ease.InQuart);
+            shadow.DOScale(new Vector3(initShadowScale, initShadowScale, initShadowScale), downInterval).SetEase(Ease.InQuart);
 
             yield return new WaitForSeconds(downInterval);
 

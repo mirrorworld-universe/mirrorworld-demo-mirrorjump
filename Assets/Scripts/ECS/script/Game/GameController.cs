@@ -138,21 +138,25 @@ public class GameController : MonoBehaviour
 
     public void OnGameStart()
     {   
+        MirrorJump mj = MirrorObject.GetComponent<MirrorJump>();
         
         if (null == PlayerPrefs.GetString("CurrentRole") || null == PlayerPrefs.GetString("CurrentRarity"))
         {
-            MirrorObject.GetComponent<MirrorJump>().Spr_Player[1] = RolePersistence.GetDefaultRole();
-            MirrorObject.GetComponent<MirrorJump>().Spr_Player[0] = RolePersistence.GetDefaultRoleJump();
+            mj.Spr_Player[1] = RolePersistence.GetDefaultRole();
+            mj.Spr_Player[0] = RolePersistence.GetDefaultRoleJump();
+            mj.RefreshSprite();
         }
         else
         {
-            MirrorObject.GetComponent<MirrorJump>().Spr_Player[1] =
+            mj.Spr_Player[1] =
                 RolePersistence.GetRoleImage(PlayerPrefs.GetString("CurrentRole"),
                     PlayerPrefs.GetString("CurrentRarity"));
-            
-            MirrorObject.GetComponent<MirrorJump>().Spr_Player[0] =
+
+            mj.Spr_Player[0] =
                 RolePersistence.GetRoleImageJump(PlayerPrefs.GetString("CurrentRole"),
                     PlayerPrefs.GetString("CurrentRarity"));
+
+            mj.RefreshSprite();
         }
         
         

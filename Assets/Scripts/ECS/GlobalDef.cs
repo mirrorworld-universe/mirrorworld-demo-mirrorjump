@@ -18,7 +18,9 @@ public enum SoundName
     AudioSwitch,
     Dead,
     Victory,
-    Failed
+    Failed,
+    BlackHole,
+    BeforeDisappear
 }
 
 public class GlobalDef 

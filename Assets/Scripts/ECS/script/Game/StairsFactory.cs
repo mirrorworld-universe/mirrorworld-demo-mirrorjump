@@ -39,7 +39,7 @@ public class StairsFactory : MonoBehaviour
     
     // just test 对 brakable stairs 临时限制
     private bool Limit = false;
-
+    
     
     
 
@@ -49,9 +49,9 @@ public class StairsFactory : MonoBehaviour
         
         StairsType stairsType = StairsType.General;
         
+        
         if (!IsFirstStairs)
-        {   
-            
+        {
             // todo Custom random rules from height
             
             if (MirrorObject.transform.position.y < DifficultyInterval)
@@ -62,10 +62,9 @@ public class StairsFactory : MonoBehaviour
             {
                 stairsType = Equalization();
             }
-           
             
-
         }
+        
         
         InstantiationStairs(stairsType,pos);
 
@@ -157,64 +156,6 @@ public class StairsFactory : MonoBehaviour
         
     }
     
-
-    private StairsType DifficultyLevelOne()
-    {    
-        //100% General
-        return StairsType.General;
-    }
-    
-    private StairsType DifficultyLevelTwo()
-    {
-        // 60% General  40%  Disposable
-        int rate = Random.Range(1, 10);
-
-        if (rate <= 6)
-        {
-            return StairsType.General;
-        }
-
-        return StairsType.Disposable;
-    }
-    
-    private StairsType DifficultyLevelThree()
-    {
-        // 40% General  30%  Disposable 30% Disappear
-        int rate = Random.Range(1, 10);
-
-        if (rate <= 4)
-        {
-            return StairsType.General;
-        }else if (rate <= 7)
-        {
-            return StairsType.Disposable;
-        }
-
-        return StairsType.Disappear;
-    }
-    
-    private StairsType DifficultyLevelFour()
-    {
-        // 30% General  30%  Disposable 20% Disappear 20% Moving
-        int rate = Random.Range(1, 10);
-
-        if (rate <= 3)
-        {
-            return StairsType.General;
-            
-        }else if (rate <= 6)
-        {
-            return StairsType.Disposable;
-            
-        }else if (rate <= 8)
-        {
-            return StairsType.Disappear;
-        }
-
-        return StairsType.Moving;
-    }
-    
-    
     
     // todo Custom rate
     //equalization
@@ -283,7 +224,7 @@ public class StairsFactory : MonoBehaviour
     private void RandomProps(Transform StairsParent,GameController gameController)
     {
         
-        if (MirrorObject.transform.position.y < DifficultyInterval)
+        if (MirrorObject.transform.position.y < DifficultyInterval  )
         {
             return;
         }

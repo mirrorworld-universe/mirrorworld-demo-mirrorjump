@@ -36,7 +36,8 @@ public class PackageDetailsManager : MonoBehaviour
 
   
     public void OpenPackageDetails(NFTCellData nftCellData,bool IsCanMint)
-    {  
+    {
+        SoundManager.Instance.PlaySound(SoundName.Pop);
         PackageManager.Package.SetActive(false);
         
         PackageDetails.SetActive(true);

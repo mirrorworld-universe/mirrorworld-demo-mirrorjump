@@ -20,7 +20,8 @@ public enum SoundName
     Victory,
     Failed,
     BlackHole,
-    BeforeDisappear
+    BeforeDisappear,
+    TurnPage
 }
 
 public class GlobalDef 

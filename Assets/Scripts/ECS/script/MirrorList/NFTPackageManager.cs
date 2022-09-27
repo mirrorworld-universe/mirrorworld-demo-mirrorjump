@@ -19,14 +19,14 @@ public class NFTPackageManager : MonoBehaviour
 
     public void OnTurningLeft()
     {
-        SoundManager.Instance.PlaySound(SoundName.Button);
+        SoundManager.Instance.PlaySound(SoundName.TurnPage);
         ListView.ToLeftPage();
         PageTurningStateUpdate(false);
     }
 
     public void OnTurningRight()
     {
-        SoundManager.Instance.PlaySound(SoundName.Button);
+        SoundManager.Instance.PlaySound(SoundName.TurnPage);
         ListView.ToRightPage();
         PageTurningStateUpdate(false);
     }

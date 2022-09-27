@@ -45,6 +45,19 @@ public class MirrorJump : MonoBehaviour
         SpringUseCount = 0;
     }
 
+    public void RefreshSprite()
+    {
+        var verticalVelocity = rigidbody2D.velocity.y;
+        if (verticalVelocity > 0)
+        {
+            transform.gameObject.GetComponent<SpriteRenderer>().sprite = Spr_Player[0];
+        }
+        else
+        {
+            transform.gameObject.GetComponent<SpriteRenderer>().sprite = Spr_Player[1];
+        }
+    }
+
     public bool GetSpringState()
     {
         return HasSpring;
@@ -306,6 +319,19 @@ public class MirrorJump : MonoBehaviour
 #else
         KeyboardControl();
 #endif
+
+        // 控制人物转向
+        if (HorizontalVelocity > TowardThreshold)
+        {
+            transform.localScale = new Vector3(MirrorLocalScale.x, MirrorLocalScale.y, MirrorLocalScale.z);
+
+        }
+        else if (HorizontalVelocity < -TowardThreshold)
+        {
+            transform.localScale = new Vector3(-MirrorLocalScale.x, MirrorLocalScale.y, MirrorLocalScale.z);
+
+        }
+
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
             if (FallState)
@@ -329,7 +355,6 @@ public class MirrorJump : MonoBehaviour
     }
     private  void FixedUpdate()
     {
-
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
             if (IsOverturn)
@@ -347,16 +372,16 @@ public class MirrorJump : MonoBehaviour
             
             
             Vector2 Velocity = rigidbody2D.velocity;
-            if (HasRocket)
-            {
-                Velocity.x = 0;
-                rigidbody2D.velocity = Velocity;
-            }
-            else
-            {
+            //if (HasRocket)
+            //{
+            //    //Velocity.x = 0;
+            //    rigidbody2D.velocity = Velocity;
+            //}
+            //else
+            //{
                 Velocity.x = HorizontalVelocity;
                 rigidbody2D.velocity = Velocity;
-            }
+            //}
             MirrorJumpState(Velocity.y);
             
             if (IsEnterBlackHole)
@@ -415,21 +440,11 @@ public class MirrorJump : MonoBehaviour
     // gyroscope control   in Android platform use this method
     private void GyroscopeControl()
     {
-        if (!IsEnterBlackHole && !HasRocket)
+        if (!IsEnterBlackHole /*&& !HasRocket*/)
         {
             this.HorizontalVelocity = SpeedValue * Input.acceleration.x;
 
             float LocalScaleX = transform.localScale.x;
-        
-            if (HorizontalVelocity > TowardThreshold)
-            {
-                transform.localScale = new Vector3(MirrorLocalScale.x,MirrorLocalScale.y,MirrorLocalScale.z);
-            
-            }else if (HorizontalVelocity < -TowardThreshold)
-            {
-                transform.localScale = new Vector3(-MirrorLocalScale.x, MirrorLocalScale.y, MirrorLocalScale.z);
-            
-            }
         }
     }
 

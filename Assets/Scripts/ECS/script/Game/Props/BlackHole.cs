@@ -25,6 +25,7 @@ public class BlackHole : MonoBehaviour
 
         if (Rigid != null)
         {
+            SoundManager.Instance.PlaySound(SoundName.BlackHole);
             StartAttract = true;
             
             Other.collider.GetComponent<MirrorJump>().EnterHole(new Vector2(transform.position.x,transform.position.y));

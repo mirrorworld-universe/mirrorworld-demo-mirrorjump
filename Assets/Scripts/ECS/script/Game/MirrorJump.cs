@@ -294,7 +294,13 @@ public class MirrorJump : MonoBehaviour
 
     private void Update () 
     {
+#if UNITY_EDITOR
         KeyboardControl();
+#elif UNITY_ANDROID || UNITY_IOS
+        GyroscopeControl();
+#else
+        KeyboardControl();
+#endif
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
             if (FallState)

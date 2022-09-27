@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
+using System.Collections;
 using UnityEngine;
 
 
@@ -154,7 +156,7 @@ public class MirrorJump : MonoBehaviour
     
     private float BlackGravity = 2f;
 
-    private Vector2 BlackHolePos;
+    //private Vector2 BlackHolePos;
 
     private float VX;
 
@@ -179,27 +181,32 @@ public class MirrorJump : MonoBehaviour
         
         transform.gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
-        BlackHolePos = HolePosition;
-
-        VX = BlackGravity * GetCosValue(HolePosition);
-
-        VY = BlackGravity * GetSinValue(HolePosition);
-        
-        // direct state
-
-        if (transform.position.y - HolePosition.y > 0)
-        {
-            VY = -VY;
-        }
-
-        if (transform.position.x - HolePosition.x > 0)
-        {
-            VX = -VX;
-        }
+        //BlackHolePos = HolePosition;
 
 
+        StartCoroutine(ASynEnterHole(HolePosition));
     }
-    
+
+    private IEnumerator ASynEnterHole(Vector3 target)
+    {
+        rigidbody2D.gravityScale = 0;
+        transform.DOMove(target, 1f);
+
+        transform.DORotate(new Vector3(0,0,180f), 0.5f).SetEase(Ease.Linear);
+
+        transform.DOScale(new Vector3(0.2f, 0.2f, 0.2f), 1f);
+
+        yield return new WaitForSeconds(0.5f);
+
+        transform.DORotate(new Vector3(0, 0, 360), 0.5f).SetEase(Ease.Linear);
+
+        yield return new WaitForSeconds(0.5f);
+
+        IsEnterBlackHole = false;
+        GameMenu.GameOver();
+        rigidbody2D.gravityScale = 1;
+    }
+
     private float GetSinValue(Vector2 HolePos)
     {   
         float a = Math.Abs(HolePos.y - transform.position.y);
@@ -369,7 +376,11 @@ public class MirrorJump : MonoBehaviour
                     IsOverturn = false;
                 }
             }
-            
+
+            if (IsEnterBlackHole)
+            {
+                return;
+            }
             
             Vector2 Velocity = rigidbody2D.velocity;
             //if (HasRocket)
@@ -384,29 +395,29 @@ public class MirrorJump : MonoBehaviour
             //}
             MirrorJumpState(Velocity.y);
             
-            if (IsEnterBlackHole)
-            {
+            //if (IsEnterBlackHole)
+            //{
                
-                Vector2 V = rigidbody2D.velocity;
-                V.x = VX;
-                V.y = VY;
-                rigidbody2D.velocity = V;
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-                    transform.eulerAngles.z - 15f);
-                if (transform.localScale.x >= 0.02)
-                {
-                    transform.localScale = new Vector3(transform.localScale.x - 0.005f, transform.localScale.y - 0.005f,
-                        transform.localScale.z - 0.005f);
-                }
-                else
-                {
-                    VX = 0;
-                    VY = 0;
-                    IsEnterBlackHole = false;
-                    GameMenu.GameOver();
-                }
-                return;
-            }
+            //    Vector2 V = rigidbody2D.velocity;
+            //    V.x = VX;
+            //    V.y = VY;
+            //    rigidbody2D.velocity = V;
+            //    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+            //        transform.eulerAngles.z - 15f);
+            //    if (transform.localScale.x >= 0.02)
+            //    {
+            //        transform.localScale = new Vector3(transform.localScale.x - 0.005f, transform.localScale.y - 0.005f,
+            //            transform.localScale.z - 0.005f);
+            //    }
+            //    else
+            //    {
+            //        VX = 0;
+            //        VY = 0;
+            //        IsEnterBlackHole = false;
+            //        GameMenu.GameOver();
+            //    }
+            //    return;
+            //}
              //GyroscopeControl();
           
             

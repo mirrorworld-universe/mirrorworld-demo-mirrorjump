@@ -115,13 +115,13 @@ public class Options : MonoBehaviour
     public void OpenFeedback()
     {
         SoundManager.Instance.PlaySound(SoundName.OpenUrl);
-        Application.OpenURL("https://app-staging.mirrorworld.fun/auth/login");
+        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSfqD3ABVQQNrPouF2jY_KFmcdUtDEJjPjuo4HovVJkmncLOfw/viewform");
     }
     
     public void OpenFAQ()
     {
         SoundManager.Instance.PlaySound(SoundName.OpenUrl);
-        Application.OpenURL("https://developer.mirrorworld.fun/#1696cb75-cb3b-46c0-9d3d-dea7c0f87f74");
+        Application.OpenURL("https://smlhic47en.feishu.cn/docx/doxcnNBgbk3YfqRnRMNDEfMAADf");
     }
     
     public void OpenMirrorSDKLink()

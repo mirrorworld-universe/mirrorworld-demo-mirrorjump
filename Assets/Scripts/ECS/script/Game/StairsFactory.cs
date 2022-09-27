@@ -34,7 +34,12 @@ public class StairsFactory : MonoBehaviour
     private float DifficultyInterval = 50f;
 
     public PropsFactory PropsFactory;
-
+    
+    
+    
+    // just test 对 brakable stairs 临时限制
+    private bool Limit = false;
+    
     
     
 
@@ -44,34 +49,26 @@ public class StairsFactory : MonoBehaviour
         
         StairsType stairsType = StairsType.General;
         
+        
         if (!IsFirstStairs)
-        {   
-            
+        {
             // todo Custom random rules from height
             
             if (MirrorObject.transform.position.y < DifficultyInterval)
             {
                 stairsType = OnlyGeneral();
                 
-            }else if (MirrorObject.transform.position.y < 2 * DifficultyInterval)
-            {
-                stairsType = Equalization();
-                
-            }else if (MirrorObject.transform.position.y < 3 * DifficultyInterval)
-            {
-                stairsType = OnlyMoving();
-            }
-            else
+            }else
             {
                 stairsType = Equalization();
             }
             
         }
         
-         InstantiationStairs(stairsType,pos);
-       // InstantiationStairs(StairsType.Breakage,pos);
         
-     
+        InstantiationStairs(stairsType,pos);
+
+
     }
     
     
@@ -120,7 +117,7 @@ public class StairsFactory : MonoBehaviour
             //todo 等待进一步完善此处和难度 随机性关联的逻辑
             MovingDirection movingDirection = MovingDirection.Horizontal;
             int direct =   Random.Range(1, 10);
-            if (direct <= 5)
+            if (direct >= 8)
             {
                 movingDirection = MovingDirection.Vertical;
             }
@@ -135,72 +132,29 @@ public class StairsFactory : MonoBehaviour
             
         }else if (stairsType == StairsType.BlackRole)
         {
-            int rate = Random.Range(1, 8);
+                int rate = Random.Range(1, 10);
+
+                if (rate >= 8)
+                {
+                    GenerateBlackRole(StairsParent.transform,GameController,pos);
+                    
+                }
+                else
+                {
+                    
+                    var tran = (UnityEngine.Object.Instantiate(GeneralStairs.gameObject)).GetComponent<Transform>();
+                    tran.position = pos;
+                    tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
+                    tran.transform.SetParent(StairsParent.transform);
+            
+                    RandomProps(tran,GameController);
+                    
+                }
          
-                GenerateBlackRole(StairsParent.transform,GameController,pos);
-          
             
         }
         
     }
-    
-
-    private StairsType DifficultyLevelOne()
-    {    
-        //100% General
-        return StairsType.General;
-    }
-    
-    private StairsType DifficultyLevelTwo()
-    {
-        // 60% General  40%  Disposable
-        int rate = Random.Range(1, 10);
-
-        if (rate <= 6)
-        {
-            return StairsType.General;
-        }
-
-        return StairsType.Disposable;
-    }
-    
-    private StairsType DifficultyLevelThree()
-    {
-        // 40% General  30%  Disposable 30% Disappear
-        int rate = Random.Range(1, 10);
-
-        if (rate <= 4)
-        {
-            return StairsType.General;
-        }else if (rate <= 7)
-        {
-            return StairsType.Disposable;
-        }
-
-        return StairsType.Disappear;
-    }
-    
-    private StairsType DifficultyLevelFour()
-    {
-        // 30% General  30%  Disposable 20% Disappear 20% Moving
-        int rate = Random.Range(1, 10);
-
-        if (rate <= 3)
-        {
-            return StairsType.General;
-            
-        }else if (rate <= 6)
-        {
-            return StairsType.Disposable;
-            
-        }else if (rate <= 8)
-        {
-            return StairsType.Disappear;
-        }
-
-        return StairsType.Moving;
-    }
-    
     
     
     // todo Custom rate
@@ -209,26 +163,45 @@ public class StairsFactory : MonoBehaviour
     {
         // todo : Custom random rules
         int rate = Random.Range(1, 13);
-
+        
         if (rate <= 2)
         {
+            Limit = true;
             return StairsType.General;
             
         }else if (rate <= 4)
-        {
+        {    
+            Limit = true;
             return StairsType.Disposable;
             
         }else if (rate <= 6)
-        {
+        {   
+            Limit = true;
             return StairsType.Disappear;
+            
         }else if (rate <= 8)
-        {
+        {   
+            Limit = true;
             return StairsType.Moving;
+            
         }else if (rate <= 10)
         {
-            return StairsType.Breakage;
+            if (Limit)
+            {  
+                Limit = false;
+                return StairsType.Breakage;
+            }
+            else
+            {
+                Limit = true;
+                return StairsType.General;
+            }
+            
+            
+           
         }
-
+        
+        Limit = true;
         return StairsType.BlackRole;
         
     }
@@ -251,7 +224,7 @@ public class StairsFactory : MonoBehaviour
     private void RandomProps(Transform StairsParent,GameController gameController)
     {
         
-        if (MirrorObject.transform.position.y < DifficultyInterval)
+        if (MirrorObject.transform.position.y < DifficultyInterval  )
         {
             return;
         }
@@ -277,15 +250,12 @@ public class StairsFactory : MonoBehaviour
         }
         else if(rate <= 6)
         {
-        //    GenerateBlackRole(StairsParent, GameController);
+            GenerateLowRocket(StairsParent, GameController);
             
         }else if (rate <= 8)
         {
-           GenerateLowRocket(StairsParent, GameController);
-            
-        }else if (rate <= 10)
-        {
             GenerateHeighRocket(StairsParent, GameController);
+            
         }
         
         

@@ -35,6 +35,7 @@ public class MirrorJump : MonoBehaviour
 
     public float SpringForce = 10f;
 
+    private float gravity;
 
     public void SetSpringState(bool hasSpring)
     {
@@ -189,12 +190,13 @@ public class MirrorJump : MonoBehaviour
 
     private IEnumerator ASynEnterHole(Vector3 target)
     {
+        gravity = rigidbody2D.gravityScale;
         rigidbody2D.gravityScale = 0;
         transform.DOMove(target, 1f);
 
         transform.DORotate(new Vector3(0, 0, 180f), 0.5f).SetEase(Ease.Linear);
 
-        transform.DOScale(new Vector3(0.2f, 0.2f, 0.2f), 1f);
+        transform.DOScale(new Vector3(0f, 0f, 0f), 1f);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -203,8 +205,9 @@ public class MirrorJump : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         IsEnterBlackHole = false;
+        FallState = false;
         GameMenu.GameOver();
-        rigidbody2D.gravityScale = 1;
+        rigidbody2D.gravityScale = gravity;
     }
 
     private float GetSinValue(Vector2 HolePos)
@@ -393,45 +396,16 @@ public class MirrorJump : MonoBehaviour
                 rigidbody2D.velocity = Velocity;
             }
             MirrorJumpState(Velocity.y);
-
-            //if (IsEnterBlackHole)
-            //{
-
-            //    Vector2 V = rigidbody2D.velocity;
-            //    V.x = VX;
-            //    V.y = VY;
-            //    rigidbody2D.velocity = V;
-            //    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-            //        transform.eulerAngles.z - 15f);
-
-            //    // 吞噬开始时强制转向
-            //    if (transform.localScale.x < 0)
-            //    {
-            //        transform.localScale = new Vector3(-transform.localScale.x,transform.localScale.y,transform.localScale.z);
-
-            //    }
-
-            //    if (transform.localScale.y >= 0.02)
-            //    {
-            //        transform.localScale = new Vector3(transform.localScale.x - 0.005f, transform.localScale.y - 0.005f,
-            //            transform.localScale.z - 0.005f);
-            //    }
-            //    else
-            //    {
-            //        VX = 0;
-            //        VY = 0;
-            //        IsEnterBlackHole = false;
-            //        GameMenu.GameOver();
-            //    }
-            //    return;
-            //}
-
         }
     }
 
 
     private void KeyboardControl()
     {
+        if (IsEnterBlackHole)
+        {
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.D))
         {

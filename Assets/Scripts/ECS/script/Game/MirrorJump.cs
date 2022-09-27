@@ -12,17 +12,17 @@ public enum RocketLevel
 
 public class MirrorJump : MonoBehaviour
 {
-    
+
     public Sprite[] Spr_Player = new Sprite[2];
 
     public float OffsetOfBoundary = 0.8f;
-    
+
     public GameObject GameController;
 
-   
-    
+
+
     // Spring
-    
+
     public GameObject Spring;
 
     public GameObject SpringJump;
@@ -32,10 +32,10 @@ public class MirrorJump : MonoBehaviour
     private int UseCount = 5;
 
     private bool HasSpring = false;
-    
-    public float SpringForce =10f;
-    
-    
+
+    public float SpringForce = 10f;
+
+
     public void SetSpringState(bool hasSpring)
     {
         HasSpring = hasSpring;
@@ -81,28 +81,28 @@ public class MirrorJump : MonoBehaviour
 
         SoundManager.Instance.PlaySound(SoundName.SpringProp);
     }
-    
-    
+
+
     // Spring position adjust
     // 宇航 女仆
     private Vector2 SpringPostion1 = new Vector2(0.24f, -3.17f);
     // other
-    private Vector2 SpringPostion2 = new Vector2(0.32f ,-3.43f);
-    
+    private Vector2 SpringPostion2 = new Vector2(0.32f, -3.43f);
+
     // 武士 海盗
     private Vector2 SpringJumpPostion1 = new Vector2(0.62f, -2.75f);
-    
-   // 女仆 宇航员
+
+    // 女仆 宇航员
     private Vector2 SpringJumpPostion2 = new Vector2(0.41f, -2.53f);
-    
+
     // 僵尸
-    private Vector2 SpringJumpPostion3 = new Vector2(-0.23f ,-3.05f);
+    private Vector2 SpringJumpPostion3 = new Vector2(-0.23f, -3.05f);
 
 
     private void SetSpringState()
     {
         if (HasSpring)
-        {    
+        {
             Spring.SetActive(true);
             if (PlayerPrefs.GetString("CurrentRole") == Constant.Samurai ||
                 PlayerPrefs.GetString("CurrentRole") == Constant.Zombie || PlayerPrefs.GetString("CurrentRole") == Constant.PirateCaptain)
@@ -116,13 +116,13 @@ public class MirrorJump : MonoBehaviour
                     new Vector3(SpringPostion1.x, SpringPostion1.y, Spring.transform.localPosition.z);
             }
         }
-        
+
     }
-    
+
     private void SetSpringJumpState()
     {
         if (HasSpring)
-        {   
+        {
             SpringJump.SetActive(true);
             if (PlayerPrefs.GetString("CurrentRole") == Constant.Samurai ||
                 PlayerPrefs.GetString("CurrentRole") == Constant.PirateCaptain)
@@ -130,7 +130,7 @@ public class MirrorJump : MonoBehaviour
                 SpringJump.transform.localPosition =
                     new Vector3(SpringJumpPostion1.x, SpringJumpPostion1.y, Spring.transform.localPosition.z);
             }
-            else if(PlayerPrefs.GetString("CurrentRole") == Constant.Zombie)
+            else if (PlayerPrefs.GetString("CurrentRole") == Constant.Zombie)
             {
                 SpringJump.transform.localPosition =
                     new Vector3(SpringJumpPostion3.x, SpringJumpPostion3.y, Spring.transform.localPosition.z);
@@ -141,19 +141,19 @@ public class MirrorJump : MonoBehaviour
                     new Vector3(SpringJumpPostion2.x, SpringJumpPostion2.y, Spring.transform.localPosition.z);
             }
         }
-        
+
     }
-    
-    
-    
-    
+
+
+
+
     // Black Hole
     private bool IsEnterBlackHole = false;
 
     private float SinValue;
 
     private float ConsValue;
-    
+
     private float BlackGravity = 2f;
 
     //private Vector2 BlackHolePos;
@@ -172,13 +172,13 @@ public class MirrorJump : MonoBehaviour
     {
         return IsEnterBlackHole;
     }
-    
+
     public void EnterHole(Vector2 HolePosition)
     {
         // calculate...
-    
+
         IsEnterBlackHole = true;
-        
+
         transform.gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
         //BlackHolePos = HolePosition;
@@ -192,13 +192,13 @@ public class MirrorJump : MonoBehaviour
         rigidbody2D.gravityScale = 0;
         transform.DOMove(target, 1f);
 
-        transform.DORotate(new Vector3(0,0,180f), 0.5f).SetEase(Ease.Linear);
+        transform.DORotate(new Vector3(0, 0, 180f), 0.5f).SetEase(Ease.Linear);
 
         transform.DOScale(new Vector3(0.2f, 0.2f, 0.2f), 1f);
 
         yield return new WaitForSeconds(0.5f);
 
-        transform.DORotate(new Vector3(0, 0, 360), 0.5f).SetEase(Ease.Linear);
+        transform.DORotate(new Vector3(0, 0, 360f), 0.5f).SetEase(Ease.Linear);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -208,29 +208,29 @@ public class MirrorJump : MonoBehaviour
     }
 
     private float GetSinValue(Vector2 HolePos)
-    {   
+    {
         float a = Math.Abs(HolePos.y - transform.position.y);
         return a / GetC(HolePos);
-        
+
     }
     private float GetCosValue(Vector2 HolePos)
     {
         float b = Math.Abs(HolePos.x - transform.position.x);
         return b / GetC(HolePos);
     }
-    
+
     private float GetC(Vector2 HolePos)
-    {  
-        
+    {
+
         float a = Math.Abs(HolePos.y - transform.position.y);
-        
+
         float b = Math.Abs(HolePos.x - transform.position.x);
 
-        return (float) Math.Sqrt(a * a + b * b);
+        return (float)Math.Sqrt(a * a + b * b);
 
     }
-    
-    
+
+
     // Spring board
     private bool IsOverturn = false;
 
@@ -243,18 +243,18 @@ public class MirrorJump : MonoBehaviour
     {
         return IsOverturn;
     }
-    
-    
-    
+
+
+
     // Role
-    private float HorizontalVelocity =0f;
-    
+    private float HorizontalVelocity = 0f;
+
     private float SpeedValue = 15f;
 
     Rigidbody2D rigidbody2D = null;
 
     private Vector3 MirrorLocalScale;
-    
+
     private bool FallState = false;
 
     private float ReferencePosition = 0;
@@ -264,7 +264,7 @@ public class MirrorJump : MonoBehaviour
     private float TowardThreshold = 1.5f;
 
     public GameMenu GameMenu;
-    
+
     public void FallStateNotify(bool state)
     {
         FallState = state;
@@ -273,9 +273,9 @@ public class MirrorJump : MonoBehaviour
             ReferencePosition = transform.position.y;
         }
     }
-    
-    
-    
+
+
+
     // Rocket
 
     private bool HasRocket = false;
@@ -294,8 +294,8 @@ public class MirrorJump : MonoBehaviour
         float LocalScaleX = transform.localScale.x;
 
         if (LocalScaleX < 0)
-        {   
-            transform.localScale = new Vector3(MirrorLocalScale.x,MirrorLocalScale.y,MirrorLocalScale.z);
+        {
+            transform.localScale = new Vector3(MirrorLocalScale.x, MirrorLocalScale.y, MirrorLocalScale.z);
         }
         RocketController.StartRocket(rocketLevel);
 
@@ -304,12 +304,12 @@ public class MirrorJump : MonoBehaviour
 
     }
 
-    public  void DisabledRocket()
+    public void DisabledRocket()
     {
         HasRocket = false;
         RocketController.CloseRocket();
     }
-    
+
     private void Start()
     {
         rigidbody2D = transform.gameObject.GetComponent<Rigidbody2D>();
@@ -317,7 +317,7 @@ public class MirrorJump : MonoBehaviour
     }
 
 
-    private void Update () 
+    private void Update()
     {
 #if UNITY_EDITOR
         KeyboardControl();
@@ -355,14 +355,14 @@ public class MirrorJump : MonoBehaviour
                     }
                 }
             }
-            
+
         }
-      
+
 
     }
-    private  void FixedUpdate()
+    private void FixedUpdate()
     {
-          if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
+        if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
             if (IsOverturn)
             {
@@ -376,8 +376,11 @@ public class MirrorJump : MonoBehaviour
                     IsOverturn = false;
                 }
             }
-            
-            
+
+            if (IsEnterBlackHole)
+            {
+                return;
+            }
             Vector2 Velocity = rigidbody2D.velocity;
             if (HasRocket)
             {
@@ -390,63 +393,64 @@ public class MirrorJump : MonoBehaviour
                 rigidbody2D.velocity = Velocity;
             }
             MirrorJumpState(Velocity.y);
-            
-            if (IsEnterBlackHole)
-            {
-               
-                Vector2 V = rigidbody2D.velocity;
-                V.x = VX;
-                V.y = VY;
-                rigidbody2D.velocity = V;
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-                    transform.eulerAngles.z - 15f);
-                
-                // 吞噬开始时强制转向
-                if (transform.localScale.x < 0)
-                {
-                    transform.localScale = new Vector3(-transform.localScale.x,transform.localScale.y,transform.localScale.z);
-                    
-                }
-                
-                if (transform.localScale.y >= 0.02)
-                {
-                    transform.localScale = new Vector3(transform.localScale.x - 0.005f, transform.localScale.y - 0.005f,
-                        transform.localScale.z - 0.005f);
-                }
-                else
-                {
-                    VX = 0;
-                    VY = 0;
-                    IsEnterBlackHole = false;
-                    GameMenu.GameOver();
-                }
-                return;
-            }
-            
+
+            //if (IsEnterBlackHole)
+            //{
+
+            //    Vector2 V = rigidbody2D.velocity;
+            //    V.x = VX;
+            //    V.y = VY;
+            //    rigidbody2D.velocity = V;
+            //    transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+            //        transform.eulerAngles.z - 15f);
+
+            //    // 吞噬开始时强制转向
+            //    if (transform.localScale.x < 0)
+            //    {
+            //        transform.localScale = new Vector3(-transform.localScale.x,transform.localScale.y,transform.localScale.z);
+
+            //    }
+
+            //    if (transform.localScale.y >= 0.02)
+            //    {
+            //        transform.localScale = new Vector3(transform.localScale.x - 0.005f, transform.localScale.y - 0.005f,
+            //            transform.localScale.z - 0.005f);
+            //    }
+            //    else
+            //    {
+            //        VX = 0;
+            //        VY = 0;
+            //        IsEnterBlackHole = false;
+            //        GameMenu.GameOver();
+            //    }
+            //    return;
+            //}
+
         }
     }
-    
-   
+
+
     private void KeyboardControl()
     {
-        
+
         if (Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.D))
         {
             this.HorizontalVelocity = -8f;
-        }else if (!Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D))
+        }
+        else if (!Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D))
         {
             this.HorizontalVelocity = 8f;
         }
-        
+
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
         {
             this.HorizontalVelocity = 0f;
         }
 
-        
 
-    } 
-    
+
+    }
+
     // gyroscope control   in Android platform use this method
     private void GyroscopeControl()
     {
@@ -459,11 +463,11 @@ public class MirrorJump : MonoBehaviour
     }
 
 
-    
+
     private void MirrorJumpState(float verticalVelocity)
     {
         if (verticalVelocity > 0)
-        {   
+        {
             Spring.SetActive(false);
             transform.gameObject.GetComponent<SpriteRenderer>().sprite = Spr_Player[0];
             transform.gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -473,33 +477,33 @@ public class MirrorJump : MonoBehaviour
         {
             if (HasRocket)
             {
-               DisabledRocket();
+                DisabledRocket();
             }
-            
+
             transform.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             if (verticalVelocity < -6)
-            {   
+            {
                 SpringJump.SetActive(false);
                 transform.gameObject.GetComponent<SpriteRenderer>().sprite = Spr_Player[1];
                 SetSpringState();
             }
-            
+
         }
-        
+
         BoundaryRestrictions();
-        
+
     }
-    
+
     // Boundary restrictions
     private void BoundaryRestrictions()
     {
         Vector3 ZeroScreen = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
-        
+
         if (transform.position.x > -ZeroScreen.x + OffsetOfBoundary)
             transform.position = new Vector3(ZeroScreen.x - OffsetOfBoundary, transform.position.y, transform.position.z);
-        else if(transform.position.x < ZeroScreen.x -OffsetOfBoundary)
+        else if (transform.position.x < ZeroScreen.x - OffsetOfBoundary)
             transform.position = new Vector3(-ZeroScreen.x + OffsetOfBoundary, transform.position.y, transform.position.z);
     }
 
-    
+
 }

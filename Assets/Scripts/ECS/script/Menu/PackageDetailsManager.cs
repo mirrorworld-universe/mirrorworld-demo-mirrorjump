@@ -85,7 +85,8 @@ public class PackageDetailsManager : MonoBehaviour
     
 
     public void BackToPackage()
-    { 
+    {
+        SoundManager.Instance.PlaySound(SoundName.Button);
         PackageDetails.SetActive(false);
         PackageManager.Package.SetActive(true);
       
@@ -93,6 +94,7 @@ public class PackageDetailsManager : MonoBehaviour
 
     public void ExitPackage()
     {
+        SoundManager.Instance.PlaySound(SoundName.Close);
         PackageManager.ClosePackage();
         PackageDetails.SetActive(false);
     }

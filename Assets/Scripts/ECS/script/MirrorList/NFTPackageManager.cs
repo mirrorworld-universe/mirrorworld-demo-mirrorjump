@@ -50,7 +50,7 @@ public class NFTPackageManager : MonoBehaviour
 
     public void ClosePackage()
     {
-        SoundManager.Instance.PlaySound(SoundName.Button);
+        SoundManager.Instance.PlaySound(SoundName.Close);
         Package.SetActive(false);
     }
 

@@ -32,12 +32,12 @@ public class Options : MonoBehaviour
 
         soundOn.onClick.AddListener(() =>
         {
-            SoundManager.Instance.PlaySound(SoundName.Button);
+            SoundManager.Instance.PlaySound(SoundName.AudioSwitch);
             OnSoundOn();
         });
         soundOff.onClick.AddListener(() =>
         {
-            SoundManager.Instance.PlaySound(SoundName.Button);
+            SoundManager.Instance.PlaySound(SoundName.AudioSwitch);
             OnSoundOff();
         });
 
@@ -85,7 +85,7 @@ public class Options : MonoBehaviour
 
     public void ExitOptions()
     {
-        SoundManager.Instance.PlaySound(SoundName.Button);
+        SoundManager.Instance.PlaySound(SoundName.Close);
         Bg.SetActive(false);
         exit.SetActive(false);
         OptionMenu.SetActive(false);
@@ -114,19 +114,19 @@ public class Options : MonoBehaviour
 
     public void OpenFeedback()
     {
-        SoundManager.Instance.PlaySound(SoundName.Button);
+        SoundManager.Instance.PlaySound(SoundName.OpenUrl);
         Application.OpenURL("https://app-staging.mirrorworld.fun/auth/login");
     }
     
     public void OpenFAQ()
     {
-        SoundManager.Instance.PlaySound(SoundName.Button);
+        SoundManager.Instance.PlaySound(SoundName.OpenUrl);
         Application.OpenURL("https://developer.mirrorworld.fun/#1696cb75-cb3b-46c0-9d3d-dea7c0f87f74");
     }
     
     public void OpenMirrorSDKLink()
     {
-        SoundManager.Instance.PlaySound(SoundName.Button);
+        SoundManager.Instance.PlaySound(SoundName.OpenUrl);
         Application.OpenURL("https://mirrorworld.fun/");
     }
     

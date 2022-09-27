@@ -49,7 +49,7 @@ public class GameMenu : MonoBehaviour
 
     public void CloseGameOverWindow()
     {
-        SoundManager.Instance.PlaySound(SoundName.Button);
+        SoundManager.Instance.PlaySound(SoundName.Close);
         GameOverWindow.SetActive(false);
     }
 
@@ -60,7 +60,7 @@ public class GameMenu : MonoBehaviour
 
     public void ExitGame()
     {
-        SoundManager.Instance.PlaySound(SoundName.Button);
+        SoundManager.Instance.PlaySound(SoundName.Close);
         SceneManager.LoadScene("Menu");
     }
    

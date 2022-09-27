@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b963e01e-838e-41d2-af35-f0f70559ba8b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mirrorworld-demo-mirrorjump/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/MirrorJump.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/script/Game/StairsFactory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -296,10 +296,8 @@ public class MirrorJump : MonoBehaviour
     {
 #if UNITY_EDITOR
         KeyboardControl();
-#elif UNITY_ANDROID || UNITY_IOS
-        GyroscopeControl();
-#else
-        KeyboardControl();
+#elif        
+
 #endif
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
@@ -362,7 +360,15 @@ public class MirrorJump : MonoBehaviour
                 rigidbody2D.velocity = V;
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
                     transform.eulerAngles.z - 15f);
-                if (transform.localScale.x >= 0.02)
+                
+                // 吞噬开始时强制转向
+                if (transform.localScale.x < 0)
+                {
+                    transform.localScale = new Vector3(-transform.localScale.x,transform.localScale.y,transform.localScale.z);
+                    
+                }
+                
+                if (transform.localScale.y >= 0.02)
                 {
                     transform.localScale = new Vector3(transform.localScale.x - 0.005f, transform.localScale.y - 0.005f,
                         transform.localScale.z - 0.005f);
@@ -376,7 +382,7 @@ public class MirrorJump : MonoBehaviour
                 }
                 return;
             }
-             //GyroscopeControl();
+            
           
             
             

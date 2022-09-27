@@ -40,7 +40,7 @@ public class BreakageStairs : MonoBehaviour
 
         if (Rigid != null)
         {
-            SoundManager.Instance.PlaySound(SoundName.broken);
+            SoundManager.Instance.PlaySound(SoundName.Broken);
             GetComponent<EdgeCollider2D>().enabled = false;
             GetComponent<PlatformEffector2D>().enabled = false;
             Fall_Down = true;

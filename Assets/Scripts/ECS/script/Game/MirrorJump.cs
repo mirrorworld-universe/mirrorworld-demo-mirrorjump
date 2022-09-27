@@ -206,6 +206,7 @@ public class MirrorJump : MonoBehaviour
 
         IsEnterBlackHole = false;
         FallState = false;
+        SoundManager.Instance.PlaySound(SoundName.Dead);
         GameMenu.GameOver();
         rigidbody2D.gravityScale = gravity;
     }
@@ -322,26 +323,6 @@ public class MirrorJump : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_EDITOR
-        KeyboardControl();
-#elif UNITY_ANDROID || UNITY_IOS
-        GyroscopeControl();
-#else
-        KeyboardControl();
-#endif
-
-        // 控制人物转向
-        if (HorizontalVelocity > TowardThreshold)
-        {
-            transform.localScale = new Vector3(MirrorLocalScale.x, MirrorLocalScale.y, MirrorLocalScale.z);
-
-        }
-        else if (HorizontalVelocity < -TowardThreshold)
-        {
-            transform.localScale = new Vector3(-MirrorLocalScale.x, MirrorLocalScale.y, MirrorLocalScale.z);
-
-        }
-
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
             if (FallState)
@@ -365,6 +346,26 @@ public class MirrorJump : MonoBehaviour
     }
     private void FixedUpdate()
     {
+#if UNITY_EDITOR
+        KeyboardControl();
+#elif UNITY_ANDROID || UNITY_IOS
+        GyroscopeControl();
+#else
+        KeyboardControl();
+#endif
+
+        // 控制人物转向
+        if (HorizontalVelocity > TowardThreshold)
+        {
+            transform.localScale = new Vector3(MirrorLocalScale.x, MirrorLocalScale.y, MirrorLocalScale.z);
+
+        }
+        else if (HorizontalVelocity < -TowardThreshold)
+        {
+            transform.localScale = new Vector3(-MirrorLocalScale.x, MirrorLocalScale.y, MirrorLocalScale.z);
+
+        }
+
         if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
             if (IsOverturn)
@@ -407,22 +408,18 @@ public class MirrorJump : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.A))
         {
             this.HorizontalVelocity = -8f;
         }
-        else if (!Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
             this.HorizontalVelocity = 8f;
         }
-
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        else
         {
             this.HorizontalVelocity = 0f;
         }
-
-
-
     }
 
     // gyroscope control   in Android platform use this method

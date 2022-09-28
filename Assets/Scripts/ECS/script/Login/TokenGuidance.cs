@@ -94,6 +94,10 @@ public class TokenGuidance : MonoBehaviour
 
     IEnumerator AirDrop()
     {
+        yield return new WaitForSeconds(3);
+
+        OnFourthStep();
+
         yield break;
 
         isAirDropping = true;

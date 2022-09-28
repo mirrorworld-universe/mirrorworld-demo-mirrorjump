@@ -94,13 +94,13 @@ public class TokenGuidance : MonoBehaviour
 
     IEnumerator AirDrop()
     {
+        isAirDropping = true;
         yield return new WaitForSeconds(3);
 
         OnFourthStep();
-
+        isAirDropping = false;
         yield break;
 
-        isAirDropping = true;
 
         string url = "https://api.devnet.solana.com/";
         AirDropPostData data = new AirDropPostData();

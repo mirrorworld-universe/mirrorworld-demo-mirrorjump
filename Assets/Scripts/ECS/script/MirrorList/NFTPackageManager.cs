@@ -33,7 +33,6 @@ public class NFTPackageManager : MonoBehaviour
 
     public void OpenPackage()
     {
-        SoundManager.Instance.PlaySound(SoundName.Button);
         SoundManager.Instance.PlaySound(SoundName.Pop);
         // 刷新逻辑
         ListViewDataProvider.NFTListView.SetDataProvider(ListViewDataProvider);

@@ -22,7 +22,6 @@ public class Options : MonoBehaviour
 
     public void OpenOptions()
     {
-        SoundManager.Instance.PlaySound(SoundName.Button);
         SoundManager.Instance.PlaySound(SoundName.Pop);
         Bg.SetActive(true);
         exit.SetActive(true);

@@ -2419,8 +2419,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -360, y: -244}
-  m_SizeDelta: {x: 720, y: 480}
+  m_AnchoredPosition: {x: -420, y: -244}
+  m_SizeDelta: {x: 840, y: 480}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &207204678
 MonoBehaviour:
@@ -5176,9 +5176,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Welcome to
+  m_text: 'Welcome to
 
-    Mirror Jump'
+    Mirrors Jump'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
   m_sharedMaterial: {fileID: 1714751534592507751, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
@@ -6732,10 +6732,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '   Mirror Jump is our tribute to Doodle Jump, powered by Mirror World
-    SDK. We hope that this game will help players to better understand the fun aspects
+  m_text: Mirrors Jump is our tribute to Doodle Jump, powered by Mirror World SDK.
+    We hope that this game will help players to better understand the fun aspects
     of Web3 games and help developers to better understand how to use the Mirror
-    World SDK.'
+    World SDK.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
   m_sharedMaterial: {fileID: 1714751534592507751, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
@@ -7913,9 +7913,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Welcome to
+  m_text: 'Welcome to
 
-    Mirror Jump'
+    Mirrors Jump'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
   m_sharedMaterial: {fileID: 1714751534592507751, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
@@ -9856,7 +9856,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: About Mirror Jump
+  m_text: About Mirrors Jump
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
   m_sharedMaterial: {fileID: 1714751534592507751, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
@@ -16624,9 +16624,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Welcome to
+  m_text: 'Welcome to
 
-    Mirror Jump'
+    Mirrors Jump'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
   m_sharedMaterial: {fileID: 1714751534592507751, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
@@ -18196,9 +18196,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Welcome to
+  m_text: 'Welcome to
 
-    Mirror Jump'
+    Mirrors Jump'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
   m_sharedMaterial: {fileID: 1714751534592507751, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}

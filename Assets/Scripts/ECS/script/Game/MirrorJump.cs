@@ -37,6 +37,11 @@ public class MirrorJump : MonoBehaviour
 
     private float gravity;
 
+    private void Awake()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+    }
+
     public void SetSpringState(bool hasSpring)
     {
         HasSpring = hasSpring;

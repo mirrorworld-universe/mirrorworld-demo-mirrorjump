@@ -194,13 +194,13 @@ public class MirrorJump : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         transform.DORotate(new Vector3(0, 0, 360f), 0.5f).SetEase(Ease.Linear);
+        SoundManager.Instance.PlaySound(SoundName.Dead);
 
         yield return new WaitForSeconds(0.5f);
 
         rigidbody2D.gravityScale = gravity;
         IsEnterBlackHole = false;
         FallState = false;
-        SoundManager.Instance.PlaySound(SoundName.Dead);
         GameMenu.GameOver();
     }
 

@@ -1,5 +1,7 @@
 ﻿
+using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 public class DisposableStairs : MonoBehaviour
 {
@@ -90,12 +92,12 @@ public class DisposableStairs : MonoBehaviour
 
             if (RecoveryLine - transform.position.y >= HeightOffset)
             {
-                DestroyStairs();
+                StartCoroutine(DestroyStairs());
             }
 
             if (IsStartDisappear)
             {
-                DestroyStairs();
+                StartCoroutine(DestroyStairs());
             }
             
         }
@@ -103,8 +105,16 @@ public class DisposableStairs : MonoBehaviour
          
     }
 
-    private void DestroyStairs()
+    private IEnumerator DestroyStairs()
     {
+        broken1.DOFade(0, 0.5f);
+        broken2.DOFade(0, 0.5f);
+
+        broken1.transform.DOMoveY(broken1.transform.position.y - 0.2f, 0.5f);
+        broken2.transform.DOMoveY(broken2.transform.position.y - 0.2f, 0.5f);
+
+        yield return new WaitForSeconds(0.5f);
+
         gameObject.SetActive(false);
          
         Destroy(gameObject);

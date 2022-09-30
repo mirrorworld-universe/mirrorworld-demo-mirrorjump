@@ -22,6 +22,9 @@ public class NFTDetailsManager : MonoBehaviour
     public NFTPackageManager NFTPackageManager;
     
     public CallSDK CallSDK;
+
+
+    public NftTrade NftTrade;
   
     public void OpenNFTPackageDetails(NFTCellData nftCellData)
     {
@@ -102,15 +105,31 @@ public class NFTDetailsManager : MonoBehaviour
 
     public void ListNFT()
     {
-        CallSDK.ListNFT(CurrentMirror);
+      
         ExitNFTPackage();
+        
+        // todo 加入是否 listing 的判定
+
+        // if (listing)
+        // {
+        //     NftTrade.OpenManageList(CurrentMirror);
+        // }
+        // else
+        // {
+        //     NftTrade.OpenSell(CurrentMirror);
+        // }
+        
+        
+        NftTrade.OpenManageList(CurrentMirror);
+        
+        
     }
     
     
     public void TransferNFT()
     {
-        CallSDK.TransferNFT(CurrentMirror);
         ExitNFTPackage();
+        NftTrade.OpenTransfer(CurrentMirror);
     }
     
     

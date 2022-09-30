@@ -17,7 +17,7 @@ public class CallSDK : MonoBehaviour
 
     public List<NFTCellData> FetchNFTS()
     {
-        return MirrorSDK.FetchNfts();
+        return MirrorSDKFake.FetchNfts();
         
     }
     
@@ -25,7 +25,7 @@ public class CallSDK : MonoBehaviour
     // todo Just Simulate the SDK call operation
     public void MintNFT(NFTCellData nftCellData)
     {
-        if (MirrorSDK.MintNFT(nftCellData))
+        if (MirrorSDKFake.MintNFT(nftCellData))
         {  
             string name = null;
             string rarity = null;
@@ -53,7 +53,7 @@ public class CallSDK : MonoBehaviour
 
     public void ListNFT(NFTCellData nftCellData)
     {
-        if (MirrorSDK.ListNFT(nftCellData))
+        if (MirrorSDKFake.ListNFT(nftCellData))
         {
             MessageAdvice.OnSuccess("Congratulation!\n" +
                                     "List Successful!");
@@ -67,7 +67,7 @@ public class CallSDK : MonoBehaviour
 
     public void TransferNFT(NFTCellData nftCellData)
     {
-        if (MirrorSDK.TransferNFT(nftCellData))
+        if (MirrorSDKFake.TransferNFT(nftCellData))
         {
             MessageAdvice.OnSuccess("Congratulation!\n" +
                                     "Transfer Successful!");

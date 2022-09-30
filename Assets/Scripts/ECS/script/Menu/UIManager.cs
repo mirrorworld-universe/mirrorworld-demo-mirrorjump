@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using MirrorworldSDK;
+using MirrorworldSDK.Models;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
@@ -13,7 +16,7 @@ public class UIManager : MonoBehaviour
     {
         //string apiKey = "mw_testAmRKdRbBsBbIAw3CeMqS9GORmcG5BRUCU4D";
         //MirrorworldSDK.MirrorSDK.InitSDK(apiKey,gameObject,true,MirrorworldSDK.MirrorEnv.StagingDevNet);
-        MirrorworldSDK.MirrorSDK.StartLogin((success)=> {
+        MirrorSDK.StartLogin((success)=> {
             SoundManager.Instance.PlaySound(SoundName.Button);
             SceneManager.LoadScene("Menu");
         });
@@ -21,7 +24,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenWallet()
     {
-        MirrorworldSDK.MirrorSDK.OpenWalletPage();
+        MirrorSDK.OpenWalletPage();
     }
 
     public void ClearAllPersistingData()

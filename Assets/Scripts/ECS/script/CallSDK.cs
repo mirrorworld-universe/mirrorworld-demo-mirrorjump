@@ -10,10 +10,7 @@ public class CallSDK : MonoBehaviour
 
 
     public RoleChange RoleChange;
-    private void Start()
-    {
-        //ImagePreload();
-    }
+  
 
     public List<NFTCellData> FetchNFTS()
     {

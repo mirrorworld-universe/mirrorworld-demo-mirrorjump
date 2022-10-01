@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MirrorworldSDK;
 using MirrorworldSDK.Models;
 using UnityEngine;
@@ -14,13 +15,15 @@ public class UIManager : MonoBehaviour
 
     public void Login()
     {
-        MirrorSDK.StartLogin((LoginResponse)=> {
+        MirrorSDK.StartLogin((LoginResponse)=>
+        {
+
+            LoginState.HasLogin = true;
+            LoginState.Name = LoginResponse.UserResponse.Username;
+            LoginState.WalletAddress= LoginResponse.UserResponse.SolAddress;
+            LoginState.ID =  LoginResponse.UserResponse.Id.ToString();
             
             
-            PlayerPrefs.SetString("HasLogin","true");
-            PlayerPrefs.SetString("name",LoginResponse.UserResponse.Username);
-            PlayerPrefs.SetString("walletAddress",LoginResponse.UserResponse.SolAddress);
-            PlayerPrefs.SetString("ID",LoginResponse.UserResponse.Id.ToString());
             
             SoundManager.Instance.PlaySound(SoundName.Button);
             SceneManager.LoadScene("Menu");

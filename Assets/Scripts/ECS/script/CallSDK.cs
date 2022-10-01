@@ -14,7 +14,22 @@ public class CallSDK : MonoBehaviour
 
     public List<NFTCellData> FetchNFTS()
     {
-        return MirrorSDKFake.FetchNfts();
+
+        if (LoginState.HasLogin)
+        {
+
+            List<string> creators = new List<string>();
+            creators.Add(LoginState.WalletAddress);
+                
+            MirrorSDK.FetchNFTsByCreatorAddresses(creators, (Mutiple) =>
+            {
+                Mutiple.Data.nfts[0].attributes
+            });
+            
+            
+        }
+        
+        return null;
         
     }
     

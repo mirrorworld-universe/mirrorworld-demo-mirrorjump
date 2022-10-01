@@ -83,45 +83,6 @@ public class CallSDK : MonoBehaviour
     
     
     
-    private void ImagePreload()
-    {
-        List<string> urls = new List<string>();
-
-        List<string> roles = new List<string>();
-
-        List<string> rarity = new List<string>();
-        
-        roles.Add(Constant.Astronaut);
-        roles.Add(Constant.Samurai);
-        roles.Add(Constant.PirateCaptain);
-        roles.Add(Constant.CatMaid);
-        roles.Add(Constant.Zombie);
-        
-        
-        rarity.Add(Constant.Common);
-        rarity.Add(Constant.Rare);
-        rarity.Add(Constant.Elite);
-        rarity.Add(Constant.Legendary);
-        rarity.Add(Constant.Mythical);
-        
-   
-
-        for (int i = 0; i < roles.Count; i++)
-        {
-            for (int j = 0; j < rarity.Count; j++)
-            {
-                urls.Add(Constant.ImagePrefix+rarity[j]+"_"+roles[i]+".png");
-            }
-        }
-
-        for (int i = 0; i < urls.Count; i++)
-        {
-            ImageLoader.LoadSprite(urls[i]);
-        }
-        
-        
-        
-    }
     
     
     

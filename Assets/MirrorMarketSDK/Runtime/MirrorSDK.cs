@@ -109,14 +109,14 @@ public class MirrorSDK : MonoBehaviour
 
 #if (!(UNITY_IOS) || UNITY_EDITOR) && (!(UNITY_ANDROID) || UNITY_EDITOR)
 
-        MirrorWrapper.Instance.LogFlow("Start login in unity...");
+            MirrorWrapper.Instance.LogFlow("Start login in unity...");
 
-        MirrorWrapper.Instance.GetLoginSession(MirrorWrapper.Instance.debugEmail, (startSuccess) => {
+            MirrorWrapper.Instance.GetLoginSession(MirrorWrapper.Instance.debugEmail, (startSuccess) => {
 
             MonoBehaviour monoBehaviour = MirrorWrapper.Instance.GetMonoBehaviour();
 
             GameObject dialogCanvas = ResourcesUtils.Instance.LoadPrefab("DialogCanvas", monoBehaviour.transform);
-
+            
             MirrorWrapper.Instance.LogFlow("Open login page result:" + startSuccess);
 
         }, action);

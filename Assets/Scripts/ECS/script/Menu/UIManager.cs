@@ -14,9 +14,7 @@ public class UIManager : MonoBehaviour
 
     public void Login()
     {
-        //string apiKey = "mw_testAmRKdRbBsBbIAw3CeMqS9GORmcG5BRUCU4D";
-        //MirrorworldSDK.MirrorSDK.InitSDK(apiKey,gameObject,true,MirrorworldSDK.MirrorEnv.StagingDevNet);
-        MirrorSDK.StartLogin((success)=> {
+        MirrorSDK.StartLogin((LoginResponse)=> {
             SoundManager.Instance.PlaySound(SoundName.Button);
             SceneManager.LoadScene("Menu");
         });

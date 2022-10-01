@@ -32,17 +32,16 @@ namespace MirrorworldSDK.Wrapper
             string url = GetAuthRoot() + urlCompleteLoginWithSession + session;
 
             monoBehaviour.StartCoroutine(Get(url, null, (rawResponseBody) => {
-                
-                
+
                 CommonResponse<LoginResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<LoginResponse>>(rawResponseBody);
-                
-              
+
                 saveKeyParams(responseBody.Data.AccessToken, responseBody.Data.RefreshToken, responseBody.Data.UserResponse);
-                
 
                 action(responseBody);
 
                 bool loginSuccess = responseBody.Code == (long)MirrorResponseCode.Success;
+
+                SaveCurrentUser(responseBody.Data.UserResponse);
 
                 if (loginCb != null) loginCb(responseBody.Data);
             }));
@@ -97,6 +96,47 @@ namespace MirrorworldSDK.Wrapper
         public string GetDebugSession()
         {
             return debugSession;
+        }
+
+        public void DebugOpenWalletPage()
+        {
+            IsLoggedIn((isLogged)=> {
+                if (isLogged) {
+                    string url = GetEntranceRoot() + apiKey;
+                    LogFlow("Will open third browser..."+url);
+                    Application.OpenURL(url);
+                }
+                else
+                {
+                    LogFlow("Please login first.");
+                }
+            });
+        }
+
+        public LoginResponse GetFakeLoginResponse()
+        {
+            if(accessToken == null || accessToken == "")
+            {
+                LogFlow("No access token yet!");
+                return null;
+            }
+            if (refreshToken == null || refreshToken == "")
+            {
+                LogFlow("No refresh token yet!");
+                return null;
+            }
+            if (GetCurrentUser() == null)
+            {
+                LogFlow("No user data yet!");
+                return null;
+            }
+
+            LoginResponse fakeRes = new LoginResponse();
+            fakeRes.AccessToken = accessToken;
+            fakeRes.RefreshToken = refreshToken;
+            fakeRes.UserResponse = GetCurrentUser();
+
+            return fakeRes;
         }
     }
 }

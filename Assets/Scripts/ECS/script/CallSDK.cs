@@ -22,8 +22,9 @@ public class CallSDK : MonoBehaviour
             creators.Add(LoginState.WalletAddress);
                 
             MirrorSDK.FetchNFTsByCreatorAddresses(creators, (Mutiple) =>
-            {
-                Mutiple.Data.nfts[0].attributes
+            { 
+                //Mutiple.Data.nfts[0].attributes
+                    
             });
             
             

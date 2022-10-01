@@ -109,17 +109,28 @@ public class MirrorSDK : MonoBehaviour
 
 #if (!(UNITY_IOS) || UNITY_EDITOR) && (!(UNITY_ANDROID) || UNITY_EDITOR)
 
-            MirrorWrapper.Instance.LogFlow("Start login in unity...");
+        MirrorWrapper.Instance.LogFlow("Start login in unity...");
 
-            MirrorWrapper.Instance.GetLoginSession(MirrorWrapper.Instance.debugEmail, (startSuccess) => {
+        MirrorWrapper.Instance.IsLoggedIn((logged)=> {
+            if (logged)
+            {
+                LoginResponse loginResponse = MirrorWrapper.Instance.GetFakeLoginResponse();
 
-            MonoBehaviour monoBehaviour = MirrorWrapper.Instance.GetMonoBehaviour();
+                if (action != null) action(loginResponse);
+            }
+            else
+            {
+                MirrorWrapper.Instance.GetLoginSession(MirrorWrapper.Instance.debugEmail, (startSuccess) => {
 
-            GameObject dialogCanvas = ResourcesUtils.Instance.LoadPrefab("DialogCanvas", monoBehaviour.transform);
-            
-            MirrorWrapper.Instance.LogFlow("Open login page result:" + startSuccess);
+                    MonoBehaviour monoBehaviour = MirrorWrapper.Instance.GetMonoBehaviour();
 
-        }, action);
+                    GameObject dialogCanvas = ResourcesUtils.Instance.LoadPrefab("DialogCanvas", monoBehaviour.transform);
+
+                    MirrorWrapper.Instance.LogFlow("Open login page result:" + startSuccess);
+
+                }, action);
+            }
+        });
 
 #elif UNITY_ANDROID && !(UNITY_EDITOR)
 
@@ -313,9 +324,9 @@ public class MirrorSDK : MonoBehaviour
     #region market ui
     public static void OpenWalletPage()
     {
-        if (Utils.IsEditor())
+        if (MirrorUtils.IsEditor())
         {
-            MirrorWrapper.Instance.LogFlow("Not supported.");
+            MirrorWrapper.Instance.DebugOpenWalletPage();
         }
         else if (Application.platform == RuntimePlatform.Android)
         {

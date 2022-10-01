@@ -32,6 +32,7 @@ public class NFTDetailsManager : MonoBehaviour
         NFTPackageManager.ClosePackage();
         NFTDetails.SetActive(true);
         DataParser(nftCellData);
+        
     }
 
     public void BackToNFToPackage()
@@ -39,6 +40,7 @@ public class NFTDetailsManager : MonoBehaviour
         SoundManager.Instance.PlaySound(SoundName.Button);
         NFTPackageManager.Package.SetActive(true);
         NFTDetails.SetActive(false);
+        
     }
 
     public void ExitNFTPackage()

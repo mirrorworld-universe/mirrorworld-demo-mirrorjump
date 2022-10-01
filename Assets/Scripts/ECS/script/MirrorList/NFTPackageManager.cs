@@ -39,7 +39,6 @@ public class NFTPackageManager : MonoBehaviour
 
         ListViewDataProvider.DataSource.Clear();
         ListViewDataProvider.DataSource.AddRange(CallSDK.FetchNFTS());
-
         ListViewDataProvider.NFTListView.OnDataSourceChange();
         PageTurningStateUpdate(true);
         Package.SetActive(true);

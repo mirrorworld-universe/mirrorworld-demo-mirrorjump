@@ -24,6 +24,7 @@ public class NftTrade : MonoBehaviour
         CurrentNftCellData = nftCellData;
         SellRoot.SetActive(true);
         SellDataParse();
+        
     }
 
     private void SellDataParse()

@@ -1,6 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using MirrorworldSDK;
+using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
+using Random = UnityEngine.Random;
 
 public class PackageManager : MonoBehaviour
 {
@@ -15,6 +21,8 @@ public class PackageManager : MonoBehaviour
     public ListViewDataProvider ListViewDataProvider;
 
     public TextMeshProUGUI PageNumber;
+
+    private string GenerateUrl = "https://mirror-jump-json.mirrorworld.fun/api/v1/metadata/json";
 
 
     public void OnTurningLeft()
@@ -31,6 +39,12 @@ public class PackageManager : MonoBehaviour
         PageTurningStateUpdate(false);
     }
 
+
+    private void Start()
+    {
+        GenerateRandomData();
+    }
+
     public void OpenPackage()
     {
         SoundManager.Instance.PlaySound(SoundName.Pop);
@@ -41,17 +55,15 @@ public class PackageManager : MonoBehaviour
 
         ListViewDataProvider.DataSource.Add(GenerateDefaultCellData());
 
-
-        if ("false" == PlayerPrefs.GetString("HasMintRandom", "false"))
+        if (null != GenerateRandomCellData())
         {
             ListViewDataProvider.DataSource.Add(GenerateRandomCellData());
         }
-
-
+        
         ListViewDataProvider.NFTListView.OnDataSourceChange();
         PageTurningStateUpdate(true);
-
         Package.SetActive(true);
+        
     }
 
 
@@ -82,42 +94,54 @@ public class PackageManager : MonoBehaviour
 
     private NFTCellData GenerateRandomCellData()
     {
+        if ("false" == PlayerPrefs.GetString("HasMintNFT", "false"))
+        {
+            NFTCellData nftCellData = new NFTCellData();
 
+            DataParsingEntity dataParsingEntity = null;
+            string meteUrl = PlayerPrefs.GetString("MintUrl");
+            StartCoroutine(Post(meteUrl, "", (result) =>
+            {
+               dataParsingEntity =   JsonConvert.DeserializeObject<DataParsingEntity>(result);
+               
+               Debug.LogError(dataParsingEntity.image);
+                
+            }));
+        }
 
+        return null;
+    }
+
+    private void GenerateRandomData()
+    {
         if ("false" == PlayerPrefs.GetString("HasGenerate", "false"))
         {
             RandomData();
             PlayerPrefs.SetString("HasGenerate", "true");
         }
-
-        // RandomData();
-
-
-        NFTCellData nftCellData = new NFTCellData();
-        DataParsingEntity dataParsingEntity = new DataParsingEntity();
-        nftCellData.DataParsingEntity = dataParsingEntity;
-
-        nftCellData.DataParsingEntity.description =
-            "Mirror Jump is our tribute to Doodle Jump, powered by Mirror World SDK. We hope that this game will help players to better understand the fun aspects of Web3 games and help developers to better understand how to use the Mirror World SDK.";
-        nftCellData.DataParsingEntity.attribute = new List<AttributeItem>();
-        AttributeItem attributeItemRare = new AttributeItem();
-        attributeItemRare.trait_type = "Rarity";
-        AttributeItem attributeItemName = new AttributeItem();
-        attributeItemName.trait_type = "Type";
-        nftCellData.DataParsingEntity.attribute.Add(attributeItemRare);
-        nftCellData.DataParsingEntity.attribute.Add(attributeItemName);
-
-
-        // http://metadata-assets.mirrorworld.fun/mirror_jump/images/Rare_Pirate%20Captain.png
-        string imageUrl = Constant.ImagePrefix + PlayerPrefs.GetString("Rarity", "Rare") + "_" +
-                          PlayerPrefs.GetString("name", "Pirate Captain") + ".png";
-        nftCellData.DataParsingEntity.image = imageUrl;
-        nftCellData.DataParsingEntity.attribute[0].value = PlayerPrefs.GetString("Rarity", "Rare");
-        nftCellData.DataParsingEntity.attribute[1].value = PlayerPrefs.GetString("name", "Pirate Captain");
-
-        return nftCellData;
-
-
+        
+        if ("false" == PlayerPrefs.GetString("HasGetMintUrl", "false"))
+        {
+            MintEntity mintEntity = new MintEntity();
+                
+            mintEntity.Rarity = PlayerPrefs.GetString("Rarity");
+            mintEntity.TypeName = PlayerPrefs.GetString("name");
+                
+            var param =  JsonConvert.SerializeObject(mintEntity);
+                
+            StartCoroutine(Post(GenerateUrl, param, (result) =>
+            {
+                    
+                ResultRoot resultRoot =   JsonConvert.DeserializeObject<ResultRoot>(result);
+                     
+                PlayerPrefs.SetString("HasGetMintUrl","true");
+                     
+                PlayerPrefs.SetString("MintUrl",resultRoot.data.json_path);
+                     
+            }));
+        }
+        
+        
     }
 
 
@@ -231,5 +255,26 @@ public class PackageManager : MonoBehaviour
 
 
     }
+    
+    private IEnumerator Post(string url, string messageBody, Action<string> callBack)
+    {
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        MirrorUtils.SetContentTypeHeader(request);
+        byte[] rawRequestBodyToSend = new System.Text.UTF8Encoding().GetBytes(messageBody);
+        request.uploadHandler = new UploadHandlerRaw(rawRequestBodyToSend);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
+
+        string rawResponseBody = request.downloadHandler.text;
+
+        request.Dispose();
+
+        callBack(rawResponseBody);
+    }
+    
+    
+    
+    
 
 }

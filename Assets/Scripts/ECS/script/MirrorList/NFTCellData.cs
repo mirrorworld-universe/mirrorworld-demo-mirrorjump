@@ -33,11 +33,7 @@ public class AttributeItem
  
 public class DataParsingEntity
 {
-    /// <summary>
-    ///   
-    /// </summary>
-    public string ID { get; set; }
-        
+  
     public string name { get; set; }
     /// <summary>
     /// 

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class NFTPackageManager : MonoBehaviour
@@ -33,17 +34,35 @@ public class NFTPackageManager : MonoBehaviour
 
     public void OpenPackage()
     {
+        
         SoundManager.Instance.PlaySound(SoundName.Pop);
-        // 刷新逻辑
-        ListViewDataProvider.NFTListView.SetDataProvider(ListViewDataProvider);
-
-        ListViewDataProvider.DataSource.Clear();
-        ListViewDataProvider.DataSource.AddRange(CallSDK.FetchNFTS());
-        ListViewDataProvider.NFTListView.OnDataSourceChange();
-        PageTurningStateUpdate(true);
-        Package.SetActive(true);
+        CallSDK.FetchNFTS();
 
     }
+
+
+    public void RefreshData( List<NFTCellData> datas)
+    {
+
+        ListViewDataProvider.NFTListView.SetDataProvider(ListViewDataProvider);
+        ListViewDataProvider.DataSource.Clear();
+        
+        if (null != datas && datas.Count > 0)
+        {
+            ListViewDataProvider.DataSource.AddRange(datas);
+            ListViewDataProvider.NFTListView.OnDataSourceChange();
+        }
+        PageTurningStateUpdate(true);
+        Package.SetActive(true);
+        
+    }
+    
+    
+    
+    
+    
+    
+    
 
 
     public void ClosePackage()

@@ -55,7 +55,7 @@ public class NFTDetailsManager : MonoBehaviour
         CurrentMirror = nftCellData;
         SetImage(nftCellData.DataParsingEntity.image,nftHeader);
 
-        nftID.text = nftCellData.DataParsingEntity.ID;
+        nftID.text = nftCellData.DataParsingEntity.name;
 
         nftContent.text = nftCellData.DataParsingEntity.description;
 

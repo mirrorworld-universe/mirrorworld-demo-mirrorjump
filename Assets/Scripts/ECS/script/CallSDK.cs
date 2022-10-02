@@ -1,6 +1,7 @@
 
-using System;
+
 using System.Collections.Generic;
+using MirrorworldSDK;
 using UnityEngine;
 
 public class CallSDK : MonoBehaviour
@@ -10,29 +11,31 @@ public class CallSDK : MonoBehaviour
 
 
     public RoleChange RoleChange;
+
+    public NFTPackageManager NftPackageManager;
+    
+    
   
 
-    public List<NFTCellData> FetchNFTS()
+    public void FetchNFTS()
     {
-
         if (LoginState.HasLogin)
         {
 
             List<string> creators = new List<string>();
             creators.Add(LoginState.WalletAddress);
-                
-            MirrorSDK.FetchNFTsByCreatorAddresses(creators, (Mutiple) =>
-            { 
-                //Mutiple.Data.nfts[0].attributes
-                    
+            
+            MirrorSDK.GetNFTsOwnedByAddress(creators, (Mutiple) =>
+            {
+                Mutiple.Data.nfts[0].
+                List<NFTCellData> datas = new List<NFTCellData>();
+                NftPackageManager.RefreshData(datas);
+
             });
-            
-            
         }
-        
-        return null;
-        
     }
+    
+    
     
     
     // todo Just Simulate the SDK call operation
@@ -63,38 +66,20 @@ public class CallSDK : MonoBehaviour
             MessageAdvice.OnFailure();
         }
     }
-
-    public void ListNFT(NFTCellData nftCellData)
+    
+    
+    private bool Mint ()
     {
-        if (MirrorSDKFake.ListNFT(nftCellData))
+        if (LoginState.HasLogin)
         {
-            MessageAdvice.OnSuccess("Congratulation!\n" +
-                                    "List Successful!");
+            
+          //  MirrorSDK.MintNFT("BXqCckKEidhJUpYrg4u2ocdiDKwJY3WujHvVDPTMf6nL",,":MWJ",Confirmation.Confirmed);
         }
-        else
-        {
-            MessageAdvice.OnFailure();
-        }
-    }
 
-
-    public void TransferNFT(NFTCellData nftCellData)
-    {
-        if (MirrorSDKFake.TransferNFT(nftCellData))
-        {
-            MessageAdvice.OnSuccess("Congratulation!\n" +
-                                    "Transfer Successful!");
-        }
-        else
-        {
-            MessageAdvice.OnFailure();
-        }
+        return false;
+        
+        
     }
-    
-    
-    
-    
-    
     
     
     

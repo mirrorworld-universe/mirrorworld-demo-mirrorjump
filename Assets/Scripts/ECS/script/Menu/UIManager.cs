@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
 
             LoginState.HasLogin = true;
             LoginState.Name = LoginResponse.UserResponse.Username;
-            LoginState.WalletAddress= LoginResponse.UserResponse.SolAddress;
+            LoginState.WalletAddress= LoginResponse.UserResponse.Wallet.SolAddress;
             LoginState.ID =  LoginResponse.UserResponse.Id.ToString();
             
             

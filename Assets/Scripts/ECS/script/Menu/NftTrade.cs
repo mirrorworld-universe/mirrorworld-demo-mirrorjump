@@ -36,9 +36,9 @@ public class NftTrade : MonoBehaviour
         else
         {   
             SetImage(CurrentNftCellData.DataParsingEntity.image,SellHeader);
-            if (null != CurrentNftCellData.DataParsingEntity.ID)
+            if (null != CurrentNftCellData.DataParsingEntity.name)
             {
-                SellNFTID.text = CurrentNftCellData.DataParsingEntity.ID;
+                SellNFTID.text = CurrentNftCellData.DataParsingEntity.name;
             }
         }
         
@@ -55,8 +55,6 @@ public class NftTrade : MonoBehaviour
     // todo SDK Call ListNFT
     public void SellConfirm()
     {
-        // call SDK from CurrentNFTData and input
-        Thread.Sleep(1000);
         
         CloseSell();
         
@@ -100,9 +98,9 @@ public class NftTrade : MonoBehaviour
         {  
             SetImage(CurrentNftCellData.DataParsingEntity.image,ManageHeader);
             
-            if (null != CurrentNftCellData.DataParsingEntity.ID)
+            if (null != CurrentNftCellData.DataParsingEntity.name)
             {
-               ManageNFTID.text = CurrentNftCellData.DataParsingEntity.ID;
+               ManageNFTID.text = CurrentNftCellData.DataParsingEntity.name;
             }
             
             //price
@@ -210,9 +208,9 @@ public class NftTrade : MonoBehaviour
         {  
             SetImage(CurrentNftCellData.DataParsingEntity.image,TransferHeader);
             
-            if (null != CurrentNftCellData.DataParsingEntity.ID)
+            if (null != CurrentNftCellData.DataParsingEntity.name)
             {
-                ManageNFTID.text = CurrentNftCellData.DataParsingEntity.ID;
+                ManageNFTID.text = CurrentNftCellData.DataParsingEntity.name;
             }
         }
     }

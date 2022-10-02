@@ -97,16 +97,29 @@ public class PackageManager : MonoBehaviour
         if ("false" == PlayerPrefs.GetString("HasMintNFT", "false"))
         {
             NFTCellData nftCellData = new NFTCellData();
+            DataParsingEntity dataParsingEntity = new DataParsingEntity();
+            nftCellData.DataParsingEntity = dataParsingEntity;
 
-            DataParsingEntity dataParsingEntity = null;
-            string meteUrl = PlayerPrefs.GetString("MintUrl");
-            StartCoroutine(Post(meteUrl, "", (result) =>
-            {
-               dataParsingEntity =   JsonConvert.DeserializeObject<DataParsingEntity>(result);
-               
-               Debug.LogError(dataParsingEntity.image);
-                
-            }));
+            nftCellData.DataParsingEntity.description =
+                "Mirror Jump is our tribute to Doodle Jump, powered by Mirror World SDK. We hope that this game will help players to better understand the fun aspects of Web3 games and help developers to better understand how to use the Mirror World SDK.";
+            nftCellData.DataParsingEntity.attribute = new List<AttributeItem>();
+            AttributeItem attributeItemRare = new AttributeItem();
+            attributeItemRare.trait_type = "Rarity";
+            AttributeItem attributeItemName = new AttributeItem();
+            attributeItemName.trait_type = "Type";
+            nftCellData.DataParsingEntity.attribute.Add(attributeItemRare);
+            nftCellData.DataParsingEntity.attribute.Add(attributeItemName);
+
+
+            // http://metadata-assets.mirrorworld.fun/mirror_jump/images/Rare_Pirate%20Captain.png
+            string imageUrl = Constant.ImagePrefix + PlayerPrefs.GetString("Rarity", "Rare") + "_" +
+                              PlayerPrefs.GetString("name", "Pirate Captain") + ".png";
+            nftCellData.DataParsingEntity.image = imageUrl;
+            nftCellData.DataParsingEntity.attribute[0].value = PlayerPrefs.GetString("Rarity", "Rare");
+            nftCellData.DataParsingEntity.attribute[1].value = PlayerPrefs.GetString("name", "Pirate Captain");
+
+            return nftCellData;
+          
         }
 
         return null;

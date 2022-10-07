@@ -34,7 +34,7 @@ public class NFTPackageManager : MonoBehaviour
 
     public void OpenPackage()
     {
-        
+    
         SoundManager.Instance.PlaySound(SoundName.Pop);
         CallSDK.FetchNFTS();
 

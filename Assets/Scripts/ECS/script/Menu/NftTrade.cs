@@ -1,4 +1,5 @@
 using System.Threading;
+using MirrorworldSDK;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,12 +19,27 @@ public class NftTrade : MonoBehaviour
 
     public TextMeshProUGUI SellNFTID;
 
+
+    public TMP_InputField SellPrice;
+
+    public TMP_InputField NewPrice;
+    
+    public TMP_InputField Address;
+
+    
+    
+    
+    
+    
+    
+
     public void OpenSell(NFTCellData nftCellData)
     {
 
         CurrentNftCellData = nftCellData;
         SellRoot.SetActive(true);
         SellDataParse();
+        
         
     }
 
@@ -35,10 +51,10 @@ public class NftTrade : MonoBehaviour
         }
         else
         {   
-            SetImage(CurrentNftCellData.DataParsingEntity.image,SellHeader);
-            if (null != CurrentNftCellData.DataParsingEntity.name)
+            SetImage(CurrentNftCellData.NftData.image,SellHeader);
+            if (null != CurrentNftCellData.NftData.name)
             {
-                SellNFTID.text = CurrentNftCellData.DataParsingEntity.name;
+                SellNFTID.text = CurrentNftCellData.NftData.name;
             }
         }
         
@@ -57,6 +73,12 @@ public class NftTrade : MonoBehaviour
     {
         
         CloseSell();
+        float price = float.Parse(SellPrice.text);
+        
+        MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Confirmed,(result) =>
+        {
+            
+        });
         
     }
     
@@ -96,19 +118,20 @@ public class NftTrade : MonoBehaviour
         }
         else
         {  
-            SetImage(CurrentNftCellData.DataParsingEntity.image,ManageHeader);
+            SetImage(CurrentNftCellData.NftData.image,ManageHeader);
             
-            if (null != CurrentNftCellData.DataParsingEntity.name)
+            if (null != CurrentNftCellData.NftData.name)
             {
-               ManageNFTID.text = CurrentNftCellData.DataParsingEntity.name;
+               ManageNFTID.text = CurrentNftCellData.NftData.name;
             }
             
-            //price
+       
             
-            // if (null != CurrentNftCellData.DataParsingEntity.)
-            // {
-            //     ManageNFTID.text = CurrentNftCellData.DataParsingEntity.ID;
-            // }
+             if (null != CurrentNftCellData.NftData)
+             {
+                 CurrentPrice.text = CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count - 1]
+                     .price.ToString();
+             }
             
         }
         
@@ -151,10 +174,15 @@ public class NftTrade : MonoBehaviour
         // call SDK
         if (null != CurrentNftCellData)
         {
-            
+         
+        
+            MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].price,Confirmation.Confirmed,(result) =>
+            {
+              
+            });
         }
         
-        Thread.Sleep(1000);
+       
         
         CloseCancelDialog();
         
@@ -167,9 +195,18 @@ public class NftTrade : MonoBehaviour
         if (null != CurrentNftCellData)
         {
             
+            float price = float.Parse(NewPrice.text);
+        
+            MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Confirmed,(result) =>
+            {
+                
+            
+            });
+            
+            
         }
         
-        Thread.Sleep(1000);
+      
         
         CloseUpdateDialog();
         
@@ -206,11 +243,11 @@ public class NftTrade : MonoBehaviour
         }
         else
         {  
-            SetImage(CurrentNftCellData.DataParsingEntity.image,TransferHeader);
+            SetImage(CurrentNftCellData.NftData.image,TransferHeader);
             
-            if (null != CurrentNftCellData.DataParsingEntity.name)
+            if (null != CurrentNftCellData.NftData.name)
             {
-                ManageNFTID.text = CurrentNftCellData.DataParsingEntity.name;
+                ManageNFTID.text = CurrentNftCellData.NftData.name;
             }
         }
     }
@@ -220,9 +257,15 @@ public class NftTrade : MonoBehaviour
     // todo SDK Call  Transfer
     public void ConfirmTransfer()
     {
-        //call SDK from CurrentNFTData and input
-        Thread.Sleep(1000);
-        CloseTransfer();
+        string address = Address.text.ToString();
+        
+        MirrorSDK.TransferNFT(CurrentNftCellData.NftData.mintAddress,address,(result) =>
+        {
+
+          
+            
+            
+        });
     }
 
     public void CloseTransfer()

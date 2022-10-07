@@ -36,8 +36,7 @@ public class MessageAdvice : MonoBehaviour
    }
    public void ConfirmMint()
    {  
-      
-      
+       
       PlayerPrefs.SetString("HasMintRandom", "true");
       CloseConfirm();
       OnSuccess("Congratulation!\n" +

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MirrorworldSDK.Interfaces;
 using MirrorworldSDK.Models;
 using Newtonsoft.Json;
+using UnityEngine;
 
 namespace MirrorworldSDK.Wrapper
 {
@@ -171,11 +172,14 @@ namespace MirrorworldSDK.Wrapper
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
                 
+                
                 CommonResponse<MultipleNFTsResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<MultipleNFTsResponse>>(response);
 
                 //MultipleNFTsResponse nfts = responseBody.Data;
 
                 callBack(responseBody);
+                
+                
             }));
         }
 
@@ -198,7 +202,7 @@ namespace MirrorworldSDK.Wrapper
             }));
         }
 
-        public void ListNFT(string mintAddress, decimal price,string confirmation, Action<CommonResponse<ListingResponse>> callBack)
+        public void ListNFT(string mintAddress, float price,string confirmation, Action<CommonResponse<ListingResponse>> callBack)
         {
             ListNftOnMarketplaceRequest requestBody = new ListNftOnMarketplaceRequest();
 
@@ -221,7 +225,7 @@ namespace MirrorworldSDK.Wrapper
             }));
         }
 
-        public void UpdateNFTListing(string mintAddress, decimal price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
+        public void UpdateNFTListing(string mintAddress, float price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
         {
             ListNftOnMarketplaceRequest requestBody = new ListNftOnMarketplaceRequest();
 
@@ -244,7 +248,7 @@ namespace MirrorworldSDK.Wrapper
             }));
         }
 
-        public void CancelNFTListing(string mintAddress, decimal price,string confirmation, Action<CommonResponse<ListingResponse>> callBack)
+        public void CancelNFTListing(string mintAddress, float price,string confirmation, Action<CommonResponse<ListingResponse>> callBack)
         {
             CancelNftListOnMarketplaceRequest requestBody = new CancelNftListOnMarketplaceRequest();
 

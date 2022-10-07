@@ -1,6 +1,7 @@
 ﻿
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class NFTDetailsManager : MonoBehaviour
@@ -53,19 +54,20 @@ public class NFTDetailsManager : MonoBehaviour
     private void DataParser(NFTCellData nftCellData)
     {
         CurrentMirror = nftCellData;
-        SetImage(nftCellData.DataParsingEntity.image,nftHeader);
+        SetImage(nftCellData.NftData.image,nftHeader);
 
-        nftID.text = nftCellData.DataParsingEntity.name;
+        nftID.text = nftCellData.NftData.name;
 
-        nftContent.text = nftCellData.DataParsingEntity.description;
+        nftContent.text = nftCellData.NftData.description;
 
 
-        foreach (var item in nftCellData.DataParsingEntity.attribute)
+        foreach (var item in nftCellData.NftData.attributes)
         {
             if (item.trait_type == "Rarity")
             {
                 nftRarity.text = item.value;
             }
+            
         }
      
 
@@ -90,7 +92,7 @@ public class NFTDetailsManager : MonoBehaviour
 
     public void NFTSetToBattle()
     {
-        foreach (var item in CurrentMirror.DataParsingEntity.attribute)
+        foreach (var item in CurrentMirror.NftData.attributes)
         {
             if (item.trait_type == "Type")
             {
@@ -103,26 +105,26 @@ public class NFTDetailsManager : MonoBehaviour
             
         }
         EventDispatcher.Instance.roleChanged?.Invoke();
+        SceneManager.LoadScene("Game");
     }
 
     public void ListNFT()
     {
       
         ExitNFTPackage();
-        
-        // todo 加入是否 listing 的判定
 
-        // if (listing)
-        // {
-        //     NftTrade.OpenManageList(CurrentMirror);
-        // }
-        // else
-        // {
-        //     NftTrade.OpenSell(CurrentMirror);
-        // }
-        
-        
-        NftTrade.OpenManageList(CurrentMirror);
+
+
+        if (CurrentMirror.NftData.listings.Count <= 0)
+        {
+            NftTrade.OpenSell(CurrentMirror);
+        }
+        else
+        {
+            NftTrade.OpenManageList(CurrentMirror);
+        }
+
+    
         
         
     }

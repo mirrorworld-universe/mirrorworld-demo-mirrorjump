@@ -26,9 +26,7 @@ public class StairsFactory : MonoBehaviour
     public GameObject BreakageStairs;
     
     public GameObject  MovingStairs;
-
-    public GameObject MovingStairsOther;
-
+    
     public GameController GameController;
 
     private float DifficultyInterval = 50f;
@@ -52,7 +50,6 @@ public class StairsFactory : MonoBehaviour
         
         if (!IsFirstStairs)
         {
-            // todo Custom random rules from height
             
             if (MirrorObject.transform.position.y < DifficultyInterval)
             {

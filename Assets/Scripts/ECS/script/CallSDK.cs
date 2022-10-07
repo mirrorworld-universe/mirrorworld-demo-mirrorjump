@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using MirrorworldSDK;
+using MirrorworldSDK.Models;
 using UnityEngine;
 
 public class CallSDK : MonoBehaviour
@@ -13,9 +14,15 @@ public class CallSDK : MonoBehaviour
     public RoleChange RoleChange;
 
     public NFTPackageManager NftPackageManager;
-    
-    
+
+
+
+
+
+
+
   
+    
 
     public void FetchNFTS()
     {
@@ -27,10 +34,19 @@ public class CallSDK : MonoBehaviour
             
             MirrorSDK.GetNFTsOwnedByAddress(creators, (Mutiple) =>
             {
-                Mutiple.Data.nfts[0].
-                List<NFTCellData> datas = new List<NFTCellData>();
-                NftPackageManager.RefreshData(datas);
+                 List<NFTCellData> datas = new List<NFTCellData>();
 
+                 for (int i = 0; i < Mutiple.Data.nfts.Count; i++)
+                 {
+                     NFTCellData nftCellData = new NFTCellData();
+                     SingleNFTResponseObj NftData = Mutiple.Data.nfts[i];
+                     nftCellData.NftData = NftData;
+                     datas.Add(nftCellData);
+                 }
+                 
+                 NftPackageManager.RefreshData(datas);
+            
+                
             });
         }
     }
@@ -41,7 +57,7 @@ public class CallSDK : MonoBehaviour
     // todo Just Simulate the SDK call operation
     public void MintNFT(NFTCellData nftCellData)
     {
-        if (MirrorSDKFake.MintNFT(nftCellData))
+        if (Mint())
         {  
             string name = null;
             string rarity = null;
@@ -72,16 +88,42 @@ public class CallSDK : MonoBehaviour
     {
         if (LoginState.HasLogin)
         {
+            string name = "Mirror Jump " + "#" + GetNameNumber(PlayerPrefs.GetString("MintUrl"));
             
-          //  MirrorSDK.MintNFT("BXqCckKEidhJUpYrg4u2ocdiDKwJY3WujHvVDPTMf6nL",,":MWJ",Confirmation.Confirmed);
-        }
+            MirrorSDK.MintNFT("BXqCckKEidhJUpYrg4u2ocdiDKwJY3WujHvVDPTMf6nL",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
+                (result) =>
+                {
+                    PlayerPrefs.SetString("HasMintNFT","true");
+                    
+                });
 
+            return true;
+
+        }
         return false;
-        
-        
     }
     
     
+    
+    private string GetNameNumber(string target)
+    {
+     
+        string res = "";
+        int j = 59;
+        while (j<target.Length)
+        {   
+            j++;
+            
+            if (target[j] == '.')
+            {
+                break;
+            }
+            res += target[j];
+           
+        }
+
+        return res;
+    }
     
     
     

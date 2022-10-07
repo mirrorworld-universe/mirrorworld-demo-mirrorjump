@@ -17,7 +17,16 @@ public class NFTViewCell : MonoBehaviour
         NftCellData = nftCellData;
         Image.sprite = null;
         defaultSprite = null;
-        SetImage(NftCellData.DataParsingEntity.image);
+        
+        if (null != NftCellData.NftData)
+        {
+            SetImage(NftCellData.NftData.image);
+            
+        }
+        else
+        {
+            SetImage(NftCellData.DataParsingEntity.image);
+        }
         
     }
     

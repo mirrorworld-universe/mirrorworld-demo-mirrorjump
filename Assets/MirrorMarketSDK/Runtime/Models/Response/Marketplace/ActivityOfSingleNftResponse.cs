@@ -16,7 +16,10 @@ namespace MirrorworldSDK.Models
     }
 
     public class SingleNFTResponseObj
-    {
+    {  
+        // todo change
+        [JsonProperty("mintAddress")] public string mintAddress;
+        
         [JsonProperty("name")] public string name;
 
         [JsonProperty("sellerFeeBasisPoints")] public decimal sellerFeeBasisPoints;
@@ -35,7 +38,7 @@ namespace MirrorworldSDK.Models
 
         [JsonProperty("attributes")] public List<NFTAttributeObj> attributes;
 
-        [JsonProperty("listings")] public List<string> listings;
+        [JsonProperty("listings")] public List<AuctionActivity> listings;
     }
 
     public class NFTCreatorObj
@@ -73,6 +76,9 @@ namespace MirrorworldSDK.Models
     {
         [JsonProperty("id")]
         public long Id { get; set; }
+        
+        [JsonProperty("price")]
+        public float price { get; set; }
 
         [JsonProperty("mintAddress")]
         public string MintAddress { get; set; }

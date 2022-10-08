@@ -56,7 +56,7 @@ public class GameMenu : MonoBehaviour
         if (IsHeightAdvice)
         {
             FremeCount++;
-            if (FremeCount >= 1000)
+            if (FremeCount >= 120)
             {
                 IsHeightAdvice = false;
                 FremeCount = 0;
@@ -71,7 +71,7 @@ public class GameMenu : MonoBehaviour
         if (IsUnlockAdvice)
         {
             FremeCount++;
-            if (FremeCount >= 1000)
+            if (FremeCount >= 120)
             {
                 IsUnlockAdvice = false;
                 FremeCount = 0;

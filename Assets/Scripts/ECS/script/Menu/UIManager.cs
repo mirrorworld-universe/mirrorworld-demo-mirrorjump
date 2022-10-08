@@ -3,9 +3,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
-{ 
+{
+
+
+    public ThemeManager ThemeManager;
+    
     public void PlayGame()
     {
+        if (ThemeManager.GetCurrentLockState())
+        {   
+            // add some tips 
+            return;
+        }
+        
         SoundManager.Instance.PlaySound(SoundName.Button);
         SceneManager.LoadScene("Game");
     }

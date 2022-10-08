@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,55 @@ public class MapRunSystem : MonoBehaviour
     
     
     
+    // Theme
+    public Sprite[] ThemeBackSprites = new Sprite[4];
+    
+    public Sprite[] ThemeGroudSprites = new Sprite[4];
+    
+    public Sprite[] ThemeCloudSprites = new Sprite[4];
+
+
+    public SpriteRenderer TopSpriteRenderer;
+    
+    public SpriteRenderer MiddleSpriteRenderer;
+    
+    public SpriteRenderer BottomSpriteRenderer;
+    
+    public SpriteRenderer TopCloudSpriteRenderer;
+    
+    public SpriteRenderer MiddleCloudSpriteRenderer;
+    
+    public SpriteRenderer BottomCloudSpriteRenderer;
+
+    public SpriteRenderer GroudSpriteRenderer;
+
+
+    private void Start()
+    {
+        RefreshTheme();
+    }
+
+    private void RefreshTheme()
+    {
+
+        int index = PlayerPrefs.GetInt("CurrentTheme");
+
+        TopSpriteRenderer.sprite = ThemeBackSprites[index];
+        MiddleSpriteRenderer.sprite = ThemeBackSprites[index];
+        BottomSpriteRenderer.sprite = ThemeBackSprites[index];
+        
+        TopCloudSpriteRenderer.sprite = ThemeCloudSprites[index];
+        MiddleCloudSpriteRenderer.sprite = ThemeCloudSprites[index];
+        BottomCloudSpriteRenderer.sprite = ThemeCloudSprites[index];
+
+        GroudSpriteRenderer.sprite = ThemeGroudSprites[index];
+
+    }
+    
+    
+    
+
+
     private BackPanelTag backPanelTag = BackPanelTag.Bottom;
     
     private int TagIndex = 0;
@@ -116,6 +166,9 @@ public class MapRunSystem : MonoBehaviour
         TopBack.transform.eulerAngles =
             new Vector3(TopBack.transform.eulerAngles.x,TopBack.transform.eulerAngles.y, 0);
     }
+    
+    
+    
     
     
     

@@ -212,10 +212,7 @@ public class StairsFactory : MonoBehaviour
     {
         return StairsType.General;
     }
-
-  
-
-
+    
   
 
     private void RandomProps(Transform StairsParent,GameController gameController)
@@ -254,10 +251,7 @@ public class StairsFactory : MonoBehaviour
             GenerateHeighRocket(StairsParent, GameController);
             
         }
-        
-        
-        
-        
+
     }
 
     private void GenerateSpringBoard(Transform StairsParent,GameController gameController)

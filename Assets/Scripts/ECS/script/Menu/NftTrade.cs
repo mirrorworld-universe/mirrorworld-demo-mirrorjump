@@ -72,13 +72,13 @@ public class NftTrade : MonoBehaviour
             catch (Exception e)
             {
                 Console.WriteLine(e);
-              
+                SellReceive.SetActive(false);
             }
 
             if (null != InputSellPrice&&InputSellPrice != 0)
             {
                 SellConfirmButton.interactable = true;
-                SellMask.SetActive(true);
+                SellMask.SetActive(false);
                 SellReceive.SetActive(true);
                 SellReceive.GetComponent<TextMeshProUGUI>().text = "you will receive" + " "+ CalculatePrice(InputSellPrice)+ " SOL";
 
@@ -86,8 +86,8 @@ public class NftTrade : MonoBehaviour
             else
             {
                 SellConfirmButton.interactable = false;
-                SellMask.SetActive(false);
-                SellReceive.SetActive(false);
+                SellMask.SetActive(true);
+              
             }
             
         }
@@ -102,22 +102,21 @@ public class NftTrade : MonoBehaviour
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                NewSellReceive.SetActive(false);
             }
 
             if (null != InputUpdatePrice && InputUpdatePrice != 0)
             {
                UpdateConfirmButton.interactable = true;
-               UpdateMask.SetActive(true);
+               UpdateMask.SetActive(false);
                NewSellReceive.SetActive(true);
-               
                NewSellReceive.GetComponent<TextMeshProUGUI>().text = "you will receive" + " " +CalculatePrice(InputUpdatePrice)+ " SOL";
                
             }
             else
             {
                 UpdateConfirmButton.interactable = false;
-                UpdateMask.SetActive(false);
-                NewSellReceive.SetActive(false);
+                UpdateMask.SetActive(true);
             }
             
             
@@ -131,12 +130,13 @@ public class NftTrade : MonoBehaviour
             if (null != InputTransferAddress && InputTransferAddress!= "" )
             {
                 TransformConfirmButton.interactable = true;
-                TransformMask.SetActive(true);
+                TransformMask.SetActive(false);
             }
             else
             {
                 TransformConfirmButton.interactable = false;
-                TransformMask.SetActive(false);
+                TransformMask.SetActive(true);
+                
             }
             
         }
@@ -164,6 +164,8 @@ public class NftTrade : MonoBehaviour
         SellPrice.text = "";
         SellConfirmButton.interactable = false;
         InputSellPrice = 0f;
+        SellReceive.SetActive(false);
+        SellReceive.GetComponent<TextMeshProUGUI>().text = "";
 
     }
 
@@ -236,6 +238,8 @@ public class NftTrade : MonoBehaviour
         NewPrice.text = "";
         UpdateConfirmButton.interactable = false;
         InputUpdatePrice = 0f;
+        NewSellReceive.SetActive(false);
+        NewSellReceive.GetComponent<TextMeshProUGUI>().text = "";
 
     }
 

@@ -35,7 +35,7 @@ namespace MirrorworldSDK.Models
 
         [JsonProperty("attributes")] public List<NFTAttributeObj> attributes;
 
-        [JsonProperty("listings")] public List<string> listings;
+        [JsonProperty("listings")] public List<AuctionActivity> listings;
     }
 
     public class NFTCreatorObj

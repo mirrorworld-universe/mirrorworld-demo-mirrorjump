@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using cn.sharesdk.unity3d;
 using MirrorworldSDK;
 using MirrorworldSDK.Models;
 using UnityEngine;
@@ -35,6 +36,7 @@ public class UIManager : MonoBehaviour
     public void OpenWallet()
     {
         MirrorSDK.OpenWalletPage();
+        //ShareSDKManager.Instance.Share();
     }
 
     public void ClearAllPersistingData()

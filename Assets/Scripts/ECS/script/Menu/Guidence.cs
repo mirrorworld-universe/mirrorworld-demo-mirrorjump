@@ -53,7 +53,7 @@ public class Guidence : MonoBehaviour
     public void OnFifthStep()
     {
         SoundManager.Instance.PlaySound(SoundName.Button);
-        FourthStepgit.SetActive(false);
+        FourthStep.SetActive(false);
         FinishGuidence.SetActive(true);
     }
 

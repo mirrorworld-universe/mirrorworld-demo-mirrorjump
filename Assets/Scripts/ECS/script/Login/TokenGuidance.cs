@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using MirrorworldSDK;
+using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -89,54 +91,122 @@ public class TokenGuidance : MonoBehaviour
         SecondStep.SetActive(false);
         ThirdStep.SetActive(true);
 
-        StartCoroutine(AirDrop());
+        AirDropNew();
     }
 
-    IEnumerator AirDrop()
+    //IEnumerator AirDrop()
+    //{
+    //    isAirDropping = true;
+    //    //yield return new WaitForSeconds(3);
+
+    //    //OnFourthStep();
+    //    //isAirDropping = false;
+    //    //yield break;
+
+    //    Debug.Log("Start air drop sol to:" + LoginState.WalletAddress);
+
+
+    //    string url = "https://api.devnet.solana.com/";
+    //    AirDropPostData data = new AirDropPostData();
+    //    data.jsonrpc = "2.0";
+    //    data.id = System.Guid.NewGuid().ToString();
+    //    data.method = "requestAirdrop";
+    //    data.param = new List<string>();
+    //    data.param.Add(LoginState.WalletAddress);     // 地址
+    //    data.param.Add("1000000000");
+
+    //    string postData = JsonUtility.ToJson(data);
+    //    //postData = postData.Replace("param", "params");
+    //    postData = postData.Replace("\"1000000000\"", "1000000000");
+    //    using (UnityWebRequest request = UnityWebRequest.Post(url, UnityWebRequest.kHttpVerbPOST))
+    //    {
+    //        request.SetRequestHeader("Content-Type", "application/json");
+    //        request.SetRequestHeader("authority", "api.devnet.solana.com");
+    //        byte[] postBytes = Encoding.UTF8.GetBytes(postData);
+    //        request.uploadHandler = new UploadHandlerRaw(postBytes);
+    //        request.downloadHandler = new DownloadHandlerBuffer();
+    //        yield return request.SendWebRequest();
+
+    //        request.Dispose();
+    //        isAirDropping = false;
+    //        if (request.result != UnityWebRequest.Result.ConnectionError)
+    //        {
+    //            //Debug.Log(response);
+    //            // 空投成功
+    //            //OnFourthStep();
+    //            Debug.Log("air drop sol success");
+    //            StartCoroutine(AirDropTestToken());
+    //        }
+    //        else
+    //        {
+    //            Debug.LogError($"发起网络请求失败： 确认过闸接口 -{request.error}");
+    //        }
+    //    }
+    //}
+
+    private void AirDropNew()
     {
         isAirDropping = true;
-        yield return new WaitForSeconds(3);
-
-        OnFourthStep();
-        isAirDropping = false;
-        yield break;
+        
+        Debug.Log("Start air drop sol to:" + LoginState.WalletAddress);
 
 
         string url = "https://api.devnet.solana.com/";
         AirDropPostData data = new AirDropPostData();
         data.jsonrpc = "2.0";
-        data.id = System.Guid.NewGuid().ToString();
+        data.id = Guid.NewGuid().ToString();
         data.method = "requestAirdrop";
         data.param = new List<string>();
-        data.param.Add("47UkX231ZHpixitg7QrFStawxYDHcKivgvH7Sabv1izY");     // 地址
+        data.param.Add(LoginState.WalletAddress);     // 地址
         data.param.Add("1000000000");
 
-        string postData = JsonUtility.ToJson(data);
-        postData = postData.Replace("param", "params");
-        postData = postData.Replace("\"1000000000\"", "1000000000");
-        using (UnityWebRequest request = UnityWebRequest.Post(url, UnityWebRequest.kHttpVerbPOST))
-        {
-            request.SetRequestHeader("Content-Type", "application/json");
-            request.SetRequestHeader("authority", "api.devnet.solana.com");
-            byte[] postBytes = Encoding.UTF8.GetBytes(postData);
-            request.uploadHandler = new UploadHandlerRaw(postBytes);
-            request.downloadHandler = new DownloadHandlerBuffer();
-            yield return request.SendWebRequest();
-
-            isAirDropping = false;
-            if (request.result != UnityWebRequest.Result.ConnectionError)
+        var rawRequestBody = JsonConvert.SerializeObject(data);
+        rawRequestBody = rawRequestBody.Replace("param", "params");
+        rawRequestBody = rawRequestBody.Replace("\"1000000000\"", "1000000000");
+        StartCoroutine(Post(url, rawRequestBody, (rawResponse) => {
+            Debug.Log("air drop result:"+ rawResponse);
+            AriDropResult result = JsonUtility.FromJson<AriDropResult>(rawResponse);
+            if(result.id != "" && result.id != null)
             {
-                //Debug.Log(response);
-                // 空投成功
+                isAirDropping = false;
                 OnFourthStep();
             }
             else
             {
-                Debug.LogError($"发起网络请求失败： 确认过闸接口 -{request.error}");
+                Debug.LogError("发起网络请求失败");
             }
-        }
+        }));
     }
 
+    class AriDropResult
+    {
+        public string jsonrpc;
+        public string result;
+        public string id;
+    }
+    private IEnumerator Post(string url, string messageBody, Action<string> callBack)
+    {
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("authority", "api.devnet.solana.com");
+
+        MirrorUtils.SetContentTypeHeader(request);
+        MirrorUtils.SetAcceptHeader(request);
+
+
+        byte[] rawRequestBodyToSend = new System.Text.UTF8Encoding().GetBytes(messageBody);
+        request.uploadHandler = new UploadHandlerRaw(rawRequestBodyToSend);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
+
+        string rawResponseBody = request.downloadHandler.text;
+
+        request.Dispose();
+
+        callBack(rawResponseBody);
+    }
 
     public void OnFourthStep()
     {

@@ -16,10 +16,12 @@ public class NftTrade : MonoBehaviour
     public GameObject SellRoot;
 
     public Image SellHeader;
-
-    public TextMeshProUGUI SellReceiveTips;
+    
 
     public TextMeshProUGUI SellNFTID;
+    
+  
+    
 
 
     public TMP_InputField SellPrice;
@@ -354,7 +356,7 @@ public class NftTrade : MonoBehaviour
     
     public Image TransferHeader;
 
-    public TextMeshProUGUI NFTID;
+    public TextMeshProUGUI TransferNFTID;
 
 
 
@@ -381,7 +383,7 @@ public class NftTrade : MonoBehaviour
             
             if (null != CurrentNftCellData.NftData.name)
             {
-                ManageNFTID.text = CurrentNftCellData.NftData.name;
+               TransferNFTID.text = CurrentNftCellData.NftData.name;
             }
         }
     }

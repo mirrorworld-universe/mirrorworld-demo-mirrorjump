@@ -9,6 +9,8 @@ public class Guidence : MonoBehaviour
     public GameObject SecondStep;
 
     public GameObject ThirdStep;
+    
+    public GameObject FourthStep;
 
     public GameObject FinishGuidence;
 
@@ -44,6 +46,14 @@ public class Guidence : MonoBehaviour
     {
         SoundManager.Instance.PlaySound(SoundName.Button);
         ThirdStep.SetActive(false);
+        FourthStep.SetActive(true);
+    }
+
+
+    public void OnFifthStep()
+    {
+        SoundManager.Instance.PlaySound(SoundName.Button);
+        FourthStepgit.SetActive(false);
         FinishGuidence.SetActive(true);
     }
 

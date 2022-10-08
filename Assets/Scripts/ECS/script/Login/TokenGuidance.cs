@@ -44,6 +44,13 @@ public class TokenGuidance : MonoBehaviour
         {
             OnFirstStep();
         }
+        else
+        {
+            if ("false" == PlayerPrefs.GetString("HasGuidence", "false"))
+            {
+                Guidence.OnFirstStep();
+            }
+        }
 
 
     }

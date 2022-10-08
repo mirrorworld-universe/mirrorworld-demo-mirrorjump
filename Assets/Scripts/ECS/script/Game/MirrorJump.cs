@@ -372,14 +372,30 @@ public class MirrorJump : MonoBehaviour
         
         if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSpaceIndex)
         {
+            if (1 == PlayerPrefs.GetInt("ThemeDesertState", 0))
+            {
+                return;
+            }
+            
             PlayerPrefs.SetInt("ThemeDesertState", 1);
             
         }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
-        {
+        {   
+            
+            if (1 ==  PlayerPrefs.GetInt("ThemeSnowState", 0))
+            {
+                return;
+            }
+            
             PlayerPrefs.SetInt("ThemeSnowState", 1);
             
         }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
-        {
+        {    
+            if (1 ==   PlayerPrefs.GetInt("ThemeCyberpunkState", 0))
+            {
+                return;
+            }
+            
              PlayerPrefs.SetInt("ThemeCyberpunkState", 1);
              
         }

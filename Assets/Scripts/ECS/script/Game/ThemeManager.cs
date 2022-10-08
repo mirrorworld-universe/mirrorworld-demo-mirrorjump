@@ -44,6 +44,11 @@ public class ThemeManager : MonoBehaviour
     
     public void ToLeftTheme()
     {
+        if ("false" == PlayerPrefs.GetString("HasGuidence", "false"))
+        {
+            return;
+        }
+        
         if (CurrentThemeIndex - 1 < 0)
         {
             //  do some advice
@@ -57,7 +62,13 @@ public class ThemeManager : MonoBehaviour
     }
     
     public void ToRightTheme()
-    {
+    {   
+        
+        if ("false" == PlayerPrefs.GetString("HasGuidence", "false"))
+        {
+            return;
+        }
+
         if (CurrentThemeIndex +1 > 3)
         {
             //  do some advice

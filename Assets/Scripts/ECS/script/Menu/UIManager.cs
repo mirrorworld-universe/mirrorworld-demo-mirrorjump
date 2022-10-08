@@ -7,6 +7,14 @@ public class UIManager : MonoBehaviour
 
 
     public ThemeManager ThemeManager;
+
+
+    private bool IsDebug = false;
+
+    public void OnDebugClick()
+    {
+        IsDebug = true;
+    }
     
     public void PlayGame()
     {
@@ -22,21 +30,30 @@ public class UIManager : MonoBehaviour
 
     public void Login()
     {
-        MirrorSDK.StartLogin((LoginResponse)=>
-        {
 
-            LoginState.HasLogin = true;
-            LoginState.Name = LoginResponse.UserResponse.Username;
-            LoginState.WalletAddress= LoginResponse.UserResponse.Wallet.SolAddress;
-            LoginState.ID =  LoginResponse.UserResponse.Id.ToString();
-            
-            
-            
+
+        if (IsDebug)
+        {
             SoundManager.Instance.PlaySound(SoundName.Button);
             SceneManager.LoadScene("Menu");
+        }
+        else
+        {
+            MirrorSDK.StartLogin((LoginResponse)=>
+            {
+
+                LoginState.HasLogin = true;
+                LoginState.Name = LoginResponse.UserResponse.Username;
+                LoginState.WalletAddress= LoginResponse.UserResponse.Wallet.SolAddress;
+                LoginState.ID =  LoginResponse.UserResponse.Id.ToString();
             
+                SoundManager.Instance.PlaySound(SoundName.Button);
+                SceneManager.LoadScene("Menu");
             
-        });
+            });
+        }
+        
+       
     }
 
     public void OpenWallet()

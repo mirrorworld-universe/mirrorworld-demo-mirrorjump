@@ -174,8 +174,7 @@ public class PackageDetailsManager : MonoBehaviour
         }
       
         EventDispatcher.Instance.roleChanged?.Invoke();
-        SceneManager.LoadScene("Game");
-        
+
     }
 
 

@@ -23,7 +23,7 @@ public class CallSDK : MonoBehaviour
 
   
     
-
+    // todo fetch nfts
     public void FetchNFTS()
     {
         if (LoginState.HasLogin)
@@ -43,9 +43,7 @@ public class CallSDK : MonoBehaviour
                      nftCellData.NftData = NftData;
                      datas.Add(nftCellData);
                  }
-                 
                  NftPackageManager.RefreshData(datas);
-            
                 
             });
         }
@@ -54,7 +52,7 @@ public class CallSDK : MonoBehaviour
     
     
     
-    // todo Just Simulate the SDK call operation
+    // todo Mint NFT
     public void MintNFT(NFTCellData nftCellData)
     {
         if (Mint())

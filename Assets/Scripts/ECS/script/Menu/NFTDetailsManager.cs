@@ -26,6 +26,10 @@ public class NFTDetailsManager : MonoBehaviour
 
 
     public NftTrade NftTrade;
+
+
+    public TextMeshProUGUI ListContent;
+    
   
     public void OpenNFTPackageDetails(NFTCellData nftCellData)
     {
@@ -33,6 +37,21 @@ public class NFTDetailsManager : MonoBehaviour
         NFTPackageManager.ClosePackage();
         NFTDetails.SetActive(true);
         DataParser(nftCellData);
+        
+        
+        if (CurrentMirror.NftData.listings.Count <= 0)
+        {
+           // list
+           ListContent.text = "List";
+
+        }
+        else
+        {
+           // manage list
+           ListContent.text = "Manage List";
+
+        }
+
         
     }
 
@@ -105,7 +124,7 @@ public class NFTDetailsManager : MonoBehaviour
             
         }
         EventDispatcher.Instance.roleChanged?.Invoke();
-        SceneManager.LoadScene("Game");
+     
     }
 
     public void ListNFT()

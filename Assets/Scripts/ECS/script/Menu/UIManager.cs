@@ -1,15 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using cn.sharesdk.unity3d;
-using MirrorworldSDK;
-using MirrorworldSDK.Models;
+﻿
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
-{ 
+{
+
+
+    public ThemeManager ThemeManager;
+    
     public void PlayGame()
     {
+        if (ThemeManager.GetCurrentLockState())
+        {   
+            // add some tips 
+            return;
+        }
+        
         SoundManager.Instance.PlaySound(SoundName.Button);
         SceneManager.LoadScene("Game");
     }
@@ -21,7 +27,7 @@ public class UIManager : MonoBehaviour
 
             LoginState.HasLogin = true;
             LoginState.Name = LoginResponse.UserResponse.Username;
-            LoginState.WalletAddress= LoginResponse.UserResponse.SolAddress;
+            LoginState.WalletAddress= LoginResponse.UserResponse.Wallet.SolAddress;
             LoginState.ID =  LoginResponse.UserResponse.Id.ToString();
             
             
@@ -36,7 +42,6 @@ public class UIManager : MonoBehaviour
     public void OpenWallet()
     {
         MirrorSDK.OpenWalletPage();
-        //ShareSDKManager.Instance.Share();
     }
 
     public void ClearAllPersistingData()

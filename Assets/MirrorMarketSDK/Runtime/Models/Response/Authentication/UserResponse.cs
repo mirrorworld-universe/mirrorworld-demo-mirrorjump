@@ -1,5 +1,5 @@
-using System;
-using Newtonsoft.Json;
+﻿using System;
+using Unity.Plastic.Newtonsoft.Json;
 
 namespace MirrorworldSDK.Models
 {

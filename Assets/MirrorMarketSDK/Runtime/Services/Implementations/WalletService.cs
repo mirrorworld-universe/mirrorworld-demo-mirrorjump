@@ -3,7 +3,7 @@
 //using MirrorworldSDK;
 //using MirrorworldSDK.Interfaces;
 //using MirrorworldSDK.Models;
-//using Newtonsoft.Json;
+//using Unity.Plastic.Newtonsoft.Json;
 //using UnityEngine.Networking;
 
 //namespace mirrorworld_sdk_unity.Runtime.Services.Implementations

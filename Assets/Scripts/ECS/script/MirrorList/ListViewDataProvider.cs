@@ -60,13 +60,13 @@ public class ListViewDataProvider : MonoBehaviour
         }
 
 
-        public void RemoveSingleMirrorByID(string ID) 
+        public void RemoveSingleMirrorByID(string name) 
         {
             if (null != DataSource)
             {
                 foreach (var mirror in DataSource)
                 {
-                    if (mirror.DataParsingEntity.ID == ID)
+                    if (mirror.DataParsingEntity.name == name)
                     {
                         DataSource.Remove(mirror);
                     }

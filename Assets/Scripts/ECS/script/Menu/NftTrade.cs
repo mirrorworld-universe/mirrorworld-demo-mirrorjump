@@ -1,7 +1,10 @@
-using System.Threading;
+
+using System;
+using MirrorworldSDK;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 
 public class NftTrade : MonoBehaviour
@@ -13,10 +16,145 @@ public class NftTrade : MonoBehaviour
     public GameObject SellRoot;
 
     public Image SellHeader;
-
-    public TextMeshProUGUI SellReceiveTips;
+    
 
     public TextMeshProUGUI SellNFTID;
+    
+  
+    
+
+
+    public TMP_InputField SellPrice;
+
+    public TMP_InputField NewPrice;
+    
+    public TMP_InputField Address;
+
+
+
+    public Button SellConfirmButton;
+
+    public Button TransformConfirmButton;
+    
+    public Button UpdateConfirmButton;
+
+    
+    public GameObject SellMask;
+
+    public GameObject TransformMask;
+    
+    public GameObject UpdateMask;
+
+
+    public GameObject SellReceive;
+
+    public GameObject NewSellReceive;
+    
+    
+
+    private float InputSellPrice;
+
+    private float InputUpdatePrice;
+
+    private string InputTransferAddress;
+    
+    
+
+
+
+    private void Update()
+    {
+        if (SellRoot.activeSelf)
+        {
+            
+            try
+            {
+                InputSellPrice = float.Parse(SellPrice.text);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                SellReceive.SetActive(false);
+            }
+
+            if (null != InputSellPrice&&InputSellPrice != 0)
+            {
+                SellConfirmButton.interactable = true;
+                SellMask.SetActive(false);
+                SellReceive.SetActive(true);
+                SellReceive.GetComponent<TextMeshProUGUI>().text = "you will receive" + " "+ CalculatePrice(InputSellPrice)+ " SOL";
+
+            }
+            else
+            {
+                SellConfirmButton.interactable = false;
+                SellMask.SetActive(true);
+              
+            }
+            
+        }
+
+
+        if (ManageRoot.activeSelf)
+        {
+            try
+            {
+                InputUpdatePrice = float.Parse(NewPrice.text);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                NewSellReceive.SetActive(false);
+            }
+
+            if (null != InputUpdatePrice && InputUpdatePrice != 0)
+            {
+               UpdateConfirmButton.interactable = true;
+               UpdateMask.SetActive(false);
+               NewSellReceive.SetActive(true);
+               NewSellReceive.GetComponent<TextMeshProUGUI>().text = "you will receive" + " " +CalculatePrice(InputUpdatePrice)+ " SOL";
+               
+            }
+            else
+            {
+                UpdateConfirmButton.interactable = false;
+                UpdateMask.SetActive(true);
+            }
+            
+            
+        }
+
+        if (TransferRoot.activeSelf)
+        {
+
+            InputTransferAddress = Address.text;
+        
+            if (null != InputTransferAddress && InputTransferAddress!= "" )
+            {
+                TransformConfirmButton.interactable = true;
+                TransformMask.SetActive(false);
+            }
+            else
+            {
+                TransformConfirmButton.interactable = false;
+                TransformMask.SetActive(true);
+                
+            }
+            
+        }
+        
+        
+        
+        
+    }
+
+
+
+    private string CalculatePrice(float price)
+    {
+        double res = price * 0.9575;
+        return res.ToString("f5");
+    }
 
     public void OpenSell(NFTCellData nftCellData)
     {
@@ -24,7 +162,13 @@ public class NftTrade : MonoBehaviour
         CurrentNftCellData = nftCellData;
         SellRoot.SetActive(true);
         SellDataParse();
-        
+
+        SellPrice.text = "";
+        SellConfirmButton.interactable = false;
+        InputSellPrice = 0f;
+        SellReceive.SetActive(false);
+        SellReceive.GetComponent<TextMeshProUGUI>().text = "";
+
     }
 
     private void SellDataParse()
@@ -35,10 +179,10 @@ public class NftTrade : MonoBehaviour
         }
         else
         {   
-            SetImage(CurrentNftCellData.DataParsingEntity.image,SellHeader);
-            if (null != CurrentNftCellData.DataParsingEntity.ID)
+            SetImage(CurrentNftCellData.NftData.image,SellHeader);
+            if (null != CurrentNftCellData.NftData.name)
             {
-                SellNFTID.text = CurrentNftCellData.DataParsingEntity.ID;
+                SellNFTID.text = CurrentNftCellData.NftData.name;
             }
         }
         
@@ -55,10 +199,14 @@ public class NftTrade : MonoBehaviour
     // todo SDK Call ListNFT
     public void SellConfirm()
     {
-        // call SDK from CurrentNFTData and input
-        Thread.Sleep(1000);
         
         CloseSell();
+        float price = float.Parse(SellPrice.text);
+        
+        MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Confirmed,(result) =>
+        {
+            
+        });
         
     }
     
@@ -88,6 +236,13 @@ public class NftTrade : MonoBehaviour
         ManageRoot.SetActive(true);
      
         ManageDataParse();
+        
+        NewPrice.text = "";
+        UpdateConfirmButton.interactable = false;
+        InputUpdatePrice = 0f;
+        NewSellReceive.SetActive(false);
+        NewSellReceive.GetComponent<TextMeshProUGUI>().text = "";
+
     }
 
     private void ManageDataParse()
@@ -98,19 +253,20 @@ public class NftTrade : MonoBehaviour
         }
         else
         {  
-            SetImage(CurrentNftCellData.DataParsingEntity.image,ManageHeader);
+            SetImage(CurrentNftCellData.NftData.image,ManageHeader);
             
-            if (null != CurrentNftCellData.DataParsingEntity.ID)
+            if (null != CurrentNftCellData.NftData.name)
             {
-               ManageNFTID.text = CurrentNftCellData.DataParsingEntity.ID;
+               ManageNFTID.text = CurrentNftCellData.NftData.name;
             }
             
-            //price
+       
             
-            // if (null != CurrentNftCellData.DataParsingEntity.)
-            // {
-            //     ManageNFTID.text = CurrentNftCellData.DataParsingEntity.ID;
-            // }
+             if (null != CurrentNftCellData.NftData)
+             {
+                 CurrentPrice.text = CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count - 1]
+                     .price.ToString();
+             }
             
         }
         
@@ -132,7 +288,7 @@ public class NftTrade : MonoBehaviour
     public void OpenUpdateDialog()
     {
         ManageRoot.SetActive(false);
-      UpdateDialog.SetActive(true);
+        UpdateDialog.SetActive(true);
     }
 
     public void CloseCancelDialog()
@@ -153,10 +309,13 @@ public class NftTrade : MonoBehaviour
         // call SDK
         if (null != CurrentNftCellData)
         {
-            
+            MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].price,Confirmation.Confirmed,(result) =>
+            {
+              
+            });
         }
         
-        Thread.Sleep(1000);
+       
         
         CloseCancelDialog();
         
@@ -169,9 +328,18 @@ public class NftTrade : MonoBehaviour
         if (null != CurrentNftCellData)
         {
             
+            float price = float.Parse(NewPrice.text);
+        
+            MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Confirmed,(result) =>
+            {
+                
+            
+            });
+            
+            
         }
         
-        Thread.Sleep(1000);
+      
         
         CloseUpdateDialog();
         
@@ -188,7 +356,7 @@ public class NftTrade : MonoBehaviour
     
     public Image TransferHeader;
 
-    public TextMeshProUGUI NFTID;
+    public TextMeshProUGUI TransferNFTID;
 
 
 
@@ -198,7 +366,10 @@ public class NftTrade : MonoBehaviour
         TransferRoot.SetActive(true);
         
         TransferDataParse();
-        
+        Address.text = "";
+        TransformConfirmButton.interactable = false;
+        InputTransferAddress = null;
+
     }
     private void TransferDataParse()
     {
@@ -208,11 +379,11 @@ public class NftTrade : MonoBehaviour
         }
         else
         {  
-            SetImage(CurrentNftCellData.DataParsingEntity.image,TransferHeader);
+            SetImage(CurrentNftCellData.NftData.image,TransferHeader);
             
-            if (null != CurrentNftCellData.DataParsingEntity.ID)
+            if (null != CurrentNftCellData.NftData.name)
             {
-                ManageNFTID.text = CurrentNftCellData.DataParsingEntity.ID;
+               TransferNFTID.text = CurrentNftCellData.NftData.name;
             }
         }
     }
@@ -222,9 +393,12 @@ public class NftTrade : MonoBehaviour
     // todo SDK Call  Transfer
     public void ConfirmTransfer()
     {
-        //call SDK from CurrentNFTData and input
-        Thread.Sleep(1000);
-        CloseTransfer();
+        string address = Address.text.ToString();
+        
+        MirrorSDK.TransferNFT(CurrentNftCellData.NftData.mintAddress,address,(result) =>
+        {
+            
+        });
     }
 
     public void CloseTransfer()

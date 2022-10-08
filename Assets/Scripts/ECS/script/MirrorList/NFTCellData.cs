@@ -1,9 +1,14 @@
 
 using System.Collections.Generic;
+using MirrorworldSDK.Models;
 
 public class NFTCellData
 {
     public DataParsingEntity DataParsingEntity { get; set; }
+    
+    public  SingleNFTResponseObj NftData { get; set; }
+    
+    
     
 }
 
@@ -32,12 +37,12 @@ public class AttributeItem
 }
  
 public class DataParsingEntity
-{
-    /// <summary>
-    ///   
-    /// </summary>
-    public string ID { get; set; }
-        
+{  
+    
+    public string mint_address { get; set; }
+    
+    public string listing { get; set; }
+  
     public string name { get; set; }
     /// <summary>
     /// 

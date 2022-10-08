@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 
 public enum RocketLevel
@@ -36,6 +37,15 @@ public class MirrorJump : MonoBehaviour
     public float SpringForce = 10f;
 
     private float gravity;
+
+
+    private float UnlockHeight;
+
+    private bool IsUnlock = true;
+
+   
+    
+    
 
     private void Awake()
     {
@@ -316,6 +326,7 @@ public class MirrorJump : MonoBehaviour
     {
         rigidbody2D = transform.gameObject.GetComponent<Rigidbody2D>();
         MirrorLocalScale = transform.localScale;
+        SetUnlockedHeight();
     }
 
 
@@ -338,10 +349,85 @@ public class MirrorJump : MonoBehaviour
                 }
             }
 
+            if (IsUnlock)
+            {
+                ThemeLockState();
+            }
+            
         }
 
 
     }
+
+
+    private void ThemeLockState()
+    {
+        if (transform.position.y < UnlockHeight)
+        {
+            return;
+            
+        }
+
+        IsUnlock = false;
+        
+        if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSpaceIndex)
+        {
+            PlayerPrefs.SetInt("ThemeDesertState", 1);
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
+        {
+            PlayerPrefs.SetInt("ThemeSnowState", 1);
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
+        {
+             PlayerPrefs.SetInt("ThemeCyberpunkState", 1);
+             
+        }
+        
+        
+        // notify
+        GameMenu.OpenUnlockAdvice();
+        
+    }
+
+
+    private void SetUnlockedHeight()
+    {
+        
+        
+        if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSpaceIndex)
+        {
+            UnlockHeight = 45f;
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
+        {
+            UnlockHeight = 45f;
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
+        {
+            UnlockHeight = 45f;
+        }
+        
+        // }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
+        // {
+        //     
+        // }
+        
+
+        IsUnlock = true;
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private void FixedUpdate()
     {
 #if UNITY_EDITOR

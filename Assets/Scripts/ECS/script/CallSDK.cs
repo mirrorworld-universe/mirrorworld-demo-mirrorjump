@@ -1,6 +1,8 @@
 
-using System;
+
 using System.Collections.Generic;
+using MirrorworldSDK;
+using MirrorworldSDK.Models;
 using UnityEngine;
 
 public class CallSDK : MonoBehaviour
@@ -10,35 +12,50 @@ public class CallSDK : MonoBehaviour
 
 
     public RoleChange RoleChange;
+
+    public NFTPackageManager NftPackageManager;
+
+
+
+
+
+
+
   
-
-    public List<NFTCellData> FetchNFTS()
+    
+    // todo fetch nfts
+    public void FetchNFTS()
     {
-
         if (LoginState.HasLogin)
         {
 
             List<string> creators = new List<string>();
             creators.Add(LoginState.WalletAddress);
+            
+            MirrorSDK.GetNFTsOwnedByAddress(creators, (Mutiple) =>
+            {
+                 List<NFTCellData> datas = new List<NFTCellData>();
+
+                 for (int i = 0; i < Mutiple.Data.nfts.Count; i++)
+                 {
+                     NFTCellData nftCellData = new NFTCellData();
+                     SingleNFTResponseObj NftData = Mutiple.Data.nfts[i];
+                     nftCellData.NftData = NftData;
+                     datas.Add(nftCellData);
+                 }
+                 NftPackageManager.RefreshData(datas);
                 
-            MirrorSDK.FetchNFTsByCreatorAddresses(creators, (Mutiple) =>
-            { 
-                //Mutiple.Data.nfts[0].attributes
-                    
             });
-            
-            
         }
-        
-        return null;
-        
     }
     
     
-    // todo Just Simulate the SDK call operation
+    
+    
+    // todo Mint NFT
     public void MintNFT(NFTCellData nftCellData)
     {
-        if (MirrorSDKFake.MintNFT(nftCellData))
+        if (Mint())
         {  
             string name = null;
             string rarity = null;
@@ -63,40 +80,48 @@ public class CallSDK : MonoBehaviour
             MessageAdvice.OnFailure();
         }
     }
-
-    public void ListNFT(NFTCellData nftCellData)
+    
+    
+    private bool Mint ()
     {
-        if (MirrorSDKFake.ListNFT(nftCellData))
+        if (LoginState.HasLogin)
         {
-            MessageAdvice.OnSuccess("Congratulation!\n" +
-                                    "List Successful!");
-        }
-        else
-        {
-            MessageAdvice.OnFailure();
-        }
-    }
+            string name = "Mirror Jump " + "#" + GetNameNumber(PlayerPrefs.GetString("MintUrl"));
+            
+            MirrorSDK.MintNFT("BXqCckKEidhJUpYrg4u2ocdiDKwJY3WujHvVDPTMf6nL",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
+                (result) =>
+                {
+                    PlayerPrefs.SetString("HasMintNFT","true");
+                    
+                });
 
+            return true;
 
-    public void TransferNFT(NFTCellData nftCellData)
-    {
-        if (MirrorSDKFake.TransferNFT(nftCellData))
-        {
-            MessageAdvice.OnSuccess("Congratulation!\n" +
-                                    "Transfer Successful!");
         }
-        else
-        {
-            MessageAdvice.OnFailure();
-        }
+        return false;
     }
     
     
     
-    
-    
-    
-    
+    private string GetNameNumber(string target)
+    {
+     
+        string res = "";
+        int j = 59;
+        while (j<target.Length)
+        {   
+            j++;
+            
+            if (target[j] == '.')
+            {
+                break;
+            }
+            res += target[j];
+           
+        }
+
+        return res;
+    }
     
     
     

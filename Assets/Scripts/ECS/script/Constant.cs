@@ -4,6 +4,13 @@
     {   
         
         
+        //Theme 
+        public static int ThemeSpaceIndex = 0;
+        public static int ThemeDesertIndex = 1;
+        public static int ThemeSnowIndex = 2;
+        public static int ThemeCyberpunkIndex = 3;
+        
+        
         //Rarity
         public static string Common = "Common";
         public static string Rare = "Rare";

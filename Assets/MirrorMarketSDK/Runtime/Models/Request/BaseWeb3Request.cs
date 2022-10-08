@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Newtonsoft.Json;
+using Unity.Plastic.Newtonsoft.Json;
 
 public class BaseWeb3Request
 {

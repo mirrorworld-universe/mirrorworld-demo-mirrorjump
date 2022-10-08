@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -16,9 +17,70 @@ public class GameMenu : MonoBehaviour
 
     public TextMeshProUGUI HighScore;
 
+
+    public GameObject UnlockHeightAdvice;
+
+    public GameObject UnlockAdvice;
+
+    private bool IsHeightAdvice = false;
+    private bool IsUnlockAdvice = false;
+    private int FremeCount = 0;
+
     private void Start()
     {
         HighScore.text = "0";
+        OpenUnlockHeightAdvice();
+    }
+
+    private void OpenUnlockHeightAdvice()
+    {
+        IsHeightAdvice = true;
+        FremeCount = 0;
+        UnlockHeightAdvice.SetActive(true);
+    }
+    
+    
+    public void OpenUnlockAdvice()
+    {
+        IsUnlockAdvice = true;
+        FremeCount = 0;
+        UnlockAdvice.SetActive(true);
+        
+    }
+
+    
+
+
+    private void Update()
+    {
+        if (IsHeightAdvice)
+        {
+            FremeCount++;
+            if (FremeCount >= 1000)
+            {
+                IsHeightAdvice = false;
+                FremeCount = 0;
+                UnlockHeightAdvice.SetActive(false);
+            }
+            
+            
+            
+        }
+        
+        
+        if (IsUnlockAdvice)
+        {
+            FremeCount++;
+            if (FremeCount >= 1000)
+            {
+                IsUnlockAdvice = false;
+                FremeCount = 0;
+                UnlockAdvice.SetActive(false);
+            }
+            
+        }
+        
+        
     }
 
 

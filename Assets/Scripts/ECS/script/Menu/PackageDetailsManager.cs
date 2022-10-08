@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PackageDetailsManager : MonoBehaviour
@@ -139,18 +140,41 @@ public class PackageDetailsManager : MonoBehaviour
 
     public void SetToBattle()
     {
-        foreach (var item in CurrentMirror.DataParsingEntity.attribute)
+
+        if (null == CurrentMirror.DataParsingEntity)
         {
-            if (item.trait_type == "Type")
+            foreach (var item in CurrentMirror.NftData.attributes)
             {
-                PlayerPrefs.SetString("CurrentRole",item.value);
+                if (item.trait_type == "Type")
+                {
+                    PlayerPrefs.SetString("CurrentRole",item.value);
                 
-            }else if (item.trait_type == "Rarity")
-            {
-                PlayerPrefs.SetString("CurrentRarity",item.value);
+                }else if (item.trait_type == "Rarity")
+                {
+                    PlayerPrefs.SetString("CurrentRarity",item.value);
+                }
             }
+            
         }
+        else
+        {
+            
+            foreach (var item in CurrentMirror.DataParsingEntity.attribute)
+            {
+                if (item.trait_type == "Type")
+                {
+                    PlayerPrefs.SetString("CurrentRole",item.value);
+                
+                }else if (item.trait_type == "Rarity")
+                {
+                    PlayerPrefs.SetString("CurrentRarity",item.value);
+                }
+            }
+            
+        }
+      
         EventDispatcher.Instance.roleChanged?.Invoke();
+
     }
 
 

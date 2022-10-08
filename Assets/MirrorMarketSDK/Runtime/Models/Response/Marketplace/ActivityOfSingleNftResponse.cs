@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using Unity.Plastic.Newtonsoft.Json;
 
 namespace MirrorworldSDK.Models
 {
@@ -16,7 +16,10 @@ namespace MirrorworldSDK.Models
     }
 
     public class SingleNFTResponseObj
-    {
+    {  
+        // todo change
+        [JsonProperty("mintAddress")] public string mintAddress;
+        
         [JsonProperty("name")] public string name;
 
         [JsonProperty("sellerFeeBasisPoints")] public decimal sellerFeeBasisPoints;
@@ -73,6 +76,9 @@ namespace MirrorworldSDK.Models
     {
         [JsonProperty("id")]
         public long Id { get; set; }
+        
+        [JsonProperty("price")]
+        public float price { get; set; }
 
         [JsonProperty("mintAddress")]
         public string MintAddress { get; set; }

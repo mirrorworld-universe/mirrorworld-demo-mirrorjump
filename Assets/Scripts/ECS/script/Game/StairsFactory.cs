@@ -26,9 +26,7 @@ public class StairsFactory : MonoBehaviour
     public GameObject BreakageStairs;
     
     public GameObject  MovingStairs;
-
-    public GameObject MovingStairsOther;
-
+    
     public GameController GameController;
 
     private float DifficultyInterval = 50f;
@@ -52,7 +50,6 @@ public class StairsFactory : MonoBehaviour
         
         if (!IsFirstStairs)
         {
-            // todo Custom random rules from height
             
             if (MirrorObject.transform.position.y < DifficultyInterval)
             {
@@ -215,10 +212,7 @@ public class StairsFactory : MonoBehaviour
     {
         return StairsType.General;
     }
-
-  
-
-
+    
   
 
     private void RandomProps(Transform StairsParent,GameController gameController)
@@ -257,10 +251,7 @@ public class StairsFactory : MonoBehaviour
             GenerateHeighRocket(StairsParent, GameController);
             
         }
-        
-        
-        
-        
+
     }
 
     private void GenerateSpringBoard(Transform StairsParent,GameController gameController)

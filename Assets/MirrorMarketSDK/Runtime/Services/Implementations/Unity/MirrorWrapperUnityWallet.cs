@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using MirrorworldSDK.Interfaces;
 using MirrorworldSDK.Models;
-using Newtonsoft.Json;
+using Unity.Plastic.Newtonsoft.Json;
 
 namespace MirrorworldSDK.Wrapper
 {
@@ -101,5 +101,10 @@ namespace MirrorworldSDK.Wrapper
 
             }));
         }
+
+
+        
+        
+        
     }
 }

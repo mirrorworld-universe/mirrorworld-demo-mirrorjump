@@ -33,10 +33,34 @@ public class GameMenu : MonoBehaviour
     }
 
     private void OpenUnlockHeightAdvice()
-    {
+    {   
+        
+        if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSpaceIndex)
+        {
+            if (1 == PlayerPrefs.GetInt("ThemeDesertState", 1))
+            {
+                return;
+            }
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
+        {
+            if (1 ==  PlayerPrefs.GetInt("ThemeSnowState", 1))
+            {
+                return;
+            }
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
+        {    
+            if (1 ==   PlayerPrefs.GetInt("ThemeCyberpunkState", 1))
+            {
+                return;
+            }
+        }
+        
         IsHeightAdvice = true;
         FremeCount = 0;
         UnlockHeightAdvice.SetActive(true);
+        
+        
+        
     }
     
     

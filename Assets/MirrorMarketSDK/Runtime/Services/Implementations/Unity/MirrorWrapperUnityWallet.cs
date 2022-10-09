@@ -57,7 +57,7 @@ namespace MirrorworldSDK.Wrapper
             }));
         }
 
-        public void TransferSol(ulong amout, string publicKey,string confirmation, Action<CommonResponse<TransferSolResponse>> callBack)
+        public void TransferSol(float amout, string publicKey,string confirmation, Action<CommonResponse<TransferSolResponse>> callBack)
         {
             string url = GetAPIRoot() + urlTransferSolToAnotherAddress;
 

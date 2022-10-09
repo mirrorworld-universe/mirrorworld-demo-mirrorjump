@@ -8,6 +8,6 @@ namespace MirrorworldSDK.Models
     {
         [JsonProperty("to_publickey")] public string ToPublicKey;
 
-        [JsonProperty("amount")] public ulong Amount;
+        [JsonProperty("amount")] public float Amount;
     }
 }

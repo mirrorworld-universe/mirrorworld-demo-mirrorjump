@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using MirrorworldSDK.Interfaces;
 using MirrorworldSDK.Models;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 using UnityEngine.Networking;
 
 namespace MirrorworldSDK.Wrapper

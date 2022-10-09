@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MirrorworldSDK.Models;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 using UnityEngine;
 
 /**

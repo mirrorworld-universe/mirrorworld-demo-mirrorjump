@@ -171,7 +171,7 @@ public class TokenGuidance : MonoBehaviour
         rawRequestBody = rawRequestBody.Replace("param", "params");
         rawRequestBody = rawRequestBody.Replace("\"1000000000\"", "1000000000");
         StartCoroutine(Post(url, rawRequestBody, (rawResponse) => {
-            Debug.Log("air drop result:"+ rawResponse);
+            Debug.Log("air drop result:"+ rawResponse.ToString());
             AriDropResult result = JsonUtility.FromJson<AriDropResult>(rawResponse);
             if(result.id != "" && result.id != null)
             {

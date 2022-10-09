@@ -35,6 +35,8 @@ public class PackageDetailsManager : MonoBehaviour
     
     public CallSDK CallSDK;
 
+    public MessageAdvice MessageAdvice;
+
   
     public void OpenPackageDetails(NFTCellData nftCellData,bool IsCanMint)
     {
@@ -178,11 +180,19 @@ public class PackageDetailsManager : MonoBehaviour
     }
 
 
+    public void OpenConfirmMintNFT()
+    {
+        MessageAdvice.OpenConfirm();
+        ExitPackage();
+    }
+
+
     public void MintNFT()
     {
         CallSDK.MintNFT(CurrentMirror);
-        ExitPackage();
     }
+    
+    
     
     
 

@@ -18,6 +18,8 @@ public class MessageAdvice : MonoBehaviour
    
    public GameObject Confirm;
 
+   public PackageDetailsManager PackageDetailsManager;
+
 
 
 
@@ -35,13 +37,10 @@ public class MessageAdvice : MonoBehaviour
         Confirm.SetActive(false);
    }
    public void ConfirmMint()
-   {  
+   { 
+       CloseConfirm();
        
-      PlayerPrefs.SetString("HasMintRandom", "true");
-      CloseConfirm();
-      OnSuccess("Congratulation!\n" +
-                "Mint Successful!");
-      
+       PackageDetailsManager.MintNFT();
    }
    
    

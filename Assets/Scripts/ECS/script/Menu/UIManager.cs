@@ -12,12 +12,16 @@ public class UIManager : MonoBehaviour
     private bool IsDebug = false;
 
     public void OnDebugClick()
-    {
+    {   
+        
+        
+        Debug.LogWarning("click");
         IsDebug = true;
+        
     }
     
     public void PlayGame()
-    {
+    {    
         if (ThemeManager.GetCurrentLockState())
         {   
             // add some tips 
@@ -30,7 +34,8 @@ public class UIManager : MonoBehaviour
 
     public void Login()
     {
-
+        
+       
 
         if (IsDebug)
         {
@@ -38,15 +43,17 @@ public class UIManager : MonoBehaviour
             SceneManager.LoadScene("Menu");
         }
         else
-        {
+        {   
+            
+         
             MirrorSDK.StartLogin((LoginResponse)=>
             {
-
+                Debug.LogWarning("---------"+LoginResponse.UserResponse.Wallet.SolAddress);
+                
                 LoginState.HasLogin = true;
                 LoginState.Name = LoginResponse.UserResponse.Username;
                 LoginState.WalletAddress= LoginResponse.UserResponse.Wallet.SolAddress;
                 LoginState.ID =  LoginResponse.UserResponse.Id.ToString();
-            
                 SoundManager.Instance.PlaySound(SoundName.Button);
                 SceneManager.LoadScene("Menu");
             

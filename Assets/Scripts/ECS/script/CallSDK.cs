@@ -15,6 +15,8 @@ public class CallSDK : MonoBehaviour
 
     public NFTPackageManager NftPackageManager;
 
+    private NFTCellData NftCellData;
+
 
 
 
@@ -52,14 +54,44 @@ public class CallSDK : MonoBehaviour
     
     
     
-    // todo Mint NFT
-    public void MintNFT(NFTCellData nftCellData)
+   // todo transfer token
+    public void MintNFTResult(bool IsSuccess)
     {
-        if (Mint())
-        {  
+        if (IsSuccess)
+        {
+            // transfer token
+            MirrorSDK.TransferSol(0.5,"qS6JW1CKQgpwZU6jG5JpXL3Q4EDMoDD5DWacPEsNZoe",Confirmation.Confirmed, (result) =>
+            {
+                if (result.Status == "success")
+                {
+                    FinishedMint(true);
+                }
+                else
+                {
+                    FinishedMint(false);
+                }
+                
+                
+            });
+            
+            
+        }
+        else
+        {
+            MessageAdvice.OnFailure();
+        }
+        
+    }
+
+
+    private void FinishedMint(bool IsSuccess)
+    {
+
+        if (IsSuccess)
+        {
             string name = null;
             string rarity = null;
-            foreach (var item in nftCellData.DataParsingEntity.attribute)
+            foreach (var item in NftCellData.DataParsingEntity.attribute)
             {
                 if (item.trait_type == "Rarity")
                 {
@@ -72,18 +104,26 @@ public class CallSDK : MonoBehaviour
             }
             RoleChange.OnRoleChange(name,rarity);
             
-            MessageAdvice.OpenConfirm();
-
+            PlayerPrefs.SetString("HasMintRandom", "true");
+            
+            PlayerPrefs.SetString("HasMintNFT","true");
+            
+            MessageAdvice.OnSuccess("Successful!");
+            
         }
         else
         {
             MessageAdvice.OnFailure();
         }
+        
     }
     
     
-    private bool Mint ()
+    // todo Mint NFT
+    public void MintNFT (NFTCellData nftCellData)
     {
+        NftCellData = nftCellData;
+        
         if (LoginState.HasLogin)
         {
             string name = "Mirror Jump " + "#" + GetNameNumber(PlayerPrefs.GetString("MintUrl"));
@@ -91,14 +131,21 @@ public class CallSDK : MonoBehaviour
             MirrorSDK.MintNFT("BXqCckKEidhJUpYrg4u2ocdiDKwJY3WujHvVDPTMf6nL",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
                 (result) =>
                 {
-                    PlayerPrefs.SetString("HasMintNFT","true");
-                    
+                   
+
+                   if (result.Status == "success")
+                   {
+                       MintNFTResult(true);
+                   }
+                   else
+                   {
+                       MintNFTResult(false);
+                   }
+                   
                 });
-
-            return true;
-
+            
         }
-        return false;
+       
     }
     
     

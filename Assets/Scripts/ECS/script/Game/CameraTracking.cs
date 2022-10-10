@@ -28,12 +28,7 @@ public class CameraTracking : MonoBehaviour
    
    private bool IsStartFall = false;
 
-
-
-
-
-
-   private void FixedUpdate()
+    private void FixedUpdate()
    {
       if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
       {

@@ -1,4 +1,4 @@
-
+﻿
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,6 +44,7 @@ public class ThemeManager : MonoBehaviour
     
     public void ToLeftTheme()
     {
+        SoundManager.Instance.PlaySound(SoundName.Button);
         if ("false" == PlayerPrefs.GetString("HasGuidence", "false"))
         {
             return;
@@ -62,8 +63,8 @@ public class ThemeManager : MonoBehaviour
     }
     
     public void ToRightTheme()
-    {   
-        
+    {
+        SoundManager.Instance.PlaySound(SoundName.Button);
         if ("false" == PlayerPrefs.GetString("HasGuidence", "false"))
         {
             return;
@@ -82,6 +83,7 @@ public class ThemeManager : MonoBehaviour
     
     private void RefreshLockState()
     {
+        SoundManager.Instance.PlaySound(SoundName.TurnPage);
         int SpriteIndex = PlayerPrefs.GetInt("CurrentTheme");
         
         ThemeBack.gameObject.GetComponent<Image>().sprite = ThemeBackSprites[SpriteIndex];

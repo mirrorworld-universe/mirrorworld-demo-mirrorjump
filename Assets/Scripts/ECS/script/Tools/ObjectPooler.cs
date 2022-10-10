@@ -35,6 +35,7 @@ public class ObjectPooler : MonoSingleton<ObjectPooler>
         }
     }
 
+    // hideTime = -1时，不定时隐藏
     public GameObject SpawnFromPool(string tag, Vector3 position,Quaternion rotation, float hideTime)
     {
         if(!poolDictionary.ContainsKey(tag))
@@ -58,6 +59,10 @@ public class ObjectPooler : MonoSingleton<ObjectPooler>
 
     IEnumerator HideItem(GameObject obj, float time)
     {
+        if(time < 0)
+        {
+            yield break;
+        }
         yield return new WaitForSeconds(time);
         obj.SetActive(false);
     }

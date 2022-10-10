@@ -72,9 +72,9 @@ public class GameController : MonoBehaviour
 
     private void GetHeightScore()
     {
-        if (MirrorObject.transform.position.y > MaxHeight)
+        if (MirrorObject.transform.position.y* GlobalDef.heightCoefficient > MaxHeight)
         {
-            MaxHeight = MirrorObject.transform.position.y;
+            MaxHeight = MirrorObject.transform.position.y * GlobalDef.heightCoefficient;
             //
             GameMenu.SetHighScore( MaxHeight.ToString("f1"));
         }

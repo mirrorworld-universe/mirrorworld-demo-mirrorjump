@@ -67,10 +67,7 @@ public class HighRocket : ItemBase
 
             if (RecoveryLine - transform.position.y >= HeightOffset)
             {
-                if (!GetComponent<AudioSource>().isPlaying)
-                {
-                    DestroyStairs();
-                }
+                DestroyStairs();
             }
         }
        

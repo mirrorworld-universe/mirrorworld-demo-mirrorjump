@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -145,7 +145,10 @@ public class MapRunSystem : MonoBehaviour
         }
 
         gameObject.transform.position = Position;
-        
+
+        // 设置高度线
+        // TODO
+        HeightDisplayManager.Instance.GenerateHeightNumber(gameObject.transform.position.y * GlobalDef.heightCoefficient);
     }
 
 
@@ -165,6 +168,12 @@ public class MapRunSystem : MonoBehaviour
             new Vector3(ButtomBack.transform.eulerAngles.x, ButtomBack.transform.eulerAngles.y, 0);
         TopBack.transform.eulerAngles =
             new Vector3(TopBack.transform.eulerAngles.x,TopBack.transform.eulerAngles.y, 0);
+
+        HeightDisplayManager.Instance.GenerateFirst(0);
+
+        HeightDisplayManager.Instance.GenerateHeightNumber(ButtomBack.transform.position.y * GlobalDef.heightCoefficient);
+        HeightDisplayManager.Instance.GenerateHeightNumber(MiddleBack.transform.position.y * GlobalDef.heightCoefficient);
+        HeightDisplayManager.Instance.GenerateHeightNumber(TopBack.transform.position.y * GlobalDef.heightCoefficient);
     }
     
     

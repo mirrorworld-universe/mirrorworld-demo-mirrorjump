@@ -19,6 +19,9 @@ public class NftTrade : MonoBehaviour
     
 
     public TextMeshProUGUI SellNFTID;
+
+
+    public MessageAdvice MessageAdvice;
     
   
     
@@ -201,11 +204,22 @@ public class NftTrade : MonoBehaviour
     {
         
         CloseSell();
+        MessageAdvice.OpenWaitPanel("Listing Now");
+        
         float price = float.Parse(SellPrice.text);
         
-        MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Confirmed,(result) =>
+        MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Finalized,(result) =>
         {
-            
+            if (result.Status == "success")
+            {
+                MessageAdvice.ConfrimCloseWaitPanel();
+                MessageAdvice.OnSuccess("successful!");
+            }
+            else
+            {
+                MessageAdvice.ConfrimCloseWaitPanel();
+                MessageAdvice.OnFailure();
+            }
         });
         
     }
@@ -227,6 +241,9 @@ public class NftTrade : MonoBehaviour
     public GameObject CancelDialog;
 
     public GameObject UpdateDialog;
+
+    public TextMeshProUGUI UpdateDialogTips;
+    
     
     
     public void OpenManageList(NFTCellData nftCellData)
@@ -289,6 +306,7 @@ public class NftTrade : MonoBehaviour
     {
         ManageRoot.SetActive(false);
         UpdateDialog.SetActive(true);
+        UpdateDialogTips.text = "Are you want to change\n the price to " + InputUpdatePrice.ToString() + " SOL?";
     }
 
     public void CloseCancelDialog()
@@ -307,17 +325,30 @@ public class NftTrade : MonoBehaviour
     public void CancelList()
     {
         // call SDK
+        CloseCancelDialog();
+        MessageAdvice.OpenWaitPanel("Canceling List Now");
+        
         if (null != CurrentNftCellData)
         {
-            MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].price,Confirmation.Confirmed,(result) =>
+            MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].price,Confirmation.Finalized,(result) =>
             {
-              
+                if (result.Status == "success")
+                {
+                    MessageAdvice.ConfrimCloseWaitPanel();
+                    MessageAdvice.OnSuccess("successful!");
+                }
+                else
+                {
+                    MessageAdvice.ConfrimCloseWaitPanel();
+                    MessageAdvice.OnFailure();
+                }
+                
             });
         }
         
        
         
-        CloseCancelDialog();
+     
         
         
     }
@@ -326,13 +357,26 @@ public class NftTrade : MonoBehaviour
     public void UpdatePrice()
     {
         if (null != CurrentNftCellData)
-        {
+        {   
+            
+            CloseUpdateDialog();
+            MessageAdvice.OpenWaitPanel("Changing New Price Now");
             
             float price = float.Parse(NewPrice.text);
         
-            MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Confirmed,(result) =>
+            MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Finalized,(result) =>
             {
-                string me = result.Message;
+                if (result.Status == "success")
+                {
+                    MessageAdvice.ConfrimCloseWaitPanel();
+                    MessageAdvice.OnSuccess("successful!");
+                }
+                else
+                {
+                    MessageAdvice.ConfrimCloseWaitPanel();
+                    MessageAdvice.OnFailure();
+                }
+
             });
             
             
@@ -340,7 +384,6 @@ public class NftTrade : MonoBehaviour
         
       
         
-        CloseUpdateDialog();
         
     }
     
@@ -391,14 +434,33 @@ public class NftTrade : MonoBehaviour
     
     // todo SDK Call  Transfer
     public void ConfirmTransfer()
-    {
+    {   
+        
+        CloseTransfer();
+        MessageAdvice.OpenWaitPanel("Transfer now");
+        
         string address = Address.text.ToString();
         
         MirrorSDK.TransferNFT(CurrentNftCellData.NftData.mintAddress,address,(result) =>
         {
-            CloseTransfer();
+            if (result.Status == "success")
+            {
+                MessageAdvice.ConfrimCloseWaitPanel();
+                MessageAdvice.OnSuccess("successful!");
+            }
+            else
+            {
+                MessageAdvice.ConfrimCloseWaitPanel();
+                MessageAdvice.OnFailure();
+            }
         });
+        
+        
     }
+    
+    
+    
+    
 
     public void CloseTransfer()
     {

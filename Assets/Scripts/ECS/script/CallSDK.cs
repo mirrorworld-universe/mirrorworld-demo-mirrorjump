@@ -28,6 +28,7 @@ public class CallSDK : MonoBehaviour
     // todo fetch nfts
     public void FetchNFTS()
     {
+        
         if (LoginState.HasLogin)
         {
 
@@ -77,7 +78,8 @@ public class CallSDK : MonoBehaviour
             
         }
         else
-        {
+        
+        {   MessageAdvice.ConfrimCloseWaitPanel();
             MessageAdvice.OnFailure();
         }
         
@@ -108,11 +110,13 @@ public class CallSDK : MonoBehaviour
             
             PlayerPrefs.SetString("HasMintNFT","true");
             
+            MessageAdvice.ConfrimCloseWaitPanel();
             MessageAdvice.OnSuccess("Successful!");
             
         }
         else
-        {
+        {   
+            MessageAdvice.ConfrimCloseWaitPanel();
             MessageAdvice.OnFailure();
         }
         

@@ -2,3 +2,19 @@ password:mirrorworld2022$
 
 Alias:mirrorworld
 Password:mirrorworld2022$
+
+
+failed to send transaction: Transaction simulation failed: Blockhash not found
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>RangeError: The number 0.5 cannot be converted to a BigInt because it is not an integer<br> &nbsp; &nbsp;at BigInt (&lt;anonymous&gt;)<br> &nbsp; &nbsp;at Function.transfer (/app/node_modules/@solana/web3.js/lib/index.cjs.js:2773:19)<br> &nbsp; &nbsp;at WalletService.createTransferSolTx (/app/dist/services/wallet/WalletService.js:45:40)<br> &nbsp; &nbsp;at WalletService.transferSOL (/app/dist/services/wallet/WalletService.js:57:56)<br> &nbsp; &nbsp;at transferSOL (/app/dist/controllers/wallet/WalletController.js:58:69)<br> &nbsp; &nbsp;at runMicrotasks (&lt;anonymous&gt;)<br> &nbsp; &nbsp;at processTicksAndRejections (node:internal/process/task_queues:96:5)</pre>
+</body>
+</html>

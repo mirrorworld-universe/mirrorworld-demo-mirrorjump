@@ -3224,6 +3224,7 @@ MonoBehaviour:
   PackageDetails: {fileID: 1536097697}
   PackageManager: {fileID: 1416869729}
   CallSDK: {fileID: 645101404}
+  MessageAdvice: {fileID: 406545398}
 --- !u!1 &208679180
 GameObject:
   m_ObjectHideFlags: 0
@@ -6620,6 +6621,7 @@ MonoBehaviour:
   Icon: {fileID: 423639719}
   DialogRoot: {fileID: 1010434780}
   Confirm: {fileID: 529428051}
+  PackageDetailsManager: {fileID: 207883633}
 --- !u!1 &409602168
 GameObject:
   m_ObjectHideFlags: 0
@@ -27642,7 +27644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sell
+  m_text: List
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
   m_sharedMaterial: {fileID: 1714751534592507751, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}

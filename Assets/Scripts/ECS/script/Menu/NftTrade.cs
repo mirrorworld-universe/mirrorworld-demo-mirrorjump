@@ -332,8 +332,7 @@ public class NftTrade : MonoBehaviour
         
             MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Confirmed,(result) =>
             {
-                
-            
+                string me = result.Message;
             });
             
             
@@ -397,7 +396,7 @@ public class NftTrade : MonoBehaviour
         
         MirrorSDK.TransferNFT(CurrentNftCellData.NftData.mintAddress,address,(result) =>
         {
-            
+            CloseTransfer();
         });
     }
 

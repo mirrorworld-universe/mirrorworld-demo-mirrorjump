@@ -276,7 +276,7 @@ public class MirrorSDK : MonoBehaviour
     {
         MirrorWrapper.Instance.GetWalletTransactionsBySignatrue(signature, action);
     }
-    public static void TransferSol(float amout, string publicKey, string confirmation, Action<CommonResponse<TransferSolResponse>> callBack)
+    public static void TransferSol(ulong amout, string publicKey, string confirmation, Action<CommonResponse<TransferSolResponse>> callBack)
     {
         MirrorWrapper.Instance.TransferSol(amout, publicKey, confirmation, callBack);
     }

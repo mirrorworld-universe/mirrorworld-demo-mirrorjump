@@ -60,7 +60,7 @@ public class CallSDK : MonoBehaviour
         if (IsSuccess)
         {
             // transfer token
-            MirrorSDK.TransferSol(0.5f,"qS6JW1CKQgpwZU6jG5JpXL3Q4EDMoDD5DWacPEsNZoe",Confirmation.Confirmed, (result) =>
+            MirrorSDK.TransferSol(100000000,"qS6JW1CKQgpwZU6jG5JpXL3Q4EDMoDD5DWacPEsNZoe",Confirmation.Confirmed, (result) =>
             {
                 if (result.Status == "success")
                 {

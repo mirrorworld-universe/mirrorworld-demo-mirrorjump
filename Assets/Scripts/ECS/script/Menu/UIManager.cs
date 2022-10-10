@@ -48,7 +48,6 @@ public class UIManager : MonoBehaviour
          
             MirrorSDK.StartLogin((LoginResponse)=>
             {
-                Debug.LogWarning("---------"+LoginResponse.UserResponse.Wallet.SolAddress);
                 
                 LoginState.HasLogin = true;
                 LoginState.Name = LoginResponse.UserResponse.Username;

@@ -49,3 +49,6 @@ MonoBehaviour:
   - tag: Pickup
     prefab: {fileID: 3999323415671587335, guid: 8feb638b04e134247b3885c634018956, type: 3}
     size: 10
+  - tag: HeightNumber
+    prefab: {fileID: 9176653938302958319, guid: adff43f020da5d94c809ee83131631f3, type: 3}
+    size: 10

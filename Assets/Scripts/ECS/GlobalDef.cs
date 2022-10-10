@@ -27,6 +27,7 @@ public enum SoundName
 public class GlobalDef 
 {
     public static string isMute = "isMute";
+    public static int heightCoefficient = 4;
 }
 
 public struct AirDropPostData

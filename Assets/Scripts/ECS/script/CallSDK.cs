@@ -18,6 +18,25 @@ public class CallSDK : MonoBehaviour
     private NFTCellData NftCellData;
 
 
+    private string GetNameNumber(string target)
+    {
+     
+        string res = "";
+        int j = 59;
+        while (j<target.Length)
+        {   
+            j++;
+            
+            if (target[j] == '.')
+            {
+                break;
+            }
+            res += target[j];
+           
+        }
+
+        return res;
+    }
 
 
 
@@ -25,20 +44,17 @@ public class CallSDK : MonoBehaviour
 
   
     
-    // todo fetch nfts
+    // todo SDK Call  Fetch NFTS
     public void FetchNFTS()
     {
-        
         if (LoginState.HasLogin)
         {
-
             List<string> creators = new List<string>();
             creators.Add(LoginState.WalletAddress);
             
             MirrorSDK.GetNFTsOwnedByAddress(creators, (Mutiple) =>
             {
                  List<NFTCellData> datas = new List<NFTCellData>();
-
                  for (int i = 0; i < Mutiple.Data.nfts.Count; i++)
                  {
                      NFTCellData nftCellData = new NFTCellData();
@@ -47,15 +63,12 @@ public class CallSDK : MonoBehaviour
                      datas.Add(nftCellData);
                  }
                  NftPackageManager.RefreshData(datas);
-                
             });
         }
     }
     
     
-    
-    
-   // todo transfer token
+   // todo Transfer Token
     public void MintNFTResult(bool IsSuccess)
     {
         if (IsSuccess)
@@ -120,10 +133,14 @@ public class CallSDK : MonoBehaviour
             MessageAdvice.OnFailure();
         }
         
+        
+        //  todo 解锁  Mint Api 限制状态
+        ApiCallLimit.SetMintApiLimit(Constant.StopMint);
+        
+        
     }
     
-    
-    // todo Mint NFT
+    // todo SDK Call MintNFT
     public void MintNFT (NFTCellData nftCellData)
     {
         NftCellData = nftCellData;
@@ -131,12 +148,22 @@ public class CallSDK : MonoBehaviour
         if (LoginState.HasLogin)
         {
             string name = "Mirror Jump " + "#" + GetNameNumber(PlayerPrefs.GetString("MintUrl"));
+
+
+            if (ApiCallLimit.MintLimit() == false)
+            {
+                //  limit advice
+                MessageAdvice.OpenApiCallLimit("Minting Now");
+                return;
+            }
+            
+            ApiCallLimit.SetMintApiLimit(Constant.ExecuteMint);
             
             MirrorSDK.MintNFT("BXqCckKEidhJUpYrg4u2ocdiDKwJY3WujHvVDPTMf6nL",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
                 (result) =>
                 {
-                   
-
+                    
+                    
                    if (result.Status == "success")
                    {
                        MintNFTResult(true);
@@ -154,26 +181,7 @@ public class CallSDK : MonoBehaviour
     
     
     
-    private string GetNameNumber(string target)
-    {
-     
-        string res = "";
-        int j = 59;
-        while (j<target.Length)
-        {   
-            j++;
-            
-            if (target[j] == '.')
-            {
-                break;
-            }
-            res += target[j];
-           
-        }
-
-        return res;
-    }
-    
+  
     
     
     

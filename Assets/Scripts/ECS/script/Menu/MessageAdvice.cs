@@ -28,6 +28,12 @@ public class MessageAdvice : MonoBehaviour
    public TextMeshProUGUI WaitTips;
 
    public GameObject ExitConfirmButton;
+
+
+   public GameObject ApiCallLimit;
+
+   public TextMeshProUGUI LimitTips;
+   
    
    
    public bool IsWaiting;
@@ -136,4 +142,20 @@ public class MessageAdvice : MonoBehaviour
    }
 
 
+   public void OpenApiCallLimit(string tips)
+   {
+       LimitTips.text = tips;
+       ApiCallLimit.SetActive(true);
+   }
+
+   
+   public void CloseApiCallLimit()
+   {
+       LimitTips.text = "";
+       ApiCallLimit.SetActive(false);
+       
+   }
+   
+   
+   
 }

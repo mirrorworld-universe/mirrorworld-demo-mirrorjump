@@ -515,7 +515,7 @@ public class NftTrade : MonoBehaviour
         }
         
         
-        ApiCallLimit.DeleteItemState(mintAddress);
+      //  ApiCallLimit.DeleteItemState(mintAddress);
         
     }
 

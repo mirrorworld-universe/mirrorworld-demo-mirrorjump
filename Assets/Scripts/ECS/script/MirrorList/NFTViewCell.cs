@@ -1,4 +1,4 @@
-
+﻿
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +15,6 @@ public class NFTViewCell : MonoBehaviour
     public void OnDataBind(NFTCellData nftCellData,Sprite sprite)
     {
         NftCellData = nftCellData;
-        Image.sprite = null;
         defaultSprite = null;
         
         if (null != NftCellData.NftData)

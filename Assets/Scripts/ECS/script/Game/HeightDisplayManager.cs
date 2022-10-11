@@ -22,7 +22,7 @@ public class HeightDisplayManager : Singleton<HeightDisplayManager>
 
         // 计算数字水平位置
         var mapPos = Camera.main.ScreenToWorldPoint(Vector3.zero);
-        xPos = mapPos.x + 0.2f;
+        xPos = mapPos.x + 0.1f;
         // 前firstHeight高度，每markDistance显示一格
         criticalHeight = height + firstHeight;
 

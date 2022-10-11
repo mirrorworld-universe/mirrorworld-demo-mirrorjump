@@ -69,6 +69,8 @@ public class NFTPackageManager : MonoBehaviour
     {
         SoundManager.Instance.PlaySound(SoundName.Close);
         Package.SetActive(false);
+
+        ListView.RecycleAllItems();
     }
 
     public void PageTurningStateUpdate(bool IsFirst)

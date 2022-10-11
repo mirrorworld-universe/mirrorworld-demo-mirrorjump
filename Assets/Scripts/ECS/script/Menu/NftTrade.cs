@@ -1,6 +1,7 @@
 
 using System;
 using MirrorworldSDK;
+using MirrorworldSDK.Models;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,18 +24,12 @@ public class NftTrade : MonoBehaviour
 
     public MessageAdvice MessageAdvice;
     
-  
-    
-
-
     public TMP_InputField SellPrice;
 
     public TMP_InputField NewPrice;
     
     public TMP_InputField Address;
-
-
-
+    
     public Button SellConfirmButton;
 
     public Button TransformConfirmButton;
@@ -54,17 +49,12 @@ public class NftTrade : MonoBehaviour
     public GameObject NewSellReceive;
     
     
-
     private float InputSellPrice;
 
     private float InputUpdatePrice;
 
     private string InputTransferAddress;
     
-    
-
-
-
     private void Update()
     {
         if (SellRoot.activeSelf)
@@ -150,9 +140,7 @@ public class NftTrade : MonoBehaviour
         
         
     }
-
-
-
+    
     private string CalculatePrice(float price)
     {
         double res = price * 0.9575;
@@ -191,41 +179,11 @@ public class NftTrade : MonoBehaviour
         
     }
     
-    
     public void CloseSell()
     {
         SellRoot.SetActive(false);
         
     }
-
-    
-    // todo SDK Call ListNFT
-    public void SellConfirm()
-    {
-        
-        CloseSell();
-        MessageAdvice.OpenWaitPanel("Listing Now");
-        
-        float price = float.Parse(SellPrice.text);
-        
-        MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Finalized,(result) =>
-        {
-            if (result.Status == "success")
-            {
-                MessageAdvice.ConfrimCloseWaitPanel();
-                MessageAdvice.OnSuccess("successful!");
-            }
-            else
-            {
-                MessageAdvice.ConfrimCloseWaitPanel();
-                MessageAdvice.OnFailure();
-            }
-        });
-        
-    }
-    
-    
-    
     
     //manage list
     public GameObject ManageRoot;
@@ -319,78 +277,6 @@ public class NftTrade : MonoBehaviour
         UpdateDialog.SetActive(false);
     }
     
-    
-    
-    // todo SDK Call  Cancel List
-    public void CancelList()
-    {
-        // call SDK
-        CloseCancelDialog();
-        MessageAdvice.OpenWaitPanel("Canceling List Now");
-        
-        if (null != CurrentNftCellData)
-        {
-            MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].price,Confirmation.Finalized,(result) =>
-            {
-                if (result.Status == "success")
-                {
-                    MessageAdvice.ConfrimCloseWaitPanel();
-                    MessageAdvice.OnSuccess("successful!");
-                }
-                else
-                {
-                    MessageAdvice.ConfrimCloseWaitPanel();
-                    MessageAdvice.OnFailure();
-                }
-                
-            });
-        }
-        
-       
-        
-     
-        
-        
-    }
-    
-    // todo SDK Call  List Update
-    public void UpdatePrice()
-    {
-        if (null != CurrentNftCellData)
-        {   
-            
-            CloseUpdateDialog();
-            MessageAdvice.OpenWaitPanel("Changing New Price Now");
-            
-            float price = float.Parse(NewPrice.text);
-        
-            MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Finalized,(result) =>
-            {
-                if (result.Status == "success")
-                {
-                    MessageAdvice.ConfrimCloseWaitPanel();
-                    MessageAdvice.OnSuccess("successful!");
-                }
-                else
-                {
-                    MessageAdvice.ConfrimCloseWaitPanel();
-                    MessageAdvice.OnFailure();
-                }
-
-            });
-            
-            
-        }
-        
-      
-        
-        
-    }
-    
-    
-    
-    
-    
     // transfer NFT
     public GameObject TransferRoot;
 
@@ -430,38 +316,6 @@ public class NftTrade : MonoBehaviour
         }
     }
     
-    
-    
-    // todo SDK Call  Transfer
-    public void ConfirmTransfer()
-    {   
-        
-        CloseTransfer();
-        MessageAdvice.OpenWaitPanel("Transfer now");
-        
-        string address = Address.text.ToString();
-        
-        MirrorSDK.TransferNFT(CurrentNftCellData.NftData.mintAddress,address,(result) =>
-        {
-            if (result.Status == "success")
-            {
-                MessageAdvice.ConfrimCloseWaitPanel();
-                MessageAdvice.OnSuccess("successful!");
-            }
-            else
-            {
-                MessageAdvice.ConfrimCloseWaitPanel();
-                MessageAdvice.OnFailure();
-            }
-        });
-        
-        
-    }
-    
-    
-    
-    
-
     public void CloseTransfer()
     {
         TransferRoot.SetActive(false);
@@ -472,8 +326,6 @@ public class NftTrade : MonoBehaviour
         TransferRoot.SetActive(false);
         NFTDetailRoot.SetActive(true);
     }
-    
-    
     // header  Image loader
     private async void SetImage(string url,Image header)
     {
@@ -490,6 +342,185 @@ public class NftTrade : MonoBehaviour
         }
         
     }
+    
+    
+    // todo SDK Call ListNFT
+    public void SellConfirm()
+    {
+        
+        CloseSell();
+
+        float price = float.Parse(SellPrice.text);
+
+        if (ApiCallLimit.CallTradeLimit(CurrentNftCellData.NftData.mintAddress) == false)
+        {
+            MessageAdvice.OpenApiCallLimit(CurrentNftCellData.NftData.name+"\n"+ApiCallLimit.GetStateByAddress(CurrentNftCellData.NftData.mintAddress)+" now");
+            
+            return;
+        }
 
 
+        CallApiState callApiState = new CallApiState();
+        callApiState.MintAddress = CurrentNftCellData.NftData.mintAddress;
+        callApiState.name = CurrentNftCellData.NftData.name;
+        callApiState.State = CallState.Listing;
+        ApiCallLimit.AddItemState(callApiState.MintAddress,callApiState);
+        
+        MessageAdvice.OpenWaitPanel("Listing Now");
+        MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Finalized,(result) =>
+        {
+
+            ResultAdvice(result);
+            
+        });
+        
+    }
+    
+    
+    // todo SDK Call  List Update
+    public void UpdatePrice()
+    {
+        if (null != CurrentNftCellData)
+        {   
+            
+            CloseUpdateDialog();
+
+            float price = float.Parse(NewPrice.text);
+            
+            if (ApiCallLimit.CallTradeLimit(CurrentNftCellData.NftData.mintAddress) == false)
+            {
+                MessageAdvice.OpenApiCallLimit(CurrentNftCellData.NftData.name+"\n"+ApiCallLimit.GetStateByAddress(CurrentNftCellData.NftData.mintAddress)+" now");
+            
+                return;
+            }
+
+
+            CallApiState callApiState = new CallApiState();
+            callApiState.MintAddress = CurrentNftCellData.NftData.mintAddress;
+            callApiState.name = CurrentNftCellData.NftData.name;
+            callApiState.State = CallState.Update;
+            ApiCallLimit.AddItemState(callApiState.MintAddress,callApiState);
+            
+            
+            MessageAdvice.OpenWaitPanel("Changing New Price Now");
+            
+            MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Finalized,(result) =>
+            {   
+                
+                ResultAdvice(result);
+
+            });
+            
+            
+        }
+        
+    }
+    
+    // todo SDK Call  Cancel List
+    public void CancelList()
+    {
+        // call SDK
+        CloseCancelDialog();
+
+        if (null != CurrentNftCellData)
+        {   
+            
+            if (ApiCallLimit.CallTradeLimit(CurrentNftCellData.NftData.mintAddress) == false)
+            {
+                MessageAdvice.OpenApiCallLimit(CurrentNftCellData.NftData.name+"\n"+ApiCallLimit.GetStateByAddress(CurrentNftCellData.NftData.mintAddress)+" now");
+            
+                return;
+            }
+
+
+            CallApiState callApiState = new CallApiState();
+            callApiState.MintAddress = CurrentNftCellData.NftData.mintAddress;
+            callApiState.name = CurrentNftCellData.NftData.name;
+            callApiState.State = CallState.Cancel;
+            ApiCallLimit.AddItemState(callApiState.MintAddress,callApiState);
+            
+            
+            MessageAdvice.OpenWaitPanel("Canceling List Now");
+            MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].price,Confirmation.Finalized,(result) =>
+            {
+                  ResultAdvice(result);
+            });
+        }
+    }
+    
+    
+    // todo SDK Call  Transfer
+    public void ConfirmTransfer()
+    {   
+        
+        CloseTransfer();
+        
+        string address = Address.text.ToString();
+        
+        if (ApiCallLimit.CallTradeLimit(CurrentNftCellData.NftData.mintAddress) == false)
+        {
+            MessageAdvice.OpenApiCallLimit(CurrentNftCellData.NftData.name+"\n"+ApiCallLimit.GetStateByAddress(CurrentNftCellData.NftData.mintAddress)+" now");
+            
+            return;
+        }
+       
+
+        CallApiState callApiState = new CallApiState();
+        callApiState.MintAddress = CurrentNftCellData.NftData.mintAddress;
+        callApiState.name = CurrentNftCellData.NftData.name;
+        callApiState.State = CallState.Transfer;
+        ApiCallLimit.AddItemState(callApiState.MintAddress,callApiState);
+        
+        MessageAdvice.OpenWaitPanel("Transfer now");
+        
+        MirrorSDK.TransferNFT(CurrentNftCellData.NftData.mintAddress,address,(result) =>
+        {
+            
+           ResultAdvice(result);
+           
+        });
+        
+        
+    }
+
+
+    private void ResultAdvice(CommonResponse<ListingResponse> result)
+    {
+
+        string resultMintAddress = null;
+                
+        if (result.Status == "success")
+        {   
+            string mintAddress = result.Data.MintAddress;
+            resultMintAddress = mintAddress;
+
+            CallApiState callApiStateResult = ApiCallLimit.GetStateItemByAddress(mintAddress);
+            
+            MessageAdvice.ConfrimCloseWaitPanel();
+                    
+            if (null != callApiStateResult && null != callApiStateResult.name)
+            {
+                MessageAdvice.OnSuccess(callApiStateResult.name+"\n"+ApiCallLimit.GetStateByAddress(callApiStateResult.MintAddress)+"successful!");
+            }
+            else
+            {
+                MessageAdvice.OnSuccess("successful!");
+            }
+
+        }
+        else
+        {
+            MessageAdvice.ConfrimCloseWaitPanel();
+            MessageAdvice.OnFailure();
+        }
+        
+        
+        ApiCallLimit.DeleteItemState(mintAddress);
+        
+    }
+
+   
+    
+    
+    
 }

@@ -4,6 +4,14 @@
     {   
         
         
+        // Call Api Limit
+        public static int ExecuteMint = 1;
+        public static int StopMint = 0;
+        
+        
+        
+        
+        
         //Theme 
         public static int ThemeSpaceIndex = 0;
         public static int ThemeDesertIndex = 1;

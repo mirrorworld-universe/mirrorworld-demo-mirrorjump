@@ -114,7 +114,7 @@ namespace MirrorworldSDK.Wrapper
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
 
                 CommonResponse<MintResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<MintResponse>>(response);
-
+                LogFlow("Mint Response"+response);
                 callBack(responseBody);
             }));
         }
@@ -169,13 +169,14 @@ namespace MirrorworldSDK.Wrapper
 
             string url = GetAPIRoot() + urlFetchMultiNFTsDataByOwnerAddresses;
 
-            monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
-                
-                
+            monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) =>
+            {
+
+
+            
                 CommonResponse<MultipleNFTsResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<MultipleNFTsResponse>>(response);
-
-                //MultipleNFTsResponse nfts = responseBody.Data;
-
+                
+                LogFlow("Fetch by owners Response"+response);
                 callBack(responseBody);
                 
                 
@@ -218,7 +219,7 @@ namespace MirrorworldSDK.Wrapper
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
 
                 CommonResponse<ListingResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<ListingResponse>>(response);
-
+                LogFlow("List Response"+response);
                 callBack(responseBody);
 
             }));
@@ -241,7 +242,7 @@ namespace MirrorworldSDK.Wrapper
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
 
                 CommonResponse<ListingResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<ListingResponse>>(response);
-
+                LogFlow("Update Response:"+response);
                 callBack(responseBody);
 
             }));
@@ -264,7 +265,7 @@ namespace MirrorworldSDK.Wrapper
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
 
                 CommonResponse<ListingResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<ListingResponse>>(response);
-
+                LogFlow("Cancel List Response"+response);
                 callBack(responseBody);
 
             }));
@@ -285,7 +286,7 @@ namespace MirrorworldSDK.Wrapper
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
 
                 CommonResponse<ListingResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<ListingResponse>>(response);
-
+                LogFlow("Transfer Response"+response);
                 callBack(responseBody);
 
             }));

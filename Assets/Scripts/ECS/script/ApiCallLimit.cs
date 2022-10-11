@@ -8,7 +8,7 @@
         
         // limit SDK Api Call
 
-        private static Dictionary<string, CallApiState> CallStates;
+        private static Dictionary<string, CallApiState> CallStates = new Dictionary<string, CallApiState>();
         
         public static void AddItemState(string mintAddress, CallApiState callApiState)
         {

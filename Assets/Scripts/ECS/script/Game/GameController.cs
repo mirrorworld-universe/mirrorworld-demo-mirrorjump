@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
 
     private Vector2 FirstStairsPosition = new Vector2(0, -3f); 
 
-    private float MaxHeight = 0;
+    private long MaxHeight = 0;
 
     private GameState GameState = GameState.GameOver;
     
@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
         if (GetGameState() == GameState.Gaming)
         {   
            
-            if (TheTopStairsHeight - CameraObject.transform.position.y <= GenerateThreshold)
+            while (TheTopStairsHeight - CameraObject.transform.position.y <= GenerateThreshold)
             {
                 StairsFactory.GenerateStairs(GenerateStairsCoordinate(),false);
             }
@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
         
     }
 
-    public float GetMaxHeight()
+    public long GetMaxHeight()
     {
         return MaxHeight;
     }
@@ -74,9 +74,9 @@ public class GameController : MonoBehaviour
     {
         if (MirrorObject.transform.position.y* GlobalDef.heightCoefficient > MaxHeight)
         {
-            MaxHeight = MirrorObject.transform.position.y * GlobalDef.heightCoefficient;
-            //
-            GameMenu.SetHighScore( MaxHeight.ToString("f1"));
+            MaxHeight = (long)MirrorObject.transform.position.y * GlobalDef.heightCoefficient;
+
+            GameMenu.SetHighScore(MaxHeight.ToString());
         }
     }
 
@@ -158,31 +158,39 @@ public class GameController : MonoBehaviour
 
             mj.RefreshSprite();
         }
-        
-        
-        StairsFactory.GenerateStairs(FirstStairsPosition,true);
 
+        Vector2 initPos = FirstStairsPosition;
+        long initScore = 0;
+        if (PlayerPrefs.GetInt(GlobalDef.hasInitPosY) == 1)
+        {
+            initScore = long.Parse(PlayerPrefs.GetString(GlobalDef.maxScore))/2;
+            PlayerPrefs.SetInt(GlobalDef.hasInitPosY, 0);
+        }
+        var initY = initScore / GlobalDef.heightCoefficient;
+        initPos.y += initY;
+
+        StairsFactory.GenerateStairs(initPos, true);
 
         MirrorObject.transform.eulerAngles = new Vector3(0,0,0);
         MirrorObject.transform.localScale = new Vector3(0.28f,0.28f,0.28f);
         MirrorObject.transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         MirrorObject.transform.GetComponent<MirrorJump>().Setup();
-        SetTransformPosition(MirrorObject.transform,new Vector3(FirstStairsPosition.x,FirstStairsPosition.y+2f,107.4f));
-        
-        MapRunSystem.ResetMapPosition();
-        
-        CameraTracking.ResetCameraPosition();
+        SetTransformPosition(MirrorObject.transform,new Vector3(initPos.x, initPos.y+2f,107.4f));
 
-        MaxHeight = 0;
+        HeightDisplayManager.Instance.GenerateFirst(initScore);
+
+        MapRunSystem.ResetMapPosition(initY);
         
-        TheTopStairsHeight = -6.88f;
+        CameraTracking.ResetCameraPosition(initY);
+
+        MaxHeight = initScore;
+        GameMenu.SetHighScore(MaxHeight.ToString());
+
+        TheTopStairsHeight = initPos.y;
       
         GameState = GameState.Gaming;
         
         GameMenu.CloseGameOverWindow();
-        
-      
-
     }
 
 

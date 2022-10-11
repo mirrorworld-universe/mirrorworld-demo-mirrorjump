@@ -79,7 +79,6 @@ public class MapRunSystem : MonoBehaviour
     
     public void MovingMap()
     {   
-        SetTagByIndex();
 
         if (backPanelTag == BackPanelTag.Bottom)
         {
@@ -95,6 +94,23 @@ public class MapRunSystem : MonoBehaviour
 
         TagIndex++;
 
+        SetTagByIndex();
+    }
+
+    public float BottomMapY()
+    {
+        if (backPanelTag == BackPanelTag.Bottom)
+        {
+            return ButtomBack.transform.position.y;
+        }
+        else if (backPanelTag == BackPanelTag.Middle)
+        {
+            return MiddleBack.transform.position.y;
+        }
+        else
+        {
+            return TopBack.transform.position.y;
+        }
     }
     
     private void SetTagByIndex()
@@ -152,24 +168,22 @@ public class MapRunSystem : MonoBehaviour
     }
 
 
-    public void ResetMapPosition()
+    public void ResetMapPosition(long initY = 0)
     {
         backPanelTag = BackPanelTag.Bottom;
         TagIndex = 0;
 
         Vector3 postion = ButtomBack.transform.position;
 
-        ButtomBack.transform.position = new Vector3(postion.x, 0, postion.z);
-        MiddleBack.transform.position = new Vector3(postion.x, UnitDistance, postion.z);
-        TopBack.transform.position = new Vector3(postion.x, 2 * UnitDistance, postion.z);
+        ButtomBack.transform.position = new Vector3(postion.x, initY, postion.z);
+        MiddleBack.transform.position = new Vector3(postion.x, initY + UnitDistance, postion.z);
+        TopBack.transform.position = new Vector3(postion.x, initY + 2 * UnitDistance, postion.z);
         MiddleBack.transform.eulerAngles =
             new Vector3(MiddleBack.transform.eulerAngles.x, MiddleBack.transform.eulerAngles.y, 180);
         ButtomBack.transform.eulerAngles =
             new Vector3(ButtomBack.transform.eulerAngles.x, ButtomBack.transform.eulerAngles.y, 0);
         TopBack.transform.eulerAngles =
             new Vector3(TopBack.transform.eulerAngles.x,TopBack.transform.eulerAngles.y, 0);
-
-        HeightDisplayManager.Instance.GenerateFirst(0);
 
         HeightDisplayManager.Instance.GenerateHeightNumber(ButtomBack.transform.position.y * GlobalDef.heightCoefficient);
         HeightDisplayManager.Instance.GenerateHeightNumber(MiddleBack.transform.position.y * GlobalDef.heightCoefficient);

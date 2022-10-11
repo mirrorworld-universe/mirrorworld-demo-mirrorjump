@@ -2568,6 +2568,7 @@ MonoBehaviour:
   DisappearStairs: {fileID: 8716145998135311012, guid: f6301e7a94d5fb94eb71d137428a909d, type: 3}
   BreakageStairs: {fileID: 2945788482418636398, guid: b78cf45b5fb3d42439f0ae2e035e0c56, type: 3}
   MovingStairs: {fileID: 6682581414873126553, guid: 16d10847927d87f49ad3bba9568af9fd, type: 3}
+  BalanceStairs: {fileID: 6598839778833773834, guid: cd77abdf0e1521944b293a45c75d5d6e, type: 3}
   GameController: {fileID: 247834403}
   PropsFactory: {fileID: 1875881141}
 --- !u!1 &1372647269
@@ -3071,7 +3072,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1438306589}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 428433032}
+        m_TargetAssemblyTypeName: GameOverPanel, Assembly-CSharp
+        m_MethodName: Share
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1438306589
 MonoBehaviour:
   m_ObjectHideFlags: 0

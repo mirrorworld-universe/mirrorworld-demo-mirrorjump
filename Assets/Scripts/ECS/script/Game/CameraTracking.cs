@@ -13,10 +13,8 @@ public class CameraTracking : MonoBehaviour
 
    public GameObject GameController;
    
-   private float LastReferencePosition = 0;
-    
-   
-   private float OddDistance = 19.144f;
+    // 当最下面一张地图与相机位置相差多少时，移动地图
+   private float MapChangeDelta = 19.144f;
    
    
    private bool IsGameOver = false;
@@ -33,25 +31,13 @@ public class CameraTracking : MonoBehaviour
       if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
       {
          // driver map move 
-         if (transform.position.y - LastReferencePosition >= OddDistance)
+         if (transform.position.y - MapRunSystem.BottomMapY() >= MapChangeDelta)
          {
-            LastReferencePosition = transform.position.y-ErrorReduction(transform.position.y - LastReferencePosition);
             MapRunSystem.MovingMap();
          }
       }
       
 }
-
-   private float ErrorReduction(float delta)
-   {
-      return delta - OddDistance;
-   }
-
-   private void ErrorEliminate()
-   {
-      
-   }
-
 
    private void LateUpdate () 
    {
@@ -104,12 +90,10 @@ public class CameraTracking : MonoBehaviour
       }
    }
 
-   public void ResetCameraPosition()
+   public void ResetCameraPosition(long initY = 0)
    {
       Vector3 pos = transform.position;
-      transform.position = new Vector3(pos.x, 0, pos.z);
-      LastReferencePosition = 0;
-
+      transform.position = new Vector3(pos.x, initY, pos.z);
    }
    
    

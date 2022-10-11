@@ -8,7 +8,8 @@ public enum StairsType
     Disappear,
     Breakage,
     Moving,
-    BlackRole
+    BlackRole,
+    Balance
 }
 public class StairsFactory : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class StairsFactory : MonoBehaviour
     public GameObject BreakageStairs;
     
     public GameObject  MovingStairs;
+
+    public GameObject BalanceStairs;
     
     public GameController GameController;
 
@@ -127,6 +130,15 @@ public class StairsFactory : MonoBehaviour
             RandomProps(tran,GameController);
             
             
+        }else if (stairsType == StairsType.Balance)
+        {
+            var tran = (UnityEngine.Object.Instantiate(BalanceStairs.gameObject)).GetComponent<Transform>();
+            tran.position = pos;
+            tran.gameObject.GetComponent<BalanceStairs>().SetGameController(GameController);
+            tran.transform.SetParent(StairsParent.transform);
+
+            RandomProps(tran, GameController);
+
         }else if (stairsType == StairsType.BlackRole)
         {
                 int rate = Random.Range(1, 10);
@@ -180,8 +192,14 @@ public class StairsFactory : MonoBehaviour
         {   
             Limit = true;
             return StairsType.Moving;
-            
-        }else if (rate <= 10)
+
+        }
+        else if (rate <= 9.5)
+        {
+            Limit = true;
+            return StairsType.Balance;
+        }
+        else if (rate <= 10)
         {
             if (Limit)
             {  

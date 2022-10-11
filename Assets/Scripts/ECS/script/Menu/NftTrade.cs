@@ -369,7 +369,6 @@ public class NftTrade : MonoBehaviour
         MessageAdvice.OpenWaitPanel("Listing Now");
         MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Finalized,(result) =>
         {
-
             ResultAdvice(result);
             
         });
@@ -499,23 +498,29 @@ public class NftTrade : MonoBehaviour
             MessageAdvice.ConfrimCloseWaitPanel();
                     
             if (null != callApiStateResult && null != callApiStateResult.name)
-            {
-                MessageAdvice.OnSuccess(callApiStateResult.name+"\n"+ApiCallLimit.GetStateByAddress(callApiStateResult.MintAddress)+"successful!");
+            {  
+                
+                //callApiStateResult.name+"\n"+
+                MessageAdvice.OnSuccess(ApiCallLimit.GetStateByAddress(callApiStateResult.MintAddress)+"successful!");
             }
             else
             {
                 MessageAdvice.OnSuccess("successful!");
             }
+            
+            ApiCallLimit.DeleteItemState(mintAddress);
 
         }
         else
         {
             MessageAdvice.ConfrimCloseWaitPanel();
             MessageAdvice.OnFailure();
+            
+            // todo 等待处理异步回调问题
+            ApiCallLimit.DeleteAllItem();
         }
         
-        
-      //  ApiCallLimit.DeleteItemState(mintAddress);
+     
         
     }
 

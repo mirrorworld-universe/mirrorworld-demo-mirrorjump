@@ -42,15 +42,29 @@
         
         public static CallApiState GetStateItemByAddress(string mintAddress)
         {
-            return CallStates[mintAddress];
+
+            if (CallStates.ContainsKey(mintAddress))
+            {
+                return CallStates[mintAddress];
+            }
+
+            return null;
         }
         
         
 
         public static void DeleteItemState(string mintAddress)
         {
-            CallStates.Remove(mintAddress);
+            if (CallStates.ContainsKey(mintAddress))
+            {
+                CallStates.Remove(mintAddress);
+            }
             
+        }
+
+        public static void DeleteAllItem()
+        {
+            CallStates.Clear();
         }
         
         public static bool CallTradeLimit(string mintAddress)

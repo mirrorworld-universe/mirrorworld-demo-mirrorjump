@@ -240,7 +240,7 @@ public class NftTrade : MonoBehaviour
              if (null != CurrentNftCellData.NftData)
              {
                  CurrentPrice.text = CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count - 1]
-                     .price.ToString();
+                     .tokenPrice.ToString();
              }
             
         }
@@ -366,7 +366,7 @@ public class NftTrade : MonoBehaviour
         ApiCallLimit.AddItemState(callApiState.MintAddress,callApiState);
         
         MessageAdvice.OpenWaitPanel("Listing Now");
-        MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Finalized,(result) =>
+        MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,new decimal(price),Confirmation.Finalized,(result) =>
         {
             ResultAdvice(result);
             
@@ -401,7 +401,7 @@ public class NftTrade : MonoBehaviour
             
             MessageAdvice.OpenWaitPanel("Changing New Price Now");
             
-            MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Finalized,(result) =>
+            MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress, new decimal(price), Confirmation.Finalized,(result) =>
             {   
                 
                 ResultAdvice(result);
@@ -437,7 +437,7 @@ public class NftTrade : MonoBehaviour
             
             
             MessageAdvice.OpenWaitPanel("Canceling List Now");
-            MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].price,Confirmation.Finalized,(result) =>
+            MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].tokenPrice,Confirmation.Finalized,(result) =>
             {
                   ResultAdvice(result);
             });
@@ -484,9 +484,9 @@ public class NftTrade : MonoBehaviour
 
         string resultMintAddress = null;
                 
-        if (result.Status == "success")
+        if (result.status == "success")
         {   
-            string mintAddress = result.Data.MintAddress;
+            string mintAddress = result.data.mint_address;
             resultMintAddress = mintAddress;
 
             CallApiState callApiStateResult = ApiCallLimit.GetStateItemByAddress(mintAddress);

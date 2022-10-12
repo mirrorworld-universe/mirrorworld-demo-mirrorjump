@@ -58,10 +58,10 @@ public class CallSDK : MonoBehaviour
             MirrorSDK.GetNFTsOwnedByAddress(creators, (Mutiple) =>
             {
                  List<NFTCellData> datas = new List<NFTCellData>();
-                 for (int i = 0; i < Mutiple.Data.nfts.Count; i++)
+                 for (int i = 0; i < Mutiple.data.nfts.Count; i++)
                  {
                      NFTCellData nftCellData = new NFTCellData();
-                     SingleNFTResponseObj NftData = Mutiple.Data.nfts[i];
+                     SingleNFTResponseObj NftData = Mutiple.data.nfts[i];
                      nftCellData.NftData = NftData;
                      datas.Add(nftCellData);
                  }
@@ -79,7 +79,7 @@ public class CallSDK : MonoBehaviour
             // transfer token
             MirrorSDK.TransferSol(100000000,"qS6JW1CKQgpwZU6jG5JpXL3Q4EDMoDD5DWacPEsNZoe",Confirmation.Confirmed, (result) =>
             {
-                if (result.Status == "success")
+                if (result.status == "success")
                 {
                     FinishedMint(true);
                 }
@@ -167,7 +167,7 @@ public class CallSDK : MonoBehaviour
                 (result) =>
                 {
                     
-                   if (result.Status == "success")
+                   if (result.status == "success")
                    {
                        MintNFTResult(true);
                    }

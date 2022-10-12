@@ -57,7 +57,8 @@ public class ThemeManager : MonoBehaviour
         }
         
         PlayerPrefs.SetInt("CurrentTheme",CurrentThemeIndex-1);
-        
+
+        SoundManager.Instance.PlaySound(SoundName.TurnPage);
         RefreshLockState();
         
     }
@@ -77,13 +78,13 @@ public class ThemeManager : MonoBehaviour
         }
         
         PlayerPrefs.SetInt("CurrentTheme",CurrentThemeIndex+1);
-        
+
+        SoundManager.Instance.PlaySound(SoundName.TurnPage);
         RefreshLockState();
     }
     
     private void RefreshLockState()
     {
-        SoundManager.Instance.PlaySound(SoundName.TurnPage);
         int SpriteIndex = PlayerPrefs.GetInt("CurrentTheme");
         
         ThemeBack.gameObject.GetComponent<Image>().sprite = ThemeBackSprites[SpriteIndex];

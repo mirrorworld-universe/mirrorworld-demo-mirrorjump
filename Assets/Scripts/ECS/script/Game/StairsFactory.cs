@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public enum StairsType
@@ -40,6 +42,161 @@ public class StairsFactory : MonoBehaviour
     
     // just test 对 brakable stairs 临时限制
     private bool Limit = false;
+    
+    
+    // theme change
+    
+    public Sprite[] ThemeSpaceStairs = new Sprite[8];
+    
+    public Sprite[] ThemeDesertStairs = new Sprite[8];
+    
+    public Sprite[]  ThemeSnowStairs = new Sprite[8];
+    
+    public Sprite[]  ThemeCyberpunkStairs = new Sprite[8];
+
+
+
+
+    private void Start()
+    {
+        StairsThemeChange();
+    }
+
+
+    private void StairsThemeChange()
+    {
+        int stairsTheme =  PlayerPrefs.GetInt("CurrentTheme",Constant.GeneralStairs);
+
+       
+       if (stairsTheme == Constant.ThemeDesertIndex)
+       {
+           DesertStairsSpriteChange();
+           
+       }else if(stairsTheme == Constant.ThemeSnowIndex)
+       {
+           
+          SnowStairsSpriteChange();
+           
+       }else if(stairsTheme == Constant.ThemeCyberpunkIndex)
+       {
+           CyberpunkStairsSpriteChange();
+           
+       }
+       else
+       {
+           
+           SpaceStairsSpriteChange();
+       }
+       
+    }
+
+
+    private void SpaceStairsSpriteChange()
+    {  
+        
+        GeneralStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSpaceStairs[Constant.GeneralStairs];
+        MovingStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSpaceStairs[Constant.MovingStairs];
+        
+         DisposableStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSpaceStairs[Constant.BreakageStairs];
+         DisposableStairs.transform.Find("left").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSpaceStairs[Constant.BreakageStairsLeft];
+         DisposableStairs.transform.Find("right").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSpaceStairs[Constant.BreakageStairsRight];
+       
+         
+         BreakageStairs.transform.Find("left").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSpaceStairs[Constant.BreakageStairsLeft];
+         BreakageStairs.transform.Find("right").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSpaceStairs[Constant.BreakageStairsRight];
+         BreakageStairs.transform.Find("right/top").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSpaceStairs[Constant.BreakageStairsTop];
+
+         BalanceStairs.transform.Find("Stair").gameObject.GetComponent<SpriteRenderer>().sprite =
+             ThemeSpaceStairs[Constant.BalanceStairs];
+        
+         
+         
+         BalanceStairs.transform.Find("Axis").gameObject.GetComponent<SpriteRenderer>().sprite =
+             ThemeSpaceStairs[Constant.BalanceStairsAxis];
+         
+
+    }
+    
+    private void DesertStairsSpriteChange()
+    {  
+        
+        GeneralStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemeDesertStairs[Constant.GeneralStairs];
+        MovingStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemeDesertStairs[Constant.MovingStairs];
+        
+        DisposableStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemeDesertStairs[Constant.BreakageStairs];
+        DisposableStairs.transform.Find("left").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeDesertStairs[Constant.BreakageStairsLeft];
+        DisposableStairs.transform.Find("right").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeDesertStairs[Constant.BreakageStairsRight];
+       
+         
+        BreakageStairs.transform.Find("left").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeDesertStairs[Constant.BreakageStairsLeft];
+        BreakageStairs.transform.Find("right").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeDesertStairs[Constant.BreakageStairsRight];
+        BreakageStairs.transform.Find("right/top").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeDesertStairs[Constant.BreakageStairsTop];
+
+        BalanceStairs.transform.Find("Stair").gameObject.GetComponent<SpriteRenderer>().sprite =
+            ThemeDesertStairs[Constant.BalanceStairs];
+        
+         
+         
+        BalanceStairs.transform.Find("Axis").gameObject.GetComponent<SpriteRenderer>().sprite =
+            ThemeDesertStairs[Constant.BalanceStairsAxis];
+         
+
+    }
+    
+    private void SnowStairsSpriteChange()
+    {  
+        
+        GeneralStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSnowStairs[Constant.GeneralStairs];
+        MovingStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSnowStairs[Constant.MovingStairs];
+        
+        DisposableStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSnowStairs[Constant.BreakageStairs];
+        DisposableStairs.transform.Find("left").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSnowStairs[Constant.BreakageStairsLeft];
+        DisposableStairs.transform.Find("right").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSnowStairs[Constant.BreakageStairsRight];
+       
+         
+        BreakageStairs.transform.Find("left").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSnowStairs[Constant.BreakageStairsLeft];
+        BreakageStairs.transform.Find("right").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSnowStairs[Constant.BreakageStairsRight];
+        BreakageStairs.transform.Find("right/top").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeSnowStairs[Constant.BreakageStairsTop];
+
+        BalanceStairs.transform.Find("Stair").gameObject.GetComponent<SpriteRenderer>().sprite =
+            ThemeSnowStairs[Constant.BalanceStairs];
+        
+         
+         
+        BalanceStairs.transform.Find("Axis").gameObject.GetComponent<SpriteRenderer>().sprite =
+            ThemeSnowStairs[Constant.BalanceStairsAxis];
+         
+
+    }
+    
+    private void CyberpunkStairsSpriteChange()
+    {  
+        
+        GeneralStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemeCyberpunkStairs[Constant.GeneralStairs];
+        MovingStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemeCyberpunkStairs[Constant.MovingStairs];
+        
+        DisposableStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemeCyberpunkStairs[Constant.BreakageStairs];
+        DisposableStairs.transform.Find("left").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeCyberpunkStairs[Constant.BreakageStairsLeft];
+        DisposableStairs.transform.Find("right").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeCyberpunkStairs[Constant.BreakageStairsRight];
+       
+         
+        BreakageStairs.transform.Find("left").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeCyberpunkStairs[Constant.BreakageStairsLeft];
+        BreakageStairs.transform.Find("right").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeCyberpunkStairs[Constant.BreakageStairsRight];
+        BreakageStairs.transform.Find("right/top").gameObject.GetComponent<SpriteRenderer>().sprite = ThemeCyberpunkStairs[Constant.BreakageStairsTop];
+
+        BalanceStairs.transform.Find("Stair").gameObject.GetComponent<SpriteRenderer>().sprite =
+            ThemeCyberpunkStairs[Constant.BalanceStairs];
+        
+         
+         
+        BalanceStairs.transform.Find("Axis").gameObject.GetComponent<SpriteRenderer>().sprite =
+            ThemeCyberpunkStairs[Constant.BalanceStairsAxis];
+         
+
+    }
+    
+    
+    
     
     
     

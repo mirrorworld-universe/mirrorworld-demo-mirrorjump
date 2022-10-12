@@ -10,13 +10,33 @@
         
         
         
-        
-        
         //Theme 
         public static int ThemeSpaceIndex = 0;
         public static int ThemeDesertIndex = 1;
         public static int ThemeSnowIndex = 2;
         public static int ThemeCyberpunkIndex = 3;
+        
+        
+        
+      
+        
+        // Stairs Type
+        public static int  GeneralStairs = 0;
+        public static int  BreakageStairs = 1;
+        public static int MovingStairs = 2;
+        public static int BalanceStairs = 3;
+        
+        public static int   BreakageStairsTop = 4;
+        public static int BreakageStairsLeft = 5;
+        public static int BreakageStairsRight = 6;
+        public static int BalanceStairsAxis = 7;
+     
+        
+        
+        
+        
+        
+        
         
         
         //Rarity

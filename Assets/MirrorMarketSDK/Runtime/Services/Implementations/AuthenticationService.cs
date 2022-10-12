@@ -1,7 +1,7 @@
-﻿//using System;
+//using System;
 //using System.Collections;
 //using MirrorworldSDK.Models;
-//using Unity.Plastic.Newtonsoft.Json;
+//
 //using UnityEngine.Networking;
 
 //namespace MirrorworldSDK.Implementations

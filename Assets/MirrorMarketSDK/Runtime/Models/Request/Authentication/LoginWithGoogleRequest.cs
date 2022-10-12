@@ -1,11 +1,10 @@
-﻿
-
-using Newtonsoft.Json;
+using System;
 
 namespace MirrorworldSDK.Models
 {
+    [Serializable]
     public class LoginWithGoogleRequest
     {
-        [JsonProperty("identity_provider_token")] public string IdentityProviderToken;
+        public string identity_provider_token;
     }
 }

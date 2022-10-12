@@ -50,9 +50,9 @@ public class UIManager : MonoBehaviour
             {
                 
                 LoginState.HasLogin = true;
-                LoginState.Name = LoginResponse.UserResponse.Username;
-                LoginState.WalletAddress= LoginResponse.UserResponse.Wallet.SolAddress;
-                LoginState.ID =  LoginResponse.UserResponse.Id.ToString();
+                LoginState.Name = LoginResponse.user.username;
+                LoginState.WalletAddress= LoginResponse.user.wallet.sol_address;
+                LoginState.ID =  LoginResponse.user.id.ToString();
                 SoundManager.Instance.PlaySound(SoundName.Button);
                 SceneManager.LoadScene("Menu");
             

@@ -1,12 +1,12 @@
-﻿
 
-using Newtonsoft.Json;
+
+using System;
 
 namespace MirrorworldSDK.Models
 {
+    [Serializable]
     public class SignupResponse
     {
-        [JsonProperty("message")]
-        public string Message;
+        public string message;
     }
 }

@@ -1,8 +1,8 @@
 ﻿
+using System;
 
-using Newtonsoft.Json;
-
+[Serializable]
 public class BaseWeb3Request
 {
-    [JsonProperty("confirmation")] public string Confirmation;
+    public string confirmation;
 }

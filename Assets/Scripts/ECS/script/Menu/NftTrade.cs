@@ -210,7 +210,7 @@ public class NftTrade : MonoBehaviour
         
         MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Finalized,(result) =>
         {
-            if (result.Status == "success")
+            if (result.status == "success")
             {
                 MessageAdvice.ConfrimCloseWaitPanel();
                 MessageAdvice.OnSuccess("successful!");
@@ -281,8 +281,7 @@ public class NftTrade : MonoBehaviour
             
              if (null != CurrentNftCellData.NftData)
              {
-                 CurrentPrice.text = CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count - 1]
-                     .price.ToString();
+                 CurrentPrice.text = CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count - 1].ToString();
              }
             
         }
@@ -443,7 +442,7 @@ public class NftTrade : MonoBehaviour
         
         MirrorSDK.TransferNFT(CurrentNftCellData.NftData.mintAddress,address,(result) =>
         {
-            if (result.Status == "success")
+            if (result.status == "success")
             {
                 MessageAdvice.ConfrimCloseWaitPanel();
                 MessageAdvice.OnSuccess("successful!");

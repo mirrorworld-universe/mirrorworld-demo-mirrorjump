@@ -1,13 +1,13 @@
 ﻿
-
-using Newtonsoft.Json;
+using System;
 
 namespace MirrorworldSDK.Models
 {
+    [Serializable]
     public class ListNftOnMarketplaceRequest : BaseWeb3Request
     {
-        [JsonProperty("mint_address")] public string MintAddress;
+        public string mint_address;
 
-        [JsonProperty("price")] public float Price;
+        public decimal price;
     }
 }

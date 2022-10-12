@@ -20,7 +20,6 @@ public class MirrorSDK : MonoBehaviour
 
     [Tooltip("Temp Attr")]
     public string debugEmail = "";
-    public string password = "";
     #endregion settings
 
 
@@ -35,7 +34,7 @@ public class MirrorSDK : MonoBehaviour
         InitSDK(apiKey, gameObject, debugMode, environment);
 
 #if (!(UNITY_IOS) || UNITY_EDITOR) && (!(UNITY_ANDROID) || UNITY_EDITOR)
-        MirrorWrapper.Instance.SetDebugEmail(debugEmail, password);
+        MirrorWrapper.Instance.SetDebugEmail(debugEmail);
 #endif
     }
 
@@ -65,6 +64,7 @@ public class MirrorSDK : MonoBehaviour
 
             MirrorWrapper.Instance.LogFlow("Mirror SDK Inited.");
 #endif
+
     }
 
     public static void SetAPIKey(string apiKey)
@@ -162,7 +162,7 @@ public class MirrorSDK : MonoBehaviour
         {
             MirrorWrapper.Instance.LogFlow("No old current user,try to get data.");
             MirrorWrapper.Instance.GetCurrentUserInfo((response) => {
-                callback(response.Data);
+                callback(response.data);
             });
         }
     }
@@ -236,17 +236,17 @@ public class MirrorSDK : MonoBehaviour
         MirrorWrapper.Instance.FetchNftsByUpdateAuthorities(updateAuthorityAddresses, action);
     }
 
-    public static void ListNFT(string mintAddress, float price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
+    public static void ListNFT(string mintAddress, decimal price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
     {
         MirrorWrapper.Instance.ListNFT(mintAddress, price, confirmation, callBack);
     }
 
-    public static void CancelNFTListing(string mintAddress, float price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
+    public static void CancelNFTListing(string mintAddress, decimal price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
     {
         MirrorWrapper.Instance.CancelNFTListing(mintAddress, price, confirmation, callBack);
     }
 
-    public static void UpdateNFTListing(string mintAddress, float price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
+    public static void UpdateNFTListing(string mintAddress, decimal price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
     {
         MirrorWrapper.Instance.UpdateNFTListing(mintAddress, price, confirmation, callBack);
     }
@@ -301,7 +301,7 @@ public class MirrorSDK : MonoBehaviour
 
         MirrorWrapper.Instance.CompleteLoginWithSession(token, (loginRes) => {
 
-            if (loginRes.Code != (long)MirrorResponseCode.Success)
+            if (loginRes.code != (long)MirrorResponseCode.Success)
             {
                 MirrorWrapper.Instance.LogFlow("Login failed.");
 

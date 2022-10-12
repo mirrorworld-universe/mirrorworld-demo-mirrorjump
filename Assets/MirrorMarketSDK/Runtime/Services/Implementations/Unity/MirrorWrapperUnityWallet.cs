@@ -3,8 +3,7 @@ using System;
 using System.Collections;
 using MirrorworldSDK.Interfaces;
 using MirrorworldSDK.Models;
-using Newtonsoft.Json;
-
+using UnityEngine;
 
 namespace MirrorworldSDK.Wrapper
 {
@@ -26,7 +25,7 @@ namespace MirrorworldSDK.Wrapper
 
             monoBehaviour.StartCoroutine(CheckAndGet(url, null, (response) =>
             {
-                CommonResponse<WalletTokenResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<WalletTokenResponse>>(response);
+                CommonResponse<WalletTokenResponse> responseBody = JsonUtility.FromJson<CommonResponse<WalletTokenResponse>>(response);
 
                 action(responseBody);
             }));
@@ -38,7 +37,7 @@ namespace MirrorworldSDK.Wrapper
 
             monoBehaviour.StartCoroutine(CheckAndGet(url, null, (response) =>
             {
-                CommonResponse<TransferTokenResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<TransferTokenResponse>>(response);
+                CommonResponse<TransferTokenResponse> responseBody = JsonUtility.FromJson<CommonResponse<TransferTokenResponse>>(response);
 
                 action(responseBody);
             }));
@@ -51,7 +50,7 @@ namespace MirrorworldSDK.Wrapper
             monoBehaviour.StartCoroutine(CheckAndGet(url, null, (response) =>
             {
                 LogFlow("response:"+ response);
-                CommonResponse<TransferTokenResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<TransferTokenResponse>>(response);
+                CommonResponse<TransferTokenResponse> responseBody = JsonUtility.FromJson<CommonResponse<TransferTokenResponse>>(response);
 
                 action(responseBody);
             }));
@@ -63,19 +62,19 @@ namespace MirrorworldSDK.Wrapper
 
             TransferSolRequest requestBody = new TransferSolRequest();
 
-            requestBody.Amount = amout;
+            requestBody.amount = amout;
 
-            requestBody.ToPublicKey = publicKey;
+            requestBody.to_publickey = publicKey;
 
-            requestBody.Confirmation = confirmation;
+            requestBody.confirmation = confirmation;
 
-            var rawRequestBody = JsonConvert.SerializeObject(requestBody);
+            var rawRequestBody = JsonUtility.ToJson(requestBody);
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
 
                 LogFlow("TransferSol result :" + response);
 
-                CommonResponse<TransferSolResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<TransferSolResponse>>(response);
+                CommonResponse<TransferSolResponse> responseBody = JsonUtility.FromJson<CommonResponse<TransferSolResponse>>(response);
 
                 callBack(responseBody);
 
@@ -88,24 +87,19 @@ namespace MirrorworldSDK.Wrapper
 
             TransferTokenRequest requestBody = new TransferTokenRequest();
 
-            requestBody.Amount = amout;
+            requestBody.amount = amout;
 
-            requestBody.ToPublicKey = publicKey;
+            requestBody.to_publickey = publicKey;
 
-            var rawRequestBody = JsonConvert.SerializeObject(requestBody);
+            var rawRequestBody = JsonUtility.ToJson(requestBody);
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
 
-                CommonResponse<TransferTokenResponse> responseBody = JsonConvert.DeserializeObject<CommonResponse<TransferTokenResponse>>(response);
+                CommonResponse<TransferTokenResponse> responseBody = JsonUtility.FromJson<CommonResponse<TransferTokenResponse>>(response);
 
                 callBack(responseBody);
 
             }));
         }
-
-
-        
-        
-        
     }
 }

@@ -1,11 +1,12 @@
 ﻿
 
-using Newtonsoft.Json;
+using System;
 
 namespace MirrorworldSDK.Models
 {
+    [Serializable]
     public class GetLoginSessionRequest
     {
-        [JsonProperty("email")] public string emailAddress;
+        public string email;
     }
 }

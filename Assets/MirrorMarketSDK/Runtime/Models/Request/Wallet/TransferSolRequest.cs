@@ -1,13 +1,13 @@
-﻿
 
-using Newtonsoft.Json;
+using System;
 
 namespace MirrorworldSDK.Models
 {
+    [Serializable]
     public class TransferSolRequest : BaseWeb3Request
     {
-        [JsonProperty("to_publickey")] public string ToPublicKey;
+        public string to_publickey;
 
-        [JsonProperty("amount")] public float Amount;
+        public ulong amount;
     }
 }

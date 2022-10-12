@@ -37,6 +37,7 @@ public class NFTPackageManager : MonoBehaviour
     
         SoundManager.Instance.PlaySound(SoundName.Pop);
         CallSDK.FetchNFTS();
+        Package.SetActive(true);
 
     }
 
@@ -53,7 +54,7 @@ public class NFTPackageManager : MonoBehaviour
             ListViewDataProvider.NFTListView.OnDataSourceChange();
         }
         PageTurningStateUpdate(true);
-        Package.SetActive(true);
+      
         
     }
     

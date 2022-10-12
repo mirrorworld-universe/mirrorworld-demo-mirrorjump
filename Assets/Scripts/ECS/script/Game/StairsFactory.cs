@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -55,13 +56,12 @@ public class StairsFactory : MonoBehaviour
     public Sprite[]  ThemeCyberpunkStairs = new Sprite[8];
 
 
-
-
-    private void Start()
+    private void Awake()
     {
         StairsThemeChange();
     }
 
+ 
 
     private void StairsThemeChange()
     {

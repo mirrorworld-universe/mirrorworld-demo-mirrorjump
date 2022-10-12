@@ -19,19 +19,20 @@ public class Group
 
    public float BaseXOffsetUpper;
    
-   public int GenerateFloor;
-
-   public int GenerateUpper;
    
-   
-   public int ExtraYoffsetFloor;
+   public float ExtraYoffsetFloor;
 
-   public int ExtraYoffsetUpper;
+   public float ExtraYoffsetUpper;
 
 
    public List<int> ExtraTypePercent;
    
    public List<int> PropTypePercent;
+   
+   public int GenerateFloor;
+
+   public int GenerateUpper;
+
    
    
 }

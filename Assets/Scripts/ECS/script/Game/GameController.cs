@@ -168,14 +168,14 @@ public class GameController : MonoBehaviour
         }
         var initY = initScore / GlobalDef.heightCoefficient;
         initPos.y += initY;
-
-        StairsFactory.GenerateStairs(initPos, true);
-
+        
         MirrorObject.transform.eulerAngles = new Vector3(0,0,0);
         MirrorObject.transform.localScale = new Vector3(0.28f,0.28f,0.28f);
         MirrorObject.transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         MirrorObject.transform.GetComponent<MirrorJump>().Setup();
         SetTransformPosition(MirrorObject.transform,new Vector3(initPos.x, initPos.y+2f,107.4f));
+        
+        StairsFactory.GenerateStairs(initPos, true);
 
         HeightDisplayManager.Instance.GenerateFirst(initScore);
 

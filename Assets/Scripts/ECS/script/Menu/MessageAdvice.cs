@@ -94,18 +94,34 @@ public class MessageAdvice : MonoBehaviour
    }
    
    public void OnSuccess(string message)
-   {
-      Icon.sprite = Success;
-      MessageContent.text = message;
-      DialogRoot.SetActive(true);
+   {  
+       
+       
+       if (WaitPanel.activeSelf)
+       {
+           ConfrimCloseWaitPanel();
+       }
+       Icon.sprite = Success;
+       MessageContent.text = message;
+       DialogRoot.SetActive(true);
+      
+      
    }
 
 
    public void OnFailure()
-   {
-      Icon.sprite = Failure;
-      MessageContent.text = "ops!\nPlease try again!";
-      DialogRoot.SetActive(true);
+   {  
+       if (WaitPanel.activeSelf)
+       {
+           ConfrimCloseWaitPanel();
+       }
+       
+       Icon.sprite = Failure;
+       MessageContent.text = "ops!\nPlease try again!";
+       DialogRoot.SetActive(true);
+      
+   
+      
    }
 
    public void Exit()

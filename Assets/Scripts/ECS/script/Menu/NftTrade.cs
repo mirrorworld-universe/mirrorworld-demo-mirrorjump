@@ -354,8 +354,7 @@ public class NftTrade : MonoBehaviour
 
         if (ApiCallLimit.CallTradeLimit(CurrentNftCellData.NftData.mintAddress) == false)
         {
-            MessageAdvice.OpenApiCallLimit(CurrentNftCellData.NftData.name+"\n"+ApiCallLimit.GetStateByAddress(CurrentNftCellData.NftData.mintAddress)+" now");
-            
+            MessageAdvice.OpenWaitPanel("Listing Now");
             return;
         }
 
@@ -388,8 +387,7 @@ public class NftTrade : MonoBehaviour
             
             if (ApiCallLimit.CallTradeLimit(CurrentNftCellData.NftData.mintAddress) == false)
             {
-                MessageAdvice.OpenApiCallLimit(CurrentNftCellData.NftData.name+"\n"+ApiCallLimit.GetStateByAddress(CurrentNftCellData.NftData.mintAddress)+" now");
-            
+                MessageAdvice.OpenWaitPanel("Changing New Price Now");
                 return;
             }
 
@@ -426,8 +424,7 @@ public class NftTrade : MonoBehaviour
             
             if (ApiCallLimit.CallTradeLimit(CurrentNftCellData.NftData.mintAddress) == false)
             {
-                MessageAdvice.OpenApiCallLimit(CurrentNftCellData.NftData.name+"\n"+ApiCallLimit.GetStateByAddress(CurrentNftCellData.NftData.mintAddress)+" now");
-            
+                MessageAdvice.OpenWaitPanel("Canceling List Now");
                 return;
             }
 
@@ -458,8 +455,7 @@ public class NftTrade : MonoBehaviour
         
         if (ApiCallLimit.CallTradeLimit(CurrentNftCellData.NftData.mintAddress) == false)
         {
-            MessageAdvice.OpenApiCallLimit(CurrentNftCellData.NftData.name+"\n"+ApiCallLimit.GetStateByAddress(CurrentNftCellData.NftData.mintAddress)+" now");
-            
+            MessageAdvice.OpenWaitPanel("Transfer now");
             return;
         }
        

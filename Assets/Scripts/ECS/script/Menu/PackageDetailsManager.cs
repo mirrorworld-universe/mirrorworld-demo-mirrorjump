@@ -181,14 +181,20 @@ public class PackageDetailsManager : MonoBehaviour
 
 
     public void OpenConfirmMintNFT()
-    {
+    {   
+        if (ApiCallLimit.MintLimit() == false)
+        {
+            MessageAdvice.OpenWaitPanel("Mint Now");
+            return;
+        }
+        
         MessageAdvice.OpenConfirm();
         ExitPackage();
     }
 
 
     public void MintNFT()
-    {
+    {   
         CallSDK.MintNFT(CurrentMirror);
     }
     

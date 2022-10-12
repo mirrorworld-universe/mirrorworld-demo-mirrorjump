@@ -10504,6 +10504,7 @@ MonoBehaviour:
   MessageAdvice: {fileID: 406545398}
   RoleChange: {fileID: 1055436253}
   NftPackageManager: {fileID: 2133473740}
+  PackageManager: {fileID: 1416869729}
 --- !u!4 &645101405
 Transform:
   m_ObjectHideFlags: 0

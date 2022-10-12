@@ -640,7 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1760,15 +1760,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.56078434}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aebc0e3ebe3a56d48a5b9aa3f0e807eb, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 2c20a95880e51a845902198ed37ef198, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2568,8 +2568,45 @@ MonoBehaviour:
   DisappearStairs: {fileID: 8716145998135311012, guid: f6301e7a94d5fb94eb71d137428a909d, type: 3}
   BreakageStairs: {fileID: 2945788482418636398, guid: b78cf45b5fb3d42439f0ae2e035e0c56, type: 3}
   MovingStairs: {fileID: 6682581414873126553, guid: 16d10847927d87f49ad3bba9568af9fd, type: 3}
+  BalanceStairs: {fileID: 6598839778833773834, guid: cd77abdf0e1521944b293a45c75d5d6e, type: 3}
   GameController: {fileID: 247834403}
   PropsFactory: {fileID: 1875881141}
+  ThemeSpaceStairs:
+  - {fileID: 21300000, guid: fa4a765dd893e48449d89d20e80b4856, type: 3}
+  - {fileID: 21300000, guid: 35905ef1c1c31d94ca36382c197e9cf3, type: 3}
+  - {fileID: 21300000, guid: 20eb52e6e925e614382901d22cc80845, type: 3}
+  - {fileID: 21300000, guid: 3e002bc66bddc704c969d1f081dbed38, type: 3}
+  - {fileID: 21300000, guid: 9c06cf02dbfb0214380f66b7bb3d30a2, type: 3}
+  - {fileID: 21300000, guid: 22e997f9401779a47af1a1f664e8b454, type: 3}
+  - {fileID: 21300000, guid: ac6b49269d8fdc84d99348c2231ed205, type: 3}
+  - {fileID: 21300000, guid: f0cea882dd9f5fd47b26a773bb30c8b0, type: 3}
+  ThemeDesertStairs:
+  - {fileID: 21300000, guid: c6e4f503b9240c0489bba15543d8941f, type: 3}
+  - {fileID: 21300000, guid: 52a520f583d72f049aac8e29ae5dcc88, type: 3}
+  - {fileID: 21300000, guid: 98d05c910e00c41449d376a92730caf0, type: 3}
+  - {fileID: 21300000, guid: ff5cf5ba42b2a4144a0c1cb1d906ec41, type: 3}
+  - {fileID: 21300000, guid: ba99efde844eb474b947a1684378fc54, type: 3}
+  - {fileID: 21300000, guid: 7260c463c9fc23b48acf2b3e515075a0, type: 3}
+  - {fileID: 21300000, guid: 977e61bd9ecc6fa4e80a79d1c5d96b22, type: 3}
+  - {fileID: 21300000, guid: ac315de86c9502d4db0a1c6d5e0ed611, type: 3}
+  ThemeSnowStairs:
+  - {fileID: 21300000, guid: 178d2beab5ac1ee448b8bbd74324bf97, type: 3}
+  - {fileID: 21300000, guid: ddcb1ce50e2b58840b9f60287b1daf85, type: 3}
+  - {fileID: 21300000, guid: c59353ca38fc6854699facb13247c08f, type: 3}
+  - {fileID: 21300000, guid: 9162d57c3293ad54bac1169e08d557eb, type: 3}
+  - {fileID: 21300000, guid: ca8fd37819d3d0a4fa08ed91e8eff8bf, type: 3}
+  - {fileID: 21300000, guid: 8f2a68bf3f8dd5148b28d205505f589d, type: 3}
+  - {fileID: 21300000, guid: 26edf02e945e8f2439e40b3930ef5360, type: 3}
+  - {fileID: 21300000, guid: e961e2e5238377d408b213ce0a651c37, type: 3}
+  ThemeCyberpunkStairs:
+  - {fileID: 21300000, guid: 32bf196fe6f2aba458629c5ddfe8b9e4, type: 3}
+  - {fileID: 21300000, guid: 6f2e8b76d3e4b9447a7a0699e52cc84e, type: 3}
+  - {fileID: 21300000, guid: 950bf09c6a8c60d4a9e9d82bbc934045, type: 3}
+  - {fileID: 21300000, guid: 378c6d0da2cc8c94da37802dceb313dc, type: 3}
+  - {fileID: 21300000, guid: 268d7fb61538c2348bbcb8306725baf5, type: 3}
+  - {fileID: 21300000, guid: 175d177fe8b920c49b5459f363b5a022, type: 3}
+  - {fileID: 21300000, guid: 73221f38f8dd4fe45828c06bf9a568db, type: 3}
+  - {fileID: 21300000, guid: 9b8aa04d2839ddf408ff275c9582e148, type: 3}
 --- !u!1 &1372647269
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,15 +2638,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.56078434}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aebc0e3ebe3a56d48a5b9aa3f0e807eb, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 2c20a95880e51a845902198ed37ef198, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3071,7 +3108,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1438306589}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 428433032}
+        m_TargetAssemblyTypeName: GameOverPanel, Assembly-CSharp
+        m_MethodName: Share
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1438306589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4339,7 +4388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

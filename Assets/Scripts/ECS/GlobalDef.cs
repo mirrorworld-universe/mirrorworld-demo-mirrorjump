@@ -21,13 +21,17 @@ public enum SoundName
     Failed,
     BlackHole,
     BeforeDisappear,
-    TurnPage
+    TurnPage,
+    Balance
 }
 
 public class GlobalDef 
 {
     public static string isMute = "isMute";
     public static int heightCoefficient = 4;
+    // 当得分为最高分并且进行了分享
+    public static string hasInitPosY = "HasInitPosY";
+    public static string maxScore = "MaxScore";
 }
 
 public struct AirDropPostData

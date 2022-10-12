@@ -13,22 +13,25 @@ public class HeightDisplayManager : Singleton<HeightDisplayManager>
     private long markDistance = 50;
     private long firstHeight = 201;
 
-    public void GenerateFirst(float height)
+    // 传入为乘了系数的位置
+    public void GenerateFirst(long height)
     {
         // 数据初始化
         initY = height;
-        yOffset *= GlobalDef.heightCoefficient;
+        yOffset = 10 * GlobalDef.heightCoefficient;
 
         // 计算数字水平位置
         var mapPos = Camera.main.ScreenToWorldPoint(Vector3.zero);
-        xPos = mapPos.x + 0.2f;
+        xPos = mapPos.x + 0.1f;
         // 前firstHeight高度，每markDistance显示一格
         criticalHeight = height + firstHeight;
 
-        GameObject obj = ObjectPooler.Instance.SpawnFromPool("HeightNumber", new Vector3(xPos, height, 0), Quaternion.identity, -1);
+        ObjectPooler.Instance.RecoveryAllObject("HeightNumber");
+        GameObject obj = ObjectPooler.Instance.SpawnFromPool("HeightNumber", new Vector3(xPos, height / GlobalDef.heightCoefficient, 0), Quaternion.identity, -1);
         obj.GetComponent<HeightNumber>().Setup((long)height);
     }
     // 根据当前地块高度，生成高度线
+    // 传入为乘了系数的位置
     public void GenerateHeightNumber(float height)
     {
         var minH = height - yOffset;
@@ -37,14 +40,14 @@ public class HeightDisplayManager : Singleton<HeightDisplayManager>
         var rest = minH % markDistance;
         long mark = (long)(minH - rest) + markDistance;
 
-        while(mark < maxH)
+        while (mark < maxH)
         {
             bool isHigherThanInit = mark > initY;
             bool isLowerThanCriticalHeight = mark < criticalHeight;
             bool isHigherThanCriticalHeightCanShow = mark > criticalHeight && mark % 100 == 0;
-            if (isHigherThanInit && (isLowerThanCriticalHeight || isHigherThanCriticalHeightCanShow) ) 
+            if (isHigherThanInit && (isLowerThanCriticalHeight || isHigherThanCriticalHeightCanShow))
             {
-                GameObject obj = ObjectPooler.Instance.SpawnFromPool("HeightNumber", new Vector3(xPos, mark/ GlobalDef.heightCoefficient, 0), Quaternion.identity, -1);
+                GameObject obj = ObjectPooler.Instance.SpawnFromPool("HeightNumber", new Vector3(xPos, mark / GlobalDef.heightCoefficient, 0), Quaternion.identity, -1);
                 obj.GetComponent<HeightNumber>().Setup(mark);
             }
 

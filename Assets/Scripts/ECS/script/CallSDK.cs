@@ -18,6 +18,28 @@ public class CallSDK : MonoBehaviour
     private NFTCellData NftCellData;
 
 
+    public PackageManager PackageManager;
+
+
+    private string GetNameNumber(string target)
+    {
+     
+        string res = "";
+        int j = 59;
+        while (j<target.Length)
+        {   
+            j++;
+            
+            if (target[j] == '.')
+            {
+                break;
+            }
+            res += target[j];
+           
+        }
+
+        return res;
+    }
 
 
 
@@ -25,37 +47,31 @@ public class CallSDK : MonoBehaviour
 
   
     
-    // todo fetch nfts
+    // todo SDK Call  Fetch NFTS
     public void FetchNFTS()
     {
-        
         if (LoginState.HasLogin)
         {
-
             List<string> creators = new List<string>();
             creators.Add(LoginState.WalletAddress);
             
             MirrorSDK.GetNFTsOwnedByAddress(creators, (Mutiple) =>
             {
                  List<NFTCellData> datas = new List<NFTCellData>();
-
-                 for (int i = 0; i < Mutiple.data.nfts.Count; i++)
+                 for (int i = 0; i < Mutiple.Data.nfts.Count; i++)
                  {
                      NFTCellData nftCellData = new NFTCellData();
-                     SingleNFTResponseObj NftData = Mutiple.data.nfts[i];
+                     SingleNFTResponseObj NftData = Mutiple.Data.nfts[i];
                      nftCellData.NftData = NftData;
                      datas.Add(nftCellData);
                  }
                  NftPackageManager.RefreshData(datas);
-                
             });
         }
     }
     
     
-    
-    
-   // todo transfer token
+   // todo Transfer Token
     public void MintNFTResult(bool IsSuccess)
     {
         if (IsSuccess)
@@ -63,7 +79,7 @@ public class CallSDK : MonoBehaviour
             // transfer token
             MirrorSDK.TransferSol(100000000,"qS6JW1CKQgpwZU6jG5JpXL3Q4EDMoDD5DWacPEsNZoe",Confirmation.Confirmed, (result) =>
             {
-                if (result.status == "success")
+                if (result.Status == "success")
                 {
                     FinishedMint(true);
                 }
@@ -111,7 +127,8 @@ public class CallSDK : MonoBehaviour
             PlayerPrefs.SetString("HasMintNFT","true");
             
             MessageAdvice.ConfrimCloseWaitPanel();
-            MessageAdvice.OnSuccess("Successful!");
+            MessageAdvice.OnSuccess("Mint Successful!");
+            PackageManager.RefreshPackage();
             
         }
         else
@@ -120,10 +137,14 @@ public class CallSDK : MonoBehaviour
             MessageAdvice.OnFailure();
         }
         
+        
+        //  todo 解锁  Mint Api 限制状态
+        ApiCallLimit.SetMintApiLimit(Constant.StopMint);
+        
+        
     }
     
-    
-    // todo Mint NFT
+    // todo SDK Call MintNFT
     public void MintNFT (NFTCellData nftCellData)
     {
         NftCellData = nftCellData;
@@ -132,12 +153,21 @@ public class CallSDK : MonoBehaviour
         {
             string name = "Mirror Jump " + "#" + GetNameNumber(PlayerPrefs.GetString("MintUrl"));
             
+            if (ApiCallLimit.MintLimit() == false)
+            {
+                MessageAdvice.OpenWaitPanel("Mint Now");
+                return;
+            }
+            
+            ApiCallLimit.SetMintApiLimit(Constant.ExecuteMint);
+            
+            MessageAdvice.OpenWaitPanel("Mint Now");
+            
             MirrorSDK.MintNFT("BXqCckKEidhJUpYrg4u2ocdiDKwJY3WujHvVDPTMf6nL",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
                 (result) =>
                 {
-                   
-
-                   if (result.status == "success")
+                    
+                   if (result.Status == "success")
                    {
                        MintNFTResult(true);
                    }
@@ -154,26 +184,7 @@ public class CallSDK : MonoBehaviour
     
     
     
-    private string GetNameNumber(string target)
-    {
-     
-        string res = "";
-        int j = 59;
-        while (j<target.Length)
-        {   
-            j++;
-            
-            if (target[j] == '.')
-            {
-                break;
-            }
-            res += target[j];
-           
-        }
-
-        return res;
-    }
-    
+  
     
     
     

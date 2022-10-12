@@ -67,3 +67,6 @@ MonoBehaviour:
   - soundName: 17
     soundClip: {fileID: 8300000, guid: 71fe879416742e549bdc3b37bf79bf2a, type: 3}
     soundVolme: 1
+  - soundName: 18
+    soundClip: {fileID: 8300000, guid: ae3d89f595b3eb24fb6e007b9a3b4ae9, type: 3}
+    soundVolme: 1

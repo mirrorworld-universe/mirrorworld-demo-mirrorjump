@@ -8,8 +8,6 @@ public class NFTCellData
     
     public  SingleNFTResponseObj NftData { get; set; }
     
-    
-    
 }
 
 public class Collection

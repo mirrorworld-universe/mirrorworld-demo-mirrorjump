@@ -13,13 +13,14 @@ public class GameOverPanel : MonoBehaviour
     [SerializeField] private GameObject shareTip;
     [SerializeField] private GameObject shareDot;
     [SerializeField] private GameObject newScoreEffect;
+    private bool isNewRecord;
     private void OnEnable()
     {
         var height = FindObjectOfType<GameController>().GetMaxHeight();
 
         scoreText.text = Mathf.Floor(height).ToString();
 
-        string max = PlayerPrefs.GetString("MaxScore", "0");
+        string max = PlayerPrefs.GetString(GlobalDef.maxScore, "0");
         long maxScore = (long)float.Parse(max);
 
         if (Mathf.Floor(height) > maxScore) 
@@ -27,14 +28,16 @@ public class GameOverPanel : MonoBehaviour
             SetNewScore(true);
             SoundManager.Instance.PlaySound(SoundName.Victory);
             scoreText.color = victoryColor;
-            PlayerPrefs.SetString("MaxScore", height.ToString());
+            PlayerPrefs.SetString(GlobalDef.maxScore, ((long)(height)).ToString());
             maxScore = (long)height;
+            isNewRecord = true;
         }
         else
         {
             SetNewScore(false);
             scoreText.color = failedColor;
             SoundManager.Instance.PlaySound(SoundName.Failed);
+            isNewRecord = false;
         }
 
         maxScoreText.text = maxScore.ToString();
@@ -57,6 +60,17 @@ public class GameOverPanel : MonoBehaviour
             shareTip.SetActive(false);
             shareDot.SetActive(false);
             newScoreEffect.SetActive(false);
+        }
+    }
+
+    public void Share()
+    {
+        SoundManager.Instance.PlaySound(SoundName.Button);
+        if (isNewRecord)
+        {
+            shareDot.SetActive(false);
+            // 保存状态，记录下次初始时从非零开始
+            PlayerPrefs.SetInt(GlobalDef.hasInitPosY, 1);
         }
     }
 }

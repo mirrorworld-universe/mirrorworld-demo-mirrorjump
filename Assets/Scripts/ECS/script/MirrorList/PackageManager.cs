@@ -67,6 +67,27 @@ public class PackageManager : MonoBehaviour
     }
 
 
+    
+    public void RefreshPackage()
+    {
+        ListViewDataProvider.NFTListView.SetDataProvider(ListViewDataProvider);
+
+        ListViewDataProvider.DataSource.Clear();
+
+        ListViewDataProvider.DataSource.Add(GenerateDefaultCellData());
+
+        if (null != GenerateRandomCellData())
+        {
+            ListViewDataProvider.DataSource.Add(GenerateRandomCellData());
+        }
+        
+        ListViewDataProvider.NFTListView.OnDataSourceChange();
+        PageTurningStateUpdate(true);
+        Package.SetActive(true);
+        
+    }
+
+
     private NFTCellData GenerateDefaultCellData()
     {
         NFTCellData nftCellData = new NFTCellData();

@@ -28,6 +28,12 @@ public class MessageAdvice : MonoBehaviour
    public TextMeshProUGUI WaitTips;
 
    public GameObject ExitConfirmButton;
+
+
+   public GameObject ApiCallLimit;
+
+   public TextMeshProUGUI LimitTips;
+   
    
    
    public bool IsWaiting;
@@ -88,18 +94,34 @@ public class MessageAdvice : MonoBehaviour
    }
    
    public void OnSuccess(string message)
-   {
-      Icon.sprite = Success;
-      MessageContent.text = message;
-      DialogRoot.SetActive(true);
+   {  
+       
+       
+       if (WaitPanel.activeSelf)
+       {
+           ConfrimCloseWaitPanel();
+       }
+       Icon.sprite = Success;
+       MessageContent.text = message;
+       DialogRoot.SetActive(true);
+      
+      
    }
 
 
    public void OnFailure()
-   {
-      Icon.sprite = Failure;
-      MessageContent.text = "ops!\nPlease try again!";
-      DialogRoot.SetActive(true);
+   {  
+       if (WaitPanel.activeSelf)
+       {
+           ConfrimCloseWaitPanel();
+       }
+       
+       Icon.sprite = Failure;
+       MessageContent.text = "ops!\nPlease try again!";
+       DialogRoot.SetActive(true);
+      
+   
+      
    }
 
    public void Exit()
@@ -136,4 +158,20 @@ public class MessageAdvice : MonoBehaviour
    }
 
 
+   public void OpenApiCallLimit(string tips)
+   {
+       LimitTips.text = tips;
+       ApiCallLimit.SetActive(true);
+   }
+
+   
+   public void CloseApiCallLimit()
+   {
+       LimitTips.text = "";
+       ApiCallLimit.SetActive(false);
+       
+   }
+   
+   
+   
 }

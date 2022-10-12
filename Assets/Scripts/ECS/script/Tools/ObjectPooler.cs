@@ -57,6 +57,15 @@ public class ObjectPooler : MonoSingleton<ObjectPooler>
         return objectToSpawn;
     }
 
+    // 回收全部对象
+    public void RecoveryAllObject(string tag)
+    {
+        foreach(var obj in poolDictionary[tag])
+        {
+            obj.SetActive(false);
+        }
+    }
+
     IEnumerator HideItem(GameObject obj, float time)
     {
         if(time < 0)

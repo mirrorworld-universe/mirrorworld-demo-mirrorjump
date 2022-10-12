@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -84,7 +84,6 @@ public class StairsFactory : MonoBehaviour
        }
        else
        {
-           
            SpaceStairsSpriteChange();
        }
        
@@ -382,14 +381,11 @@ public class StairsFactory : MonoBehaviour
   {
       return StairsType.Moving;
   }
-    
     private StairsType OnlyGeneral()
     {
         return StairsType.General;
     }
     
-  
-
     private void RandomProps(Transform StairsParent,GameController gameController)
     {
         
@@ -463,6 +459,7 @@ public class StairsFactory : MonoBehaviour
         }
        
     } 
+    
 
 
 }

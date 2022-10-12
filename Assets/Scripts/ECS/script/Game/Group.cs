@@ -34,6 +34,4 @@ public class Group
    public List<int> PropTypePercent;
    
    
-   
-
 }

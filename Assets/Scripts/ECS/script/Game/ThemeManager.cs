@@ -153,6 +153,10 @@ public class ThemeManager : MonoBehaviour
         }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
         {
             LockState = PlayerPrefs.GetInt("ThemeCyberpunkState", 0);
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemePastureIndex)
+        {
+             LockState = PlayerPrefs.GetInt("ThemePastureState", 0); 
         }
 
 

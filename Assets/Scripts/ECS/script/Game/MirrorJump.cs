@@ -396,7 +396,16 @@ public class MirrorJump : MonoBehaviour
                 return;
             }
             
-             PlayerPrefs.SetInt("ThemeCyberpunkState", 1);
+               PlayerPrefs.SetInt("ThemeCyberpunkState", 1);
+             
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
+        {    
+            if (1 ==   PlayerPrefs.GetInt("ThemePastureState", 0))
+            {
+                return;
+            }
+            
+            PlayerPrefs.SetInt("ThemePastureState", 1);
              
         }
         
@@ -422,12 +431,16 @@ public class MirrorJump : MonoBehaviour
         }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
         {
             UnlockHeight = 45f;
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
+        {
+            UnlockHeight = 45f;
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemePastureIndex)
+        {
+            IsUnlock = false;
+            return;
         }
-        
-        // }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
-        // {
-        //     
-        // }
         
 
         IsUnlock = true;

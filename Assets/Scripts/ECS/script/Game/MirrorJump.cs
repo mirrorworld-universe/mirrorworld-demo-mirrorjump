@@ -369,47 +369,50 @@ public class MirrorJump : MonoBehaviour
         }
 
         IsUnlock = false;
-        
+
         if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSpaceIndex)
         {
-            if (1 == PlayerPrefs.GetInt("ThemeDesertState", 0))
+            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeDesertIndex, 0))
             {
                 return;
             }
-            
-            PlayerPrefs.SetInt("ThemeDesertState", 1);
-            
-        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
-        {   
-            
-            if (1 ==  PlayerPrefs.GetInt("ThemeSnowState", 0))
-            {
-                return;
-            }
-            
-            PlayerPrefs.SetInt("ThemeSnowState", 1);
-            
-        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
-        {    
-            if (1 ==   PlayerPrefs.GetInt("ThemeCyberpunkState", 0))
-            {
-                return;
-            }
-            
-               PlayerPrefs.SetInt("ThemeCyberpunkState", 1);
-             
-        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
-        {    
-            if (1 ==   PlayerPrefs.GetInt("ThemePastureState", 0))
-            {
-                return;
-            }
-            
-            PlayerPrefs.SetInt("ThemePastureState", 1);
-             
+
+            PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemeDesertIndex, 1);
+
         }
-        
-        
+        else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
+        {
+
+            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeSnowIndex, 0))
+            {
+                return;
+            }
+
+            PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemeSnowIndex, 1);
+
+        }
+        else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
+        {
+            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeCyberpunkIndex, 0))
+            {
+                return;
+            }
+
+            PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemeCyberpunkIndex, 1);
+
+        }
+        else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
+        {
+            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemePastureIndex, 0))
+            {
+                return;
+            }
+
+            PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemePastureIndex, 1);
+
+        }
+
+
         // notify
         GameMenu.OpenUnlockAdvice();
         

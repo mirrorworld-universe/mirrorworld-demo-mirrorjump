@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
                 
                 LoginState.HasLogin = true;
                 LoginState.Name = LoginResponse.user.username;
-                LoginState.WalletAddress= LoginResponse.user.wallet.sol_address;
+                LoginState.WalletAddress= LoginResponse.user.sol_address;
                 LoginState.ID =  LoginResponse.user.id.ToString();
                 SoundManager.Instance.PlaySound(SoundName.Button);
                 SceneManager.LoadScene("Menu");

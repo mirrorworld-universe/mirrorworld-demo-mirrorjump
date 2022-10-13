@@ -46,6 +46,7 @@ namespace MirrorworldSDK.Wrapper
 
         public void GetLoginSession(string emailAddress, Action<bool> openBrowerResult, Action<LoginResponse> loginCb)
         {
+            LogFlow("Request debug session--email:"+ emailAddress+" apiKey:"+apiKey);
             this.loginCb = loginCb;
 
             GetLoginSessionRequest requestBody = new GetLoginSessionRequest();

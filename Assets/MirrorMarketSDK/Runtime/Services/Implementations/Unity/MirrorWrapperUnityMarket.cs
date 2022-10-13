@@ -164,7 +164,6 @@ namespace MirrorworldSDK.Wrapper
             FetchMultipleNftsByOwnersRequest requestBody = new FetchMultipleNftsByOwnersRequest();
 
             requestBody.owners = owners;
-
             var rawRequestBody = JsonUtility.ToJson(requestBody);
 
             string url = GetAPIRoot() + urlFetchMultiNFTsDataByOwnerAddresses;

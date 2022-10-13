@@ -23,11 +23,11 @@ public class MapRunSystem : MonoBehaviour
     
     
     // Theme
-    public Sprite[] ThemeBackSprites = new Sprite[4];
+    public Sprite[] ThemeBackSprites = new Sprite[5];
     
-    public Sprite[] ThemeGroudSprites = new Sprite[4];
+    public Sprite[] ThemeGroudSprites = new Sprite[5];
     
-    public Sprite[] ThemeCloudSprites = new Sprite[4];
+    public Sprite[] ThemeCloudSprites = new Sprite[5];
 
 
     public SpriteRenderer TopSpriteRenderer;

@@ -34,7 +34,8 @@ public class NFTDetailsManager : MonoBehaviour
     public void OpenNFTPackageDetails(NFTCellData nftCellData)
     {
         SoundManager.Instance.PlaySound(SoundName.Pop);
-        NFTPackageManager.ClosePackage();
+        NFTPackageManager.Package.SetActive(false);
+        SoundManager.Instance.PlaySound(SoundName.Close);
         NFTDetails.SetActive(true);
         DataParser(nftCellData);
         

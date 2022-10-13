@@ -12,6 +12,11 @@ public class NFTPackageManager : MonoBehaviour
 
     public GameObject Package;
 
+    public GameObject ListViewRoot;
+    
+    public GameObject PageRoot;
+    
+
     public ListViewDataProvider ListViewDataProvider;
 
     public CallSDK CallSDK;
@@ -37,7 +42,10 @@ public class NFTPackageManager : MonoBehaviour
     
         SoundManager.Instance.PlaySound(SoundName.Pop);
         CallSDK.FetchNFTS();
-
+        ListViewRoot.SetActive(false);
+        PageRoot.SetActive(false);
+        Package.SetActive(true);
+        
     }
 
 
@@ -53,8 +61,10 @@ public class NFTPackageManager : MonoBehaviour
             ListViewDataProvider.NFTListView.OnDataSourceChange();
         }
         PageTurningStateUpdate(true);
-        Package.SetActive(true);
-        
+      
+       ListViewRoot.SetActive(true);
+       PageRoot.SetActive(true);
+       
     }
     
     
@@ -69,8 +79,9 @@ public class NFTPackageManager : MonoBehaviour
     {
         SoundManager.Instance.PlaySound(SoundName.Close);
         Package.SetActive(false);
-
         ListView.RecycleAllItems();
+        ListViewDataProvider.DataSource.Clear();
+        
     }
 
     public void PageTurningStateUpdate(bool IsFirst)

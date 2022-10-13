@@ -24,12 +24,14 @@ public class GameMenu : MonoBehaviour
 
     private bool IsHeightAdvice = false;
     private bool IsUnlockAdvice = false;
-    private int FremeCount = 0;
+    private float CurrentTime = 0;
 
     private void Start()
     {
         HighScore.text = "0";
         OpenUnlockHeightAdvice();
+        UnlockHeightAdvice.SetActive(false);
+        UnlockAdvice.SetActive(false);
     }
 
     private void OpenUnlockHeightAdvice()
@@ -54,10 +56,18 @@ public class GameMenu : MonoBehaviour
             {
                 return;
             }
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
+        {    
+            if (1 ==   PlayerPrefs.GetInt("ThemePastureState", 0))
+            {
+                return;
+            }
+            
         }
         
         IsHeightAdvice = true;
-        FremeCount = 0;
+        CurrentTime = 0;
         UnlockHeightAdvice.SetActive(true);
         
         
@@ -68,7 +78,7 @@ public class GameMenu : MonoBehaviour
     public void OpenUnlockAdvice()
     {
         IsUnlockAdvice = true;
-        FremeCount = 0;
+        CurrentTime = 0;
         UnlockAdvice.SetActive(true);
         
     }
@@ -78,35 +88,39 @@ public class GameMenu : MonoBehaviour
 
     private void Update()
     {
+        
         if (IsHeightAdvice)
         {
-            FremeCount++;
-            if (FremeCount >= 120)
+            CurrentTime+=Time.deltaTime;
+            if (CurrentTime >= 3)
             {
                 IsHeightAdvice = false;
-                FremeCount = 0;
+                CurrentTime = 0;
                 UnlockHeightAdvice.SetActive(false);
             }
-            
-            
-            
         }
-        
+
         
         if (IsUnlockAdvice)
         {
-            FremeCount++;
-            if (FremeCount >= 120)
+            CurrentTime+=Time.deltaTime;
+            if (CurrentTime >= 3)
             {
                 IsUnlockAdvice = false;
-                FremeCount = 0;
+                CurrentTime = 0;
                 UnlockAdvice.SetActive(false);
             }
-            
         }
         
         
+        
+       
+        
+        
     }
+    
+    
+    
 
 
     public void GameOver()

@@ -1,0 +1,40 @@
+[{
+		"Name": "Group1",
+		"Height": [0, 200],
+		"BaseYoffset": [2, 3],
+		"BaseXoffset": [-2, 2],
+		"ExtraCount": [5, 7],
+		"ExtraYoffset": [0.5, 3],
+		"ExtraTypePercent": [60, 20, 20, 0, 0],
+		"ItemPercent": [0, 0, 20, 20, 20]
+	}, {
+		"Name": "Group2",
+		"Height": [200, 500],
+		"BaseYoffset": [2, 3],
+		"BaseXoffset": [-3, 3],
+		"ExtraCount": [4, 6],
+		"ExtraYoffset": [0.5, 3],
+		"ExtraTypePercent": [40, 15, 15, 15, 15],
+		"ItemPercent": [20, 20, 20, 20, 20]
+	},
+	{
+		"Name": "Group3",
+		"Height": [500, 1000],
+		"BaseYoffset": [2, 3],
+		"BaseXoffset": [-4, 4],
+		"ExtraCount": [3, 5],
+		"ExtraYoffset": [0.5, 3],
+		"ExtraTypePercent": [20, 20, 20, 20, 20],
+		"ItemPercent": [30, 10, 10, 20, 20]
+	},
+	{
+		"Name": "Group4",
+		"Height": [1000, 999999],
+		"BaseYoffset": [2, 3],
+		"BaseXoffset": [-4, 4],
+		"ExtraCount": [2, 4],
+		"ExtraYoffset": [0.5, 3],
+		"ExtraTypePercent": [10, 10, 30, 30, 20],
+		"ItemPercent": [40, 10, 10, 10, 10]
+	}
+]

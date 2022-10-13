@@ -14,11 +14,11 @@ public class ThemeManager : MonoBehaviour
 
  
 
-    public Sprite[] ThemeBackSprites = new Sprite[4];
+    public Sprite[] ThemeBackSprites = new Sprite[5];
     
-    public Sprite[] ThemeGroudSprites = new Sprite[4];
+    public Sprite[] ThemeGroudSprites = new Sprite[5];
     
-    public Sprite[] ThemeCloudSprites = new Sprite[4];
+    public Sprite[] ThemeCloudSprites = new Sprite[5];
 
 
 
@@ -27,6 +27,13 @@ public class ThemeManager : MonoBehaviour
 
 
     private bool IsLockCurrentTheme;
+
+
+    public GameObject LeftPage;
+
+    public GameObject RightPage;
+    
+    
     
     
     
@@ -71,9 +78,10 @@ public class ThemeManager : MonoBehaviour
             return;
         }
 
-        if (CurrentThemeIndex +1 > 3)
+        if (CurrentThemeIndex +1 > 4)
         {
             //  do some advice
+            
             return;
         }
         
@@ -84,11 +92,33 @@ public class ThemeManager : MonoBehaviour
     }
     
     private void RefreshLockState()
-    {
+    {   
+        
+        
+        
         int SpriteIndex = PlayerPrefs.GetInt("CurrentTheme");
+
+        if (SpriteIndex >= 4)
+        {
+            RightPage.gameObject.GetComponent<CanvasGroup>().alpha = 0.5f;
+            RightPage.gameObject.GetComponent<Button>().interactable =false;
+            
+        }else if (SpriteIndex <= 0)
+        {
+            LeftPage.gameObject.GetComponent<CanvasGroup>().alpha = 0.5f;
+            LeftPage.gameObject.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            RightPage.gameObject.GetComponent<CanvasGroup>().alpha = 1f;
+            LeftPage.gameObject.GetComponent<CanvasGroup>().alpha = 1f;
+            LeftPage.gameObject.GetComponent<Button>().interactable = true;
+            RightPage.gameObject.GetComponent<Button>().interactable =true;
+        }
         
         ThemeBack.gameObject.GetComponent<Image>().sprite = ThemeBackSprites[SpriteIndex];
         ThemeGroud.gameObject.GetComponent<Image>().sprite = ThemeGroudSprites[SpriteIndex];
+        ThemeCloud.gameObject.GetComponent<Image>().sprite = ThemeCloudSprites[SpriteIndex];
         
         if (LockState())
         {

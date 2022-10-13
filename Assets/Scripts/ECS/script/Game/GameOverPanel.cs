@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverPanel : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GameOverPanel : MonoBehaviour
     [SerializeField] private GameObject shareTip;
     [SerializeField] private GameObject shareDot;
     [SerializeField] private GameObject newScoreEffect;
+    [SerializeField] private GameObject unlockSceneBg;
+    [SerializeField] private GameObject unlockSceneContent;
+    [SerializeField] private Image unlockSceneSr;
     private bool isNewRecord;
     private void OnEnable()
     {
@@ -72,5 +76,21 @@ public class GameOverPanel : MonoBehaviour
             // 保存状态，记录下次初始时从非零开始
             PlayerPrefs.SetInt(GlobalDef.hasInitPosY, 1);
         }
+    }
+
+    // lockIndex为0时未解锁
+    public void UnlockNewScene(int lockIndex)
+    {
+        if(lockIndex == 0)
+        {
+            unlockSceneBg.SetActive(false);
+            unlockSceneContent.SetActive(false);
+            return;
+        }
+
+        unlockSceneBg.SetActive(true);
+        unlockSceneContent.SetActive(true);
+        // 设置主题图片
+        // unlockSceneSr
     }
 }

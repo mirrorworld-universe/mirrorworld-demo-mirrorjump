@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6236376754683695852, guid: 2ca39d7c5936f436b9cd2d79123ee069, type: 3}
       propertyPath: apiKey
-      value: mw_testGoC1CsfxiVYpouZCqe7ZphbIY151f3L5rco
+      value: mw_testgjGDGCkFCewx6ut40KZqB14dE3OCGhXOa20
       objectReference: {fileID: 0}
     - target: {fileID: 6236376754683695852, guid: 2ca39d7c5936f436b9cd2d79123ee069, type: 3}
       propertyPath: password
@@ -224,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6236376754683695852, guid: 2ca39d7c5936f436b9cd2d79123ee069, type: 3}
       propertyPath: debugEmail
-      value: 2573040560@qq.com
+      value: gaoweicheng@rct.studio
       objectReference: {fileID: 0}
     - target: {fileID: 6236376754683695854, guid: 2ca39d7c5936f436b9cd2d79123ee069, type: 3}
       propertyPath: m_Name

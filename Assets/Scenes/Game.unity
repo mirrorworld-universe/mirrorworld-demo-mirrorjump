@@ -1887,7 +1887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf6eeb239093fe48899d8aa86d3d215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameOverWindow: {fileID: 0}
+  GameOverWindow: {fileID: 860839966}
   GamePauseWindow: {fileID: 1144581336}
   GameController: {fileID: 247834403}
   HighScore: {fileID: 395765671}

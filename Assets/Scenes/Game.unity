@@ -998,6 +998,12 @@ MonoBehaviour:
   MirrorRole: {fileID: 5925371422525462709}
   MapRunSystem: {fileID: 1113051819}
   GameController: {fileID: 247834402}
+  Clips:
+  - {fileID: 8300000, guid: b3ad353a6ad823045b29a9b4df59a610, type: 3}
+  - {fileID: 8300000, guid: abf0592ebd46b744db04966f7ddc512f, type: 3}
+  - {fileID: 8300000, guid: e4500f63e16d87246af68f2da4cdda05, type: 3}
+  - {fileID: 8300000, guid: f016e5d5d50e8f14e90da6ff2f16162c, type: 3}
+  - {fileID: 8300000, guid: f034b1f666603204abb24135acf3bab7, type: 3}
 --- !u!81 &519420034
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2480,16 +2486,19 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 223401c558069de4fbc4809224dae06f, type: 3}
   - {fileID: 21300000, guid: b0f0ecc0bbc738545adc84e19d85d31f, type: 3}
   - {fileID: 21300000, guid: 8f33d804c6109c44c8aae502c4c0a25d, type: 3}
+  - {fileID: 21300000, guid: 94931e7f53d9eab47b244cccd6ef0fdf, type: 3}
   ThemeGroudSprites:
   - {fileID: 21300000, guid: 42930bf6166c3164b9599c095da0a35c, type: 3}
   - {fileID: 21300000, guid: c4bba338fa8049c49855c0aa165ff966, type: 3}
   - {fileID: 21300000, guid: d2fd3d434a1721f4c9b4abbb9b392fec, type: 3}
   - {fileID: 21300000, guid: 1e27dd8c0204df24cbe5bdffc524cbfb, type: 3}
+  - {fileID: 21300000, guid: fb932af664819314ab6a69b7d5faabfe, type: 3}
   ThemeCloudSprites:
   - {fileID: 21300000, guid: b07c61b2ea56b6546a06a1972bd68489, type: 3}
   - {fileID: 21300000, guid: 7c535448d7ad12848adbdb45fbebf15a, type: 3}
   - {fileID: 21300000, guid: 7c535448d7ad12848adbdb45fbebf15a, type: 3}
   - {fileID: 21300000, guid: 5c0cb1841f4b1a544bbe483f999cfe17, type: 3}
+  - {fileID: 21300000, guid: c1faecb452d583f478bdb8470ac410aa, type: 3}
   TopSpriteRenderer: {fileID: 1056517872}
   MiddleSpriteRenderer: {fileID: 1441342517}
   BottomSpriteRenderer: {fileID: 1576967219}
@@ -2665,6 +2674,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 175d177fe8b920c49b5459f363b5a022, type: 3}
   - {fileID: 21300000, guid: 73221f38f8dd4fe45828c06bf9a568db, type: 3}
   - {fileID: 21300000, guid: 9b8aa04d2839ddf408ff275c9582e148, type: 3}
+  ThemePastureStairs:
+  - {fileID: 21300000, guid: 6d8d92fc4fa6e7f45ba402b906fd6c3d, type: 3}
+  - {fileID: 21300000, guid: 5ee65de04bee2624a8c116af7ff756ea, type: 3}
+  - {fileID: 21300000, guid: 3853ac9bdc7deda46838671c86b0448a, type: 3}
+  - {fileID: 21300000, guid: e6c54a03dc58c8944b1a2e727b802950, type: 3}
+  - {fileID: 21300000, guid: 983aea20e8996b248b9ff7b09dd1de7f, type: 3}
+  - {fileID: 21300000, guid: 77ee7e424c7e3a84c9c18886e223b24d, type: 3}
+  - {fileID: 21300000, guid: b4fadbb408620e54ab4cf6d3fccd4546, type: 3}
+  - {fileID: 21300000, guid: 7851ef3f608c2a643a86da98182a1b53, type: 3}
 --- !u!1 &1372647269
 GameObject:
   m_ObjectHideFlags: 0

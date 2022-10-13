@@ -25,8 +25,22 @@ public class CameraTracking : MonoBehaviour
    private float FloorTrackThreshold = 5.5f;
    
    private bool IsStartFall = false;
+   
+   // Back music 
+   public AudioClip[] Clips = new AudioClip[5];
 
-    private void FixedUpdate()
+   private void Start()
+   {
+      int index = PlayerPrefs.GetInt("CurrentTheme");
+
+      transform.gameObject.GetComponent<AudioSource>().clip = Clips[index];
+
+      transform.gameObject.GetComponent<AudioSource>().mute = SoundManager.Instance.GetSoundState();
+      
+
+   }
+
+   private void FixedUpdate()
    {
       if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
       {

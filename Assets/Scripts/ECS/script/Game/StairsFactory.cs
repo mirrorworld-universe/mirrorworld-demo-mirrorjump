@@ -54,6 +54,8 @@ public class StairsFactory : MonoBehaviour
     public Sprite[]  ThemeSnowStairs = new Sprite[8];
     
     public Sprite[]  ThemeCyberpunkStairs = new Sprite[8];
+    
+    public Sprite[]  ThemePastureStairs = new Sprite[8];
 
 
     private void Awake()
@@ -81,6 +83,9 @@ public class StairsFactory : MonoBehaviour
        {
            CyberpunkStairsSpriteChange();
            
+       }else if(stairsTheme == Constant.ThemePastureIndex)
+       {
+           PastureStairsSpriteChange();
        }
        else
        {
@@ -190,6 +195,32 @@ public class StairsFactory : MonoBehaviour
          
         BalanceStairs.transform.Find("Axis").gameObject.GetComponent<SpriteRenderer>().sprite =
             ThemeCyberpunkStairs[Constant.BalanceStairsAxis];
+         
+
+    }
+    
+    private void PastureStairsSpriteChange()
+    {  
+        
+        GeneralStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemePastureStairs[Constant.GeneralStairs];
+        MovingStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemePastureStairs[Constant.MovingStairs];
+        
+        DisposableStairs.transform.gameObject.GetComponent<SpriteRenderer>().sprite = ThemePastureStairs[Constant.BreakageStairs];
+        DisposableStairs.transform.Find("left").gameObject.GetComponent<SpriteRenderer>().sprite = ThemePastureStairs[Constant.BreakageStairsLeft];
+        DisposableStairs.transform.Find("right").gameObject.GetComponent<SpriteRenderer>().sprite = ThemePastureStairs[Constant.BreakageStairsRight];
+       
+         
+        BreakageStairs.transform.Find("left").gameObject.GetComponent<SpriteRenderer>().sprite = ThemePastureStairs[Constant.BreakageStairsLeft];
+        BreakageStairs.transform.Find("right").gameObject.GetComponent<SpriteRenderer>().sprite = ThemePastureStairs[Constant.BreakageStairsRight];
+        BreakageStairs.transform.Find("right/top").gameObject.GetComponent<SpriteRenderer>().sprite = ThemePastureStairs[Constant.BreakageStairsTop];
+
+        BalanceStairs.transform.Find("Stair").gameObject.GetComponent<SpriteRenderer>().sprite =
+            ThemePastureStairs[Constant.BalanceStairs];
+        
+         
+         
+        BalanceStairs.transform.Find("Axis").gameObject.GetComponent<SpriteRenderer>().sprite =
+            ThemePastureStairs[Constant.BalanceStairsAxis];
          
 
     }

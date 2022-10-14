@@ -10,13 +10,24 @@ public class UIManager : MonoBehaviour
     public ThemeManager ThemeManager;
 
 
+    public GameObject LoginButton;
+    
+
+
     private void Start()
     {
-        MirrorSDK.IsLoggedIn((result) =>
-        {
-             
-        });
-        
+        // MirrorSDK.IsLoggedIn((result) =>
+        // {
+        //     if (result)
+        //     {
+        //         LoginButton.SetActive(false);
+        //         SceneManager.LoadScene("Menu");
+        //         
+        //     }
+        //  
+        //     
+        // });
+        //
         
         
     }

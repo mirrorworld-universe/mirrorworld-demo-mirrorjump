@@ -236,7 +236,7 @@ public class MirrorSDK : MonoBehaviour
         MirrorWrapper.Instance.FetchNftsByUpdateAuthorities(updateAuthorityAddresses, action);
     }
 
-    public static void ListNFT(string mintAddress, decimal price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
+    public static void ListNFT(string mintAddress, float price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
     {
         MirrorWrapper.Instance.ListNFT(mintAddress, price, confirmation, callBack);
     }
@@ -246,7 +246,7 @@ public class MirrorSDK : MonoBehaviour
         MirrorWrapper.Instance.CancelNFTListing(mintAddress, price, confirmation, callBack);
     }
 
-    public static void UpdateNFTListing(string mintAddress, decimal price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
+    public static void UpdateNFTListing(string mintAddress, float price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
     {
         MirrorWrapper.Instance.UpdateNFTListing(mintAddress, price, confirmation, callBack);
     }

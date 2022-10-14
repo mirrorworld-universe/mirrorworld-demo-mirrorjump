@@ -366,7 +366,7 @@ public class NftTrade : MonoBehaviour
         ApiCallLimit.AddItemState(callApiState.MintAddress,callApiState);
         
         MessageAdvice.OpenWaitPanel("Listing Now");
-        MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,new decimal(price),Confirmation.Finalized,(result) =>
+        MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Finalized,(result) =>
         {
             ResultAdvice(result);
             
@@ -401,7 +401,7 @@ public class NftTrade : MonoBehaviour
             
             MessageAdvice.OpenWaitPanel("Changing New Price Now");
             
-            MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress, new decimal(price), Confirmation.Finalized,(result) =>
+            MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress, price, Confirmation.Finalized,(result) =>
             {   
                 
                 ResultAdvice(result);

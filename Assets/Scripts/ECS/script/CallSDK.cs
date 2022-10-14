@@ -146,7 +146,10 @@ public class CallSDK : MonoBehaviour
     
     // todo SDK Call MintNFT
     public void MintNFT (NFTCellData nftCellData)
-    {
+    {    
+        
+        
+        
         NftCellData = nftCellData;
         
         if (LoginState.HasLogin)

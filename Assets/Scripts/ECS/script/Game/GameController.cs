@@ -41,6 +41,9 @@ public class GameController : MonoBehaviour
     
     // role change
     public RolePersistence RolePersistence;
+
+
+    public CloundMoveManager CloundMoveManager;
     
     
     
@@ -180,6 +183,8 @@ public class GameController : MonoBehaviour
         HeightDisplayManager.Instance.GenerateFirst(initScore);
 
         MapRunSystem.ResetMapPosition(initY);
+        
+        CloundMoveManager.ResetCloundPosition();
         
         CameraTracking.ResetCameraPosition(initY);
 

@@ -7,6 +7,9 @@ public class SoundManager : MonoSingleton<SoundManager>
     public SoundDetailList detailList;
     public enum SoundType { Pickup }
     private static bool IsMute = false;
+    
+    // Back music 
+    public AudioClip[] Clips = new AudioClip[5];
 
     private void Start()
     {

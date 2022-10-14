@@ -12,6 +12,8 @@ public class CameraTracking : MonoBehaviour
    public MapRunSystem MapRunSystem;
 
    public GameObject GameController;
+
+   public CloundMoveManager CloundMoveManager;
    
     // 当最下面一张地图与相机位置相差多少时，移动地图
    private float MapChangeDelta = 19.144f;
@@ -26,14 +28,13 @@ public class CameraTracking : MonoBehaviour
    
    private bool IsStartFall = false;
    
-   // Back music 
-   public AudioClip[] Clips = new AudioClip[5];
+  
 
    private void Start()
    {
       int index = PlayerPrefs.GetInt("CurrentTheme");
 
-      transform.gameObject.GetComponent<AudioSource>().clip = Clips[index];
+      transform.gameObject.GetComponent<AudioSource>().clip =SoundManager.Instance.Clips[index];
 
       transform.gameObject.GetComponent<AudioSource>().mute = SoundManager.Instance.GetSoundState();
       
@@ -48,6 +49,7 @@ public class CameraTracking : MonoBehaviour
          if (transform.position.y - MapRunSystem.BottomMapY() >= MapChangeDelta)
          {
             MapRunSystem.MovingMap();
+            CloundMoveManager.ReplaceClound();
          }
       }
       

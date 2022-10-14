@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6236376754683695852, guid: 2ca39d7c5936f436b9cd2d79123ee069, type: 3}
       propertyPath: apiKey
-      value: mw_testgjGDGCkFCewx6ut40KZqB14dE3OCGhXOa20
+      value: bU21hAbKFrKUBnCcSf9oZ84pq82aWhUfF6u
       objectReference: {fileID: 0}
     - target: {fileID: 6236376754683695852, guid: 2ca39d7c5936f436b9cd2d79123ee069, type: 3}
       propertyPath: password
@@ -224,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6236376754683695852, guid: 2ca39d7c5936f436b9cd2d79123ee069, type: 3}
       propertyPath: debugEmail
-      value: gaoweicheng@rct.studio
+      value: puyu@rct.studio
       objectReference: {fileID: 0}
     - target: {fileID: 6236376754683695854, guid: 2ca39d7c5936f436b9cd2d79123ee069, type: 3}
       propertyPath: m_Name
@@ -821,6 +821,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 868216903487129407, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
+      propertyPath: Clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0956bda066456f84dbc91b5d438b7577, type: 3}
+    - target: {fileID: 868216903487129407, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
+      propertyPath: Clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: abf0592ebd46b744db04966f7ddc512f, type: 3}
+    - target: {fileID: 868216903487129407, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
+      propertyPath: Clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: e4500f63e16d87246af68f2da4cdda05, type: 3}
+    - target: {fileID: 868216903487129407, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
+      propertyPath: Clips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: f016e5d5d50e8f14e90da6ff2f16162c, type: 3}
+    - target: {fileID: 868216903487129407, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
+      propertyPath: Clips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: f034b1f666603204abb24135acf3bab7, type: 3}
     - target: {fileID: 1853767136206134190, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -1,8 +1,11 @@
 ﻿
 
     public static class Constant
-    {   
-        
+    {
+
+
+        public static string NotSufficientFunds =
+            "failed to send transaction: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x1";
         
         // Call Api Limit
         public static int ExecuteMint = 1;

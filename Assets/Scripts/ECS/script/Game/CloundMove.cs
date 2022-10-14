@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CloundMove : MonoBehaviour
 {
-    private float Speed = 0.001f;
+    private float Speed = 0.006f;
 
     public GameController GameController;
 
@@ -12,7 +12,7 @@ public class CloundMove : MonoBehaviour
         Speed = value;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
 
         if (GameController.GetGameState() == GameState.Gaming)

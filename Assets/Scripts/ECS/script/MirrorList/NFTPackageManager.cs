@@ -23,6 +23,11 @@ public class NFTPackageManager : MonoBehaviour
 
     public TextMeshProUGUI PageNumber;
 
+    public GameObject FecthNow;
+
+    public GameObject NoNFT;
+    
+
     public void OnTurningLeft()
     {
         SoundManager.Instance.PlaySound(SoundName.TurnPage);
@@ -45,6 +50,8 @@ public class NFTPackageManager : MonoBehaviour
         ListViewRoot.SetActive(false);
         PageRoot.SetActive(false);
         Package.SetActive(true);
+        FecthNow.SetActive(true);
+        NoNFT.SetActive(false);
         
     }
 
@@ -57,13 +64,23 @@ public class NFTPackageManager : MonoBehaviour
         
         if (null != datas && datas.Count > 0)
         {
-            ListViewDataProvider.DataSource.AddRange(datas);
-            ListViewDataProvider.NFTListView.OnDataSourceChange();
+           ListViewDataProvider.DataSource.AddRange(datas);
+           ListViewDataProvider.NFTListView.OnDataSourceChange();
         }
         PageTurningStateUpdate(true);
       
        ListViewRoot.SetActive(true);
        PageRoot.SetActive(true);
+       FecthNow.SetActive(false);
+
+       if (ListViewDataProvider.DataSource.Count <= 0)
+       {
+           NoNFT.SetActive(true);
+       }
+       else
+       {
+           NoNFT.SetActive(false);
+       }
        
     }
     

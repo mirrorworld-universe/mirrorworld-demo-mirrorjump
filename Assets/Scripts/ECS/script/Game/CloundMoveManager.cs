@@ -92,11 +92,11 @@ public class CloundMoveManager : MonoBehaviour
         MiddleClound.transform.position = new Vector3(0, 0+ UnitDistance, 0);
         TopClound.transform.position = new Vector3(0, 0+ 2 * UnitDistance,0);
         
-        ButtomClound.transform.gameObject.GetComponent<CloundMove>().SetSpeed(0.001f);
+        ButtomClound.transform.gameObject.GetComponent<CloundMove>().SetSpeed(0.006f);
         
-        MiddleClound.transform.gameObject.GetComponent<CloundMove>().SetSpeed(0.001f);
+        MiddleClound.transform.gameObject.GetComponent<CloundMove>().SetSpeed(0.006f);
         
-        TopClound.transform.gameObject.GetComponent<CloundMove>().SetSpeed(0.001f);
+        TopClound.transform.gameObject.GetComponent<CloundMove>().SetSpeed(0.006f);
         
     }
 

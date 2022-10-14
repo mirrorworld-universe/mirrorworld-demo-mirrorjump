@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,17 @@ public class UIManager : MonoBehaviour
 
     public ThemeManager ThemeManager;
 
+
+    private void Start()
+    {
+        MirrorSDK.IsLoggedIn((result) =>
+        {
+             
+        });
+        
+        
+        
+    }
 
     private bool IsDebug = false;
 

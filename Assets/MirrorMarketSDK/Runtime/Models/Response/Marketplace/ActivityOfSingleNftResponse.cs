@@ -55,38 +55,38 @@ namespace MirrorworldSDK.Models
     public class AuctionHouse
     {
       
-        public string address { get; set; }
-       
-        public string authority { get; set; }
-      
-        public string treasuryMint { get; set; }
-       
-        public float sellerFeeBasisPoints { get; set; }
+        public string address ;
+
+        public string authority;
+
+        public string treasuryMint;
+
+        public float sellerFeeBasisPoints;
     }
     
     [Serializable]
     public class Listing
     {
-       
-        public long id { get; set; }
-      
-        public string tradeState { get; set; }
-      
-        public string seller { get; set; }
-     
-        public string metadata { get; set; }
-       
-        public string purchaseId { get; set; }
-      
-        public float price { get; set; }
-       
-        public float tokenSize { get; set; }
-      
-        public string createdAt { get; set; }
-       
-        public string canceledAt { get; set; }
-      
-        public AuctionHouse auctionHouse { get; set; }
+
+        public long id;
+
+        public string tradeState;
+
+        public string seller;
+
+        public string metadata;
+
+        public string purchaseId;
+
+        public float price;
+
+        public float tokenSize;
+
+        public string createdAt;
+
+        public string canceledAt;
+
+        public AuctionHouse auctionHouse;
     }
     
     

@@ -240,7 +240,7 @@ public class NftTrade : MonoBehaviour
              if (null != CurrentNftCellData.NftData)
              {
                  CurrentPrice.text = CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count - 1]
-                     .tokenPrice.ToString();
+                     .price.ToString();
              }
             
         }
@@ -437,7 +437,7 @@ public class NftTrade : MonoBehaviour
             
             
             MessageAdvice.OpenWaitPanel("Canceling List Now");
-            MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].tokenPrice,Confirmation.Finalized,(result) =>
+            MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].price,Confirmation.Finalized,(result) =>
             {
                   ResultAdvice(result);
             });

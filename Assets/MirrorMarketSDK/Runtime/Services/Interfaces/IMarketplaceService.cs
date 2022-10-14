@@ -30,7 +30,7 @@ namespace MirrorworldSDK.Interfaces
         
         public void UpdateNFTListing(string mintAddress, float price, string confirmation, Action<CommonResponse<ListingResponse>> callBack);
         
-        public void CancelNFTListing(string mintAddress, decimal price, string confirmation, Action<CommonResponse<ListingResponse>> callBack);
+        public void CancelNFTListing(string mintAddress, float price, string confirmation, Action<CommonResponse<ListingResponse>> callBack);
 
         //buy
         public void BuyNFT(string mintAddress, decimal price, Action<CommonResponse<ListingResponse>> callBack);

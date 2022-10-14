@@ -241,7 +241,7 @@ public class MirrorSDK : MonoBehaviour
         MirrorWrapper.Instance.ListNFT(mintAddress, price, confirmation, callBack);
     }
 
-    public static void CancelNFTListing(string mintAddress, decimal price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
+    public static void CancelNFTListing(string mintAddress, float price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
     {
         MirrorWrapper.Instance.CancelNFTListing(mintAddress, price, confirmation, callBack);
     }

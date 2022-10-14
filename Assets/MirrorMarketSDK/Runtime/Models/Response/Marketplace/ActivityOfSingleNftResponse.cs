@@ -36,7 +36,7 @@ namespace MirrorworldSDK.Models
 
         public List<NFTAttributeObj> attributes;
 
-        public List<AuctionActivity> listings;
+        public List<Listing> listings;
 
         public string mintAddress;
     }
@@ -49,6 +49,87 @@ namespace MirrorworldSDK.Models
         public bool verified;
 
         public decimal share;
+    }
+    
+    [Serializable]
+    public class AuctionHouse
+    {
+      
+        public string address { get; set; }
+       
+        public string authority { get; set; }
+      
+        public string treasuryMint { get; set; }
+       
+        public float sellerFeeBasisPoints { get; set; }
+    }
+    
+    [Serializable]
+    public class Listing
+    {
+       
+        public long id { get; set; }
+      
+        public string tradeState { get; set; }
+      
+        public string seller { get; set; }
+     
+        public string metadata { get; set; }
+       
+        public string purchaseId { get; set; }
+      
+        public float price { get; set; }
+       
+        public float tokenSize { get; set; }
+      
+        public string createdAt { get; set; }
+       
+        public string canceledAt { get; set; }
+      
+        public AuctionHouse auctionHouse { get; set; }
+    }
+    
+    
+    
+    
+    // [Serializable]
+    // public class Listing
+    // {
+    //     public long id { get; set; }
+    //
+    //     public string mintAddress { get; set; }
+    //
+    //     public string txSignature { get; set; }
+    //     
+    //     public float price { get; set; }
+    //     
+    //     public string receiptType { get; set; }
+    //
+    //     public decimal tokenSize { get; set; }
+    //
+    //     public DateTime? blockTimeCreated { get; set; }
+    //
+    //     public DateTime? blockTimeCanceled { get; set; }
+    //     
+    //     public AuctionActivity AuctionActivity { get; set; }
+    //     
+    // }
+    
+    [Serializable]
+    public class AuctionActivity
+    {
+        public string tradeState { get; set; }
+
+        public string auctionHouseAddress { get; set; }
+
+        public string sellerAddress { get; set; }
+
+        public string buyerAddress { get; set; }
+
+        public string metadata { get; set; }
+
+        public DateTime? blockTime { get; set; }
+        
     }
 
     [Serializable]
@@ -75,37 +156,7 @@ namespace MirrorworldSDK.Models
         public List<TokenTransfer> tokenTransfers { get; set; }
     }
 
-    [Serializable]
-    public class AuctionActivity
-    {
-        public long id { get; set; }
-
-        public string mintAddress { get; set; }
-
-        public string txSignature { get; set; }
-
-        public decimal amount { get; set; }
-
-        public string receiptType { get; set; }
-
-        public decimal tokenPrice { get; set; }
-
-        public DateTime? blockTimeCreated { get; set; }
-
-        public DateTime? blockTimeCanceled { get; set; }
-
-        public string tradeState { get; set; }
-
-        public string auctionHouseAddress { get; set; }
-
-        public string sellerAddress { get; set; }
-
-        public string buyerAddress { get; set; }
-
-        public string metadata { get; set; }
-
-        public DateTime? blockTime { get; set; }
-    }
+ 
 
     [Serializable]
     public class TokenTransfer

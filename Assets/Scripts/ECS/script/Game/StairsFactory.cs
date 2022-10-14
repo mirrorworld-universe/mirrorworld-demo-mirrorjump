@@ -408,10 +408,7 @@ public class StairsFactory : MonoBehaviour
         
     }
     
-    private StairsType OnlyMoving()
-  {
-      return StairsType.Moving;
-  }
+   
     private StairsType OnlyGeneral()
     {
         return StairsType.General;

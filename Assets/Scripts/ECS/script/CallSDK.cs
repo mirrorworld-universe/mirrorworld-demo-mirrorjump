@@ -73,7 +73,7 @@ public class CallSDK : MonoBehaviour
     
    // todo Transfer Token
     public void MintNFTResult(bool IsSuccess)
-    {
+    {   
         if (IsSuccess)
         {
             // transfer token

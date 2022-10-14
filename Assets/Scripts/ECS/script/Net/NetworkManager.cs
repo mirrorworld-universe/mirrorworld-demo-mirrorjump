@@ -1,32 +1,144 @@
-﻿using System.Collections;
+﻿using LitJson;
+using MirrorworldSDK;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
+using static UnityEngine.Networking.UnityWebRequest;
 
-public class NetworkManager : Singleton<NetworkManager>
+public class NetworkManager : MonoSingleton<NetworkManager>
 {
     public void SendUserBasicInfoReq(string user_id)
     {
-        // TODO
+        string path = GlobalDef.server + "api/v1/user?user_id=" + user_id;
+        StartCoroutine(Get(path, "", (result, json) =>
+        {
 
-        EventDispatcher.Instance.userInfoDataReceived.Invoke(null);
+            var res = JsonMapper.ToObject<UserBasicInfoRes>(json);
+
+            if (res.status != "success")
+            {
+                Debug.Log("SendUserBasicInfoReq error " + res.status);
+                return;
+            }
+
+            EventDispatcher.Instance.userInfoDataReceived?.Invoke(res.data);
+        }));
+
     }
 
     public void SendUserScoreReq(UserScoreUpdateReq req)
     {
-        // TODO
-        EventDispatcher.Instance.userScoreReceived.Invoke(null);
+        string path = GlobalDef.server + "api/v1/user/score";
+        var data = JsonMapper.ToJson(req);
+        StartCoroutine(Post(path, data, (result, json) =>
+        {
+            var res = JsonMapper.ToObject<UserScoreUpdateRes>(json);
+
+            if (res.status != "success")
+            {
+                Debug.Log("SendUserScoreReq error " + res.status);
+                return;
+            }
+
+            EventDispatcher.Instance.userScoreReceived?.Invoke(res.data);
+        }));
+
     }
 
-    public void UpdateMintStatusReq(string user_id)
+    public void UpdateMintStatusReq(UpdateMintStatusReq req)
     {
-        // TODO
-        EventDispatcher.Instance.updateMintReceived.Invoke(null);
+        string path = GlobalDef.server + "api/v1/nft/mint_status";
+        StartCoroutine(Post(path, JsonMapper.ToJson(req), (result, json) =>
+        {
+
+            var res = JsonMapper.ToObject<UpdateMintStatusRes>(json);
+
+            if (res.status != "success")
+            {
+                Debug.Log("SendUserScoreReq error " + res.status);
+                return;
+            }
+
+            EventDispatcher.Instance.updateMintReceived?.Invoke(res.data);
+        }));
+
     }
 
     public void UpdateAirdropSolReq(string user_id)
     {
-        // TODO
-        EventDispatcher.Instance.updateAirdopReceived.Invoke(null);
+        string path = GlobalDef.server + "api/v1/user/airdrop_status";
+        UpdateAirdropSolReq req = new UpdateAirdropSolReq();
+        req.user_id = user_id;
+        StartCoroutine(Post(path, JsonMapper.ToJson(req), (result, json) =>
+        {
+
+            var res = JsonMapper.ToObject<UpdateAirdropSolRes>(json);
+
+            if (res.status != "success")
+            {
+                Debug.Log("SendUserScoreReq error " + res.status);
+                return;
+            }
+
+            EventDispatcher.Instance.updateAirdopReceived?.Invoke(res.data);
+        }));
+
+    }
+
+    private IEnumerator Get(string url, string messageBody, Action<Result, string> callBack)
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        {
+            if (!string.IsNullOrEmpty(messageBody))
+            {
+                byte[] rawRequestBodyToSend = new System.Text.UTF8Encoding().GetBytes(messageBody);
+                request.uploadHandler = new UploadHandlerRaw(rawRequestBodyToSend);
+                request.downloadHandler = new DownloadHandlerBuffer();
+            }
+
+            yield return request.SendWebRequest();
+
+            string rawResponseBody = request.downloadHandler.text;
+
+            if (request.result != Result.Success)
+            {
+                Debug.Log("Network error " + request.result);
+                yield break;
+            }
+            callBack(request.result, rawResponseBody);
+            request.Dispose();
+        }
+    }
+
+    private IEnumerator Post(string url, string messageBody, Action<Result, string> callBack)
+    {
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        MirrorUtils.SetContentTypeHeader(request);
+        MirrorUtils.SetAcceptHeader(request);
+
+        if (!string.IsNullOrEmpty(messageBody))
+        {
+            byte[] rawRequestBodyToSend = new System.Text.UTF8Encoding().GetBytes(messageBody);
+            request.uploadHandler = new UploadHandlerRaw(rawRequestBodyToSend);
+            request.downloadHandler = new DownloadHandlerBuffer();
+        }
+
+        yield return request.SendWebRequest();
+
+        string rawResponseBody = request.downloadHandler.text;
+
+        if (request.result != Result.Success)
+        {
+            Debug.Log("Network error " + request.result);
+            yield break;
+        }
+        callBack(request.result, rawResponseBody);
+        request.Dispose();
     }
 }
 
@@ -42,9 +154,9 @@ public class UserBasicInfoRes
 public class UserInfoData
 {
     public string name;
-    public List<UserInfoPackageData> package;
+    public List<UserInfoPackageData> packages;
     public List<UserInfoSceneData> scenes;
-    public long highest_score;
+    public int highest_score;
     public bool airdrop_sol;
 }
 
@@ -69,7 +181,7 @@ public class UserScoreUpdateReq
 {
     public string user_id;
     public long score;
-    public string scene;
+    public int scene;
 }
 // User score update 返回数据
 public class UserScoreUpdateRes
@@ -83,12 +195,13 @@ public class UserScoreUpdateRes
 public class UserScoreUpdateData
 {
     public List<UserInfoSceneData> new_scenes;
-    public long highest_score;
+    public int highest_score;
 }
 
 public class UpdateMintStatusReq
 {
     public string user_id;
+    public string token_id;
 }
 
 public class UpdateMintStatusRes

@@ -9,7 +9,7 @@ public class GameMenu : MonoBehaviour
 {
 
 
-    public GameObject GameOverWindow;
+    public GameOverPanel GameOverWindow;
 
     public GameObject GamePauseWindow;
 
@@ -32,6 +32,30 @@ public class GameMenu : MonoBehaviour
         OpenUnlockHeightAdvice();
         UnlockHeightAdvice.SetActive(false);
         UnlockAdvice.SetActive(false);
+
+        EventDispatcher.Instance.userScoreReceived += OnUserScoreReceived;
+    }
+
+    private void OnDestroy()
+    {
+        EventDispatcher.Instance.userScoreReceived -= OnUserScoreReceived;
+    }
+
+    private void OnUserScoreReceived(UserScoreUpdateData data)
+    {
+        PlayerPrefs.SetString(GlobalDef.maxScore, ((long)data.highest_score).ToString());
+        if (data.new_scenes.Count > 0)
+        {
+            // 解锁了新场景
+            GameOverWindow.UnlockNewScene(data.new_scenes[0].scene_id);
+        }
+        else
+        {
+            // 未解锁新场景
+            GameOverWindow.UnlockNewScene(0);
+        }
+        LoadingPanel.Instance.SetLoadingPanelEnable(false);
+        GameOverWindow.RefreshData();
     }
 
     private void OpenUnlockHeightAdvice()
@@ -121,15 +145,23 @@ public class GameMenu : MonoBehaviour
         
         
     }
-    
-    
-    
+
+
+
 
 
     public void GameOver()
     {
-            GameOverWindow.SetActive(true);
-            GameController.OnGameOver();
+        LoadingPanel.Instance.SetLoadingPanelEnable(true);
+
+        GameOverWindow.gameObject.SetActive(true);
+        GameController.OnGameOver();
+
+        UserScoreUpdateReq req = new UserScoreUpdateReq();
+        req.user_id = LoginState.WalletAddress;
+        req.score = FindObjectOfType<GameController>().GetMaxHeight();
+        req.scene = PlayerPrefs.GetInt("CurrentTheme");
+        NetworkManager.Instance.SendUserScoreReq(req);
     }
 
     public void GamePause()
@@ -157,7 +189,7 @@ public class GameMenu : MonoBehaviour
     public void CloseGameOverWindow()
     {
         SoundManager.Instance.PlaySound(SoundName.Close);
-        GameOverWindow.SetActive(false);
+        GameOverWindow.gameObject.SetActive(false);
     }
 
     public void SetHighScore(string score)

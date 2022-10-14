@@ -105,7 +105,7 @@ public class PackageManager : MonoBehaviour
         nftCellData.DataParsingEntity.attribute.Add(attributeItemRare);
         nftCellData.DataParsingEntity.attribute.Add(attributeItemName);
 
-        nftCellData.DataParsingEntity.image = "http://metadata-assets.mirrorworld.fun/mirror_jump/images/Rare_Astronaut.png";
+        nftCellData.DataParsingEntity.image = LoginState.defaultRoleData.image;
         nftCellData.DataParsingEntity.attribute[0].value = LoginState.defaultRoleData.rarity;
         nftCellData.DataParsingEntity.attribute[1].value = LoginState.defaultRoleData.type;
 
@@ -133,8 +133,7 @@ public class PackageManager : MonoBehaviour
 
 
             // http://metadata-assets.mirrorworld.fun/mirror_jump/images/Rare_Pirate%20Captain.png
-            string imageUrl = Constant.ImagePrefix + LoginState.mintableRoleData.rarity + "_" +
-                              LoginState.mintableRoleData.type + ".png";
+            string imageUrl = LoginState.mintableRoleData.image;
             nftCellData.DataParsingEntity.image = imageUrl;
             nftCellData.DataParsingEntity.attribute[0].value = LoginState.mintableRoleData.rarity;
             nftCellData.DataParsingEntity.attribute[1].value = LoginState.mintableRoleData.type;

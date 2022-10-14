@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
 
     private void OnUserDataReceived(UserInfoData userInfoData)
     {
+        Debug.Log("连接游戏服务器成功！");
         // 数据记录
         // 处理场景
         // 先清除所有的场景记录，避免换号登陆之后场景还是解锁状态
@@ -45,7 +46,7 @@ public class UIManager : MonoBehaviour
         // 处理NFT
         LoginState.defaultRoleData = null;
         LoginState.mintableRoleData = null;
-        foreach(var data in userInfoData.package)
+        foreach(var data in userInfoData.packages)
         {
             if (data.is_default)
             {
@@ -59,7 +60,9 @@ public class UIManager : MonoBehaviour
 
         // 检查PlayerPref中的当前nft是否还存在
         // TODO
+        LoadingPanel.Instance.SetLoadingPanelEnable(false);
 
+        PlayerPrefs.SetString("HasReceiveToken", userInfoData.airdrop_sol? "true":"false");
 
         SceneManager.LoadScene("Menu");
     }
@@ -99,18 +102,21 @@ public class UIManager : MonoBehaviour
         {   
             
             SoundManager.Instance.PlaySound(SoundName.Button);
+
          
             MirrorSDK.StartLogin((LoginResponse)=>
             {
                 
                 LoginState.HasLogin = true;
                 LoginState.Name = LoginResponse.user.username;
-                LoginState.WalletAddress= LoginResponse.user.sol_address;
+                LoginState.WalletAddress= LoginResponse.user.wallet.sol_address;
                 LoginState.ID =  LoginResponse.user.id.ToString();
 
+                LoadingPanel.Instance.SetLoadingPanelEnable(true);
                 // 与服务器通信发送登陆信息
-                //NetworkManager.Instance.SendUserBasicInfoReq(LoginState.WalletAddress);
-                SceneManager.LoadScene("Menu");
+                Debug.Log("开始连接游戏服务器...");
+                NetworkManager.Instance.SendUserBasicInfoReq(LoginState.WalletAddress);
+                //SceneManager.LoadScene("Menu");
             });
         }
         

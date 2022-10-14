@@ -18,7 +18,8 @@ public class GameOverPanel : MonoBehaviour
     [SerializeField] private GameObject unlockSceneContent;
     [SerializeField] private Image unlockSceneSr;
     private bool isNewRecord;
-    private void OnEnable()
+
+    public void RefreshData()
     {
         var height = FindObjectOfType<GameController>().GetMaxHeight();
 
@@ -27,12 +28,11 @@ public class GameOverPanel : MonoBehaviour
         string max = PlayerPrefs.GetString(GlobalDef.maxScore, "0");
         long maxScore = (long)float.Parse(max);
 
-        if (Mathf.Floor(height) > maxScore) 
+        if (Mathf.Floor(height) > maxScore)
         {
             SetNewScore(true);
             SoundManager.Instance.PlaySound(SoundName.Victory);
             scoreText.color = victoryColor;
-            PlayerPrefs.SetString(GlobalDef.maxScore, ((long)(height)).ToString());
             maxScore = (long)height;
             isNewRecord = true;
         }

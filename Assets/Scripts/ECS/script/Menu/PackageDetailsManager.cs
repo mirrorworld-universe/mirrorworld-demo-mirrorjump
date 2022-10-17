@@ -95,6 +95,8 @@ public class PackageDetailsManager : MonoBehaviour
         PackageManager.Package.SetActive(true);
       
     }
+    
+   
 
     public void ExitPackage()
     {

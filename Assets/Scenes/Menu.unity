@@ -5669,7 +5669,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 136147567}
         m_TargetAssemblyTypeName: NftTrade, Assembly-CSharp
-        m_MethodName: BackToDetails
+        m_MethodName: ListBackToDetails
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20091,7 +20091,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 136147567}
         m_TargetAssemblyTypeName: NftTrade, Assembly-CSharp
-        m_MethodName: BackToDetails
+        m_MethodName: ManageBackToDetails
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,7 +1,7 @@
 [
 	{
 		"Name": "Group1",
-		"Height": [0, 200],
+		"Height": [0, 50],
 		"StairTypePercent": {
 
 			"General":100,
@@ -26,19 +26,18 @@
 			 "UpperValue": 1.3
 		}
 	},
-
 	{
 		"Name": "Group2",
-		"Height": [200, 1000],
+		"Height": [50, 300],
 		"StairTypePercent": {
 
-			"General":30,
-			"Disposable":10,
-			"Breakage":10,
-			"MoveVerticle":5,
-			"MoveHorizontal":15,
-			"BlackRole":5,
-			"Balance":25
+			"General":75,
+			"Disposable":5,
+			"Breakage":5,
+			"MoveVerticle":0,
+			"MoveHorizontal":0,
+			"BlackRole":10,
+			"Balance":5
 		},
 		"PropPercent": {
 
@@ -48,25 +47,105 @@
 			"Spring":5,
 			"empty":75
 		},
+		
+		"SpaceIntervalY": {
+			"FloorValue": 1,
+			 "UpperValue": 1.5
+		}
+	},
+	{
+		"Name": "Group3",
+		"Height": [300, 600],
+		"StairTypePercent": {
+
+			"General":45,
+			"Disposable":10,
+			"Breakage":10,
+			"MoveVerticle":5,
+			"MoveHorizontal":5,
+			"BlackRole":15,
+			"Balance":10
+		},
+		"PropPercent": {
+
+			"SpringBoard":15,
+			"HeighRocket":5,
+			"LowRocket":15,
+			"Spring":15,
+			"empty":50
+		},
 
 		"SpaceIntervalY": {
 			"FloorValue": 1,
-			"UpperValue": 1.3
+			"UpperValue": 1.7
 		}
 	},
-
 	{
-		"Name": "LastGroup",
-		"Height": [1000, 2147483647],
+		"Name": "Group4",
+		"Height": [600, 1500],
+		"StairTypePercent": {
+
+			"General":30,
+			"Disposable":10,
+			"Breakage":10,
+			"MoveVerticle":10,
+			"MoveHorizontal":10,
+			"BlackRole":20,
+			"Balance":10
+		},
+		"PropPercent": {
+
+			"SpringBoard":15,
+			"HeighRocket":5,
+			"LowRocket":25,
+			"Spring":10,
+			"empty":45
+		},
+
+		"SpaceIntervalY": {
+			"FloorValue": 1.3,
+			"UpperValue": 1.7
+		}
+	},
+	{
+		"Name": "Group5",
+		"Height": [1500, 3000],
 		"StairTypePercent": {
 
 			"General":15,
-			"Disposable":15,
-			"Breakage":15,
-			"MoveVerticle":10,
-			"MoveHorizontal":15,
-			"BlackRole":10,
-			"Balance":20
+			"Disposable":5,
+			"Breakage":10,
+			"MoveVerticle":20,
+			"MoveHorizontal":20,
+			"BlackRole":20,
+			"Balance":10
+		},
+		"PropPercent": {
+
+			"SpringBoard":15,
+			"HeighRocket":5,
+			"LowRocket":25,
+			"Spring":10,
+			"empty":45
+		},
+
+		"SpaceIntervalY": {
+			"FloorValue": 1.5,
+			"UpperValue": 1.9
+		}
+	},
+	{
+		"Name": "LastGroup",
+		"Height": [3000, 2147483647],
+		"StairTypePercent": {
+
+			"General":10,
+			"Disposable":5,
+			"Breakage":5,
+			"MoveVerticle":25,
+			"MoveHorizontal":25,
+			"BlackRole":20,
+			"Balance":10
 		},
 		"PropPercent": {
 
@@ -78,7 +157,7 @@
 		},
 
 		"SpaceIntervalY": {
-			"FloorValue": 1.8,
+			"FloorValue": 1.5,
 			"UpperValue": 2
 		}
 	}

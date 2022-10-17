@@ -49,19 +49,23 @@ public class DisposableStairs : MonoBehaviour
 
         if (Rigid != null)
         {
-            Vector2 Force = Rigid.velocity;
-            if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
+            if (!isBroken)
             {
-                Force.y = VerticalVelocity + Other.collider.GetComponent<MirrorJump>().SpringForce;
-                Other.collider.GetComponent<MirrorJump>().UseSpring();
-            }
-            else
-            {
-                Force.y = VerticalVelocity;
-                Other.collider.GetComponent<MirrorJump>().SingleJump();
-            }
 
-            Rigid.velocity = Force;
+                Vector2 Force = Rigid.velocity;
+                if (Other.collider.GetComponent<MirrorJump>().GetSpringState())
+                {
+                    Force.y = VerticalVelocity + Other.collider.GetComponent<MirrorJump>().SpringForce;
+                    Other.collider.GetComponent<MirrorJump>().UseSpring();
+                }
+                else
+                {
+                    Force.y = VerticalVelocity;
+                    Other.collider.GetComponent<MirrorJump>().SingleJump();
+                }
+
+                Rigid.velocity = Force;
+            }
 
             SpriteRenderer.enabled = false;
 
@@ -71,6 +75,8 @@ public class DisposableStairs : MonoBehaviour
             if (isBroken)
             {
                 SoundManager.Instance.PlaySound(SoundName.Broken);
+                GetComponent<EdgeCollider2D>().enabled = false;
+                GetComponent<PlatformEffector2D>().enabled = false;
                 IsStartDisappear = true;
             }
             else

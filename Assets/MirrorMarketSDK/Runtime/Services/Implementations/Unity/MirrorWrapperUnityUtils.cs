@@ -193,6 +193,31 @@ namespace MirrorworldSDK.Wrapper
             }
         }
 
+        private string GetMarketRoot()
+        {
+            if (environment == MirrorEnv.ProductionMainnet)
+            {
+                return Constant.MarketRootProduction;
+            }
+            else if (environment == MirrorEnv.ProductionDevnet)
+            {
+                return Constant.MarketRootProductionDev;
+            }
+            else if (environment == MirrorEnv.StagingDevNet)
+            {
+                return Constant.MarketRootStagingDevnet;
+            }
+            else if (environment == MirrorEnv.StagingMainNet)
+            {
+                return Constant.MarketRootStagingMainnet;
+            }
+            else
+            {
+                LogFlow("GetAuthRoot failed! env is:" + environment);
+                return Constant.MarketRootStagingDevnet;
+            }
+        }
+
         private string GetAuthRoot()
         {
             if (environment == MirrorEnv.ProductionMainnet)

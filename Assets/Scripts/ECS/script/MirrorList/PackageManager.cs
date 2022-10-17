@@ -42,7 +42,7 @@ public class PackageManager : MonoBehaviour
 
     private void Start()
     {
-        GenerateRandomData();
+        //GenerateRandomData();
     }
 
     public void OpenPackage()
@@ -105,9 +105,9 @@ public class PackageManager : MonoBehaviour
         nftCellData.DataParsingEntity.attribute.Add(attributeItemRare);
         nftCellData.DataParsingEntity.attribute.Add(attributeItemName);
 
-        nftCellData.DataParsingEntity.image = "http://metadata-assets.mirrorworld.fun/mirror_jump/images/Rare_Astronaut.png";
-        nftCellData.DataParsingEntity.attribute[0].value = "Rare";
-        nftCellData.DataParsingEntity.attribute[1].value = "Astronaut";
+        nftCellData.DataParsingEntity.image = LoginState.defaultRoleData.image;
+        nftCellData.DataParsingEntity.attribute[0].value = LoginState.defaultRoleData.rarity;
+        nftCellData.DataParsingEntity.attribute[1].value = LoginState.defaultRoleData.type;
 
         return nftCellData;
 
@@ -115,7 +115,7 @@ public class PackageManager : MonoBehaviour
 
     private NFTCellData GenerateRandomCellData()
     {
-        if ("false" == PlayerPrefs.GetString("HasMintNFT", "false"))
+        if (LoginState.mintableRoleData != null)
         {
             NFTCellData nftCellData = new NFTCellData();
             DataParsingEntity dataParsingEntity = new DataParsingEntity();
@@ -133,11 +133,10 @@ public class PackageManager : MonoBehaviour
 
 
             // http://metadata-assets.mirrorworld.fun/mirror_jump/images/Rare_Pirate%20Captain.png
-            string imageUrl = Constant.ImagePrefix + PlayerPrefs.GetString("Rarity", "Rare") + "_" +
-                              PlayerPrefs.GetString("name", "Pirate Captain") + ".png";
+            string imageUrl = LoginState.mintableRoleData.image;
             nftCellData.DataParsingEntity.image = imageUrl;
-            nftCellData.DataParsingEntity.attribute[0].value = PlayerPrefs.GetString("Rarity", "Rare");
-            nftCellData.DataParsingEntity.attribute[1].value = PlayerPrefs.GetString("name", "Pirate Captain");
+            nftCellData.DataParsingEntity.attribute[0].value = LoginState.mintableRoleData.rarity;
+            nftCellData.DataParsingEntity.attribute[1].value = LoginState.mintableRoleData.type;
 
             return nftCellData;
           

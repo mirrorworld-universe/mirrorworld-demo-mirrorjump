@@ -1,4 +1,4 @@
-
+﻿
 
 using System.Collections.Generic;
 using MirrorworldSDK;
@@ -40,8 +40,7 @@ public class CallSDK : MonoBehaviour
 
         return res;
     }
-    
-    
+
     // todo SDK Call  Fetch NFTS
     public void FetchNFTS()
     {
@@ -92,6 +91,13 @@ public class CallSDK : MonoBehaviour
             MessageAdvice.ConfrimCloseWaitPanel();
             MessageAdvice.OnSuccess("Mint Successful!");
             PackageManager.RefreshPackage();
+
+
+            UpdateMintStatusReq req = new UpdateMintStatusReq();
+            req.user_id = LoginState.WalletAddress;
+            req.token_id = LoginState.mintableRoleData.token_id;
+            NetworkManager.Instance.UpdateMintStatusReq(req);
+            LoadingPanel.Instance.SetLoadingPanelEnable(true);
             
         }
         else

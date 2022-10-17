@@ -1938,7 +1938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf6eeb239093fe48899d8aa86d3d215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameOverWindow: {fileID: 860839966}
+  GameOverWindow: {fileID: 860839968}
   GamePauseWindow: {fileID: 1144581336}
   GameController: {fileID: 247834403}
   HighScore: {fileID: 395765671}
@@ -2226,6 +2226,12 @@ MonoBehaviour:
   newScoreEffect: {fileID: 72128795}
   unlockSceneBg: {fileID: 572654844}
   unlockSceneContent: {fileID: 950406968}
+  sceneImgList:
+  - {fileID: 21300000, guid: c54d0b215a977ee499c030ebbf46d1de, type: 3}
+  - {fileID: 21300000, guid: 46431df430b10bd4a973ad51f2f89f87, type: 3}
+  - {fileID: 21300000, guid: e98381d521da8a747abcb6a3de611330, type: 3}
+  - {fileID: 21300000, guid: ecb6f0db6e547ad409d6072b47459eae, type: 3}
+  - {fileID: 21300000, guid: 46243f6259b93ca47b6a430aa5ec706d, type: 3}
   unlockSceneSr: {fileID: 119373252}
 --- !u!114 &860839969
 MonoBehaviour:

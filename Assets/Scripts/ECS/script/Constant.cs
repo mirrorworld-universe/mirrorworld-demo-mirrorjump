@@ -24,11 +24,13 @@
         public static int ThemeSnowIndex = 2;
         public static int ThemeCyberpunkIndex = 3;
         public static int ThemePastureIndex = 4;
-        
-        
-        
-      
-        
+
+        public static string Theme_Pre = "Theme_";
+
+
+
+
+
         // Stairs Type
         public static int  GeneralStairs = 0;
         public static int  BreakageStairs = 1;

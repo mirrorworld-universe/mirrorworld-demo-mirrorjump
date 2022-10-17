@@ -32,6 +32,8 @@ public class GlobalDef
     // 当得分为最高分并且进行了分享
     public static string hasInitPosY = "HasInitPosY";
     public static string maxScore = "MaxScore";
+
+    public static string server = "https://mirror-jump-staging.mirrorworld.fun/";
 }
 
 public struct AirDropPostData

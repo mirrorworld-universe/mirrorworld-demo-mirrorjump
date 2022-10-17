@@ -3027,7 +3027,7 @@ MonoBehaviour:
   ThemeCloudSprites:
   - {fileID: 21300000, guid: b07c61b2ea56b6546a06a1972bd68489, type: 3}
   - {fileID: 21300000, guid: 7c535448d7ad12848adbdb45fbebf15a, type: 3}
-  - {fileID: 21300000, guid: 7c535448d7ad12848adbdb45fbebf15a, type: 3}
+  - {fileID: 21300000, guid: c4be41b47a6cf224aa7e4d95d13a55f4, type: 3}
   - {fileID: 21300000, guid: 5c0cb1841f4b1a544bbe483f999cfe17, type: 3}
   - {fileID: 21300000, guid: c1faecb452d583f478bdb8470ac410aa, type: 3}
   TopSpriteRenderer: {fileID: 1056517872}

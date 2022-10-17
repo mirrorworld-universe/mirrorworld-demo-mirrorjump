@@ -164,6 +164,12 @@ public class UIManager : MonoBehaviour
         SoundManager.Instance.PlaySound(SoundName.Button);
         MirrorSDK.OpenWalletPage();
     }
+    
+    public void OpenMarket()
+    {   
+        SoundManager.Instance.PlaySound(SoundName.Button);
+        MirrorSDK.OpenMarketPage();
+    }
 
     public void ClearAllPersistingData()
     {

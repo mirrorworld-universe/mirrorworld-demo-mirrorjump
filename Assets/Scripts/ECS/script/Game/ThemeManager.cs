@@ -200,8 +200,8 @@ public class ThemeManager : MonoBehaviour
         }else if (index == Constant.ThemeCyberpunkIndex)
         {
            
-            ThemeCloud.GetComponent<RectTransform>().sizeDelta = new Vector2(1184f,1406f);
-            ThemeCloundRight.GetComponent<RectTransform>().sizeDelta = new Vector2(1184f,1406f);
+            ThemeCloud.GetComponent<RectTransform>().sizeDelta = new Vector2(1105f,644f);
+            ThemeCloundRight.GetComponent<RectTransform>().sizeDelta = new Vector2(1105f,644f);
             
         }else if (index == Constant.ThemePastureIndex)
         {

@@ -341,25 +341,27 @@ public class MirrorSDK : MonoBehaviour
             MirrorWrapper.Instance.LogFlow("Unknown platform!");
         }
     }
-    //public static void OpenMarketPage(List<string> collections)
-    //{
-    //    if (Utils.IsEditor())
-    //    {
-    //        MirrorWrapper.Instance.LogFlow("Not supported.");
-    //    }
-    //    else if (Application.platform == RuntimePlatform.Android)
-    //    {
-    //        MirrorWrapper.Instance.AndroidOpenMarket(collections);
-    //    }
-    //    else if (Application.platform == RuntimePlatform.IPhonePlayer)
-    //    {
-    //        MirrorWrapper.Instance.LogFlow("Not supported.");
-    //    }
-    //    else
-    //    {
-    //        MirrorWrapper.Instance.LogFlow("Unknown platform!");
-    //    }
-    //}
+
+    public static void OpenMarketPage()
+    {
+        if (MirrorUtils.IsEditor())
+        {
+            MirrorWrapper.Instance.DebugOpenMarketPage();
+        }
+        else if (Application.platform == RuntimePlatform.Android)
+        {
+            MirrorWrapper.Instance.AndroidOpenMarket();
+        }
+        else if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            MirrorWrapper.Instance.LogFlow("Not supported.");
+        }
+        else
+        {
+            MirrorWrapper.Instance.LogFlow("Unknown platform!");
+        }
+    }
+
     //public static void OpenTransferPage(string mintAddress, string image, string name)
     //{
     //    if (Utils.IsEditor())

@@ -46,7 +46,6 @@ namespace MirrorworldSDK.Wrapper
 
         public void GetLoginSession(string emailAddress, Action<bool> openBrowerResult, Action<LoginResponse> loginCb)
         {
-            LogFlow("Request debug session--email:"+ emailAddress+" apiKey:"+apiKey);
             this.loginCb = loginCb;
 
             GetLoginSessionRequest requestBody = new GetLoginSessionRequest();
@@ -102,6 +101,22 @@ namespace MirrorworldSDK.Wrapper
                 if (isLogged) {
                     string url = GetEntranceRoot() + apiKey;
                     LogFlow("Will open third browser..."+url);
+                    Application.OpenURL(url);
+                }
+                else
+                {
+                    LogFlow("Please login first.");
+                }
+            });
+        }
+
+        public void DebugOpenMarketPage()
+        {
+            IsLoggedIn((isLogged) => {
+                if (isLogged)
+                {
+                    string url = GetMarketRoot() + "?auth=" +accessToken;
+                    LogFlow("Will open third browser..." + url);
                     Application.OpenURL(url);
                 }
                 else

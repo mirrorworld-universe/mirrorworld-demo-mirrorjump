@@ -118,7 +118,7 @@ namespace MirrorworldSDK.Wrapper
             javaSDKInstance.Call("OpenSellPage", mintAddress,image,name);
         }
 
-        public void AndroidOpenMarket(List<string> collections)
+        public void AndroidOpenMarket()
         {
             if (javaSDKInstance == null)
             {
@@ -126,7 +126,7 @@ namespace MirrorworldSDK.Wrapper
                 return;
             }
 
-            javaSDKInstance.Call("OpenMarket", collections);
+            javaSDKInstance.Call("openMarket");
         }
     }
 }

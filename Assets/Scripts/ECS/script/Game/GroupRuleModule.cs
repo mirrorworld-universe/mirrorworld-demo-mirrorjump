@@ -76,8 +76,26 @@ public class GroupRuleModule : MonoBehaviour
     {
         TheTopStairsHeight = height;
     }
-    
-    
+
+
+
+    private float CrossingDetection(float value)
+    {  
+        
+        Vector3 ScreenZero = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
+        if (value <= ScreenZero.x + 1f)
+        {
+            return ScreenZero.x + 1f;
+        }
+        
+        if (value >= -ScreenZero.x - 1f)
+        {
+            return -ScreenZero.x - 1f;
+        }
+
+        return value;
+
+    }
     
     
 
@@ -122,7 +140,6 @@ public class GroupRuleModule : MonoBehaviour
     
     private void DetectionPositionBlackRole()
     {
-        // 3
         
         if (TheLastRuleItem.StairsType == StairsType.BlackRole)
         {
@@ -131,11 +148,12 @@ public class GroupRuleModule : MonoBehaviour
                   // adjust
                   if (TheLastRuleItem.pos.x > 0)
                   {
-                      currentItems[0].pos.x -= 3;
+                      
+                      currentItems[0].pos.x = CrossingDetection(currentItems[0].pos.x -3);
                   }
                   else
                   {
-                      currentItems[0].pos.x += 3;
+                      currentItems[0].pos.x = CrossingDetection( currentItems[0].pos.x +3);
                   }
                   
             }
@@ -145,29 +163,35 @@ public class GroupRuleModule : MonoBehaviour
         
         
         if ( currentItems[0].StairsType == StairsType.BlackRole)
-        {
+        {   
             
-            if (TheLastRuleItem.pos.x >= 0)
+            if (Math.Abs(TheLastRuleItem.pos.x - currentItems[0].pos.x) < 3)
             {
-                currentItems[0].pos.x = TheLeftBlackRoleX;
+                // adjust
+                if (TheLastRuleItem.pos.x > 0)
+                {
+                    currentItems[0].pos.x = CrossingDetection(currentItems[0].pos.x -5.6f);
+                }
+                else
+                {
+                    currentItems[0].pos.x = CrossingDetection(currentItems[0].pos.x + 5.6f);
+                }
+                  
             }
-            else
-            {
-                currentItems[0].pos.x = TheRightBlackRoleX;
-            }
-            
-            
-            
+
+
+
             if (Math.Abs( currentItems[0].pos.x  - currentItems[1].pos.x) < 3)
             {
                 // adjust
                 if (currentItems[0].pos.x > 0)
                 {
-                    currentItems[1].pos.x -= 3;
+                   
+                    currentItems[1].pos.x = CrossingDetection( currentItems[1].pos.x -5.6f);
                 }
                 else
                 {
-                    currentItems[1].pos.x += 3;
+                    currentItems[1].pos.x = CrossingDetection(   currentItems[1].pos.x +5.6f);
                 }
                   
             }
@@ -179,13 +203,18 @@ public class GroupRuleModule : MonoBehaviour
         if ( currentItems[1].StairsType == StairsType.BlackRole)
         {
             
-            if (currentItems[0].pos.x >= 0)
+            if (Math.Abs(currentItems[0].pos.x - currentItems[1].pos.x) < 3)
             {
-                currentItems[1].pos.x = TheLeftBlackRoleX;
-            }
-            else
-            {
-                currentItems[1].pos.x = TheRightBlackRoleX;
+                // adjust
+                if (currentItems[0].pos.x > 0)
+                {
+                    currentItems[1].pos.x = CrossingDetection(currentItems[1].pos.x -5.6f);
+                }
+                else
+                {
+                    currentItems[1].pos.x = CrossingDetection( currentItems[1].pos.x +5.6f);
+                }
+                  
             }
             
             
@@ -194,11 +223,12 @@ public class GroupRuleModule : MonoBehaviour
                 // adjust
                 if (currentItems[1].pos.x > 0)
                 {
-                    currentItems[2].pos.x -= 3;
+                    currentItems[2].pos.x =  CrossingDetection(currentItems[2].pos.x - 5.6f);
                 }
                 else
                 {
-                    currentItems[2].pos.x += 3;
+                    
+                    currentItems[2].pos.x =  CrossingDetection(currentItems[2].pos.x +5.6f);
                 }
                   
             }
@@ -209,15 +239,20 @@ public class GroupRuleModule : MonoBehaviour
 
         if (currentItems[2].StairsType == StairsType.BlackRole)
         {
-            if (currentItems[1].pos.x >= 0)
+            if (Math.Abs(currentItems[2].pos.x - currentItems[1].pos.x) < 3)
             {
-                currentItems[2].pos.x = TheLeftBlackRoleX;
+                // adjust
+                if (currentItems[1].pos.x > 0)
+                {
+                    
+                    currentItems[2].pos.x =  CrossingDetection(currentItems[2].pos.x - 5.6f);
+                }
+                else
+                {
+                    currentItems[2].pos.x =  CrossingDetection(currentItems[2].pos.x + 5.6f);
+                }
+                  
             }
-            else
-            {
-                currentItems[2].pos.x = TheRightBlackRoleX;
-            }
-            
         }
 
         

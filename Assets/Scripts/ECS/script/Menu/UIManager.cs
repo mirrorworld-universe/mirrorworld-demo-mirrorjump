@@ -100,7 +100,8 @@ public class UIManager : MonoBehaviour
     }
 
     public void OpenWallet()
-    {
+    {   
+        SoundManager.Instance.PlaySound(SoundName.Button);
         MirrorSDK.OpenWalletPage();
     }
 

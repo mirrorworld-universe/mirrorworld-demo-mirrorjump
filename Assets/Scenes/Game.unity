@@ -888,7 +888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b8e558751551d46a65f15f7f65c832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraObject: {fileID: 519420028}
+  GroupRuleModule: {fileID: 728129061}
   StairsFactory: {fileID: 1336595707}
   MirrorObject: {fileID: 5925371422525462709}
   MapRunSystem: {fileID: 1113051819}
@@ -1707,27 +1707,14 @@ GameObject:
   m_Component:
   - component: {fileID: 728129062}
   - component: {fileID: 728129061}
-  - component: {fileID: 728129060}
+  - component: {fileID: 728129063}
   m_Layer: 0
-  m_Name: GroupRule
+  m_Name: RuoleConfig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &728129060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728129059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab7e440ca04c8d4dbe748e05a3451ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Groups: {fileID: 4900000, guid: e5187fc18a6dfbc409a8559257e47f4f, type: 3}
 --- !u!114 &728129061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1740,6 +1727,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b24ae73c6d8e044b3727da33260c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraObject: {fileID: 519420028}
+  GameController: {fileID: 247834403}
+  RuleConfig: {fileID: 728129063}
+  StairsFactory: {fileID: 1336595707}
 --- !u!4 &728129062
 Transform:
   m_ObjectHideFlags: 0
@@ -1755,6 +1746,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &728129063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728129059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f402c26c6b90cb4cb473ba3eeece87c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Groups: {fileID: 4900000, guid: e5187fc18a6dfbc409a8559257e47f4f, type: 3}
+  CameraObject: {fileID: 519420028}
 --- !u!1 &741861159
 GameObject:
   m_ObjectHideFlags: 0
@@ -3776,6 +3781,8 @@ MonoBehaviour:
   BalanceStairs: {fileID: 6598839778833773834, guid: cd77abdf0e1521944b293a45c75d5d6e, type: 3}
   GameController: {fileID: 247834403}
   PropsFactory: {fileID: 1875881141}
+  GroupRuleModule: {fileID: 728129061}
+  RuleConfig: {fileID: 728129063}
   ThemeSpaceStairs:
   - {fileID: 21300000, guid: fa4a765dd893e48449d89d20e80b4856, type: 3}
   - {fileID: 21300000, guid: 35905ef1c1c31d94ca36382c197e9cf3, type: 3}

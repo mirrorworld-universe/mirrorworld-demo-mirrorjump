@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PropType
+{
+   Spring,
+   SpringBoard,
+   HighRocket,
+   LowRocket,
+   Empty
+}
+
 public class PropsFactory : MonoBehaviour
 {
     public GameObject SpringProp;

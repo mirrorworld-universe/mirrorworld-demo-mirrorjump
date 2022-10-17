@@ -17,6 +17,8 @@ public class NftTrade : MonoBehaviour
     public GameObject SellRoot;
 
     public Image SellHeader;
+
+    public PackageDetailsManager PackageDetailsManager;
     
 
     public TextMeshProUGUI SellNFTID;
@@ -326,6 +328,21 @@ public class NftTrade : MonoBehaviour
         TransferRoot.SetActive(false);
         NFTDetailRoot.SetActive(true);
     }
+    
+    
+    
+    public void ListBackToDetails()
+    {
+        SellRoot.SetActive(false);
+        NFTDetailRoot.SetActive(true);
+    }
+    
+    public void ManageBackToDetails()
+    {
+        ManageRoot.SetActive(false);
+        NFTDetailRoot.SetActive(true);
+    }
+    
     // header  Image loader
     private async void SetImage(string url,Image header)
     {
@@ -497,7 +514,7 @@ public class NftTrade : MonoBehaviour
             {  
                 
                 //callApiStateResult.name+"\n"+
-                MessageAdvice.OnSuccess(ApiCallLimit.GetStateByAddress(callApiStateResult.MintAddress)+"successful!");
+                MessageAdvice.OnSuccess("successful!");
             }
             else
             {

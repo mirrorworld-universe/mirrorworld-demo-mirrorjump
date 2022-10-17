@@ -747,6 +747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 126243402}
+  SoundanageObject: {fileID: 769568207}
 --- !u!1 &463826718
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +823,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 868216903487129407, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
+      propertyPath: Clips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 868216903487129407, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
       propertyPath: Clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 0956bda066456f84dbc91b5d438b7577, type: 3}
@@ -841,6 +846,10 @@ PrefabInstance:
       propertyPath: Clips.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: f034b1f666603204abb24135acf3bab7, type: 3}
+    - target: {fileID: 868216903487129407, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
+      propertyPath: Clips.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: b3ad353a6ad823045b29a9b4df59a610, type: 3}
     - target: {fileID: 1853767136206134190, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -889,8 +898,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 7435194329970373855, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b3ad353a6ad823045b29a9b4df59a610, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
+--- !u!1 &769568207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 868216903487129376, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
+  m_PrefabInstance: {fileID: 769568206}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &771027978
 GameObject:
   m_ObjectHideFlags: 0

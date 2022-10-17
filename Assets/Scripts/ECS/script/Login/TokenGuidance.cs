@@ -96,9 +96,9 @@ public class TokenGuidance : MonoBehaviour
     {
         SoundManager.Instance.PlaySound(SoundName.Button);
         SecondStep.SetActive(false);
-        // ThirdStep.SetActive(true);
-        // AirDropNew();
-        OnFourthStep();
+        ThirdStep.SetActive(true);
+        AirDropNew();
+     //   OnFourthStep();
     }
 
     //IEnumerator AirDrop()
@@ -176,6 +176,7 @@ public class TokenGuidance : MonoBehaviour
             if(result.id != "" && result.id != null)
             {
                 isAirDropping = false;
+                NetworkManager.Instance.UpdateAirdropSolReq(LoginState.WalletAddress);
                 OnFourthStep();
             }
             else
@@ -228,7 +229,6 @@ public class TokenGuidance : MonoBehaviour
         SoundManager.Instance.PlaySound(SoundName.Button);
         FinishGuidence.SetActive(false);
         Back.SetActive(false);
-        PlayerPrefs.SetString("HasReceiveToken", "true");
 
         if ("false" == PlayerPrefs.GetString("HasGuidence", "false"))
         {

@@ -1,5 +1,4 @@
 ﻿
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,12 +7,14 @@ public enum StairsType
 {
     General,
     Disposable,
-    Disappear,
     Breakage,
-    Moving,
+    MoveVerticle,
+    MoveHorizontal,
     BlackRole,
     Balance
 }
+
+
 public class StairsFactory : MonoBehaviour
 {
 
@@ -38,6 +39,10 @@ public class StairsFactory : MonoBehaviour
     private float DifficultyInterval = 50f;
 
     public PropsFactory PropsFactory;
+
+    public GroupRuleModule GroupRuleModule;
+
+    public RuleConfig RuleConfig;
     
     
     
@@ -226,36 +231,13 @@ public class StairsFactory : MonoBehaviour
     }
     
     
-    
-    
-    
-    
 
-    public void GenerateStairs(Vector2 position,bool IsFirstStairs)
+    public void GenerateStairs(Vector2 position,StairsType stairsType)
     {   
         Vector3 pos = new Vector3(position.x, position.y, 107.4f);
         
-        StairsType stairsType = StairsType.General;
-        
-        
-        if (!IsFirstStairs)
-        {
-            
-            if (MirrorObject.transform.position.y < DifficultyInterval)
-            {
-                stairsType = OnlyGeneral();
-                
-            }else
-            {
-                stairsType = Equalization();
-            }
-            
-        }
-        
-        
         InstantiationStairs(stairsType,pos);
-
-
+        
     }
     
     
@@ -281,15 +263,6 @@ public class StairsFactory : MonoBehaviour
             
             RandomProps(tran,GameController);
             
-        }else if (stairsType == StairsType.Disappear)
-        {
-            var tran = (UnityEngine.Object.Instantiate(DisappearStairs.gameObject)).GetComponent<Transform>();
-            tran.position = pos;
-            tran.gameObject.GetComponent<DisappearStairs>().SetGameController(GameController);
-            tran.transform.SetParent(StairsParent.transform);
-            
-            RandomProps(tran,GameController);
-
         }else if (stairsType == StairsType.Breakage)
         {
             var tran = (UnityEngine.Object.Instantiate(BreakageStairs.gameObject)).GetComponent<Transform>();
@@ -299,15 +272,10 @@ public class StairsFactory : MonoBehaviour
             
             RandomProps(tran,GameController);
             
-        }else if (stairsType == StairsType.Moving)
+        }else if (stairsType == StairsType.MoveHorizontal)
         {   
-            //todo 等待进一步完善此处和难度 随机性关联的逻辑
+           
             MovingDirection movingDirection = MovingDirection.Horizontal;
-            int direct =   Random.Range(1, 10);
-            if (direct >= 8)
-            {
-                movingDirection = MovingDirection.Vertical;
-            }
             var tran = (UnityEngine.Object.Instantiate(MovingStairs.gameObject)).GetComponent<Transform>();
             tran.position = pos;
             tran.gameObject.GetComponent<MovingStairs>().SetGameController(GameController);
@@ -316,6 +284,15 @@ public class StairsFactory : MonoBehaviour
             
             RandomProps(tran,GameController);
             
+        }else if (stairsType == StairsType.MoveVerticle)
+        {
+            MovingDirection movingDirection = MovingDirection.Vertical;
+            var tran = (UnityEngine.Object.Instantiate(MovingStairs.gameObject)).GetComponent<Transform>();
+            tran.position = pos;
+            tran.gameObject.GetComponent<MovingStairs>().SetGameController(GameController);
+            tran.gameObject.GetComponent<MovingStairs>().SetMovingParams(movingDirection,1f,3,3);
+            tran.transform.SetParent(StairsParent.transform);
+            RandomProps(tran,GameController);
             
         }else if (stairsType == StairsType.Balance)
         {
@@ -328,135 +305,41 @@ public class StairsFactory : MonoBehaviour
 
         }else if (stairsType == StairsType.BlackRole)
         {
-                int rate = Random.Range(1, 10);
-
-                if (rate >= 8)
-                {
-                    GenerateBlackRole(StairsParent.transform,GameController,pos);
-                    
-                }
-                else
-                {
-                    
-                    var tran = (UnityEngine.Object.Instantiate(GeneralStairs.gameObject)).GetComponent<Transform>();
-                    tran.position = pos;
-                    tran.gameObject.GetComponent<StairProp>().SetGameController(GameController);
-                    tran.transform.SetParent(StairsParent.transform);
-            
-                    RandomProps(tran,GameController);
-                    
-                }
-         
-            
+            GenerateBlackRole(StairsParent.transform,GameController,pos);
         }
         
     }
     
-    
-    // todo Custom rate
-    //equalization
-    private StairsType Equalization()
-    {
-        // todo : Custom random rules
-        int rate = Random.Range(1, 13);
-        
-        if (rate <= 2)
-        {
-            Limit = true;
-            return StairsType.General;
-            
-        }else if (rate <= 4)
-        {    
-            Limit = true;
-            return StairsType.Disposable;
-            
-        }else if (rate <= 6)
-        {   
-            Limit = true;
-            return StairsType.Disappear;
-            
-        }else if (rate <= 8)
-        {   
-            Limit = true;
-            return StairsType.Moving;
-
-        }
-        else if (rate <= 9.5)
-        {
-            Limit = true;
-            return StairsType.Balance;
-        }
-        else if (rate <= 10)
-        {
-            if (Limit)
-            {  
-                Limit = false;
-                return StairsType.Breakage;
-            }
-            else
-            {
-                Limit = true;
-                return StairsType.General;
-            }
-            
-            
-           
-        }
-        
-        Limit = true;
-        return StairsType.BlackRole;
-        
-    }
     
    
-    private StairsType OnlyGeneral()
-    {
-        return StairsType.General;
-    }
     
     private void RandomProps(Transform StairsParent,GameController gameController)
     {
-        
-        if (MirrorObject.transform.position.y < DifficultyInterval  )
+
+        if (RuleConfig.GeneratePropType() == PropType.Spring)
         {
-            return;
-        }
-
-
-        int  generateRate = Random.Range(1, 11);
-
-        if (generateRate <= 8)
+            GenerateSpringProp(StairsParent, GameController);
+        }else if (RuleConfig.GeneratePropType() == PropType.SpringBoard)
         {
-            return;
-        }
-
-        
-        int  rate = Random.Range(1, 11);
-         
-        if (rate <=  2)
-        {  
             GenerateSpringBoard(StairsParent, GameController);
-            
-        }else if (rate <= 4)
-        {
-           GenerateSpringProp(StairsParent, GameController);
-        }
-        else if(rate <= 6)
+        }else if (RuleConfig.GeneratePropType() == PropType.LowRocket)
         {
             GenerateLowRocket(StairsParent, GameController);
             
-        }else if (rate <= 8)
+        }else if (RuleConfig.GeneratePropType() == PropType.HighRocket)
         {
             GenerateHeighRocket(StairsParent, GameController);
+        }else if (RuleConfig.GeneratePropType() == PropType.Empty)
+        {
+            
             
         }
-
+        
     }
 
     private void GenerateSpringBoard(Transform StairsParent,GameController gameController)
     {
         PropsFactory.GenerateSpringBoard(StairsParent, GameController, new Vector3(0, 0.79f, 0));
-        
     }
     
     private void GenerateSpringProp(Transform StairsParent,GameController gameController)

@@ -9,15 +9,24 @@ public class SoundManager : MonoSingleton<SoundManager>
     private static bool IsMute = false;
     
     // Back music 
-    public AudioClip[] Clips = new AudioClip[5];
+    public AudioClip[] Clips = new AudioClip[6];
 
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
 
         IsMute = PlayerPrefs.GetInt(GlobalDef.isMute) == 0 ? false : true;
+
+        transform.GetComponent<AudioSource>().clip = null;
+      
     }
 
+
+    public AudioSource GetAudioSource()
+    {
+        return transform.GetComponent<AudioSource>();
+    }
+    
     public void SetSoundState(bool isMute)
     {
         IsMute = isMute;

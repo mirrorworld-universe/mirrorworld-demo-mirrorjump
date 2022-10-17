@@ -9,7 +9,7 @@ public class GameMenu : MonoBehaviour
 {
 
 
-    public GameObject GameOverWindow;
+    public GameOverPanel GameOverWindow;
 
     public GameObject GamePauseWindow;
 
@@ -32,49 +32,76 @@ public class GameMenu : MonoBehaviour
         OpenUnlockHeightAdvice();
         UnlockHeightAdvice.SetActive(false);
         UnlockAdvice.SetActive(false);
+
+        EventDispatcher.Instance.userScoreReceived += OnUserScoreReceived;
+    }
+
+    private void OnDestroy()
+    {
+        EventDispatcher.Instance.userScoreReceived -= OnUserScoreReceived;
+    }
+
+    private void OnUserScoreReceived(UserScoreUpdateData data)
+    {
+        PlayerPrefs.SetString(GlobalDef.maxScore, ((long)data.highest_score).ToString());
+        if (data.new_scenes.Count > 0)
+        {
+            // 解锁了新场景
+            GameOverWindow.UnlockNewScene(data.new_scenes[0].scene_id);
+        }
+        else
+        {
+            // 未解锁新场景
+            GameOverWindow.UnlockNewScene(0);
+        }
+        LoadingPanel.Instance.SetLoadingPanelEnable(false);
+        GameOverWindow.RefreshData();
     }
 
     private void OpenUnlockHeightAdvice()
-    {   
-        
+    {
+
         if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSpaceIndex)
         {
-            if (1 == PlayerPrefs.GetInt("ThemeDesertState", 0))
+            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeDesertIndex, 0))
             {
                 return;
             }
-            
-        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
-        {
-            if (1 ==  PlayerPrefs.GetInt("ThemeSnowState", 0))
-            {
-                return;
-            }
-        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
-        {    
-            if (1 ==   PlayerPrefs.GetInt("ThemeCyberpunkState", 0))
-            {
-                return;
-            }
-            
-        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
-        {    
-            if (1 ==   PlayerPrefs.GetInt("ThemePastureState", 0))
-            {
-                return;
-            }
-            
+
         }
-        
+        else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
+        {
+            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeSnowIndex, 0))
+            {
+                return;
+            }
+        }
+        else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
+        {
+            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeCyberpunkIndex, 0))
+            {
+                return;
+            }
+
+        }
+        else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
+        {
+            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemePastureIndex, 0))
+            {
+                return;
+            }
+
+        }
+
         IsHeightAdvice = true;
         CurrentTime = 0;
         UnlockHeightAdvice.SetActive(true);
-        
-        
-        
+
+
+
     }
-    
-    
+
+
     public void OpenUnlockAdvice()
     {
         IsUnlockAdvice = true;
@@ -118,15 +145,23 @@ public class GameMenu : MonoBehaviour
         
         
     }
-    
-    
-    
+
+
+
 
 
     public void GameOver()
     {
-            GameOverWindow.SetActive(true);
-            GameController.OnGameOver();
+        LoadingPanel.Instance.SetLoadingPanelEnable(true);
+
+        GameOverWindow.gameObject.SetActive(true);
+        GameController.OnGameOver();
+
+        UserScoreUpdateReq req = new UserScoreUpdateReq();
+        req.user_id = LoginState.WalletAddress;
+        req.score = FindObjectOfType<GameController>().GetMaxHeight();
+        req.scene = PlayerPrefs.GetInt("CurrentTheme");
+        NetworkManager.Instance.SendUserScoreReq(req);
     }
 
     public void GamePause()
@@ -154,7 +189,7 @@ public class GameMenu : MonoBehaviour
     public void CloseGameOverWindow()
     {
         SoundManager.Instance.PlaySound(SoundName.Close);
-        GameOverWindow.SetActive(false);
+        GameOverWindow.gameObject.SetActive(false);
     }
 
     public void SetHighScore(string score)

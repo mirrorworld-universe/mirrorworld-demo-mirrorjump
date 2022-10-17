@@ -7,8 +7,9 @@ using UnityEngine.Video;
 public class GameEntrance : MonoBehaviour
 {
     [SerializeField] VideoPlayer videoPlayer;
-    
 
+
+   
     private void Start()
     {
         StartPlay();

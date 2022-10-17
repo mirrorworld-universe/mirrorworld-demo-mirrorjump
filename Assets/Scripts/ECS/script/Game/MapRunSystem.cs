@@ -173,7 +173,6 @@ public class MapRunSystem : MonoBehaviour
         gameObject.transform.position = Position;
 
         // 设置高度线
-        // TODO
         HeightDisplayManager.Instance.GenerateHeightNumber(gameObject.transform.position.y * GlobalDef.heightCoefficient);
     }
 

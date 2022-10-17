@@ -16,6 +16,7 @@ public class GameOverPanel : MonoBehaviour
     [SerializeField] private GameObject newScoreEffect;
     [SerializeField] private GameObject unlockSceneBg;
     [SerializeField] private GameObject unlockSceneContent;
+    [SerializeField] private Sprite[] sceneImgList;
     [SerializeField] private Image unlockSceneSr;
     private bool isNewRecord;
 
@@ -91,6 +92,9 @@ public class GameOverPanel : MonoBehaviour
         unlockSceneBg.SetActive(true);
         unlockSceneContent.SetActive(true);
         // 设置主题图片
-        // unlockSceneSr
+        unlockSceneSr.sprite = sceneImgList[lockIndex];
+
+        // 设置解锁状态
+        PlayerPrefs.SetInt(Constant.Theme_Pre + lockIndex, 1);
     }
 }

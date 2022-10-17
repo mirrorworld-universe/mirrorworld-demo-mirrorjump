@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        EventDispatcher.Instance.userInfoDataReceived += OnUserDataReceived;   
+        EventDispatcher.Instance.userInfoDataReceived += OnUserDataReceived;
     }
 
     private void OnDestroy()

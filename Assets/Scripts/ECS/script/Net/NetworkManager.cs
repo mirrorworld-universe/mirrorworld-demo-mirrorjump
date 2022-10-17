@@ -201,7 +201,7 @@ public class UserScoreUpdateData
 public class UpdateMintStatusReq
 {
     public string user_id;
-    public string token_id;
+    public int token_id;
 }
 
 public class UpdateMintStatusRes

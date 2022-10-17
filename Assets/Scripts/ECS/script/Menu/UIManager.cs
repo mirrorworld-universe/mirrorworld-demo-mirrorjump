@@ -64,6 +64,8 @@ public class UIManager : MonoBehaviour
         SoundManager.Instance.GetAudioSource().mute = true;
         SoundManager.Instance.GetAudioSource().clip = null;
         
+        SoundManager.Instance.GetAudioSource().mute = SoundManager.Instance.GetSoundState();
+        
         SceneManager.LoadScene("Game");
     }
 

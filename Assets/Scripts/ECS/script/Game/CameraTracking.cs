@@ -16,7 +16,7 @@ public class CameraTracking : MonoBehaviour
    public CloundMoveManager CloundMoveManager;
    
     // 当最下面一张地图与相机位置相差多少时，移动地图
-   private float MapChangeDelta = 19.144f;
+   private float MapChangeDelta = 19.20f;
    
    
    private bool IsGameOver = false;

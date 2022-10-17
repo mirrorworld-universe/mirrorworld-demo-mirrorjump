@@ -148,19 +148,19 @@ public class ThemeManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
         {
-            LockState = PlayerPrefs.GetInt("ThemeDesertState", 0);
+            LockState = PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeDesertIndex, 0);
 
         }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
         {
-            LockState = PlayerPrefs.GetInt("ThemeSnowState", 0);
+            LockState = PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeSnowIndex, 0);
             
         }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
         {
-            LockState = PlayerPrefs.GetInt("ThemeCyberpunkState", 0);
+            LockState = PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeCyberpunkIndex, 0);
             
         }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemePastureIndex)
         {
-             LockState = PlayerPrefs.GetInt("ThemePastureState", 0); 
+             LockState = PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemePastureIndex, 0); 
         }
 
 

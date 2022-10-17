@@ -16,9 +16,11 @@ public class GameOverPanel : MonoBehaviour
     [SerializeField] private GameObject newScoreEffect;
     [SerializeField] private GameObject unlockSceneBg;
     [SerializeField] private GameObject unlockSceneContent;
+    [SerializeField] private Sprite[] sceneImgList;
     [SerializeField] private Image unlockSceneSr;
     private bool isNewRecord;
-    private void OnEnable()
+
+    public void RefreshData()
     {
         var height = FindObjectOfType<GameController>().GetMaxHeight();
 
@@ -27,12 +29,11 @@ public class GameOverPanel : MonoBehaviour
         string max = PlayerPrefs.GetString(GlobalDef.maxScore, "0");
         long maxScore = (long)float.Parse(max);
 
-        if (Mathf.Floor(height) > maxScore) 
+        if (Mathf.Floor(height) > maxScore)
         {
             SetNewScore(true);
             SoundManager.Instance.PlaySound(SoundName.Victory);
             scoreText.color = victoryColor;
-            PlayerPrefs.SetString(GlobalDef.maxScore, ((long)(height)).ToString());
             maxScore = (long)height;
             isNewRecord = true;
         }
@@ -91,6 +92,9 @@ public class GameOverPanel : MonoBehaviour
         unlockSceneBg.SetActive(true);
         unlockSceneContent.SetActive(true);
         // 设置主题图片
-        // unlockSceneSr
+        unlockSceneSr.sprite = sceneImgList[lockIndex];
+
+        // 设置解锁状态
+        PlayerPrefs.SetInt(Constant.Theme_Pre + lockIndex, 1);
     }
 }

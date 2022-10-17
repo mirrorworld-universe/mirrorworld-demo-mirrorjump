@@ -1,40 +1,86 @@
-[{
+[
+	{
 		"Name": "Group1",
 		"Height": [0, 200],
-		"BaseYoffset": [2, 3],
-		"BaseXoffset": [-2, 2],
-		"ExtraCount": [5, 7],
-		"ExtraYoffset": [0.5, 3],
-		"ExtraTypePercent": [60, 20, 20, 0, 0],
-		"ItemPercent": [0, 0, 20, 20, 20]
-	}, {
+		"StairTypePercent": {
+
+			"General":100,
+			"Disposable":0,
+			"Breakage":0,
+			"MoveVerticle":0,
+			"MoveHorizontal":0,
+			"BlackRole":0,
+			"Balance":0
+		},
+		"PropPercent": {
+
+			"SpringBoard":0,
+			"HeighRocket":0,
+			"LowRocket":0,
+			"Spring":0,
+			"empty":100
+		},
+		
+		"SpaceIntervalY": {
+			"FloorValue": 1,
+			 "UpperValue": 1.3
+		}
+	},
+
+	{
 		"Name": "Group2",
-		"Height": [200, 500],
-		"BaseYoffset": [2, 3],
-		"BaseXoffset": [-3, 3],
-		"ExtraCount": [4, 6],
-		"ExtraYoffset": [0.5, 3],
-		"ExtraTypePercent": [40, 15, 15, 15, 15],
-		"ItemPercent": [20, 20, 20, 20, 20]
+		"Height": [200, 1000],
+		"StairTypePercent": {
+
+			"General":30,
+			"Disposable":10,
+			"Breakage":10,
+			"MoveVerticle":5,
+			"MoveHorizontal":15,
+			"BlackRole":5,
+			"Balance":25
+		},
+		"PropPercent": {
+
+			"SpringBoard":10,
+			"HeighRocket":5,
+			"LowRocket":5,
+			"Spring":5,
+			"empty":75
+		},
+
+		"SpaceIntervalY": {
+			"FloorValue": 1,
+			"UpperValue": 1.3
+		}
 	},
+
 	{
-		"Name": "Group3",
-		"Height": [500, 1000],
-		"BaseYoffset": [2, 3],
-		"BaseXoffset": [-4, 4],
-		"ExtraCount": [3, 5],
-		"ExtraYoffset": [0.5, 3],
-		"ExtraTypePercent": [20, 20, 20, 20, 20],
-		"ItemPercent": [30, 10, 10, 20, 20]
-	},
-	{
-		"Name": "Group4",
-		"Height": [1000, 999999],
-		"BaseYoffset": [2, 3],
-		"BaseXoffset": [-4, 4],
-		"ExtraCount": [2, 4],
-		"ExtraYoffset": [0.5, 3],
-		"ExtraTypePercent": [10, 10, 30, 30, 20],
-		"ItemPercent": [40, 10, 10, 10, 10]
+		"Name": "LastGroup",
+		"Height": [1000, 2147483647],
+		"StairTypePercent": {
+
+			"General":15,
+			"Disposable":15,
+			"Breakage":15,
+			"MoveVerticle":10,
+			"MoveHorizontal":15,
+			"BlackRole":10,
+			"Balance":20
+		},
+		"PropPercent": {
+
+			"SpringBoard":30,
+			"HeighRocket":10,
+			"LowRocket":10,
+			"Spring":10,
+			"empty":40
+		},
+
+		"SpaceIntervalY": {
+			"FloorValue": 1.8,
+			"UpperValue": 2
+		}
 	}
+	
 ]

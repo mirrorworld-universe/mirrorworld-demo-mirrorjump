@@ -41,7 +41,6 @@ public class CallSDK : MonoBehaviour
         return res;
     }
 
-
     // todo SDK Call  Fetch NFTS
     public void FetchNFTS()
     {
@@ -65,38 +64,6 @@ public class CallSDK : MonoBehaviour
         }
     }
     
-    
-   // todo Transfer Token
-    public void MintNFTResult(bool IsSuccess)
-    {
-        if (IsSuccess)
-        {
-            // transfer token
-            MirrorSDK.TransferSol(100000000,"qS6JW1CKQgpwZU6jG5JpXL3Q4EDMoDD5DWacPEsNZoe",Confirmation.Confirmed, (result) =>
-            {
-                if (result.status == "success")
-                {
-                    FinishedMint(true);
-                }
-                else
-                {
-                    FinishedMint(false);
-                }
-                
-                
-            });
-            
-            
-        }
-        else
-        
-        {   MessageAdvice.ConfrimCloseWaitPanel();
-            MessageAdvice.OnFailure();
-        }
-        
-    }
-
-
     private void FinishedMint(bool IsSuccess)
     {
 
@@ -149,45 +116,67 @@ public class CallSDK : MonoBehaviour
     // todo SDK Call MintNFT
     public void MintNFT (NFTCellData nftCellData)
     {
+
         NftCellData = nftCellData;
         
         if (LoginState.HasLogin)
         {
-            string name = "Mirror Jump " + "#" + GetNameNumber(PlayerPrefs.GetString("MintUrl"));
-            
-            if (ApiCallLimit.MintLimit() == false)
-            {
-                MessageAdvice.OpenWaitPanel("Mint Now");
-                return;
-            }
-            
-            ApiCallLimit.SetMintApiLimit(Constant.ExecuteMint);
-            
-            MessageAdvice.OpenWaitPanel("Mint Now");
-            
-            MirrorSDK.MintNFT("BXqCckKEidhJUpYrg4u2ocdiDKwJY3WujHvVDPTMf6nL",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
-                (result) =>
+            // transfer token
+                MirrorSDK.TransferSol(100000000,"qS6JW1CKQgpwZU6jG5JpXL3Q4EDMoDD5DWacPEsNZoe",Confirmation.Confirmed, (result) =>
                 {
-                    
-                   if (result.status == "success")
-                   {
-                       MintNFTResult(true);
-                   }
-                   else
-                   {
-                       MintNFTResult(false);
-                   }
-                   
-                });
+                    if (result.status == "success")
+                    {
+                      
+                        string name = "Mirror Jump " + "#" + GetNameNumber(PlayerPrefs.GetString("MintUrl"));
             
+                        if (ApiCallLimit.MintLimit() == false)
+                        {
+                            MessageAdvice.OpenWaitPanel("Mint Now");
+                            return;
+                        }
+            
+                        ApiCallLimit.SetMintApiLimit(Constant.ExecuteMint);
+            
+                        MessageAdvice.OpenWaitPanel("Mint Now");
+            
+                        MirrorSDK.MintNFT("BXqCckKEidhJUpYrg4u2ocdiDKwJY3WujHvVDPTMf6nL",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
+                            (result) =>
+                            {
+                    
+                                if (result.status == "success")
+                                {   
+                                    FinishedMint(true);
+                                }
+                                else
+                                {
+                                    FinishedMint(false);
+                                }
+                   
+                            });
+
+                        
+                    }
+                    else
+                    {
+                        //FinishedMint(false);
+                        if (result.message == Constant.NotSufficientFunds)
+                        {
+                            // 余额不足
+                            MessageAdvice.ConfrimCloseWaitPanel();
+                            MessageAdvice.OnSufficientAdvice();
+                        }
+                        else
+                        {
+                            MessageAdvice.ConfrimCloseWaitPanel();
+                            MessageAdvice.OnFailure();
+                        }
+                        
+                    }
+                
+                });
+                
         }
-       
     }
-    
-    
-    
-  
-    
     
     
 }

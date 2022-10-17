@@ -11,13 +11,9 @@ public enum GameState
 
 public class GameController : MonoBehaviour
 {
+
+    public GroupRuleModule GroupRuleModule;
     
-    private float TheTopStairsHeight;
-
-    private float GenerateThreshold = 10;
-
-    public GameObject CameraObject;
-
     public StairsFactory StairsFactory;
 
     public GameObject MirrorObject;
@@ -41,6 +37,12 @@ public class GameController : MonoBehaviour
     
     // role change
     public RolePersistence RolePersistence;
+
+
+    public CloundMoveManager CloundMoveManager;
+
+
+   
     
     
     
@@ -52,13 +54,7 @@ public class GameController : MonoBehaviour
     private void FixedUpdate()
     {
         if (GetGameState() == GameState.Gaming)
-        {   
-           
-            while (TheTopStairsHeight - CameraObject.transform.position.y <= GenerateThreshold)
-            {
-                StairsFactory.GenerateStairs(GenerateStairsCoordinate(),false);
-            }
-        
+        {
             GetHeightScore();
         }
         
@@ -81,24 +77,7 @@ public class GameController : MonoBehaviour
     }
 
 
-    private Vector2 GenerateStairsCoordinate()
-    {
-        float VerticalCoordinate = TheTopStairsHeight + RandomSpaceY();
-        float HorizontalCoordinate = RandomX();
-        TheTopStairsHeight = VerticalCoordinate;
-        return new Vector2(HorizontalCoordinate, VerticalCoordinate);
-    }
-    
-    private float RandomX()
-    {
-        Vector3 ScreenZero = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
-        return Random.Range(ScreenZero.x + 1f, -ScreenZero.x - 1f);
-    }
-    
-    private float RandomSpaceY()
-    {
-        return  Random.Range(1f,1.3f);
-    }
+  
     
     public void StartNewGame()
     {
@@ -175,19 +154,26 @@ public class GameController : MonoBehaviour
         MirrorObject.transform.GetComponent<MirrorJump>().Setup();
         SetTransformPosition(MirrorObject.transform,new Vector3(initPos.x, initPos.y+2f,107.4f));
         
-        StairsFactory.GenerateStairs(initPos, true);
+        StairsFactory.GenerateStairs(initPos,StairsType.General);
+
+        StairsRuleItem stairsRuleItem = new StairsRuleItem();
+        stairsRuleItem.pos = initPos;
+        stairsRuleItem.StairsType = StairsType.General;
+        GroupRuleModule.SetLastRuleItem(stairsRuleItem);
 
         HeightDisplayManager.Instance.GenerateFirst(initScore);
 
         MapRunSystem.ResetMapPosition(initY);
         
+        CloundMoveManager.ResetCloundPosition();
+        
         CameraTracking.ResetCameraPosition(initY);
 
         MaxHeight = initScore;
         GameMenu.SetHighScore(MaxHeight.ToString());
-
-        TheTopStairsHeight = initPos.y;
-      
+        
+        GroupRuleModule.SetTopStaisHeight(initPos.y);
+        
         GameState = GameState.Gaming;
         
         GameMenu.CloseGameOverWindow();

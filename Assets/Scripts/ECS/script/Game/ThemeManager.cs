@@ -7,6 +7,7 @@ public class ThemeManager : MonoBehaviour
     public GameObject ThemeBack;
     public GameObject ThemeGroud;
     public GameObject ThemeCloud;
+    public GameObject ThemeCloundRight;
     
 
     public GameObject LockedBack;
@@ -119,6 +120,9 @@ public class ThemeManager : MonoBehaviour
         ThemeBack.gameObject.GetComponent<Image>().sprite = ThemeBackSprites[SpriteIndex];
         ThemeGroud.gameObject.GetComponent<Image>().sprite = ThemeGroudSprites[SpriteIndex];
         ThemeCloud.gameObject.GetComponent<Image>().sprite = ThemeCloudSprites[SpriteIndex];
+        ThemeCloundRight.gameObject.GetComponent<Image>().sprite = ThemeCloudSprites[SpriteIndex];
+        ClundPositionAdjust(SpriteIndex);
+        GrassPositionAdjust(SpriteIndex);
         
         if (LockState())
         {
@@ -174,6 +178,50 @@ public class ThemeManager : MonoBehaviour
     {
         return IsLockCurrentTheme;
     }
+
+
+    private void ClundPositionAdjust(int index)
+    {
+        if (index == Constant.ThemeSpaceIndex)
+        {
+            ThemeCloud.GetComponent<RectTransform>().sizeDelta = new Vector2(1069f,1661f);
+            ThemeCloundRight.GetComponent<RectTransform>().sizeDelta = new Vector2(1069f,1661f);
+        }
+        else if (index == Constant.ThemeDesertIndex)
+        {
+            ThemeCloud.GetComponent<RectTransform>().sizeDelta = new Vector2(689f,740f);
+            ThemeCloundRight.GetComponent<RectTransform>().sizeDelta = new Vector2(689f,740f);
+            
+        }else if (index == Constant.ThemeSnowIndex)
+        {
+            ThemeCloud.GetComponent<RectTransform>().sizeDelta = new Vector2(1190f,1121f);
+            ThemeCloundRight.GetComponent<RectTransform>().sizeDelta = new Vector2(1190f,1121f);
+
+        }else if (index == Constant.ThemeCyberpunkIndex)
+        {
+           
+            ThemeCloud.GetComponent<RectTransform>().sizeDelta = new Vector2(1105f,644f);
+            ThemeCloundRight.GetComponent<RectTransform>().sizeDelta = new Vector2(1105f,644f);
+            
+        }else if (index == Constant.ThemePastureIndex)
+        {
+            ThemeCloud.GetComponent<RectTransform>().sizeDelta = new Vector2(1034f,595f);
+            ThemeCloundRight.GetComponent<RectTransform>().sizeDelta = new Vector2(1034f,595f);
+        }
+        
+    }
     
-    
+    private void GrassPositionAdjust(int index)
+    {
+        if (index == Constant.ThemeDesertIndex)
+        {
+            ThemeGroud.GetComponent<RectTransform>().sizeDelta = new Vector2(ThemeGroud.GetComponent<RectTransform>().sizeDelta.x,630f);
+        }
+        else
+        {
+            ThemeGroud.GetComponent<RectTransform>().sizeDelta = new Vector2(ThemeGroud.GetComponent<RectTransform>().sizeDelta.x,536f);
+        }
+        
+    }
+
 }

@@ -4,6 +4,14 @@
     {   
         
         
+        public static bool shushuSDKOpen = true;
+        public static string shushuAppID = "b9e2c7f496e94936a3896728f7cf5617";
+        public static string shushuReportUrl = "https://global-receiver-ta.mirrorworld.fun";
+        public static string AppID = "MRJ";
+
+        public static string NotSufficientFunds =
+            "failed to send transaction: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x1";
+        
         // Call Api Limit
         public static int ExecuteMint = 1;
         public static int StopMint = 0;

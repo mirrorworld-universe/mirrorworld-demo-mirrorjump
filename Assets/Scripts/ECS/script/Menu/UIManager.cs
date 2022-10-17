@@ -8,7 +8,37 @@ public class UIManager : MonoBehaviour
 
 
     public ThemeManager ThemeManager;
+    
+    
 
+
+    public GameObject LoginButton;
+
+    private void Start()
+    {
+        SoundManager.Instance.GetAudioSource().clip = SoundManager.Instance.Clips[5];
+        SoundManager.Instance.GetAudioSource().mute = SoundManager.Instance.GetSoundState();
+        SoundManager.Instance.GetAudioSource().Play();
+    }
+
+
+    // private void Start()
+    // {
+    //     // MirrorSDK.IsLoggedIn((result) =>
+    //     // {
+    //     //     if (result)
+    //     //     {
+    //     //         LoginButton.SetActive(false);
+    //     //         SceneManager.LoadScene("Menu");
+    //     //         
+    //     //     }
+    //     //  
+    //     //     
+    //     // });
+    //     //
+    //     
+    //     
+    // }
 
     private bool IsDebug = false;
 
@@ -85,6 +115,12 @@ public class UIManager : MonoBehaviour
         }
         
         SoundManager.Instance.PlaySound(SoundName.Button);
+        
+        SoundManager.Instance.GetAudioSource().mute = true;
+        SoundManager.Instance.GetAudioSource().clip = null;
+        
+        SoundManager.Instance.GetAudioSource().mute = SoundManager.Instance.GetSoundState();
+        
         SceneManager.LoadScene("Game");
     }
 
@@ -124,7 +160,8 @@ public class UIManager : MonoBehaviour
     }
 
     public void OpenWallet()
-    {
+    {   
+        SoundManager.Instance.PlaySound(SoundName.Button);
         MirrorSDK.OpenWalletPage();
     }
 

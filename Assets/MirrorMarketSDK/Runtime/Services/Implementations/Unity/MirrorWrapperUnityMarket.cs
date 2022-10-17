@@ -164,7 +164,6 @@ namespace MirrorworldSDK.Wrapper
             FetchMultipleNftsByOwnersRequest requestBody = new FetchMultipleNftsByOwnersRequest();
 
             requestBody.owners = owners;
-
             var rawRequestBody = JsonUtility.ToJson(requestBody);
 
             string url = GetAPIRoot() + urlFetchMultiNFTsDataByOwnerAddresses;
@@ -198,7 +197,7 @@ namespace MirrorworldSDK.Wrapper
             }));
         }
 
-        public void ListNFT(string mintAddress, decimal price,string confirmation, Action<CommonResponse<ListingResponse>> callBack)
+        public void ListNFT(string mintAddress, float price,string confirmation, Action<CommonResponse<ListingResponse>> callBack)
         {
             ListNftOnMarketplaceRequest requestBody = new ListNftOnMarketplaceRequest();
 
@@ -221,7 +220,7 @@ namespace MirrorworldSDK.Wrapper
             }));
         }
 
-        public void UpdateNFTListing(string mintAddress, decimal price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
+        public void UpdateNFTListing(string mintAddress, float price, string confirmation, Action<CommonResponse<ListingResponse>> callBack)
         {
             ListNftOnMarketplaceRequest requestBody = new ListNftOnMarketplaceRequest();
 
@@ -244,7 +243,7 @@ namespace MirrorworldSDK.Wrapper
             }));
         }
 
-        public void CancelNFTListing(string mintAddress, decimal price,string confirmation, Action<CommonResponse<ListingResponse>> callBack)
+        public void CancelNFTListing(string mintAddress, float price,string confirmation, Action<CommonResponse<ListingResponse>> callBack)
         {
             CancelNftListOnMarketplaceRequest requestBody = new CancelNftListOnMarketplaceRequest();
 

@@ -71,6 +71,9 @@ public class NFTDetailsManager : MonoBehaviour
     }
 
 
+  
+
+
     private void DataParser(NFTCellData nftCellData)
     {
         CurrentMirror = nftCellData;
@@ -127,13 +130,21 @@ public class NFTDetailsManager : MonoBehaviour
         EventDispatcher.Instance.roleChanged?.Invoke();
      
     }
-
+    
+    
+    
+    public void WaitBackNFTPackage()
+    {
+        SoundManager.Instance.PlaySound(SoundName.Close);
+        NFTDetails.SetActive(false);
+    }
+    
+    
+    
     public void ListNFT()
     {
       
-        ExitNFTPackage();
-
-
+        WaitBackNFTPackage();
 
         if (CurrentMirror.NftData.listings.Count <= 0)
         {
@@ -152,7 +163,7 @@ public class NFTDetailsManager : MonoBehaviour
     
     public void TransferNFT()
     {
-        ExitNFTPackage();
+        WaitBackNFTPackage();
         NftTrade.OpenTransfer(CurrentMirror);
     }
     

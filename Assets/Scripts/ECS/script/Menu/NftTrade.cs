@@ -17,6 +17,8 @@ public class NftTrade : MonoBehaviour
     public GameObject SellRoot;
 
     public Image SellHeader;
+
+    public PackageDetailsManager PackageDetailsManager;
     
 
     public TextMeshProUGUI SellNFTID;
@@ -240,7 +242,7 @@ public class NftTrade : MonoBehaviour
              if (null != CurrentNftCellData.NftData)
              {
                  CurrentPrice.text = CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count - 1]
-                     .tokenPrice.ToString();
+                     .price.ToString();
              }
             
         }
@@ -326,6 +328,21 @@ public class NftTrade : MonoBehaviour
         TransferRoot.SetActive(false);
         NFTDetailRoot.SetActive(true);
     }
+    
+    
+    
+    public void ListBackToDetails()
+    {
+        SellRoot.SetActive(false);
+        NFTDetailRoot.SetActive(true);
+    }
+    
+    public void ManageBackToDetails()
+    {
+        ManageRoot.SetActive(false);
+        NFTDetailRoot.SetActive(true);
+    }
+    
     // header  Image loader
     private async void SetImage(string url,Image header)
     {
@@ -366,7 +383,7 @@ public class NftTrade : MonoBehaviour
         ApiCallLimit.AddItemState(callApiState.MintAddress,callApiState);
         
         MessageAdvice.OpenWaitPanel("Listing Now");
-        MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,new decimal(price),Confirmation.Finalized,(result) =>
+        MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,price,Confirmation.Finalized,(result) =>
         {
             ResultAdvice(result);
             
@@ -401,7 +418,7 @@ public class NftTrade : MonoBehaviour
             
             MessageAdvice.OpenWaitPanel("Changing New Price Now");
             
-            MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress, new decimal(price), Confirmation.Finalized,(result) =>
+            MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress, price, Confirmation.Finalized,(result) =>
             {   
                 
                 ResultAdvice(result);
@@ -437,7 +454,7 @@ public class NftTrade : MonoBehaviour
             
             
             MessageAdvice.OpenWaitPanel("Canceling List Now");
-            MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].tokenPrice,Confirmation.Finalized,(result) =>
+            MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].price,Confirmation.Finalized,(result) =>
             {
                   ResultAdvice(result);
             });
@@ -497,7 +514,7 @@ public class NftTrade : MonoBehaviour
             {  
                 
                 //callApiStateResult.name+"\n"+
-                MessageAdvice.OnSuccess(ApiCallLimit.GetStateByAddress(callApiStateResult.MintAddress)+"successful!");
+                MessageAdvice.OnSuccess("successful!");
             }
             else
             {

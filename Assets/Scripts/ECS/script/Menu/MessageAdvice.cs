@@ -33,6 +33,30 @@ public class MessageAdvice : MonoBehaviour
    public GameObject ApiCallLimit;
 
    public TextMeshProUGUI LimitTips;
+
+
+   
+   public GameObject NotSufficientAdvice;
+
+
+   public void OnSufficientAdvice()
+   {
+       NotSufficientAdvice.SetActive(true);
+   }
+   
+   public void CloseNotSufficient()
+   {
+       NotSufficientAdvice.SetActive(false);
+   }
+
+
+   public void OpenWallet()
+   {
+       NotSufficientAdvice.SetActive(false);
+       // open wallet
+       MirrorSDK.OpenWalletPage();
+   }
+   
    
    
    

@@ -41,6 +41,12 @@ public class MapRunSystem : MonoBehaviour
     public SpriteRenderer MiddleCloudSpriteRenderer;
     
     public SpriteRenderer BottomCloudSpriteRenderer;
+    
+    public SpriteRenderer TopCloudSpriteRendererRight;
+    
+    public SpriteRenderer MiddleCloudSpriteRendererRight;
+    
+    public SpriteRenderer BottomCloudSpriteRendererRight;
 
     public SpriteRenderer GroudSpriteRenderer;
 
@@ -62,6 +68,10 @@ public class MapRunSystem : MonoBehaviour
         TopCloudSpriteRenderer.sprite = ThemeCloudSprites[index];
         MiddleCloudSpriteRenderer.sprite = ThemeCloudSprites[index];
         BottomCloudSpriteRenderer.sprite = ThemeCloudSprites[index];
+        
+        TopCloudSpriteRendererRight.sprite = ThemeCloudSprites[index];
+        MiddleCloudSpriteRendererRight.sprite = ThemeCloudSprites[index];
+        BottomCloudSpriteRendererRight.sprite = ThemeCloudSprites[index];
 
         GroudSpriteRenderer.sprite = ThemeGroudSprites[index];
 

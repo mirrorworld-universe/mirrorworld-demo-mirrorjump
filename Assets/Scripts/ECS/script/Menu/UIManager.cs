@@ -54,7 +54,6 @@ public class UIManager : MonoBehaviour
 
     private void OnUserDataReceived(UserInfoData userInfoData)
     {
-        Debug.Log("连接游戏服务器成功！");
         // 数据记录
         // 处理场景
         // 先清除所有的场景记录，避免换号登陆之后场景还是解锁状态
@@ -150,7 +149,6 @@ public class UIManager : MonoBehaviour
 
                 LoadingPanel.Instance.SetLoadingPanelEnable(true);
                 // 与服务器通信发送登陆信息
-                Debug.Log("开始连接游戏服务器...");
                 NetworkManager.Instance.SendUserBasicInfoReq(LoginState.WalletAddress);
                 //SceneManager.LoadScene("Menu");
             });

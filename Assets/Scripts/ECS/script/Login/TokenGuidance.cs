@@ -177,6 +177,7 @@ public class TokenGuidance : MonoBehaviour
             {
                 isAirDropping = false;
                 NetworkManager.Instance.UpdateAirdropSolReq(LoginState.WalletAddress);
+                PlayerPrefs.GetString("HasReceiveToken", "true");
                 OnFourthStep();
             }
             else

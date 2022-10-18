@@ -8,10 +8,16 @@ public class GameEntrance : MonoBehaviour
 {
     [SerializeField] VideoPlayer videoPlayer;
 
-
    
+    
+    
+    
+
+
+
     private void Start()
     {
+
         StartPlay();
     }
 

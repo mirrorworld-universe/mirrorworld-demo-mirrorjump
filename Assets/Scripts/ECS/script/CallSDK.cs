@@ -139,7 +139,7 @@ public class CallSDK : MonoBehaviour
             
                         MessageAdvice.OpenWaitPanel("Mint Now");
             
-                        MirrorSDK.MintNFT("BXqCckKEidhJUpYrg4u2ocdiDKwJY3WujHvVDPTMf6nL",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
+                        MirrorSDK.MintNFT("DUuMbpmH3oiREntViXfGZhrLMbVcYBwGeBa4Wn9X8QfM",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
                             (result) =>
                             {
                     

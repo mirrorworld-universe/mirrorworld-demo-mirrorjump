@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -92,11 +92,11 @@ public class CloundMoveManager : MonoBehaviour
         MiddleClound.transform.position = new Vector3(0, 0+ UnitDistance, 0);
         TopClound.transform.position = new Vector3(0, 0+ 2 * UnitDistance,0);
         
-        ButtomClound.transform.gameObject.GetComponent<CloundMove>().SetSpeed(0.006f);
+        ButtomClound.transform.gameObject.GetComponent<ScrollSceneItem>().SetSpeed(0.5f);
         
-        MiddleClound.transform.gameObject.GetComponent<CloundMove>().SetSpeed(0.006f);
+        MiddleClound.transform.gameObject.GetComponent<ScrollSceneItem>().SetSpeed(0.5f);
         
-        TopClound.transform.gameObject.GetComponent<CloundMove>().SetSpeed(0.006f);
+        TopClound.transform.gameObject.GetComponent<ScrollSceneItem>().SetSpeed(0.5f);
         
     }
 

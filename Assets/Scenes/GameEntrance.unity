@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6236376754683695852, guid: 2ca39d7c5936f436b9cd2d79123ee069, type: 3}
       propertyPath: apiKey
-      value: mw_testGoC1CsfxiVYpouZCqe7ZphbIY151f3L5rco
+      value: bU21hAbKFrKUBnCcSf9oZ84pq82aWhUfF6u
       objectReference: {fileID: 0}
     - target: {fileID: 6236376754683695852, guid: 2ca39d7c5936f436b9cd2d79123ee069, type: 3}
       propertyPath: password
@@ -224,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6236376754683695852, guid: 2ca39d7c5936f436b9cd2d79123ee069, type: 3}
       propertyPath: debugEmail
-      value: 2573040560@qq.com
+      value: puyu@rct.studio
       objectReference: {fileID: 0}
     - target: {fileID: 6236376754683695854, guid: 2ca39d7c5936f436b9cd2d79123ee069, type: 3}
       propertyPath: m_Name
@@ -747,7 +747,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 126243402}
-  SoundanageObject: {fileID: 769568207}
 --- !u!1 &463826718
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,11 +903,6 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: b3ad353a6ad823045b29a9b4df59a610, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
---- !u!1 &769568207 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 868216903487129376, guid: f7e7783fa010d3e46b7f32838c76e668, type: 3}
-  m_PrefabInstance: {fileID: 769568206}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &771027978
 GameObject:
   m_ObjectHideFlags: 0

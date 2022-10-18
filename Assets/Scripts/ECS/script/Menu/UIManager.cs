@@ -53,7 +53,8 @@ public class UIManager : MonoBehaviour
     }
 
     private void OnUserDataReceived(UserInfoData userInfoData)
-    {
+    {    
+        
         // 数据记录
         // 处理场景
         // 先清除所有的场景记录，避免换号登陆之后场景还是解锁状态
@@ -92,6 +93,14 @@ public class UIManager : MonoBehaviour
         LoadingPanel.Instance.SetLoadingPanelEnable(false);
 
         PlayerPrefs.SetString("HasReceiveToken", userInfoData.airdrop_sol? "true":"false");
+        
+        
+        // 处理 token guidence 流程
+        if (userInfoData.airdrop_sol)
+        {
+            PlayerPrefs.SetString("HasReceiveToken", "true");      
+        }
+      
 
         SceneManager.LoadScene("Menu");
     }

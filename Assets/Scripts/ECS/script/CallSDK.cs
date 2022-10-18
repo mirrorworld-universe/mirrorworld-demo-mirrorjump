@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using System.Collections.Generic;
 using MirrorworldSDK;
 using MirrorworldSDK.Models;
@@ -20,6 +21,21 @@ public class CallSDK : MonoBehaviour
 
     public PackageManager PackageManager;
 
+    private void OnEnable()
+    {
+        EventDispatcher.Instance.updateMintReceived += OnUpdateMint;
+    }
+
+    private void OnDisable()
+    {
+        EventDispatcher.Instance.updateMintReceived -= OnUpdateMint;
+    }
+
+    private void OnUpdateMint(UpdateMintStateData arg0)
+    {
+        LoginState.mintableRoleData = null;
+        LoadingPanel.Instance.SetLoadingPanelEnable(false);
+    }
 
     private string GetNameNumber(string target)
     {
@@ -124,9 +140,10 @@ public class CallSDK : MonoBehaviour
             // transfer token
                 MirrorSDK.TransferSol(100000000,"qS6JW1CKQgpwZU6jG5JpXL3Q4EDMoDD5DWacPEsNZoe",Confirmation.Confirmed, (result) =>
                 {
+                    Debug.Log("begin mint1" + result.status);
                     if (result.status == "success")
                     {
-                      
+                        Debug.Log("begin mint2" + result.status);
                         string name = "Mirror Jump " + "#" + GetNameNumber(PlayerPrefs.GetString("MintUrl"));
             
                         if (ApiCallLimit.MintLimit() == false)
@@ -138,11 +155,12 @@ public class CallSDK : MonoBehaviour
                         ApiCallLimit.SetMintApiLimit(Constant.ExecuteMint);
             
                         MessageAdvice.OpenWaitPanel("Mint Now");
-            
+
+                        Debug.Log("begin mint3" + PlayerPrefs.GetString("MintUrl"));
                         MirrorSDK.MintNFT("BXqCckKEidhJUpYrg4u2ocdiDKwJY3WujHvVDPTMf6nL",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
                             (result) =>
                             {
-                    
+                                Debug.Log("begin mint4" + result.message);
                                 if (result.status == "success")
                                 {   
                                     FinishedMint(true);

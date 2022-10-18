@@ -12,6 +12,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 {
     public void SendUserBasicInfoReq(string user_id)
     {
+        Debug.Log("开始连接游戏服务器...");
         string path = GlobalDef.server + "api/v1/user?user_id=" + user_id;
         StartCoroutine(Get(path, "", (result, json) =>
         {
@@ -24,6 +25,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
                 return;
             }
 
+            Debug.Log("连接游戏服务器成功！");
             EventDispatcher.Instance.userInfoDataReceived?.Invoke(res.data);
         }));
 
@@ -31,6 +33,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 
     public void SendUserScoreReq(UserScoreUpdateReq req)
     {
+        Debug.Log("发送游戏得分...");
         string path = GlobalDef.server + "api/v1/user/score";
         var data = JsonMapper.ToJson(req);
         StartCoroutine(Post(path, data, (result, json) =>
@@ -43,6 +46,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
                 return;
             }
 
+            Debug.Log("收到游戏得分...");
             EventDispatcher.Instance.userScoreReceived?.Invoke(res.data);
         }));
 
@@ -50,6 +54,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 
     public void UpdateMintStatusReq(UpdateMintStatusReq req)
     {
+        Debug.Log("向服务器发送mint请求...");
         string path = GlobalDef.server + "api/v1/nft/mint_status";
         StartCoroutine(Post(path, JsonMapper.ToJson(req), (result, json) =>
         {
@@ -62,6 +67,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
                 return;
             }
 
+            Debug.Log("服务器mint返回mint结果...");
             EventDispatcher.Instance.updateMintReceived?.Invoke(res.data);
         }));
 

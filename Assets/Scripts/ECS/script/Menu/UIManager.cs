@@ -1,5 +1,5 @@
 ﻿
-using System;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,8 +9,6 @@ public class UIManager : MonoBehaviour
 
     public ThemeManager ThemeManager;
     
-    
-
 
     public GameObject LoginButton;
 
@@ -19,33 +17,34 @@ public class UIManager : MonoBehaviour
         SoundManager.Instance.GetAudioSource().clip = SoundManager.Instance.Clips[5];
         SoundManager.Instance.GetAudioSource().mute = SoundManager.Instance.GetSoundState();
         SoundManager.Instance.GetAudioSource().Play();
-        LoginButton.SetActive(false);
         
-        MirrorSDK.IsLoggedIn((result) =>
-        {
-            if (result)
-            {
-                MirrorSDK.StartLogin((LoginResponse)=>
-                {
-                
-                    LoginState.HasLogin = true;
-                    LoginState.Name = LoginResponse.user.username;
-                    LoginState.WalletAddress= LoginResponse.user.wallet.sol_address;
-                    LoginState.ID =  LoginResponse.user.id.ToString();
-
-                    LoadingPanel.Instance.SetLoadingPanelEnable(true);
-                    // 与服务器通信发送登陆信息
-                    NetworkManager.Instance.SendUserBasicInfoReq(LoginState.WalletAddress);
-                    //SceneManager.LoadScene("Menu");
-                });
-                
-            
-            }
-            else
-            {
-                LoginButton.SetActive(true);
-            }
-        });
+        // LoginButton.SetActive(false);
+        
+        // MirrorSDK.IsLoggedIn((result) =>
+        // {
+        //     if (result)
+        //     {
+        //         MirrorSDK.StartLogin((LoginResponse)=>
+        //         {
+        //         
+        //             LoginState.HasLogin = true;
+        //             LoginState.Name = LoginResponse.user.username;
+        //             LoginState.WalletAddress= LoginResponse.user.wallet.sol_address;
+        //             LoginState.ID =  LoginResponse.user.id.ToString();
+        //
+        //             LoadingPanel.Instance.SetLoadingPanelEnable(true);
+        //             // 与服务器通信发送登陆信息
+        //             NetworkManager.Instance.SendUserBasicInfoReq(LoginState.WalletAddress);
+        //             //SceneManager.LoadScene("Menu");
+        //         });
+        //         
+        //     
+        //     }
+        //     else
+        //     {
+        //         LoginButton.SetActive(true);
+        //     }
+        // });
 
         
     }

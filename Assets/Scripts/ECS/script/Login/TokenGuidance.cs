@@ -111,7 +111,7 @@ public class TokenGuidance : MonoBehaviour
         SecondStep.SetActive(false);
         ThirdStep.SetActive(true);
         AirDropNew();
-        //OnFourthStep();
+       // OnFourthStep();
     }
 
     //IEnumerator AirDrop()

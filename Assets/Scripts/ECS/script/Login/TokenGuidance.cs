@@ -111,7 +111,7 @@ public class TokenGuidance : MonoBehaviour
         SecondStep.SetActive(false);
         ThirdStep.SetActive(true);
         AirDropNew();
-       // OnFourthStep();
+       //  OnFourthStep();
     }
 
     //IEnumerator AirDrop()
@@ -190,7 +190,7 @@ public class TokenGuidance : MonoBehaviour
             {
                 isAirDropping = false;
                 NetworkManager.Instance.UpdateAirdropSolReq(LoginState.WalletAddress);
-                PlayerPrefs.GetString("HasReceiveToken", "true");
+                PlayerPrefs.SetString("HasReceiveToken", "true");
                 OnFourthStep();
             }
             else

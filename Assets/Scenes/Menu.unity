@@ -34998,6 +34998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThemeManager: {fileID: 1371097675}
   LoginButton: {fileID: 372886247}
+  HasLogged: 1
 --- !u!1 &2118041829
 GameObject:
   m_ObjectHideFlags: 0

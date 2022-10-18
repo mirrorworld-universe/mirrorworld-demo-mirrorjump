@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
 
     public GameObject LoginButton;
 
+
+    public bool HasLogged = false;
+
     private void Start()
     {
         SoundManager.Instance.GetAudioSource().clip = SoundManager.Instance.Clips[5];
@@ -51,16 +54,23 @@ public class UIManager : MonoBehaviour
 
 
 
-    private bool IsDebug = false;
+    private bool IsDebug;
 
     private void Awake()
     {
-        EventDispatcher.Instance.userInfoDataReceived += OnUserDataReceived;
+      
+            EventDispatcher.Instance.userInfoDataReceived += OnUserDataReceived;
+      
+        
     }
 
     private void OnDestroy()
     {
-        EventDispatcher.Instance.userInfoDataReceived -= OnUserDataReceived;
+        if (!HasLogged)
+        {
+            EventDispatcher.Instance.userInfoDataReceived -= OnUserDataReceived;
+        }
+       
     }
 
     private void OnUserDataReceived(UserInfoData userInfoData)
@@ -82,6 +92,22 @@ public class UIManager : MonoBehaviour
             }
 
             PlayerPrefs.SetInt(Constant.Theme_Pre + scenes.scene_id, 1);
+
+            if (scenes.scene_id == 1)
+            {
+                PlayerPrefs.SetInt("ThemeDesertState", 1);
+                
+            }else if (scenes.scene_id == 2)
+            {
+                PlayerPrefs.SetInt("ThemeSnowState", 1);
+            }else if (scenes.scene_id == 3)
+            {
+                PlayerPrefs.SetInt("ThemeCyberpunkState", 1);
+            }else if (scenes.scene_id == 4)
+            {
+                PlayerPrefs.SetInt("ThemePastureState", 1);
+            }
+
         }
 
         // 处理NFT
@@ -109,10 +135,8 @@ public class UIManager : MonoBehaviour
         // 处理 token guidence 流程
         if (userInfoData.airdrop_sol)
         {
-            PlayerPrefs.SetString("HasReceiveToken", "true");      
+            PlayerPrefs.GetString("HasReceiveToken", "true");      
         }
-      
-
         SceneManager.LoadScene("Menu");
     }
 

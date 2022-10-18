@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using System.Collections.Generic;
 using MirrorworldSDK;
 using MirrorworldSDK.Models;
@@ -20,6 +21,21 @@ public class CallSDK : MonoBehaviour
 
     public PackageManager PackageManager;
 
+    private void OnEnable()
+    {
+        EventDispatcher.Instance.updateMintReceived += OnUpdateMint;
+    }
+
+    private void OnDisable()
+    {
+        EventDispatcher.Instance.updateMintReceived -= OnUpdateMint;
+    }
+
+    private void OnUpdateMint(UpdateMintStateData arg0)
+    {
+        LoginState.mintableRoleData = null;
+        LoadingPanel.Instance.SetLoadingPanelEnable(false);
+    }
 
     private string GetNameNumber(string target)
     {
@@ -126,7 +142,6 @@ public class CallSDK : MonoBehaviour
                 {
                     if (result.status == "success")
                     {
-                      
                         string name = "Mirror Jump " + "#" + GetNameNumber(PlayerPrefs.GetString("MintUrl"));
             
                         if (ApiCallLimit.MintLimit() == false)
@@ -138,11 +153,11 @@ public class CallSDK : MonoBehaviour
                         ApiCallLimit.SetMintApiLimit(Constant.ExecuteMint);
             
                         MessageAdvice.OpenWaitPanel("Mint Now");
-            
+
                         MirrorSDK.MintNFT("DUuMbpmH3oiREntViXfGZhrLMbVcYBwGeBa4Wn9X8QfM",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
                             (result) =>
                             {
-                    
+                                Debug.Log("begin mint4" + result.message);
                                 if (result.status == "success")
                                 {   
                                     FinishedMint(true);

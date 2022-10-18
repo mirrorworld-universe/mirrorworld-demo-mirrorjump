@@ -26,6 +26,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
             }
 
             Debug.Log("连接游戏服务器成功！");
+            Debug.Log(json);
             EventDispatcher.Instance.userInfoDataReceived?.Invoke(res.data);
         }));
 
@@ -47,6 +48,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
             }
 
             Debug.Log("收到游戏得分...");
+            Debug.Log(json);
             EventDispatcher.Instance.userScoreReceived?.Invoke(res.data);
         }));
 
@@ -68,6 +70,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
             }
 
             Debug.Log("服务器mint返回mint结果...");
+            Debug.Log(json);
             EventDispatcher.Instance.updateMintReceived?.Invoke(res.data);
         }));
 
@@ -75,6 +78,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 
     public void UpdateAirdropSolReq(string user_id)
     {
+        Debug.Log("向服务器发送空投成功请求...");
         string path = GlobalDef.server + "api/v1/user/airdrop_status";
         UpdateAirdropSolReq req = new UpdateAirdropSolReq();
         req.user_id = user_id;
@@ -89,6 +93,8 @@ public class NetworkManager : MonoSingleton<NetworkManager>
                 return;
             }
 
+            Debug.Log("更新空投返回结果...");
+            Debug.Log(json);
             EventDispatcher.Instance.updateAirdopReceived?.Invoke(res.data);
         }));
 

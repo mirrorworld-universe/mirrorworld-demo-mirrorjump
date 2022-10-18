@@ -2740,10 +2740,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1035573787}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 769df0a19c2f0564cac6dcbc2c157996, type: 3}
+  m_Script: {fileID: 11500000, guid: 78053190aa757164b8100e72b0c7efb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameController: {fileID: 247834403}
+  speed: 6
+  img1: {fileID: 2040048700}
+  img2: {fileID: 1891155662}
 --- !u!1 &1056517870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3843,7 +3845,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1364385644}
-  - component: {fileID: 1364385643}
+  - component: {fileID: 1364385645}
   m_Layer: 0
   m_Name: CloundRoot
   m_TagString: Untagged
@@ -3851,19 +3853,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1364385643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364385642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 769df0a19c2f0564cac6dcbc2c157996, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameController: {fileID: 247834403}
 --- !u!4 &1364385644
 Transform:
   m_ObjectHideFlags: 0
@@ -3881,6 +3870,21 @@ Transform:
   m_Father: {fileID: 760929462}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1364385645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364385642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78053190aa757164b8100e72b0c7efb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 6
+  img1: {fileID: 1620431735}
+  img2: {fileID: 1441679232}
 --- !u!1 &1372647269
 GameObject:
   m_ObjectHideFlags: 0
@@ -5316,10 +5320,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1671081426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 769df0a19c2f0564cac6dcbc2c157996, type: 3}
+  m_Script: {fileID: 11500000, guid: 78053190aa757164b8100e72b0c7efb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameController: {fileID: 247834403}
+  speed: 6
+  img1: {fileID: 457072690}
+  img2: {fileID: 1548768692}
 --- !u!1 &1750273844
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,6 +40,10 @@ public class GameController : MonoBehaviour
 
 
     public CloundMoveManager CloundMoveManager;
+    
+    private float UnlockHeight;
+
+    private bool IsUnlock = true;
 
 
    
@@ -49,6 +53,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         OnGameStart();
+        SetUnlockedHeight();
     }
 
     private void FixedUpdate()
@@ -56,6 +61,11 @@ public class GameController : MonoBehaviour
         if (GetGameState() == GameState.Gaming)
         {
             GetHeightScore();
+            if (IsUnlock)
+            {
+                ThemeLockState();
+            }
+
         }
         
     }
@@ -186,7 +196,101 @@ public class GameController : MonoBehaviour
     }
     
     
+    private void SetUnlockedHeight()
+    {
+        
+        
+        if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSpaceIndex)
+        {
+            UnlockHeight = 1000f;
+            
+            GameMenu.SetUnlockedHeightText("1000");
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
+        {
+            UnlockHeight = 2000f;
+            GameMenu.SetUnlockedHeightText("2000");
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
+        {
+            UnlockHeight = 3000f;
+            GameMenu.SetUnlockedHeightText("3000");
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
+        {
+            UnlockHeight = 4000f;
+            GameMenu.SetUnlockedHeightText("4000");
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemePastureIndex)
+        {
+            IsUnlock = false;
+            return;
+        }
+        
 
+        IsUnlock = true;
+
+    }
+    
+    private void ThemeLockState()
+    {
+        if (GetMaxHeight() < UnlockHeight)
+        {
+            return;
+            
+        }
+
+        IsUnlock = false;
+
+        if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSpaceIndex)
+        {
+            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeDesertIndex, 0))
+            {
+                return;
+            }
+
+            PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemeDesertIndex, 1);
+            PlayerPrefs.SetInt("ThemeDesertState", 1);
+
+        }
+        else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
+        {
+
+            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeSnowIndex, 0))
+            {
+                return;
+            }
+
+            PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemeSnowIndex, 1);
+            PlayerPrefs.SetInt("ThemeSnowState", 1);
+
+        }
+        else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
+        {
+            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeCyberpunkIndex, 0))
+            {
+                return;
+            }
+
+            PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemeCyberpunkIndex, 1);
+            PlayerPrefs.SetInt("ThemeCyberpunkState", 1);
+
+        }
+        else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
+        {
+            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemePastureIndex, 0))
+            {
+                return;
+            }
+
+            PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemePastureIndex, 1);
+            PlayerPrefs.GetInt("ThemePastureState", 1);
+
+        }
+        
+        // notify
+        GameMenu.OpenUnlockAdvice();
+        
+    }
     
     
     

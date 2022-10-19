@@ -24,12 +24,11 @@ public class UIManager : MonoBehaviour
         if (!HasLogged)
         {
             LoginButton.SetActive(false);
-        
+            LoadingPanel.Instance.SetLoadingPanelEnable(true);
             MirrorSDK.IsLoggedIn((result) =>
             {
                 if (result)
                 {
-                    LoadingPanel.Instance.SetLoadingPanelEnable(true);
                     // 与服务器通信发送登陆信息
                     NetworkManager.Instance.SendUserBasicInfoReq( PlayerPrefs.GetString("walletAddress"));
                     //SceneManager.LoadScene("Menu");
@@ -37,6 +36,7 @@ public class UIManager : MonoBehaviour
                 else
                 {
                     LoginButton.SetActive(true);
+                    LoadingPanel.Instance.SetLoadingPanelEnable(false);
                 }
             });
         }
@@ -75,6 +75,16 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemeSnowIndex, 0);
         PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemeCyberpunkIndex, 0);
         PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemePastureIndex, 0);
+        
+        PlayerPrefs.SetInt("ThemeDesertState", 0);
+        
+        PlayerPrefs.SetInt("ThemeSnowState", 0);
+        
+        PlayerPrefs.SetInt("ThemeCyberpunkState", 0);
+        
+        PlayerPrefs.SetInt("ThemePastureState", 0);
+        
+        
 
         foreach(var scenes in userInfoData.scenes)
         {

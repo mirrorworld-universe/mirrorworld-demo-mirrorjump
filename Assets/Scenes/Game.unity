@@ -1944,6 +1944,7 @@ MonoBehaviour:
   HighScore: {fileID: 395765671}
   UnlockHeightAdvice: {fileID: 885142581}
   UnlockAdvice: {fileID: 1372647269}
+  UnlockedHeightText: {fileID: 1786136734}
 --- !u!1 &827596243
 GameObject:
   m_ObjectHideFlags: 0

@@ -55,7 +55,7 @@ public class TokenGuidance : MonoBehaviour
 
         if ("false" == PlayerPrefs.GetString("HasReceiveToken", "false"))
         {
-            OnFirstStep();
+           OnFirstStep();
         }
         else
         {
@@ -111,7 +111,7 @@ public class TokenGuidance : MonoBehaviour
         SecondStep.SetActive(false);
         ThirdStep.SetActive(true);
         AirDropNew();
-       //  OnFourthStep();
+       // OnFourthStep();
     }
 
     //IEnumerator AirDrop()

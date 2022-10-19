@@ -26,6 +26,15 @@ public class GameMenu : MonoBehaviour
     private bool IsUnlockAdvice = false;
     private float CurrentTime = 0;
 
+
+    public TextMeshProUGUI UnlockedHeightText;
+
+    public void SetUnlockedHeightText(string height)
+    {
+        UnlockedHeightText.text = "Break " + height + " score and unlock new scene!";
+    
+    }
+
     private void Start()
     {
         HighScore.text = "0";
@@ -94,10 +103,7 @@ public class GameMenu : MonoBehaviour
         IsHeightAdvice = true;
         CurrentTime = 0;
         UnlockHeightAdvice.SetActive(true);
-
-
-
-
+        
     }
     
     
@@ -139,12 +145,6 @@ public class GameMenu : MonoBehaviour
                 UnlockAdvice.SetActive(false);
             }
         }
-        
-        
-        
-       
-        
-        
     }
 
 

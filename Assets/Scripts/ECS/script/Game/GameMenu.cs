@@ -162,6 +162,12 @@ public class GameMenu : MonoBehaviour
         req.user_id = LoginState.WalletAddress;
         req.score = FindObjectOfType<GameController>().GetMaxHeight();
         req.scene = PlayerPrefs.GetInt("CurrentTheme");
+        
+        Debug.Log("调用 NetworkManager.Instance.SendUserScoreReq(req)");
+        Debug.Log("req.user_id :" + req.user_id);
+        Debug.Log("req.score :" + req.score);
+        Debug.Log("req.scene :" + req.scene);
+        
         NetworkManager.Instance.SendUserScoreReq(req);
     }
 

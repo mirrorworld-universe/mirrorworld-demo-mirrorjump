@@ -29,7 +29,16 @@ public class UIManager : MonoBehaviour
             {
                 if (result)
                 {
-                    // 与服务器通信发送登陆信息
+                    // 自动登录钱包地址（user_id）非空性检查 
+                    if (PlayerPrefs.GetString("walletAddress", "empty") == "empty")
+                    {
+                        LoginButton.SetActive(true);
+                        LoadingPanel.Instance.SetLoadingPanelEnable(false);
+                        return;
+                    }
+                    
+                    Debug.Log("call NetworkManager.Instance.SendUserBasicInfoReq");
+                    Debug.Log("wallet(user_id)"+PlayerPrefs.GetString("walletAddress"));
                     NetworkManager.Instance.SendUserBasicInfoReq( PlayerPrefs.GetString("walletAddress"));
                     //SceneManager.LoadScene("Menu");
                 }

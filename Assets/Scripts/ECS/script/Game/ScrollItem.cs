@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// 若干素材依次横向滚动
+/// 若干素材依次横向滚动,Image专用
 /// </summary>
 public class ScrollItem : MonoBehaviour
 {
@@ -34,7 +34,7 @@ public class ScrollItem : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         tempPos1 = img1.transform.position;
         tempPos1.x += Time.deltaTime * speed;

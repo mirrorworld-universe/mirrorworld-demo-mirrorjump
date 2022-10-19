@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/MirrorMarketSDK/Plugins/Android/sdk-release10162122.aar.meta
-guid: 7388c921a613d4e63b896a539259e047
-========
-guid: 678cea6dc80bb7741be344d6a3ff61c6
->>>>>>>> 8e190b067ffe1ab8272ee01b225b9b589f194282:Assets/MirrorMarketSDK/Plugins/Android/sdk-release10171912.aar.meta
+guid: f75b7c4bcfa1b0c4180ec217e82e2d38
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2

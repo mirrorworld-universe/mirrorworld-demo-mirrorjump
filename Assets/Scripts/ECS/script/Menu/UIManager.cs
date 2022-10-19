@@ -1,5 +1,5 @@
 ﻿
-using System;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,47 +9,60 @@ public class UIManager : MonoBehaviour
 
     public ThemeManager ThemeManager;
     
-    
-
 
     public GameObject LoginButton;
+
+
+    public bool HasLogged = false;
 
     private void Start()
     {
         SoundManager.Instance.GetAudioSource().clip = SoundManager.Instance.Clips[5];
         SoundManager.Instance.GetAudioSource().mute = SoundManager.Instance.GetSoundState();
         SoundManager.Instance.GetAudioSource().Play();
+
+        if (!HasLogged)
+        {
+            LoginButton.SetActive(false);
+            LoadingPanel.Instance.SetLoadingPanelEnable(true);
+            MirrorSDK.IsLoggedIn((result) =>
+            {
+                if (result)
+                {
+                    // 与服务器通信发送登陆信息
+                    NetworkManager.Instance.SendUserBasicInfoReq( PlayerPrefs.GetString("walletAddress"));
+                    //SceneManager.LoadScene("Menu");
+                }
+                else
+                {
+                    LoginButton.SetActive(true);
+                    LoadingPanel.Instance.SetLoadingPanelEnable(false);
+                }
+            });
+        }
+
+        
     }
 
 
-    // private void Start()
-    // {
-    //     // MirrorSDK.IsLoggedIn((result) =>
-    //     // {
-    //     //     if (result)
-    //     //     {
-    //     //         LoginButton.SetActive(false);
-    //     //         SceneManager.LoadScene("Menu");
-    //     //         
-    //     //     }
-    //     //  
-    //     //     
-    //     // });
-    //     //
-    //     
-    //     
-    // }
 
-    private bool IsDebug = false;
+    private bool IsDebug;
 
     private void Awake()
     {
-        EventDispatcher.Instance.userInfoDataReceived += OnUserDataReceived;
+      
+            EventDispatcher.Instance.userInfoDataReceived += OnUserDataReceived;
+      
+        
     }
 
     private void OnDestroy()
     {
-        EventDispatcher.Instance.userInfoDataReceived -= OnUserDataReceived;
+        if (!HasLogged)
+        {
+            EventDispatcher.Instance.userInfoDataReceived -= OnUserDataReceived;
+        }
+       
     }
 
     private void OnUserDataReceived(UserInfoData userInfoData)
@@ -62,6 +75,16 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemeSnowIndex, 0);
         PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemeCyberpunkIndex, 0);
         PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemePastureIndex, 0);
+        
+        PlayerPrefs.SetInt("ThemeDesertState", 0);
+        
+        PlayerPrefs.SetInt("ThemeSnowState", 0);
+        
+        PlayerPrefs.SetInt("ThemeCyberpunkState", 0);
+        
+        PlayerPrefs.SetInt("ThemePastureState", 0);
+        
+        
 
         foreach(var scenes in userInfoData.scenes)
         {
@@ -71,6 +94,22 @@ public class UIManager : MonoBehaviour
             }
 
             PlayerPrefs.SetInt(Constant.Theme_Pre + scenes.scene_id, 1);
+
+            if (scenes.scene_id == 1)
+            {
+                PlayerPrefs.SetInt("ThemeDesertState", 1);
+                
+            }else if (scenes.scene_id == 2)
+            {
+                PlayerPrefs.SetInt("ThemeSnowState", 1);
+            }else if (scenes.scene_id == 3)
+            {
+                PlayerPrefs.SetInt("ThemeCyberpunkState", 1);
+            }else if (scenes.scene_id == 4)
+            {
+                PlayerPrefs.SetInt("ThemePastureState", 1);
+            }
+
         }
 
         // 处理NFT
@@ -85,6 +124,7 @@ public class UIManager : MonoBehaviour
             else
             {
                 LoginState.mintableRoleData = data;
+                PlayerPrefs.SetString("MintUrl", data.token_url);
             }
         }
 
@@ -98,10 +138,8 @@ public class UIManager : MonoBehaviour
         // 处理 token guidence 流程
         if (userInfoData.airdrop_sol)
         {
-            PlayerPrefs.SetString("HasReceiveToken", "true");      
+            PlayerPrefs.GetString("HasReceiveToken", "true");      
         }
-      
-
         SceneManager.LoadScene("Menu");
     }
 
@@ -154,6 +192,7 @@ public class UIManager : MonoBehaviour
                 LoginState.HasLogin = true;
                 LoginState.Name = LoginResponse.user.username;
                 LoginState.WalletAddress= LoginResponse.user.wallet.sol_address;
+                PlayerPrefs.SetString("walletAddress",LoginResponse.user.wallet.sol_address);
                 LoginState.ID =  LoginResponse.user.id.ToString();
 
                 LoadingPanel.Instance.SetLoadingPanelEnable(true);

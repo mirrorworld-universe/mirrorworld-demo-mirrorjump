@@ -29,7 +29,7 @@ public class GameOverPanel : MonoBehaviour
         string max = PlayerPrefs.GetString(GlobalDef.maxScore, "0");
         long maxScore = (long)float.Parse(max);
 
-        if (Mathf.Floor(height) > maxScore)
+        if (Mathf.Floor(height) >= maxScore)
         {
             SetNewScore(true);
             SoundManager.Instance.PlaySound(SoundName.Victory);

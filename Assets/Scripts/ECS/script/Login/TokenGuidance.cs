@@ -38,11 +38,24 @@ public class TokenGuidance : MonoBehaviour
 
     private void Start()
     {
+
+        if (PlayerPrefs.GetString("IsTestEnvironment") == "false")
+        {
+
+            if ("false" == PlayerPrefs.GetString("HasGuidence", "false"))
+            {
+                Guidence.OnFirstStep();
+            }
+            return;
+        }
+        
+        
         isAirDropping = false;
+        
 
         if ("false" == PlayerPrefs.GetString("HasReceiveToken", "false"))
         {
-            OnFirstStep();
+           OnFirstStep();
         }
         else
         {
@@ -98,7 +111,7 @@ public class TokenGuidance : MonoBehaviour
         SecondStep.SetActive(false);
         ThirdStep.SetActive(true);
         AirDropNew();
-      // OnFourthStep();
+       // OnFourthStep();
     }
 
     //IEnumerator AirDrop()
@@ -177,6 +190,7 @@ public class TokenGuidance : MonoBehaviour
             {
                 isAirDropping = false;
                 NetworkManager.Instance.UpdateAirdropSolReq(LoginState.WalletAddress);
+                PlayerPrefs.SetString("HasReceiveToken", "true");
                 OnFourthStep();
             }
             else

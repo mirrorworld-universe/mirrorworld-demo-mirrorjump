@@ -22,9 +22,11 @@ public class MirrorSDK : MonoBehaviour
     public string debugEmail = "";
     #endregion settings
 
-
+    private bool IsTestEnvironment = true;
+    
     private void Awake()
-    {
+    {    
+        
         if (apiKey == "" || apiKey == "your api key")
         {
             MirrorWrapper.Instance.LogFlow("Please input an api key");
@@ -36,6 +38,19 @@ public class MirrorSDK : MonoBehaviour
 #if (!(UNITY_IOS) || UNITY_EDITOR) && (!(UNITY_ANDROID) || UNITY_EDITOR)
         MirrorWrapper.Instance.SetDebugEmail(debugEmail);
 #endif
+    }
+
+    private void Start()
+    {
+        if (IsTestEnvironment)
+        {
+            PlayerPrefs.SetString("IsTestEnvironment","true");
+        }
+        else
+        {
+            PlayerPrefs.SetString("IsTestEnvironment","false");
+        }
+
     }
 
     public static void InitSDK(string apiKey, GameObject gameObject, bool useDebug, MirrorEnv environment)

@@ -74,6 +74,7 @@ public class ThemeManager : MonoBehaviour
     public void ToRightTheme()
     {
         SoundManager.Instance.PlaySound(SoundName.Button);
+        
         if ("false" == PlayerPrefs.GetString("HasGuidence", "false"))
         {
             return;
@@ -93,10 +94,7 @@ public class ThemeManager : MonoBehaviour
     }
     
     private void RefreshLockState()
-    {   
-        
-        
-        
+    {
         int SpriteIndex = PlayerPrefs.GetInt("CurrentTheme");
 
         if (SpriteIndex >= 4)

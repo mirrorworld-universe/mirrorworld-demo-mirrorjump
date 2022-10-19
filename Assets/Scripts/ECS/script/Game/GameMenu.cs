@@ -26,14 +26,24 @@ public class GameMenu : MonoBehaviour
     private bool IsUnlockAdvice = false;
     private float CurrentTime = 0;
 
+
+    public TextMeshProUGUI UnlockedHeightText;
+
+    public void SetUnlockedHeightText(string height)
+    {
+        UnlockedHeightText.text = "Break " + height + " score and unlock new scene!";
+    
+    }
+
     private void Start()
     {
         HighScore.text = "0";
-        OpenUnlockHeightAdvice();
+        
         UnlockHeightAdvice.SetActive(false);
         UnlockAdvice.SetActive(false);
-
+        OpenUnlockHeightAdvice();
         EventDispatcher.Instance.userScoreReceived += OnUserScoreReceived;
+        
     }
 
     private void OnDestroy()
@@ -63,43 +73,40 @@ public class GameMenu : MonoBehaviour
 
         if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSpaceIndex)
         {
-            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeDesertIndex, 0))
+            if (1 == PlayerPrefs.GetInt("ThemeDesertState", 0))
             {
                 return;
             }
-
-        }
-        else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeDesertIndex)
         {
-            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeSnowIndex, 0))
+            if (1 ==  PlayerPrefs.GetInt("ThemeSnowState", 0))
             {
                 return;
             }
-        }
-        else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
-        {
-            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemeCyberpunkIndex, 0))
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeSnowIndex)
+        {    
+            if (1 ==   PlayerPrefs.GetInt("ThemeCyberpunkState", 0))
             {
                 return;
             }
-
-        }
-        else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
-        {
-            if (1 == PlayerPrefs.GetInt(Constant.Theme_Pre + Constant.ThemePastureIndex, 0))
+            
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemeCyberpunkIndex)
+        {    
+            if (1 ==   PlayerPrefs.GetInt("ThemePastureState", 0))
             {
                 return;
             }
-
+            
         }
-
+        
         IsHeightAdvice = true;
         CurrentTime = 0;
         UnlockHeightAdvice.SetActive(true);
-
-
-
+        
     }
+    
+    
 
 
     public void OpenUnlockAdvice()
@@ -138,12 +145,6 @@ public class GameMenu : MonoBehaviour
                 UnlockAdvice.SetActive(false);
             }
         }
-        
-        
-        
-       
-        
-        
     }
 
 

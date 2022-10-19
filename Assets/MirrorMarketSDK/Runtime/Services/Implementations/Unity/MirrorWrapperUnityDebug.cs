@@ -29,7 +29,7 @@ namespace MirrorworldSDK.Wrapper
             string url = GetAuthRoot() + urlCompleteLoginWithSession + session;
 
             monoBehaviour.StartCoroutine(Get(url, null, (rawResponseBody) => {
-
+                LogFlow("CompleteLoginWithSession:" + rawResponseBody);
                 CommonResponse<LoginResponse> responseBody = JsonUtility.FromJson<CommonResponse<LoginResponse>>(rawResponseBody);
 
                 saveKeyParams(responseBody.data.access_token, responseBody.data.refresh_token, responseBody.data.user);

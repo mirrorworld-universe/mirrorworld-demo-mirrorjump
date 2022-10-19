@@ -188,17 +188,24 @@ public class UIManager : MonoBehaviour
          
             MirrorSDK.StartLogin((LoginResponse)=>
             {
-                
-                LoginState.HasLogin = true;
-                LoginState.Name = LoginResponse.user.username;
-                LoginState.WalletAddress= LoginResponse.user.wallet.sol_address;
-                PlayerPrefs.SetString("walletAddress",LoginResponse.user.wallet.sol_address);
-                LoginState.ID =  LoginResponse.user.id.ToString();
+                if(LoginResponse.access_token == "" || LoginResponse.refresh_token == "")
+                {
+                    Debug.Log("MirrorJump:Login failed!");
+                }
+                else
+                {
+                    LoginState.HasLogin = true;
+                    LoginState.Name = LoginResponse.user.username;
+                    LoginState.WalletAddress = LoginResponse.user.wallet.sol_address;
+                    PlayerPrefs.SetString("walletAddress", LoginResponse.user.wallet.sol_address);
+                    LoginState.ID = LoginResponse.user.id.ToString();
 
-                LoadingPanel.Instance.SetLoadingPanelEnable(true);
-                // 与服务器通信发送登陆信息
-                NetworkManager.Instance.SendUserBasicInfoReq(LoginState.WalletAddress);
-                //SceneManager.LoadScene("Menu");
+                    LoadingPanel.Instance.SetLoadingPanelEnable(true);
+                    // 与服务器通信发送登陆信息
+                    NetworkManager.Instance.SendUserBasicInfoReq(LoginState.WalletAddress);
+                    //SceneManager.LoadScene("Menu");
+                }
+
             });
         }
         

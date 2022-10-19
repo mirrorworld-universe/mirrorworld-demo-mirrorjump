@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
                         LoadingPanel.Instance.SetLoadingPanelEnable(false);
                         return;
                     }
-
+                    LoginState.HasLogin = true;
                     LoginState.WalletAddress = PlayerPrefs.GetString("walletAddress");
                     Debug.Log("call NetworkManager.Instance.SendUserBasicInfoReq");
                     Debug.Log("wallet(user_id)"+PlayerPrefs.GetString("walletAddress"));

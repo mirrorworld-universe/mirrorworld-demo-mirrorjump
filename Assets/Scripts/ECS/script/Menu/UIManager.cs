@@ -36,10 +36,11 @@ public class UIManager : MonoBehaviour
                         LoadingPanel.Instance.SetLoadingPanelEnable(false);
                         return;
                     }
-                    
+
+                    LoginState.WalletAddress = PlayerPrefs.GetString("walletAddress");
                     Debug.Log("call NetworkManager.Instance.SendUserBasicInfoReq");
                     Debug.Log("wallet(user_id)"+PlayerPrefs.GetString("walletAddress"));
-                    NetworkManager.Instance.SendUserBasicInfoReq( PlayerPrefs.GetString("walletAddress"));
+                    NetworkManager.Instance.SendUserBasicInfoReq(PlayerPrefs.GetString("walletAddress"));
                     //SceneManager.LoadScene("Menu");
                 }
                 else

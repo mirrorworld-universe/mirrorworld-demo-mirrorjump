@@ -109,8 +109,8 @@ public class TokenGuidance : MonoBehaviour
     {
         SoundManager.Instance.PlaySound(SoundName.Button);
         SecondStep.SetActive(false);
-        // ThirdStep.SetActive(true);
-        // AirDropNew();
+        ThirdStep.SetActive(true);
+        AirDropNew();
       OnFourthStep();
     }
 

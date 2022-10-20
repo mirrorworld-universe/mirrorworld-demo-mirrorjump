@@ -143,6 +143,12 @@ namespace MirrorworldSDK.Wrapper
             SaveStringToLocal(localKeyRefreshToken, refreshToken);
         }
 
+        private void ClearUnitySDKCache()
+        {
+            accessToken = "";
+            SaveStringToLocal(localKeyRefreshToken,"");
+        }
+
         private string GetAPIRoot()
         {
             if(environment == MirrorEnv.ProductionMainnet)

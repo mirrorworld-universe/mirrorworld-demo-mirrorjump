@@ -5,6 +5,7 @@ using MirrorworldSDK.Models;
 using MirrorworldSDK.UI;
 using MirrorworldSDK.Wrapper;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class MirrorSDK : MonoBehaviour
@@ -22,11 +23,9 @@ public class MirrorSDK : MonoBehaviour
     public string debugEmail = "";
     #endregion settings
 
-    private bool IsTestEnvironment = true;
-    
+
     private void Awake()
-    {    
-        
+    {
         if (apiKey == "" || apiKey == "your api key")
         {
             MirrorWrapper.Instance.LogFlow("Please input an api key");
@@ -34,23 +33,11 @@ public class MirrorSDK : MonoBehaviour
         }
 
         InitSDK(apiKey, gameObject, debugMode, environment);
+        
 
 #if (!(UNITY_IOS) || UNITY_EDITOR) && (!(UNITY_ANDROID) || UNITY_EDITOR)
         MirrorWrapper.Instance.SetDebugEmail(debugEmail);
 #endif
-    }
-
-    private void Start()
-    {
-        if (IsTestEnvironment)
-        {
-            PlayerPrefs.SetString("IsTestEnvironment","true");
-        }
-        else
-        {
-            PlayerPrefs.SetString("IsTestEnvironment","false");
-        }
-
     }
 
     public static void InitSDK(string apiKey, GameObject gameObject, bool useDebug, MirrorEnv environment)
@@ -160,6 +147,27 @@ public class MirrorSDK : MonoBehaviour
     }
 
 
+    //open login ui
+    public static void SetLogoutCallback(Action action)
+    {
+        MirrorWrapper.Instance.LogFlow("SetLogoutCallback.");
+
+#if (!(UNITY_IOS) || UNITY_EDITOR) && (!(UNITY_ANDROID) || UNITY_EDITOR)
+
+        MirrorWrapper.Instance.LogFlow("SetLogoutCallback only implemented on native.");
+
+#elif UNITY_ANDROID && !(UNITY_EDITOR)
+
+            MirrorWrapper.Instance.LogFlow("SetLogoutCallback in android...");
+
+            MirrorWrapper.Instance.AndroidSetLogoutCallback(action);
+
+#elif UNITY_IOS && !(UNITY_EDITOR)
+
+            MirrorWrapper.Instance.LogFlow("IOS is not implemented");
+#endif
+    }
+
     public static void LoginWithEmail(string emailAddress, string password, Action<CommonResponse<LoginResponse>> callBack)
     {
         MirrorWrapper.Instance.LoginWithEmail(emailAddress, password, callBack);
@@ -266,7 +274,7 @@ public class MirrorSDK : MonoBehaviour
         MirrorWrapper.Instance.UpdateNFTListing(mintAddress, price, confirmation, callBack);
     }
 
-    public static void BuyNFT(string mintAddress, decimal price, Action<CommonResponse<ListingResponse>> callBack)
+    public static void BuyNFT(string mintAddress, float price, Action<CommonResponse<ListingResponse>> callBack)
     {
         MirrorWrapper.Instance.BuyNFT(mintAddress, price, callBack);
     }
@@ -283,7 +291,7 @@ public class MirrorSDK : MonoBehaviour
     {
         MirrorWrapper.Instance.GetWalletTokens(action);
     }
-    public static void GetWalletTransactions(decimal number, string nextBefore, Action<CommonResponse<TransferTokenResponse>> action)
+    public static void GetWalletTransactions(float number, string nextBefore, Action<CommonResponse<TransferTokenResponse>> action)
     {
         MirrorWrapper.Instance.GetWalletTransactions(number, nextBefore, action);
     }

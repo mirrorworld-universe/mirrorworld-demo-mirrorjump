@@ -46,6 +46,19 @@ namespace MirrorworldSDK.Wrapper
             if (javaSDKInstance != null) javaSDKInstance.Call("SetDebug", useDebug);
         }
 
+        public void AndroidSetLogoutCallback(Action logoutAction)
+        {
+            if (javaSDKInstance == null)
+            {
+                LogFlow("Must call InitSDK function first.");
+                return;
+            }
+            javaSDKInstance.Call("setLogoutCallback",new MSimpleCallback(()=> {
+                ClearUnitySDKCache();
+                logoutAction();
+            }));
+        }
+
         public void AndroidStartLogin()
         {
             if (javaSDKInstance == null)

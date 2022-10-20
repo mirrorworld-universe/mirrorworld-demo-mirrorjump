@@ -38,6 +38,8 @@ public class UIManager : MonoBehaviour
                     }
                     LoginState.HasLogin = true;
                     LoginState.WalletAddress = PlayerPrefs.GetString("walletAddress");
+                    LoginState.Email = PlayerPrefs.GetString("emailAddress");
+                    
                     Debug.Log("call NetworkManager.Instance.SendUserBasicInfoReq");
                     Debug.Log("wallet(user_id)"+PlayerPrefs.GetString("walletAddress"));
                     NetworkManager.Instance.SendUserBasicInfoReq(PlayerPrefs.GetString("walletAddress"));
@@ -152,8 +154,15 @@ public class UIManager : MonoBehaviour
         {
             PlayerPrefs.GetString("HasReceiveToken", "true");      
         }
-        TAManager.Instance.AccountLogin(LoginState.WalletAddress);
         
+        TAManager.Instance.AccountLogin(LoginState.WalletAddress);
+
+        if (null != LoginState.Email)
+        {
+            TAManager.Instance.LoginEvent(LoginState.Email);   
+            TAManager.Instance.UserSet(LoginState.Email);
+        }
+
         SceneManager.LoadScene("Menu");
     }
 
@@ -210,11 +219,12 @@ public class UIManager : MonoBehaviour
                 }
                 else
                 {   
-               
+                    
                     LoginState.HasLogin = true;
                     LoginState.Name = LoginResponse.user.username;
                     LoginState.WalletAddress = LoginResponse.user.wallet.sol_address;
                     PlayerPrefs.SetString("walletAddress", LoginResponse.user.wallet.sol_address);
+                    PlayerPrefs.SetString("emailAddress", LoginResponse.user.email);
                     LoginState.ID = LoginResponse.user.id.ToString();
 
                     LoadingPanel.Instance.SetLoadingPanelEnable(true);

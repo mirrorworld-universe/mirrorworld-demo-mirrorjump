@@ -4,6 +4,7 @@
 
     public static bool HasLogin = false;
     public static string Name = null;
+    public static string Email = null;
     public static string WalletAddress = null;
     public static string ID = null;
     

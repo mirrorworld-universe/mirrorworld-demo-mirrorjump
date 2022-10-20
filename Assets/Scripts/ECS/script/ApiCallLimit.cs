@@ -20,20 +20,20 @@
 
             if (CallStates[mintAddress].State == CallState.Listing)
             {
-                return "Listing";
+                return "Listing  ";
                 
             }else if(CallStates[mintAddress].State == CallState.Update)
             {
-                return "Changing New Price";
+                return "Changing New Price  ";
 
             }else if(CallStates[mintAddress].State == CallState.Cancel)
             {
 
-                return "Canceling List";
+                return "Canceling List  ";
                 
             }else if(CallStates[mintAddress].State == CallState.Transfer)
             {
-                return "Transfer";
+                return "Transfer  ";
             }
             
             return "";

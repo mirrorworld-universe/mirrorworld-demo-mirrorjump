@@ -4514,7 +4514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: you need to pay 0.1 Sol test Token to complete this steop
+  m_text: you need to pay 0.1 Sol Token to complete this steop
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
   m_sharedMaterial: {fileID: 1714751534592507751, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
@@ -9691,7 +9691,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 207883633}
         m_TargetAssemblyTypeName: PackageDetailsManager, Assembly-CSharp
-        m_MethodName: SetToBattle
+        m_MethodName: SetDefaultToBattle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24949,8 +24949,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 24

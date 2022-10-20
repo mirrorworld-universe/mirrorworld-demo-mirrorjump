@@ -204,8 +204,16 @@ public class GameMenu : MonoBehaviour
         HighScore.text = score;
     }
 
-    public void ExitGame()
-    {
+    public void UserExitGame()
+    {   
+        TAManager.Instance.EndGame("user_end");
+        SoundManager.Instance.PlaySound(SoundName.Close);
+        SceneManager.LoadScene("Menu");
+    }
+    
+    public void GameOverExitGame()
+    {   
+        TAManager.Instance.EndGame("game_over");
         SoundManager.Instance.PlaySound(SoundName.Close);
         SceneManager.LoadScene("Menu");
     }

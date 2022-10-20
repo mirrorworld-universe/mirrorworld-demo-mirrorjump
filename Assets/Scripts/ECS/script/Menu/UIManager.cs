@@ -78,6 +78,8 @@ public class UIManager : MonoBehaviour
     private void OnUserDataReceived(UserInfoData userInfoData)
     {    
         
+        
+        
         // 数据记录
         // 处理场景
         // 先清除所有的场景记录，避免换号登陆之后场景还是解锁状态
@@ -150,6 +152,8 @@ public class UIManager : MonoBehaviour
         {
             PlayerPrefs.GetString("HasReceiveToken", "true");      
         }
+        TAManager.Instance.AccountLogin(LoginState.WalletAddress);
+        
         SceneManager.LoadScene("Menu");
     }
 
@@ -169,6 +173,8 @@ public class UIManager : MonoBehaviour
             // add some tips 
             return;
         }
+        
+        TAManager.Instance.StartGame();
         
         SoundManager.Instance.PlaySound(SoundName.Button);
         
@@ -203,7 +209,8 @@ public class UIManager : MonoBehaviour
                     Debug.Log("MirrorJump:Login failed!");
                 }
                 else
-                {
+                {   
+               
                     LoginState.HasLogin = true;
                     LoginState.Name = LoginResponse.user.username;
                     LoginState.WalletAddress = LoginResponse.user.wallet.sol_address;

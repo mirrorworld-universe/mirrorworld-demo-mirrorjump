@@ -75,7 +75,12 @@ public class CallSDK : MonoBehaviour
                      nftCellData.NftData = NftData;
                      datas.Add(nftCellData);
                  }
+                 
+                 
+                 TAManager.Instance.MappingToAddress(datas);
+                 
                  NftPackageManager.RefreshData(datas);
+                 
             });
         }
     }
@@ -153,13 +158,16 @@ public class CallSDK : MonoBehaviour
                         ApiCallLimit.SetMintApiLimit(Constant.ExecuteMint);
             
                         MessageAdvice.OpenWaitPanel("Mint Now");
-
+                        
+                        TAManager.Instance.MintToNFTStart("random role");
                         MirrorSDK.MintNFT("DUuMbpmH3oiREntViXfGZhrLMbVcYBwGeBa4Wn9X8QfM",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
                             (result) =>
-                            {
+                            {   
+                                
                                 Debug.Log("begin mint4" + result.message);
                                 if (result.status == "success")
                                 {   
+                                    TAManager.Instance.MintToNft(result.data.name,0.1f);
                                     FinishedMint(true);
                                 }
                                 else

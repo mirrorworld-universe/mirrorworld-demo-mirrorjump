@@ -213,7 +213,7 @@ namespace MirrorworldSDK.Wrapper
             string url = GetAPIRoot() + urlListNFTOnTheMarketplace;
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
-
+              
                 CommonResponse<ListingResponse> responseBody = JsonUtility.FromJson<CommonResponse<ListingResponse>>(response);
 
                 callBack(responseBody);
@@ -236,7 +236,6 @@ namespace MirrorworldSDK.Wrapper
             string url = GetAPIRoot() + urlUpdateListingOfNFTOnTheMarketplace;
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
-
                 CommonResponse<ListingResponse> responseBody = JsonUtility.FromJson<CommonResponse<ListingResponse>>(response);
 
                 callBack(responseBody);
@@ -259,7 +258,6 @@ namespace MirrorworldSDK.Wrapper
             string url = GetAPIRoot() + urlCancelListingOfNFTOnTheMarketplace;
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
-
                 CommonResponse<ListingResponse> responseBody = JsonUtility.FromJson<CommonResponse<ListingResponse>>(response);
 
                 callBack(responseBody);
@@ -280,7 +278,8 @@ namespace MirrorworldSDK.Wrapper
             string url = GetAPIRoot() + urlTransferNFTToAnotherSolanaWallet;
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
-
+                
+                Debug.LogWarning("---"+response.ToString());
                 CommonResponse<ListingResponse> responseBody = JsonUtility.FromJson<CommonResponse<ListingResponse>>(response);
 
                 callBack(responseBody);

@@ -7,6 +7,7 @@ using UnityEngine.Video;
 public class GameEntrance : MonoBehaviour
 {
     [SerializeField] VideoPlayer videoPlayer;
+    [SerializeField] bool useShuShuAnalysis = true;
 
     
 
@@ -14,6 +15,11 @@ public class GameEntrance : MonoBehaviour
     {
 
         StartPlay();
+        
+        if (useShuShuAnalysis)
+        {
+            TAManager.Instance.InitShuShuSDK();
+        }
     }
 
 

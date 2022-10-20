@@ -53,7 +53,9 @@ public class Options : MonoBehaviour
     }
 
     private void OnSoundOff()
-    {
+    {  
+        
+        TAManager.Instance.ChangeSound("off");
         SoundManager.Instance.SetSoundState(true);
 
         SetButtonSelected(soundOff , true);
@@ -61,7 +63,9 @@ public class Options : MonoBehaviour
     }
 
     private void OnSoundOn()
-    {
+    {   
+        TAManager.Instance.ChangeSound("on");
+        
         SoundManager.Instance.SetSoundState(false);
 
         SetButtonSelected(soundOff, false);
@@ -104,7 +108,8 @@ public class Options : MonoBehaviour
     
 
     public void AboutMirrorJump()
-    {
+    {   
+        TAManager.Instance.AboutMirrorjump();
         SoundManager.Instance.PlaySound(SoundName.Button);
         OptionMenu.SetActive(false);
         OptionMenuDetails.SetActive(true);
@@ -112,19 +117,19 @@ public class Options : MonoBehaviour
     }
 
     public void OpenFeedback()
-    {
+    {   TAManager.Instance.GiveFeedback();
         SoundManager.Instance.PlaySound(SoundName.OpenUrl);
         Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSfqD3ABVQQNrPouF2jY_KFmcdUtDEJjPjuo4HovVJkmncLOfw/viewform");
     }
     
     public void OpenFAQ()
-    {
+    {   TAManager.Instance.ViewFAQ();
         SoundManager.Instance.PlaySound(SoundName.OpenUrl);
         Application.OpenURL("https://smlhic47en.feishu.cn/docx/doxcnNBgbk3YfqRnRMNDEfMAADf");
     }
     
     public void OpenMirrorSDKLink()
-    {
+    {   TAManager.Instance.ExploreSDK();
         SoundManager.Instance.PlaySound(SoundName.OpenUrl);
         Application.OpenURL("https://mirrorworld.fun/");
     }

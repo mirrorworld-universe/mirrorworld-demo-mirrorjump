@@ -176,6 +176,48 @@ public class PackageDetailsManager : MonoBehaviour
             }
             
         }
+        TAManager.Instance.SelectToBattle("random nft");
+        
+        EventDispatcher.Instance.roleChanged?.Invoke();
+
+    }
+    
+    public void SetDefaultToBattle()
+    {
+
+        if (null == CurrentMirror.DataParsingEntity)
+        {
+            foreach (var item in CurrentMirror.NftData.attributes)
+            {
+                if (item.trait_type == "Type")
+                {
+                    PlayerPrefs.SetString("CurrentRole",item.value);
+                
+                }else if (item.trait_type == "Rarity")
+                {
+                    PlayerPrefs.SetString("CurrentRarity",item.value);
+                }
+            }
+            
+        }
+        else
+        {
+            
+            foreach (var item in CurrentMirror.DataParsingEntity.attribute)
+            {
+                if (item.trait_type == "Type")
+                {
+                    PlayerPrefs.SetString("CurrentRole",item.value);
+                
+                }else if (item.trait_type == "Rarity")
+                {
+                    PlayerPrefs.SetString("CurrentRarity",item.value);
+                }
+            }
+            
+        }
+        
+        TAManager.Instance.SelectToBattle("default nft");
       
         EventDispatcher.Instance.roleChanged?.Invoke();
 

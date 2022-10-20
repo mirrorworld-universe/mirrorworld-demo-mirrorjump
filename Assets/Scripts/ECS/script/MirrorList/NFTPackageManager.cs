@@ -53,6 +53,8 @@ public class NFTPackageManager : MonoBehaviour
         FecthNow.SetActive(true);
         NoNFT.SetActive(false);
         
+        TAManager.Instance.OpenNFTPackage();
+        
     }
 
 

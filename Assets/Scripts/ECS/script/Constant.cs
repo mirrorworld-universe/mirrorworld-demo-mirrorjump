@@ -3,7 +3,7 @@
     public static class Constant
     {   
         
-        
+        // shushu
         public static bool shushuSDKOpen = true;
         public static string shushuAppID = "b9e2c7f496e94936a3896728f7cf5617";
         public static string shushuReportUrl = "https://global-receiver-ta.mirrorworld.fun";

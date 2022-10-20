@@ -110,7 +110,7 @@ public class TokenGuidance : MonoBehaviour
         SoundManager.Instance.PlaySound(SoundName.Button);
         SecondStep.SetActive(false);
         // ThirdStep.SetActive(true);
-        // AirDropNew();
+      //  AirDropNew();
        OnFourthStep();
     }
 
@@ -192,10 +192,12 @@ public class TokenGuidance : MonoBehaviour
                 NetworkManager.Instance.UpdateAirdropSolReq(LoginState.WalletAddress);
                 PlayerPrefs.SetString("HasReceiveToken", "true");
                 OnFourthStep();
+                TAManager.Instance.RecieveToken(true);
             }
             else
             {
                 Debug.LogError("发起网络请求失败");
+                TAManager.Instance.RecieveToken(false);
             }
         }));
     }

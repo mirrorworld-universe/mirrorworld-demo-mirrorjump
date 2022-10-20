@@ -127,6 +127,9 @@ public class NFTDetailsManager : MonoBehaviour
             }
             
         }
+        
+        TAManager.Instance.SelectToBattle(CurrentMirror.NftData.name);
+        
         EventDispatcher.Instance.roleChanged?.Invoke();
      
     }

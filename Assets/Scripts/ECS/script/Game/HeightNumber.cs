@@ -67,7 +67,7 @@ public class HeightNumber : MonoBehaviour
             }
             else
             {
-                srList[i].sprite = numberList[height / (long)Mathf.Pow(10, count-2) % 10];
+                srList[i].sprite = numberList[height / (long)Mathf.Pow(10, count - 1 - i) % 10];
             }
         }
     }

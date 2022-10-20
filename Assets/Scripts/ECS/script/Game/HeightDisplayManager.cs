@@ -45,7 +45,8 @@ public class HeightDisplayManager : Singleton<HeightDisplayManager>
             bool isHigherThanInit = mark > initY;
             bool isLowerThanCriticalHeight = mark < criticalHeight;
             bool isHigherThanCriticalHeightCanShow = mark > criticalHeight && mark % 100 == 0;
-            if (isHigherThanInit && (isLowerThanCriticalHeight || isHigherThanCriticalHeightCanShow))
+            bool isLowerThanMax = mark < 100000;
+            if (isHigherThanInit && isLowerThanMax && (isLowerThanCriticalHeight || isHigherThanCriticalHeightCanShow)) 
             {
                 GameObject obj = ObjectPooler.Instance.SpawnFromPool("HeightNumber", new Vector3(xPos, mark / GlobalDef.heightCoefficient, 0), Quaternion.identity, -1);
                 obj.GetComponent<HeightNumber>().Setup(mark);

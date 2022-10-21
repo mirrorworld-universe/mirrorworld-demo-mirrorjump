@@ -47,7 +47,7 @@ public class SpringProp : ItemBase
 
             if (RecoveryLine - transform.position.y >= HeightOffset)
             {
-                if (!GetComponent<AudioSource>().isPlaying)
+                if ( null!=GetComponent<AudioSource>()&&!GetComponent<AudioSource>().isPlaying)
                 {
                     DestroyStairs();
                 }

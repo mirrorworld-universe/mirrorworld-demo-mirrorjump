@@ -268,6 +268,25 @@ public class TAManager :Singleton<TAManager>
         ThinkingAnalyticsAPI.Track("login",properties);
     }
     
+
+    public void OpenMarketPlace()
+    {
+        Dictionary<string, object> properties = new Dictionary<string, object>(){
+          
+        };   
+        ThinkingAnalyticsAPI.Track("open_marketplace",properties);
+    }
+
+
+    public void OpenWallet()
+    {
+        Dictionary<string, object> properties = new Dictionary<string, object>(){
+          
+        };   
+        ThinkingAnalyticsAPI.Track("open_wallet",properties);
+    }
+    
+    
     
     
     

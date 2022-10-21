@@ -50,6 +50,14 @@ public class NftTrade : MonoBehaviour
 
     public GameObject NewSellReceive;
     
+    public GameObject SellPriceLimit;
+
+    public GameObject UpdatePriceLimit;
+    
+    public GameObject SellPriceAdvice;
+
+    public GameObject UpdatePriceAdvice;
+    
     
     private float InputSellPrice;
 
@@ -61,15 +69,38 @@ public class NftTrade : MonoBehaviour
     {
         if (SellRoot.activeSelf)
         {
+
+            if (SellPrice.text.Length > 8)
+            {
+                string str1=SellPrice.text.Substring(0,8);
+                SellPrice.text = str1;
+                
+            }else if (SellPrice.text.Length == 8)
+            {
+                SellPriceAdvice.SetActive(false);
+                SellPriceLimit.SetActive(true);
+            }
+            else
+            {
+                SellPriceLimit.SetActive(false);
+                SellPriceAdvice.SetActive(true);
+            }
             
+         
             try
             {
+                InputSellPrice = 0;
+                SellReceive.SetActive(false);
+                SellConfirmButton.interactable = false;
+                SellMask.SetActive(true);
+              
                 InputSellPrice = float.Parse(SellPrice.text);
+             
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                SellReceive.SetActive(false);
+             
             }
 
             if (null != InputSellPrice&&InputSellPrice != 0)
@@ -87,19 +118,45 @@ public class NftTrade : MonoBehaviour
               
             }
             
+            
+            
+          
         }
 
 
         if (ManageRoot.activeSelf)
-        {
-            try
+        {   
+            
+            
+            if (NewPrice.text.Length > 8)
             {
+                string str1=NewPrice.text.Substring(0,8);
+                NewPrice.text = str1;
+                
+            }else if (NewPrice.text.Length == 8)
+            {
+                UpdatePriceAdvice.SetActive(false);
+                UpdatePriceLimit.SetActive(true);
+            }
+            else
+            {
+                UpdatePriceLimit.SetActive(false);
+                UpdatePriceAdvice.SetActive(true);
+            }
+
+            
+            try
+            {   
+                InputUpdatePrice = 0;
+                NewSellReceive.SetActive(false);
+                UpdateConfirmButton.interactable = false;
+                UpdateMask.SetActive(true);
+                
                 InputUpdatePrice = float.Parse(NewPrice.text);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                NewSellReceive.SetActive(false);
             }
 
             if (null != InputUpdatePrice && InputUpdatePrice != 0)
@@ -116,6 +173,8 @@ public class NftTrade : MonoBehaviour
                 UpdateMask.SetActive(true);
             }
             
+            
+         
             
         }
 

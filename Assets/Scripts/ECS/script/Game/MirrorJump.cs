@@ -130,6 +130,10 @@ public class MirrorJump : MonoBehaviour
                     new Vector3(SpringPostion1.x, SpringPostion1.y, Spring.transform.localPosition.z);
             }
         }
+        else
+        {
+            Spring.SetActive(false);
+        }
 
     }
 
@@ -155,6 +159,10 @@ public class MirrorJump : MonoBehaviour
                     new Vector3(SpringJumpPostion2.x, SpringJumpPostion2.y, Spring.transform.localPosition.z);
             }
         }
+        else
+        {
+            SpringJump.SetActive(false);
+        }
 
     }
 
@@ -174,6 +182,13 @@ public class MirrorJump : MonoBehaviour
 
         // 禁用弹簧鞋
         SetSpringState(false);
+        SpringJump.SetActive(false);
+        Spring.SetActive(false);
+        // 强制重力恢复 &  强制道具清除
+        rigidbody2D.gravityScale = 2.5f;
+        IsEnterBlackHole = false;
+        DisabledRocket();
+        
     }
     public void SetEnterBlackState(bool IsEnter)
     {
@@ -420,33 +435,39 @@ public class MirrorJump : MonoBehaviour
 
     private void KeyboardControl()
     {
-        if (IsEnterBlackHole)
+        if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
-            return;
-        }
+            if (IsEnterBlackHole)
+            {
+                return;
+            }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            this.HorizontalVelocity = -8f;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            this.HorizontalVelocity = 8f;
-        }
-        else
-        {
-            this.HorizontalVelocity = 0f;
+            if (Input.GetKey(KeyCode.A))
+            {
+                this.HorizontalVelocity = -8f;
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                this.HorizontalVelocity = 8f;
+            }
+            else
+            {
+                this.HorizontalVelocity = 0f;
+            }
         }
     }
 
     // gyroscope control   in Android platform use this method
     private void GyroscopeControl()
     {
-        if (!IsEnterBlackHole /*&& !HasRocket*/)
+        if (GameController.GetComponent<GameController>().GetGameState() == GameState.Gaming)
         {
-            this.HorizontalVelocity = SpeedValue * Input.acceleration.x;
+            if (!IsEnterBlackHole /*&& !HasRocket*/)
+            {
+                this.HorizontalVelocity = SpeedValue * Input.acceleration.x;
 
-            float LocalScaleX = transform.localScale.x;
+                float LocalScaleX = transform.localScale.x;
+            }
         }
     }
 

@@ -315,13 +315,20 @@ public class StairsFactory : MonoBehaviour
     
     private void RandomProps(Transform StairsParent,GameController gameController)
     {
+        if (MirrorObject.transform.position.y * 4 < 20)
+        {
+            return;
+        }
+        
 
         if (RuleConfig.GeneratePropType() == PropType.Spring)
         {
             GenerateSpringProp(StairsParent, GameController);
+            
         }else if (RuleConfig.GeneratePropType() == PropType.SpringBoard)
         {
             GenerateSpringBoard(StairsParent, GameController);
+            
         }else if (RuleConfig.GeneratePropType() == PropType.LowRocket)
         {
             GenerateLowRocket(StairsParent, GameController);

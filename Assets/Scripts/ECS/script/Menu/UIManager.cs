@@ -152,7 +152,8 @@ public class UIManager : MonoBehaviour
         // 处理 token guidence 流程
         if (userInfoData.airdrop_sol)
         {
-            PlayerPrefs.GetString("HasReceiveToken", "true");      
+            PlayerPrefs.SetString("HasReceiveToken", "true");
+            PlayerPrefs.SetString("HasGuidence", "true");
         }
         
         TAManager.Instance.AccountLogin(LoginState.WalletAddress);
@@ -242,12 +243,14 @@ public class UIManager : MonoBehaviour
     public void OpenWallet()
     {   
         SoundManager.Instance.PlaySound(SoundName.Button);
+        TAManager.Instance.OpenWallet();
         MirrorSDK.OpenWalletPage();
     }
     
     public void OpenMarket()
     {   
         SoundManager.Instance.PlaySound(SoundName.Button);
+        TAManager.Instance.OpenMarketPlace();
         MirrorSDK.OpenMarketPage();
     }
 

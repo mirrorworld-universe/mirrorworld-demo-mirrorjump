@@ -236,7 +236,7 @@ namespace MirrorworldSDK.Wrapper
             string url = GetAPIRoot() + urlUpdateListingOfNFTOnTheMarketplace;
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
-                Debug.LogWarning("--"+response);
+              
                 CommonResponse<ListingResponse> responseBody = JsonUtility.FromJson<CommonResponse<ListingResponse>>(response);
 
                 callBack(responseBody);
@@ -259,7 +259,7 @@ namespace MirrorworldSDK.Wrapper
             string url = GetAPIRoot() + urlCancelListingOfNFTOnTheMarketplace;
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
-                Debug.LogWarning("--"+response);
+             
                 CommonResponse<ListingResponse> responseBody = JsonUtility.FromJson<CommonResponse<ListingResponse>>(response);
 
                 callBack(responseBody);

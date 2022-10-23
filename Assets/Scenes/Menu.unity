@@ -4566,7 +4566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -108}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 0, y: 457.1818}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &258789740
@@ -10210,6 +10210,7 @@ GameObject:
   - component: {fileID: 596888156}
   - component: {fileID: 596888159}
   - component: {fileID: 596888160}
+  - component: {fileID: 596888161}
   m_Layer: 5
   m_Name: MirrorRolePrefeb
   m_TagString: Untagged
@@ -10316,7 +10317,7 @@ MonoBehaviour:
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0.6
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -10348,6 +10349,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.16470589}
   m_EffectDistance: {x: 10.5, y: -9.25}
   m_UseGraphicAlpha: 1
+--- !u!225 &596888161
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596888154}
+  m_Enabled: 1
+  m_Alpha: 0.1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &624148547
 GameObject:
   m_ObjectHideFlags: 0
@@ -13217,6 +13230,7 @@ GameObject:
   - component: {fileID: 768128823}
   - component: {fileID: 768128826}
   - component: {fileID: 768128827}
+  - component: {fileID: 768128828}
   m_Layer: 5
   m_Name: MirrorRolePrefeb
   m_TagString: Untagged
@@ -13355,6 +13369,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.16470589}
   m_EffectDistance: {x: 10.5, y: -9.25}
   m_UseGraphicAlpha: 1
+--- !u!225 &768128828
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768128821}
+  m_Enabled: 1
+  m_Alpha: 0.6
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &780519269
 GameObject:
   m_ObjectHideFlags: 0

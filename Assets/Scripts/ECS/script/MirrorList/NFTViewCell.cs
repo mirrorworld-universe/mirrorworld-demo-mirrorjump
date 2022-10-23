@@ -21,10 +21,12 @@ public class NFTViewCell : MonoBehaviour
         {
             SetImage(NftCellData.NftData.image);
             
+
         }
         else
         {
             SetImage(NftCellData.DataParsingEntity.image);
+           
         }
         
     }
@@ -38,6 +40,7 @@ public class NFTViewCell : MonoBehaviour
             if (null != Image && transform.gameObject.activeSelf)
             {
                 Image.sprite = sprite;
+                gameObject.GetComponent<CanvasGroup>().alpha = 1;
             }
         }else
         {

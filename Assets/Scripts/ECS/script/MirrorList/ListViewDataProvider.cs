@@ -84,6 +84,7 @@ public class ListViewDataProvider : MonoBehaviour
         public void SetCellData(GameObject gameObject, int index)
         {
             var NFTViewCell = gameObject.GetComponent<NFTViewCell>();
+            
             NFTViewCell.OnDataBind(DataSource[index],DefaultSprite);
         }
 

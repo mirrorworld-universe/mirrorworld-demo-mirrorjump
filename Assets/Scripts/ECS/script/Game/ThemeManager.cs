@@ -99,12 +99,12 @@ public class ThemeManager : MonoBehaviour
 
         if (SpriteIndex >= 4)
         {
-            RightPage.gameObject.GetComponent<CanvasGroup>().alpha = 0.5f;
+            RightPage.gameObject.GetComponent<CanvasGroup>().alpha = 0f;
             RightPage.gameObject.GetComponent<Button>().interactable =false;
             
         }else if (SpriteIndex <= 0)
         {
-            LeftPage.gameObject.GetComponent<CanvasGroup>().alpha = 0.5f;
+            LeftPage.gameObject.GetComponent<CanvasGroup>().alpha = 0f;
             LeftPage.gameObject.GetComponent<Button>().interactable = false;
         }
         else

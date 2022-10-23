@@ -216,7 +216,7 @@ public class ThemeManager : MonoBehaviour
             ThemeGroud.GetComponent<RectTransform>().sizeDelta = new Vector2(ThemeGroud.GetComponent<RectTransform>().sizeDelta.x,630f);
         }
         else
-        {
+        { 
             ThemeGroud.GetComponent<RectTransform>().sizeDelta = new Vector2(ThemeGroud.GetComponent<RectTransform>().sizeDelta.x,536f);
         }
         

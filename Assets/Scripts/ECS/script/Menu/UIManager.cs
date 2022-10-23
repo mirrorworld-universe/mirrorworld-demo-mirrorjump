@@ -139,6 +139,7 @@ public class UIManager : MonoBehaviour
             {
                 LoginState.mintableRoleData = data;
                 PlayerPrefs.SetString("MintUrl", data.token_url);
+                PlayerPrefs.SetString("TokenId",data.token_id.ToString());
             }
         }
 

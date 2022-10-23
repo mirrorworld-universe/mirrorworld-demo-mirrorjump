@@ -147,7 +147,12 @@ public class CallSDK : MonoBehaviour
                 {
                     if (result.status == "success")
                     {
-                        string name = "Mirror Jump " + "#" + GetNameNumber(PlayerPrefs.GetString("MintUrl"));
+
+                        if (PlayerPrefs.GetString("TokenId", "empty") == "empty")
+                        {
+                            return;
+                        }
+                        string name = "Mirrors Jump " + "#" +PlayerPrefs.GetString("TokenId");
             
                         if (ApiCallLimit.MintLimit() == false)
                         {

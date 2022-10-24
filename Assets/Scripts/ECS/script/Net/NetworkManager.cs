@@ -102,27 +102,32 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 
     private IEnumerator Get(string url, string messageBody, Action<Result, string> callBack)
     {
-        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        UnityWebRequest request = UnityWebRequest.Get(url);
+        if (!string.IsNullOrEmpty(messageBody))
         {
-            if (!string.IsNullOrEmpty(messageBody))
-            {
-                byte[] rawRequestBodyToSend = new System.Text.UTF8Encoding().GetBytes(messageBody);
-                request.uploadHandler = new UploadHandlerRaw(rawRequestBodyToSend);
-                request.downloadHandler = new DownloadHandlerBuffer();
-            }
+            byte[] rawRequestBodyToSend = new System.Text.UTF8Encoding().GetBytes(messageBody);
+            request.uploadHandler = new UploadHandlerRaw(rawRequestBodyToSend);
+            request.downloadHandler = new DownloadHandlerBuffer();
+        }
+        request.timeout = 5000;
 
+        bool isFailed = false;
+        do
+        {
             yield return request.SendWebRequest();
-
-            string rawResponseBody = request.downloadHandler.text;
 
             if (request.result != Result.Success)
             {
+                //isFailed = true;
+                LoadingPanel.Instance.SetRetryPanelEnable();
                 Debug.Log("Network error " + request.result);
-                yield break;
             }
-            callBack(request.result, rawResponseBody);
-            request.Dispose();
-        }
+        } while (isFailed);
+
+        string rawResponseBody = request.downloadHandler.text;
+        callBack(request.result, rawResponseBody);
+        request.Dispose();
+
     }
 
     private IEnumerator Post(string url, string messageBody, Action<Result, string> callBack)
@@ -139,16 +144,22 @@ public class NetworkManager : MonoSingleton<NetworkManager>
             request.uploadHandler = new UploadHandlerRaw(rawRequestBodyToSend);
             request.downloadHandler = new DownloadHandlerBuffer();
         }
+        request.timeout = 5000;
 
-        yield return request.SendWebRequest();
+        bool isFailed = false;
+        do
+        {
+            yield return request.SendWebRequest();
+
+            if (request.result != Result.Success)
+            {
+                //isFailed = true;
+                Debug.Log("Network error " + request.result);
+                yield break;
+            }
+        } while (isFailed);
 
         string rawResponseBody = request.downloadHandler.text;
-
-        if (request.result != Result.Success)
-        {
-            Debug.Log("Network error " + request.result);
-            yield break;
-        }
         callBack(request.result, rawResponseBody);
         request.Dispose();
     }

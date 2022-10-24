@@ -11,8 +11,8 @@ public class GameOverPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI maxScoreText;
     [SerializeField] private Color victoryColor;
     [SerializeField] private Color failedColor;
-    [SerializeField] private GameObject shareTip;
-    [SerializeField] private GameObject shareDot;
+    // [SerializeField] private GameObject shareTip;
+    // [SerializeField] private GameObject shareDot;
     [SerializeField] private GameObject newScoreEffect;
     [SerializeField] private GameObject unlockSceneBg;
     [SerializeField] private GameObject unlockSceneContent;
@@ -54,16 +54,16 @@ public class GameOverPanel : MonoBehaviour
         {
             titleText.text = "CONGRATULATION";
             titleText.fontSize = 82;
-            shareTip.SetActive(true);
-            shareDot.SetActive(true);
+           // shareTip.SetActive(true);
+            //shareDot.SetActive(true);
             newScoreEffect.SetActive(true);
         }
         else
         {
             titleText.text = "GAME OVER";
             titleText.fontSize = 110;
-            shareTip.SetActive(false);
-            shareDot.SetActive(false);
+            // shareTip.SetActive(false);
+            // shareDot.SetActive(false);
             newScoreEffect.SetActive(false);
         }
     }
@@ -73,7 +73,7 @@ public class GameOverPanel : MonoBehaviour
         SoundManager.Instance.PlaySound(SoundName.Button);
         if (isNewRecord)
         {
-            shareDot.SetActive(false);
+           // shareDot.SetActive(false);
             // 保存状态，记录下次初始时从非零开始
             PlayerPrefs.SetInt(GlobalDef.hasInitPosY, 1);
         }

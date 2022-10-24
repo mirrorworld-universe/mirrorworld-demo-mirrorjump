@@ -747,6 +747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 126243402}
+  useShuShuAnalysis: 1
+  IsTestEnv: 1
 --- !u!1 &463826718
 GameObject:
   m_ObjectHideFlags: 0

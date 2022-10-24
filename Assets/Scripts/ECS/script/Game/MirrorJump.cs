@@ -178,7 +178,7 @@ public class MirrorJump : MonoBehaviour
     public void Setup()
     {
         SetEnterBlackState(false);
-        FallStateNotify(false);
+        FallStateNotify(true);
 
         // 禁用弹簧鞋
         SetSpringState(false);

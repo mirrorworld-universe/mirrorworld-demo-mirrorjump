@@ -39,6 +39,10 @@ public class MessageAdvice : MonoBehaviour
    public GameObject NotSufficientAdvice;
 
 
+   private string WaitTipContent;
+   
+
+
    public void OnSufficientAdvice()
    {
        NotSufficientAdvice.SetActive(true);
@@ -168,10 +172,25 @@ public class MessageAdvice : MonoBehaviour
 
    public void CloseWaitPanel()
    {
-       IsWaiting = false;
-       WaitTips.text = "Are you sure to stop waiting ?";
-       ExitConfirmButton.SetActive(true);
+       if (IsWaiting)
+       {
+           IsWaiting = false;
+           WaitTipContent = WaitTips.text;
+           WaitTips.text = "Are you sure to stop waiting ?";
+           ExitConfirmButton.SetActive(true);
+       }
+       else
+       {
+           IsWaiting = true;
+           WaitTips.text = WaitTipContent ;
+           ExitConfirmButton.SetActive(false);
+       }
+       
+       
    }
+
+
+  
 
    
    public void ConfrimCloseWaitPanel()

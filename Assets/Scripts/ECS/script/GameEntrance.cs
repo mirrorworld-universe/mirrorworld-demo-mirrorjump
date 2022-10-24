@@ -8,6 +8,10 @@ public class GameEntrance : MonoBehaviour
 {
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] bool useShuShuAnalysis = true;
+    [SerializeField] bool IsTestEnv = true;
+    
+    
+    
 
     
 
@@ -21,6 +25,17 @@ public class GameEntrance : MonoBehaviour
             
         });
 
+         if (!IsTestEnv)
+         {
+
+             PlayerPrefs.SetString("IsTestEnvironment", "false");
+         }
+         else
+         {
+             PlayerPrefs.SetString("IsTestEnvironment", "true");
+             
+         }
+         
         StartPlay();
         
         if (useShuShuAnalysis)

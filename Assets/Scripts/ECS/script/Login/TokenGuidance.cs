@@ -39,7 +39,7 @@ public class TokenGuidance : MonoBehaviour
     private void Start()
     {
 
-        if (PlayerPrefs.GetString("IsTestEnvironment") == "false")
+        if (PlayerPrefs.GetString("IsTestEnvironment","true") == "false")
         {
 
             if ("false" == PlayerPrefs.GetString("HasGuidence", "false"))
@@ -47,13 +47,16 @@ public class TokenGuidance : MonoBehaviour
                 Guidence.OnFirstStep();
             }
             return;
+            
         }
+        
+        
         
         
         isAirDropping = false;
         
 
-        if ("false" == PlayerPrefs.GetString("HasReceiveToken", "false"))
+        if ("falses" == PlayerPrefs.GetString("HasReceiveToken", "false"))
         {
            OnFirstStep();
         }

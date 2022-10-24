@@ -48,7 +48,6 @@ public class RoleChange : MonoBehaviour
     {
         if (roleName == PlayerPrefs.GetString("CurrentRole") && roleRarity == PlayerPrefs.GetString("CurrentRarity"))
         {
-            
             PlayerPrefs.SetString("CurrentRole","Rare");
             PlayerPrefs.SetString("CurrentRarity","Astronaut");
             transform.gameObject.GetComponent<Image>().sprite = RolePersistence.GetDefaultRoleJump();

@@ -187,6 +187,8 @@ public class GameController : MonoBehaviour
         GameState = GameState.Gaming;
         
         GameMenu.CloseGameOverWindow();
+        
+        MirrorObject.transform.GetComponent<MirrorJump>().FallStateNotify(true);
     }
 
 

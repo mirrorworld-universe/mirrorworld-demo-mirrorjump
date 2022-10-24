@@ -56,7 +56,7 @@ public class TokenGuidance : MonoBehaviour
         isAirDropping = false;
         
 
-        if ("false" == PlayerPrefs.GetString("HasReceiveToken", "false"))
+        if ("falses" == PlayerPrefs.GetString("HasReceiveToken", "false"))
         {
            OnFirstStep();
         }

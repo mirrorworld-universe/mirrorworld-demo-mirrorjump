@@ -211,6 +211,8 @@ public class ThemeManager : MonoBehaviour
     
     private void GrassPositionAdjust(int index)
     {
+
+        return;
         if (index == Constant.ThemeDesertIndex)
         {
             ThemeGroud.GetComponent<RectTransform>().sizeDelta = new Vector2(ThemeGroud.GetComponent<RectTransform>().sizeDelta.x,630f);

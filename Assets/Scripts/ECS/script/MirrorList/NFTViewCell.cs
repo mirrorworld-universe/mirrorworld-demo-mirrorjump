@@ -11,6 +11,8 @@ public class NFTViewCell : MonoBehaviour
     private Sprite defaultSprite;
 
     public NFTCellData NftCellData;
+
+    public CanvasGroup CanvasGroup;
     
     public void OnDataBind(NFTCellData nftCellData,Sprite sprite)
     {
@@ -40,7 +42,7 @@ public class NFTViewCell : MonoBehaviour
             if (null != Image && transform.gameObject.activeSelf)
             {
                 Image.sprite = sprite;
-                gameObject.GetComponent<CanvasGroup>().alpha = 1;
+                CanvasGroup.alpha = 1;
             }
         }else
         {

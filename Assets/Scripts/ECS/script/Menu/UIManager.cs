@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
             LoadingPanel.Instance.SetLoadingPanelEnable(true);
             MirrorSDK.IsLoggedIn((result) =>
             {
-                if (result)
+                if (1==2)
                 {
                     // 自动登录钱包地址（user_id）非空性检查 
                     if (PlayerPrefs.GetString("walletAddress", "empty") == "empty")

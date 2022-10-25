@@ -60,6 +60,10 @@ public class Options : MonoBehaviour
 
         SetButtonSelected(soundOff , true);
         SetButtonSelected(soundOn, false);
+
+        SoundManager.Instance.GetAudioSource().mute = SoundManager.Instance.GetSoundState();
+
+
     }
 
     private void OnSoundOn()
@@ -70,6 +74,7 @@ public class Options : MonoBehaviour
 
         SetButtonSelected(soundOff, false);
         SetButtonSelected(soundOn, true);
+        SoundManager.Instance.GetAudioSource().mute = SoundManager.Instance.GetSoundState();
     }
 
     public void SetButtonSelected(Button btn, bool isSelect)

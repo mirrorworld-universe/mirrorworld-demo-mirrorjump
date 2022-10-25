@@ -98,6 +98,9 @@ public class GameMenu : MonoBehaviour
                 return;
             }
             
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemePastureIndex)
+        {
+            return;
         }
         
         IsHeightAdvice = true;

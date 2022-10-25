@@ -285,8 +285,11 @@ public class GameController : MonoBehaviour
             }
 
             PlayerPrefs.SetInt(Constant.Theme_Pre + Constant.ThemePastureIndex, 1);
-            PlayerPrefs.GetInt("ThemePastureState", 1);
+            PlayerPrefs.SetInt("ThemePastureState", 1);
 
+        }else if (PlayerPrefs.GetInt("CurrentTheme") == Constant.ThemePastureIndex)
+        {
+            return;
         }
         
         // notify

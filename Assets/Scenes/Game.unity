@@ -2163,8 +2163,6 @@ MonoBehaviour:
   maxScoreText: {fileID: 1610875594}
   victoryColor: {r: 1, g: 0.48627454, b: 0, a: 1}
   failedColor: {r: 0.43921572, g: 0, b: 1, a: 1}
-  shareTip: {fileID: 0}
-  shareDot: {fileID: 0}
   newScoreEffect: {fileID: 72128795}
   unlockSceneBg: {fileID: 572654844}
   unlockSceneContent: {fileID: 950406968}
@@ -3882,7 +3880,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1234567
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
   m_sharedMaterial: {fileID: 1714751534592507751, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
@@ -4736,7 +4734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1234567
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}
   m_sharedMaterial: {fileID: 1714751534592507751, guid: 4ab6f992935e7dd49827c381db96e516, type: 2}

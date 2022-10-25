@@ -103,6 +103,7 @@ public class CallSDK : MonoBehaviour
                     name = item.value;
                 }
             } 
+            
            // RoleChange.OnRoleChange(name,rarity);
             
             PlayerPrefs.SetString("HasMintRandom", "true");

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,8 +15,8 @@ public class VersionCheckDialog : MonoBehaviour
 
     private void Awake()
     {
-        // 默认只展示一个按钮
         if(cancelButton) cancelButton.gameObject.SetActive(false);
+        if(confirmButton) confirmButton.gameObject.SetActive(false);
     }
 
     public void Start()
@@ -26,28 +25,27 @@ public class VersionCheckDialog : MonoBehaviour
         if (confirmButton) confirmButton.onClick.AddListener(OnConfirmClicked);
         if (cancelButton) cancelButton.onClick.AddListener(OnCancelClicked);
     }
-
-    // 启用第二个按钮
-    public void EnableCancelButton(string cancelButtonText = "")
+    
+    public void EnableCancelButton()
     {
         cancelButton.gameObject.SetActive(true);
-
-        if(cancelButtonText != "")
-        {
-            cancelButton.GetComponentInChildren<TextMeshProUGUI>().text = cancelButtonText;
-        }
     }
-
-    public virtual void displayMessage(string title, string msg, string confirmButtonText = "")
+    
+    public void EnableConfirmButton(string confirmButtonText = "")
     {
-        titleText.text = title;
-        messageLabel.text = msg;
-        this.gameObject.SetActive(true);
+        confirmButton.gameObject.SetActive(true);
 
         if(confirmButtonText != "")
         {
             confirmButton.GetComponentInChildren<TextMeshProUGUI>().text = confirmButtonText;
         }
+    }
+
+    public virtual void displayMessage(string title, string msg)
+    {
+        titleText.text = title;
+        messageLabel.text = msg;
+        this.gameObject.SetActive(true);
     }
 
     public void OnConfirmClicked()

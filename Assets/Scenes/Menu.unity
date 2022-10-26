@@ -7557,7 +7557,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.25}
   m_AnchorMax: {x: 0.5, y: 0.25}
-  m_AnchoredPosition: {x: 26, y: 265}
+  m_AnchoredPosition: {x: -2.2000122, y: 352}
   m_SizeDelta: {x: 180, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418236930
@@ -8358,6 +8358,7 @@ GameObject:
   - component: {fileID: 455558823}
   - component: {fileID: 455558822}
   - component: {fileID: 455558824}
+  - component: {fileID: 455558825}
   m_Layer: 5
   m_Name: Frame
   m_TagString: Untagged
@@ -8431,10 +8432,25 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455558820}
   m_Enabled: 1
-  m_Alpha: 0.1
+  m_Alpha: 0.6
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &455558825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455558820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.16470589}
+  m_EffectDistance: {x: 10.5, y: -9.25}
+  m_UseGraphicAlpha: 1
 --- !u!1 &472226685
 GameObject:
   m_ObjectHideFlags: 0
@@ -10298,7 +10314,6 @@ GameObject:
   - component: {fileID: 596888157}
   - component: {fileID: 596888156}
   - component: {fileID: 596888159}
-  - component: {fileID: 596888160}
   m_Layer: 5
   m_Name: MirrorRolePrefeb
   m_TagString: Untagged
@@ -10423,21 +10438,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &596888160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596888154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.16470589}
-  m_EffectDistance: {x: 10.5, y: -9.25}
-  m_UseGraphicAlpha: 1
 --- !u!1 &622431353
 GameObject:
   m_ObjectHideFlags: 0
@@ -13264,7 +13264,6 @@ GameObject:
   - component: {fileID: 768128824}
   - component: {fileID: 768128823}
   - component: {fileID: 768128826}
-  - component: {fileID: 768128827}
   m_Layer: 5
   m_Name: MirrorRolePrefeb
   m_TagString: Untagged
@@ -13389,21 +13388,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &768128827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768128821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.16470589}
-  m_EffectDistance: {x: 10.5, y: -9.25}
-  m_UseGraphicAlpha: 1
 --- !u!1 &780519269
 GameObject:
   m_ObjectHideFlags: 0
@@ -15362,6 +15346,7 @@ GameObject:
   - component: {fileID: 927261401}
   - component: {fileID: 927261400}
   - component: {fileID: 927261402}
+  - component: {fileID: 927261403}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -15435,10 +15420,25 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927261398}
   m_Enabled: 1
-  m_Alpha: 0.1
+  m_Alpha: 0.6
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &927261403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927261398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.16470589}
+  m_EffectDistance: {x: 10.5, y: -9.25}
+  m_UseGraphicAlpha: 1
 --- !u!1 &930795128
 GameObject:
   m_ObjectHideFlags: 0
@@ -17732,7 +17732,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.25}
   m_AnchorMax: {x: 0.5, y: 0.25}
-  m_AnchoredPosition: {x: -24, y: 644}
+  m_AnchoredPosition: {x: -8, y: 551}
   m_SizeDelta: {x: 200, y: 245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1055436251

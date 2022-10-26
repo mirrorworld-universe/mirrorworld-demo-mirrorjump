@@ -65,8 +65,17 @@ public class CallSDK : MonoBehaviour
             List<string> creators = new List<string>();
             creators.Add(LoginState.WalletAddress);
             
+            Debug.Log("FetchNFTS_OwnerAddress:"+LoginState.WalletAddress);
+            Debug.Log("FetchNFTS_OwnerAddressArray0:"+creators[0]);
+           
+            
             MirrorSDK.GetNFTsOwnedByAddress(creators, (Mutiple) =>
-            {
+            {    
+                
+                Debug.Log("FetchNFTS_Result:"+Mutiple.message);
+                Debug.Log("FetchNFTS_ResponseCode:"+Mutiple.code);
+                Debug.Log("FetchNFTS_OwnerStatus:"+Mutiple.status);
+                
                  List<NFTCellData> datas = new List<NFTCellData>();
                  for (int i = 0; i < Mutiple.data.nfts.Count; i++)
                  {
@@ -74,6 +83,7 @@ public class CallSDK : MonoBehaviour
                      SingleNFTResponseObj NftData = Mutiple.data.nfts[i];
                      nftCellData.NftData = NftData;
                      datas.Add(nftCellData);
+                     
                  }
                  
                  
@@ -166,11 +176,16 @@ public class CallSDK : MonoBehaviour
                         MessageAdvice.OpenWaitPanel("Mint Now");
                         
                         TAManager.Instance.MintToNFTStart("random role");
-                        MirrorSDK.MintNFT("DUuMbpmH3oiREntViXfGZhrLMbVcYBwGeBa4Wn9X8QfM",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
+                        Debug.Log("MintNFTParentCollection:"+"7Vv68CarFpqn291aTeeUz65Uxk1tp8X7gfR8CDMZo2gw");
+                        Debug.Log("MintNFTName:"+name);
+                        Debug.Log("MintNFTSymbol:"+"MJNFT");
+                        Debug.Log("MintNFTUrl:"+PlayerPrefs.GetString("MintUrl"));
+                        
+                        MirrorSDK.MintNFT("7Vv68CarFpqn291aTeeUz65Uxk1tp8X7gfR8CDMZo2gw",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
                             (result) =>
                             {   
                                 
-                                Debug.Log("begin mint4" + result.message);
+                                Debug.Log("MintNFTResult:" + result.message);
                                 if (result.status == "success")
                                 {   
                                     TAManager.Instance.MintToNft(result.data.name,0.1f);

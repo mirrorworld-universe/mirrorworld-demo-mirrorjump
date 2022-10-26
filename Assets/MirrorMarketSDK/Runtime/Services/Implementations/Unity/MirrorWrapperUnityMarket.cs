@@ -110,9 +110,11 @@ namespace MirrorworldSDK.Wrapper
             var rawRequestBody = JsonUtility.ToJson(requestBody);
 
             string url = GetAPIRoot() + urlMintNFTCollection;
+            LogFlow("MintNFTUrl"+url);
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
-
+                
+                LogFlow("MintResponse:"+response);
                 CommonResponse<MintResponse> responseBody = JsonUtility.FromJson<CommonResponse<MintResponse>>(response);
 
                 callBack(responseBody);
@@ -168,9 +170,10 @@ namespace MirrorworldSDK.Wrapper
             var rawRequestBody = JsonUtility.ToJson(requestBody);
 
             string url = GetAPIRoot() + urlFetchMultiNFTsDataByOwnerAddresses;
+            LogFlow("FetchNFTS_Url: "+url);
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
-
+                Debug.Log("FetchResultString: "+response);
                 CommonResponse<MultipleNFTsResponse> responseBody = JsonUtility.FromJson<CommonResponse<MultipleNFTsResponse>>(response);
 
                 //MultipleNFTsResponse nfts = responseBody.Data;
@@ -211,6 +214,7 @@ namespace MirrorworldSDK.Wrapper
             var rawRequestBody = JsonUtility.ToJson(requestBody);
 
             string url = GetAPIRoot() + urlListNFTOnTheMarketplace;
+            Debug.Log("List_url:"+url);
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
 
@@ -234,6 +238,9 @@ namespace MirrorworldSDK.Wrapper
             var rawRequestBody = JsonUtility.ToJson(requestBody);
 
             string url = GetAPIRoot() + urlUpdateListingOfNFTOnTheMarketplace;
+            
+            Debug.Log("UpdateList_url:"+url);
+            
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
               
@@ -257,6 +264,8 @@ namespace MirrorworldSDK.Wrapper
             var rawRequestBody = JsonUtility.ToJson(requestBody);
 
             string url = GetAPIRoot() + urlCancelListingOfNFTOnTheMarketplace;
+            
+            Debug.Log("CancelList_url:"+url);
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
              
@@ -278,6 +287,7 @@ namespace MirrorworldSDK.Wrapper
             var rawRequestBody = JsonUtility.ToJson(requestBody);
 
             string url = GetAPIRoot() + urlTransferNFTToAnotherSolanaWallet;
+            Debug.Log("Transfer_url:"+url);
 
             monoBehaviour.StartCoroutine(CheckAndPost(url, rawRequestBody, (response) => {
 

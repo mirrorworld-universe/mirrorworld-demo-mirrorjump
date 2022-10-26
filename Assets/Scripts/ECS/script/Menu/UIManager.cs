@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
             LoadingPanel.Instance.SetLoadingPanelEnable(true);
             MirrorSDK.IsLoggedIn((result) =>
             {
-                if (1==2)
+                if (result)
                 {
                     // 自动登录钱包地址（user_id）非空性检查 
                     if (PlayerPrefs.GetString("walletAddress", "empty") == "empty")
@@ -227,6 +227,9 @@ public class UIManager : MonoBehaviour
                     LoginState.Name = LoginResponse.user.username;
                     LoginState.WalletAddress = LoginResponse.user.wallet.sol_address;
                     PlayerPrefs.SetString("walletAddress", LoginResponse.user.wallet.sol_address);
+                    
+                   // LoginResponse.user.sol_address
+                    
                     PlayerPrefs.SetString("emailAddress", LoginResponse.user.email);
                     LoginState.ID = LoginResponse.user.id.ToString();
 

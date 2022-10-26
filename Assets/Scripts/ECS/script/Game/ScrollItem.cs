@@ -43,11 +43,11 @@ public class ScrollItem : MonoBehaviour
         tempPos2.x += Time.deltaTime * speed;
         img2.transform.position = tempPos2;
 
-        if (img1.transform.position.x > imageWidth*1.5)
+        if (img1.transform.position.x > imageWidth)
         {
             ResetZeroPos(img1);
         }
-        else if (img2.transform.position.x > imageWidth * 1.5)
+        else if (img2.transform.position.x > imageWidth)
         {
             ResetZeroPos(img2);
         }

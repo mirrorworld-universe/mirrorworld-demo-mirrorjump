@@ -130,7 +130,7 @@ public class Options : MonoBehaviour
     public void OpenFAQ()
     {   TAManager.Instance.ViewFAQ();
         SoundManager.Instance.PlaySound(SoundName.OpenUrl);
-        Application.OpenURL("https://smlhic47en.feishu.cn/docx/doxcnNBgbk3YfqRnRMNDEfMAADf");
+        Application.OpenURL("https://blog.mirrorworld.fun/p/mirrors-jump-faq");
     }
     
     public void OpenMirrorSDKLink()

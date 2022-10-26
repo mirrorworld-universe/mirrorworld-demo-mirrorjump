@@ -124,7 +124,7 @@ public class Options : MonoBehaviour
     public void OpenFeedback()
     {   TAManager.Instance.GiveFeedback();
         SoundManager.Instance.PlaySound(SoundName.OpenUrl);
-        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSfqD3ABVQQNrPouF2jY_KFmcdUtDEJjPjuo4HovVJkmncLOfw/viewform");
+        Application.OpenURL("https://market-assets.mirrorworld.fun/game/researchjump2.html");
     }
     
     public void OpenFAQ()

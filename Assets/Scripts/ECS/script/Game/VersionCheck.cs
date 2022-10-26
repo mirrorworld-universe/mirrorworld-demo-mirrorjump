@@ -52,7 +52,6 @@ public class VersionCheck : MonoBehaviour
        private void OnCancelClicked()
        {
            dialog.gameObject.SetActive(false);
-           PlayerPrefs.SetString("NewVersion", versionData.version);
            // todo Start Auto Login
            UIManager.AutoLogin();
        }
@@ -81,11 +80,11 @@ public class VersionCheck : MonoBehaviour
    
        private void CheckVersion()
        {
-           string url = "https://games.mirrorworld.fun/game/mirrama/config/android/version.json";
+           string url = "https://games.mirrorworld.fun/game/mirror_jump/config.json";
    #if UNITY_ANDROID
-           url = "https://games.mirrorworld.fun/game/mirrama/config/android/version.json";
+           url = "https://games.mirrorworld.fun/game/mirror_jump/config.json";
    #elif UNITY_IPHONE
-           url = "https://games.mirrorworld.fun/game/mirrama/config/ios/version.json";
+           url = "https://games.mirrorworld.fun/game/mirror_jump/config.json";
    #endif
            StartCoroutine(Get(url));
        }
@@ -137,17 +136,12 @@ public class VersionCheck : MonoBehaviour
                    }
                    else if (HasNewVersion(data))
                    {
-                       string lastNewVersion = PlayerPrefs.GetString("NewVersion");
-                       
-                       if (lastNewVersion != data.version)
-                       {
-                           // 显示可选更新窗口
-                           // 显示强制更新窗口
+                     
                             needForceUpdate = false;
                             dialog.displayMessage("Update", data.desc);
                             dialog.EnableConfirmButton("Download");
                             dialog.EnableCancelButton();
-                       }
+                       
                    }
 
 

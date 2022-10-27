@@ -8,7 +8,7 @@ public class GameEntrance : MonoBehaviour
 {
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] bool useShuShuAnalysis = true;
-    [SerializeField] bool IsTestEnv = false;
+    [SerializeField] bool IsTestEnv = true;
     
     
     

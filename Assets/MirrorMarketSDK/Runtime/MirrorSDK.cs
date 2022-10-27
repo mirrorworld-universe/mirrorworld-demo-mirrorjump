@@ -237,9 +237,9 @@ public class MirrorSDK : MonoBehaviour
         MirrorWrapper.Instance.GetActivityOfSingleNFT(mintAddress, action);
     }
 
-    public static void GetNFTsOwnedByAddress(List<string> owners, Action<CommonResponse<MultipleNFTsResponse>> callBack)
+    public static void GetNFTsOwnedByAddress(List<string> owners, long limit, long offset, Action<CommonResponse<MultipleNFTsResponse>> callBack)
     {
-        MirrorWrapper.Instance.GetNFTsOwnedByAddress(owners, callBack);
+        MirrorWrapper.Instance.GetNFTsOwnedByAddress(owners,limit,offset, callBack);
     }
 
     public static void FetchNFTsByMintAddress(List<string> mintAddresses, Action<CommonResponse<MultipleNFTsResponse>> action)

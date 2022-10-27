@@ -69,7 +69,7 @@ public class CallSDK : MonoBehaviour
             Debug.Log("FetchNFTS_OwnerAddressArray0:"+creators[0]);
            
             
-            MirrorSDK.GetNFTsOwnedByAddress(creators, (Mutiple) =>
+            MirrorSDK.GetNFTsOwnedByAddress(creators, 100,0,(Mutiple) =>
             {    
                 
                 Debug.Log("FetchNFTS_Result:"+Mutiple.message);

@@ -7,6 +7,11 @@ public class VersionCheck : MonoBehaviour
 {
 
 
+    private bool IsGoogleEnv = true;
+
+    private bool IsIOSEnv = false;
+    
+
     public UIManager UIManager;
      public struct VersionData
        {
@@ -15,8 +20,13 @@ public class VersionCheck : MonoBehaviour
            public string reviewversion; // 空字符串-非审核期，非空-审核期
            public string url;
            public string desc;
+           public string googleUrl;
+           public string iosurl;
            public string access;
-           public bool stop;            // 是否停服, 停服时不进行更新逻辑判断
+           public bool stop;
+
+           
+           // 是否停服, 停服时不进行更新逻辑判断
        }
    
        struct Version
@@ -64,8 +74,25 @@ public class VersionCheck : MonoBehaviour
            }
            else
            {
-               Application.OpenURL(versionData.url);
-               if(!needForceUpdate)
+
+               if (IsGoogleEnv)
+               {
+                   Application.OpenURL(versionData.googleUrl);
+               }
+               else
+               {
+                   if (IsIOSEnv)
+                   {
+                       Application.OpenURL(versionData.iosurl);
+                   }else
+                   {
+                       Application.OpenURL(versionData.url);
+                   }
+                  
+               }
+            
+               
+               if(!needForceUpdate)  
                {
                   dialog.gameObject.SetActive(false);
                   // todo Start Auto Login
@@ -80,11 +107,11 @@ public class VersionCheck : MonoBehaviour
    
        private void CheckVersion()
        {
-           string url = "https://games.mirrorworld.fun/game/mirror_jump/config.json";
+           string url = "https://games.mirrorworld.fun/game/mirror_jump/Config/config.json";
    #if UNITY_ANDROID
-           url = "https://games.mirrorworld.fun/game/mirror_jump/config.json";
+           url = "https://games.mirrorworld.fun/game/mirror_jump/Config/config.json";
    #elif UNITY_IPHONE
-           url = "https://games.mirrorworld.fun/game/mirror_jump/config.json";
+           url = "https://games.mirrorworld.fun/game/mirror_jump/Config/config.json";
    #endif
            StartCoroutine(Get(url));
        }
@@ -103,7 +130,9 @@ public class VersionCheck : MonoBehaviour
                var result = request.result;
    
                if(request.result == UnityWebRequest.Result.Success)
-               {
+               {   
+                   
+                   Debug.Log("VersionText  "+request.downloadHandler.text);
                    var data = JsonConvert.DeserializeObject<VersionData>(request.downloadHandler.text);
                    versionData = data;
    
@@ -111,6 +140,7 @@ public class VersionCheck : MonoBehaviour
                    {
                        var currentVersionList = SplitVersion(GlobalDef.GetCurrentVersion());
                        var newestVersionList = SplitVersion(data.version);
+                       
                        if(!IsLower(newestVersionList, currentVersionList))
                        {
                            dialog.displayMessage("Service Update", data.desc);

@@ -295,10 +295,8 @@ public class NftTrade : MonoBehaviour
             {
                ManageNFTID.text = CurrentNftCellData.NftData.name;
             }
-            
-       
-            
-             if (null != CurrentNftCellData.NftData)
+
+            if (null != CurrentNftCellData.NftData)
              {
                  CurrentPrice.text = CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count - 1]
                      .price.ToString();
@@ -445,9 +443,9 @@ public class NftTrade : MonoBehaviour
         
         TAManager.Instance.ListNFTStart(CurrentNftCellData.NftData.name);
         
-        Debug.Log("List_MintAddress:"+CurrentNftCellData.NftData.mintAddress);
-        Debug.Log("List_price:"+price);
-        Debug.Log("List_Action_House:"+ "6gysn49dh2tfwbqvLqWpJNwisjkZCJoX3AyjuyFUn89C" );
+        // Debug.Log("List_MintAddress:"+CurrentNftCellData.NftData.mintAddress);
+        // Debug.Log("List_price:"+price);
+        // Debug.Log("List_Action_House:"+ "6gysn49dh2tfwbqvLqWpJNwisjkZCJoX3AyjuyFUn89C" );
         MirrorSDK.ListNFT(CurrentNftCellData.NftData.mintAddress,price,"6gysn49dh2tfwbqvLqWpJNwisjkZCJoX3AyjuyFUn89C",Confirmation.Finalized,(result) =>
         {
 
@@ -490,9 +488,9 @@ public class NftTrade : MonoBehaviour
             MessageAdvice.OpenWaitPanel("Changing New Price Now");
             
             TAManager.Instance.ChangeListPriceStart(CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count - 1].price,CurrentNftCellData.NftData.name);
-            Debug.Log("UpdateList_MintAddress:"+CurrentNftCellData.NftData.mintAddress);
-            Debug.Log("UpdateList_price:"+price);
-            Debug.Log("Update_Action_House:"+ "6gysn49dh2tfwbqvLqWpJNwisjkZCJoX3AyjuyFUn89C" );
+            // Debug.Log("UpdateList_MintAddress:"+CurrentNftCellData.NftData.mintAddress);
+            // Debug.Log("UpdateList_price:"+price);
+            // Debug.Log("Update_Action_House:"+ "6gysn49dh2tfwbqvLqWpJNwisjkZCJoX3AyjuyFUn89C" );
             MirrorSDK.UpdateNFTListing(CurrentNftCellData.NftData.mintAddress, price, "6gysn49dh2tfwbqvLqWpJNwisjkZCJoX3AyjuyFUn89C",Confirmation.Finalized,(result) =>
             {   
                 if (result.status == "success")
@@ -537,9 +535,9 @@ public class NftTrade : MonoBehaviour
             TAManager.Instance.CancelListStart(CurrentNftCellData.NftData.name);
             
                
-            Debug.Log("CancelList_MintAddress:"+CurrentNftCellData.NftData.mintAddress);
-            Debug.Log("CancelList_price:"+CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].price);
-            Debug.Log("Cancel_Action_House:"+ "6gysn49dh2tfwbqvLqWpJNwisjkZCJoX3AyjuyFUn89C" );
+            // Debug.Log("CancelList_MintAddress:"+CurrentNftCellData.NftData.mintAddress);
+            // Debug.Log("CancelList_price:"+CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].price);
+            // Debug.Log("Cancel_Action_House:"+ "6gysn49dh2tfwbqvLqWpJNwisjkZCJoX3AyjuyFUn89C" );
             MirrorSDK.CancelNFTListing(CurrentNftCellData.NftData.mintAddress,CurrentNftCellData.NftData.listings[CurrentNftCellData.NftData.listings.Count-1].price,"6gysn49dh2tfwbqvLqWpJNwisjkZCJoX3AyjuyFUn89C",Confirmation.Finalized,(result) =>
             {     
                 if (result.status == "success")
@@ -576,8 +574,8 @@ public class NftTrade : MonoBehaviour
         
         MessageAdvice.OpenWaitPanel("Transfer now");
         
-        Debug.Log("Transfer_MintAddress:"+CurrentNftCellData.NftData.mintAddress);
-        Debug.Log("Transfer_toAddress:"+address);
+        // Debug.Log("Transfer_MintAddress:"+CurrentNftCellData.NftData.mintAddress);
+        // Debug.Log("Transfer_toAddress:"+address);
         MirrorSDK.TransferNFT(CurrentNftCellData.NftData.mintAddress,address,(result) =>
         {
             

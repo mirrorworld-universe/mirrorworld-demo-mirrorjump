@@ -38,7 +38,7 @@ public class GlobalDef
     // 生产环境
     public static string server = "https://mirror-jump.mirrorworld.fun/";
     
-    public static string version = "22102613"; 
+    public static string version = "22102713"; 
     
     public static string GetCurrentVersion()
     {

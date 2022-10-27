@@ -9,6 +9,11 @@ using UnityEngine;
 public class CallSDK : MonoBehaviour
 {
 
+    private string ParentCollection = "7Vv68CarFpqn291aTeeUz65Uxk1tp8X7gfR8CDMZo2gw";
+   //private string ParentCollection = "7Vv68CarFpqn291aTeeUz65Uxk1tp8X7g";
+    
+    
+    
     public MessageAdvice MessageAdvice;
 
 
@@ -65,16 +70,16 @@ public class CallSDK : MonoBehaviour
             List<string> creators = new List<string>();
             creators.Add(LoginState.WalletAddress);
             
-            Debug.Log("FetchNFTS_OwnerAddress:"+LoginState.WalletAddress);
-            Debug.Log("FetchNFTS_OwnerAddressArray0:"+creators[0]);
+            // Debug.Log("FetchNFTS_OwnerAddress:"+LoginState.WalletAddress);
+            // Debug.Log("FetchNFTS_OwnerAddressArray0:"+creators[0]);
            
             
             MirrorSDK.GetNFTsOwnedByAddress(creators, 100,0,(Mutiple) =>
             {    
                 
-                Debug.Log("FetchNFTS_Result:"+Mutiple.message);
-                Debug.Log("FetchNFTS_ResponseCode:"+Mutiple.code);
-                Debug.Log("FetchNFTS_OwnerStatus:"+Mutiple.status);
+                // Debug.Log("FetchNFTS_Result:"+Mutiple.message);
+                // Debug.Log("FetchNFTS_ResponseCode:"+Mutiple.code);
+                // Debug.Log("FetchNFTS_OwnerStatus:"+Mutiple.status);
                 
                  List<NFTCellData> datas = new List<NFTCellData>();
                  for (int i = 0; i < Mutiple.data.nfts.Count; i++)
@@ -153,11 +158,63 @@ public class CallSDK : MonoBehaviour
         
         if (LoginState.HasLogin)
         {
+
+            if ("true" == PlayerPrefs.GetString("HasTransferSol", "false"))
+            {
+                // 直接 mint 
+                if (PlayerPrefs.GetString("TokenId", "empty") == "empty")
+                {
+                    return;
+                }
+                string name = "Mirrors Jump " + "#" +PlayerPrefs.GetString("TokenId");
+            
+                if (ApiCallLimit.MintLimit() == false)
+                {
+                    MessageAdvice.OpenWaitPanel("Mint Now");
+                    return;
+                }
+            
+                ApiCallLimit.SetMintApiLimit(Constant.ExecuteMint);
+            
+                MessageAdvice.OpenWaitPanel("Mint Now");
+                        
+                TAManager.Instance.MintToNFTStart("random role");
+                // Debug.Log("MintNFTParentCollection:"+ParentCollection);
+                // Debug.Log("MintNFTName:"+name);
+                // Debug.Log("MintNFTSymbol:"+"MJNFT");
+                // Debug.Log("MintNFTUrl:"+PlayerPrefs.GetString("MintUrl"));
+                
+                //7Vv68CarFpqn291aTeeUz65Uxk1tp8X7gfR8CDMZo2gw
+                MirrorSDK.MintNFT(ParentCollection,name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
+                    (result) =>
+                    {   
+                                
+                       // Debug.Log("MintNFTResult:" + result.message);
+                        if (result.status == "success")
+                        {   
+                            TAManager.Instance.MintToNft(result.data.name,0.1f);
+                            FinishedMint(true);
+                        }
+                        else
+                        {
+                            FinishedMint(false);
+                        }
+                   
+                    });
+
+
+                return;
+
+            }
+            
+            // 2ge0
             // transfer token
                 MirrorSDK.TransferSol(100000000,"qS6JW1CKQgpwZU6jG5JpXL3Q4EDMoDD5DWacPEsNZoe",Confirmation.Confirmed, (result) =>
                 {
                     if (result.status == "success")
                     {
+
+                        PlayerPrefs.SetString("HasTransferSol", "true");
 
                         if (PlayerPrefs.GetString("TokenId", "empty") == "empty")
                         {
@@ -176,16 +233,17 @@ public class CallSDK : MonoBehaviour
                         MessageAdvice.OpenWaitPanel("Mint Now");
                         
                         TAManager.Instance.MintToNFTStart("random role");
-                        Debug.Log("MintNFTParentCollection:"+"7Vv68CarFpqn291aTeeUz65Uxk1tp8X7gfR8CDMZo2gw");
-                        Debug.Log("MintNFTName:"+name);
-                        Debug.Log("MintNFTSymbol:"+"MJNFT");
-                        Debug.Log("MintNFTUrl:"+PlayerPrefs.GetString("MintUrl"));
+                        // Debug.Log("MintNFTParentCollection:"+ParentCollection);
+                        // Debug.Log("MintNFTName:"+name);
+                        // Debug.Log("MintNFTSymbol:"+"MJNFT");
+                        // Debug.Log("MintNFTUrl:"+PlayerPrefs.GetString("MintUrl"));
                         
-                        MirrorSDK.MintNFT("7Vv68CarFpqn291aTeeUz65Uxk1tp8X7gfR8CDMZo2gw",name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
+                        // 7Vv68CarFpqn291aTeeUz65Uxk1tp8X7gfR8CDMZo2gw
+                        MirrorSDK.MintNFT(ParentCollection,name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
                             (result) =>
                             {   
                                 
-                                Debug.Log("MintNFTResult:" + result.message);
+                              //  Debug.Log("MintNFTResult:" + result.message);
                                 if (result.status == "success")
                                 {   
                                     TAManager.Instance.MintToNft(result.data.name,0.1f);

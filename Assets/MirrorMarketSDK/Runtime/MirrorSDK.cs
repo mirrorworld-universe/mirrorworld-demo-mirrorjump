@@ -39,7 +39,9 @@ public class MirrorSDK : MonoBehaviour
     }
 
     public static void InitSDK(string apiKey, GameObject gameObject, bool useDebug, MirrorEnv environment)
-    {
+    {   
+        Debug.Log("-----Use "+useDebug);
+        
         DontDestroyOnLoad(gameObject);
 
         MonoBehaviour monoBehaviour = gameObject.GetComponent<MonoBehaviour>();

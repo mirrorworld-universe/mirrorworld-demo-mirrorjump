@@ -8,15 +8,12 @@ public class GameEntrance : MonoBehaviour
 {
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] bool useShuShuAnalysis = true;
-    [SerializeField] bool IsTestEnv = true;
+    [SerializeField] bool IsTestEnv = false;
     
-    
-    
-
     
 
     private void Start()
-    {   
+    {
         
          MirrorSDK.SetLogoutCallback(() =>
         {
@@ -70,6 +67,8 @@ public class GameEntrance : MonoBehaviour
          
          
     }
+    
+ 
     
     
 }

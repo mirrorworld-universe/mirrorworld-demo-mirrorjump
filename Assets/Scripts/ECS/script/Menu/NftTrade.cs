@@ -205,8 +205,18 @@ public class NftTrade : MonoBehaviour
     private string CalculatePrice(float price)
     {
         double res = price * 0.9575;
-        return res.ToString("f5");
+        string str = res.ToString();
+        
+        int strLeng = str.Length;
+
+        int  strLeng2 = str.IndexOf('.');
+        if (strLeng - strLeng2 >= 7)
+        {
+            str = str.Substring(0, str.IndexOf('.') + 7);
+        }
+        return str;
     }
+
 
     public void OpenSell(NFTCellData nftCellData)
     {

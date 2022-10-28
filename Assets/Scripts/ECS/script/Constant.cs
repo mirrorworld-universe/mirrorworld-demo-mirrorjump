@@ -10,7 +10,7 @@
         public static string AppID = "MRJ";
 
         public static string NotSufficientFunds =
-            "failed to send transaction: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x1";
+            "the wallet balance is sufficient.";
         
         // Call Api Limit
         public static int ExecuteMint = 1;

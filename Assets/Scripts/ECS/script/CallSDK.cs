@@ -81,11 +81,14 @@ public class CallSDK : MonoBehaviour
                 // Debug.Log("FetchNFTS_ResponseCode:"+Mutiple.code);
                 // Debug.Log("FetchNFTS_OwnerStatus:"+Mutiple.status);
                 
+                
                  List<NFTCellData> datas = new List<NFTCellData>();
                  for (int i = 0; i < Mutiple.data.nfts.Count; i++)
                  {
                      NFTCellData nftCellData = new NFTCellData();
                      SingleNFTResponseObj NftData = Mutiple.data.nfts[i];
+                     
+                     
                      nftCellData.NftData = NftData;
                      datas.Add(nftCellData);
                      

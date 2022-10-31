@@ -73,8 +73,7 @@ public class TokenGuidance : MonoBehaviour
         {
             Guidence.OnFirstStep();
         }
-
-
+        
     }
 
     private void Update()

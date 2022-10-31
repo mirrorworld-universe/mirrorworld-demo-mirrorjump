@@ -34,7 +34,7 @@ public class GlobalDef
     public static string maxScore = "MaxScore";
 
     // 非生产环境
-     public static string server = "https://mirror-jump-staging.mirrorworld.fun/";
+   // public static string server = "https://mirror-jump-staging.mirrorworld.fun/";
     // 生产环境
   //  public static string server = "https://mirror-jump.mirrorworld.fun/";
     
@@ -44,6 +44,11 @@ public class GlobalDef
     {
         return $"{Application.version}.{version}";
     }
+
+   // public static string server = "https://mirror-jump-staging.mirrorworld.fun/";
+    // 生产环境
+    public static string server = "https://mirror-jump.mirrorworld.fun";
+
 }
 
 public struct AirDropPostData

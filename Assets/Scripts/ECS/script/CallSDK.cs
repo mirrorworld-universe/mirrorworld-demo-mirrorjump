@@ -161,7 +161,6 @@ public class CallSDK : MonoBehaviour
         
         if (LoginState.HasLogin)
         {
-
             if ("true" == PlayerPrefs.GetString("HasTransferSol", "false"))
             {
                 // 直接 mint 
@@ -176,23 +175,16 @@ public class CallSDK : MonoBehaviour
                     MessageAdvice.OpenWaitPanel("Mint Now");
                     return;
                 }
-            
+                
                 ApiCallLimit.SetMintApiLimit(Constant.ExecuteMint);
             
                 MessageAdvice.OpenWaitPanel("Mint Now");
                         
                 TAManager.Instance.MintToNFTStart("random role");
-                // Debug.Log("MintNFTParentCollection:"+ParentCollection);
-                // Debug.Log("MintNFTName:"+name);
-                // Debug.Log("MintNFTSymbol:"+"MJNFT");
-                // Debug.Log("MintNFTUrl:"+PlayerPrefs.GetString("MintUrl"));
                 
-                //7Vv68CarFpqn291aTeeUz65Uxk1tp8X7gfR8CDMZo2gw
                 MirrorSDK.MintNFT(ParentCollection,name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
                     (result) =>
-                    {   
-                                
-                       // Debug.Log("MintNFTResult:" + result.message);
+                    {
                         if (result.status == "success")
                         {   
                             TAManager.Instance.MintToNft(result.data.name,0.1f);
@@ -202,51 +194,33 @@ public class CallSDK : MonoBehaviour
                         {
                             FinishedMint(false);
                         }
-                   
                     });
-
-
                 return;
-
             }
             
-            // 2ge0
-            // transfer token
-                MirrorSDK.TransferSol(100000000,"qS6JW1CKQgpwZU6jG5JpXL3Q4EDMoDD5DWacPEsNZoe",Confirmation.Confirmed, (result) =>
+       
+            MirrorSDK.TransferSol(100000000,"qS6JW1CKQgpwZU6jG5JpXL3Q4EDMoDD5DWacPEsNZoe",Confirmation.Confirmed, (result) =>
                 {
                     if (result.status == "success")
                     {
-
                         PlayerPrefs.SetString("HasTransferSol", "true");
-
                         if (PlayerPrefs.GetString("TokenId", "empty") == "empty")
                         {
                             return;
                         }
                         string name = "Mirrors Jump " + "#" +PlayerPrefs.GetString("TokenId");
-            
                         if (ApiCallLimit.MintLimit() == false)
                         {
                             MessageAdvice.OpenWaitPanel("Mint Now");
                             return;
                         }
-            
                         ApiCallLimit.SetMintApiLimit(Constant.ExecuteMint);
-            
                         MessageAdvice.OpenWaitPanel("Mint Now");
-                        
                         TAManager.Instance.MintToNFTStart("random role");
-                        // Debug.Log("MintNFTParentCollection:"+ParentCollection);
-                        // Debug.Log("MintNFTName:"+name);
-                        // Debug.Log("MintNFTSymbol:"+"MJNFT");
-                        // Debug.Log("MintNFTUrl:"+PlayerPrefs.GetString("MintUrl"));
-                        
-                        // 7Vv68CarFpqn291aTeeUz65Uxk1tp8X7gfR8CDMZo2gw
                         MirrorSDK.MintNFT(ParentCollection,name,"MJNFT",PlayerPrefs.GetString("MintUrl"),Confirmation.Confirmed,
                             (result) =>
                             {   
                                 
-                              //  Debug.Log("MintNFTResult:" + result.message);
                                 if (result.status == "success")
                                 {   
                                     TAManager.Instance.MintToNft(result.data.name,0.1f);
@@ -258,15 +232,11 @@ public class CallSDK : MonoBehaviour
                                 }
                    
                             });
-
-                        
                     }
                     else
                     {
-                        //FinishedMint(false);
                         if (result.message == Constant.NotSufficientFunds)
                         {
-                            // 余额不足
                             MessageAdvice.ConfrimCloseWaitPanel();
                             MessageAdvice.OnSufficientAdvice();
                         }
@@ -277,7 +247,6 @@ public class CallSDK : MonoBehaviour
                         }
                         
                     }
-                
                 });
                 
         }
